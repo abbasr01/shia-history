@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctrine & Debate · The Imamate & Its Legacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #7a6030;
+    --ink: #0e0c08;
+    --ink-2: #161410;
+    --text: rgba(245,239,224,0.88);
+    --text-dim: rgba(245,239,224,0.5);
+    --text-faint: rgba(245,239,224,0.28);
+    --border: rgba(201,168,76,0.15);
+    --border-hover: rgba(201,168,76,0.35);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--ink);
+    color: var(--text);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: sticky; top: 0; z-index: 200;
+    background: rgba(8,6,4,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 28px; height: 52px;
+  }
+  .topbar-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold-dim);
+    flex-shrink: 0;
+  }
+  .topbar-nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .topbar-nav::-webkit-scrollbar { display: none; }
+  .topbar-btn {
+    flex-shrink: 0; background: none;
+    border: 1px solid transparent; border-radius: 3px;
+    padding: 6px 14px;
+    font-family: 'Crimson Pro', serif; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-dim); cursor: pointer; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .topbar-btn:hover { color: var(--gold-light); border-color: var(--border-hover); }
+  .topbar-btn.active { color: var(--gold); border-color: rgba(201,168,76,0.3); }
+
+  @media (max-width: 600px) {
+    .topbar { padding: 0 10px; height: 44px; }
+    .topbar-logo { display: none; }
+    .topbar-nav { gap: 3px; }
+    .topbar-btn { padding: 4px 8px; font-size: 10.5px; letter-spacing: 0.04em; }
+  }
+
+  /* ── SECTION NAV ── */
+  .doc-nav {
+    position: sticky; top: 52px; z-index: 150;
+    background: rgba(8,6,4,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .doc-nav-scroll {
+    overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .doc-nav-scroll::-webkit-scrollbar { display: none; }
+  .doc-nav-inner {
+    display: flex; gap: 0;
+    padding: 0 16px; min-width: max-content;
+  }
+  .doc-btn {
+    background: none; border: none; border-bottom: 2px solid transparent;
+    color: var(--text-faint); padding: 13px 18px;
+    font-family: 'Crimson Pro', serif; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .doc-btn:hover { color: var(--gold-light); }
+  .doc-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .doc-nav-arrow {
+    position: absolute; top: 0; bottom: 0;
+    display: flex; align-items: center;
+    background: none; border: none;
+    color: var(--gold-dim); font-size: 20px;
+    cursor: pointer; padding: 0 10px;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    z-index: 2;
+  }
+  .doc-nav-arrow.visible { opacity: 1; pointer-events: all; }
+  .doc-nav-arrow.left  { left: 0; background: linear-gradient(to right, rgba(8,6,4,0.97) 60%, transparent); padding-right: 8px; }
+  .doc-nav-arrow.right { right: 0; background: linear-gradient(to left, rgba(8,6,4,0.97) 60%, transparent); padding-left: 8px; }
+
+  @media (max-width: 600px) { .doc-nav { top: 44px; } }
+
+  /* ── STAR FIELD ── */
+  .star-field { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .star-field::before, .star-field::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 8%,  rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 55%, rgba(245,239,224,0.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 35%, rgba(201,168,76,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5%  70%, rgba(245,239,224,0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 80%, rgba(201,168,76,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 28% 90%, rgba(245,239,224,0.18) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 65%, rgba(201,168,76,0.28) 0%, transparent 100%);
+  }
+
+  /* ── HERO ── */
+  .page-hero {
+    position: relative; padding: 110px 28px 70px;
+    text-align: center; border-bottom: 1px solid var(--border); overflow: hidden;
+  }
+  .page-eyebrow {
+    font-family: 'Crimson Pro', serif; font-size: 12px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 18px;
+  }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5.5vw, 58px);
+    font-weight: 600; line-height: 1.15;
+    color: rgba(245,239,224,0.95); margin-bottom: 20px;
+  }
+  .page-title em { color: var(--gold-light); font-style: italic; }
+  .page-desc {
+    max-width: 680px; margin: 0 auto;
+    font-size: 18px; line-height: 1.65; color: var(--text-dim);
+  }
+
+  /* ── SECTIONS ── */
+  .doc-section {
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 104px;
+  }
+  .doc-header {
+    max-width: 1100px; margin: 0 auto;
+    padding: 56px 28px 36px;
+  }
+  .doc-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold-dim); margin-bottom: 10px;
+  }
+  .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 600; line-height: 1.2;
+    color: rgba(245,239,224,0.95); margin-bottom: 8px;
+  }
+  .doc-title em { color: var(--gold-light); font-style: italic; }
+  .doc-subtitle {
+    font-size: 15px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-faint);
+    margin-bottom: 20px;
+  }
+  /* The framing question — large italic, signals this is a tradition of questions */
+  .doc-question {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-style: italic; color: rgba(201,168,76,0.65);
+    line-height: 1.5; max-width: 780px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(201,168,76,0.25);
+  }
+
+  /* ── BODY GRID ── */
+  .doc-body {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 28px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media(max-width:720px) {
+    .doc-body { grid-template-columns: 1fr; }
+    .doc-header { padding: 40px 20px 28px; }
+    .doc-body { padding: 0 20px 48px; }
+  }
+
+  .doc-intro {
+    grid-column: 1 / -1;
+    font-size: 17px; line-height: 1.75;
+    color: rgba(245,239,224,0.78);
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    margin-bottom: 6px;
+  }
+  .doc-intro strong { color: rgba(245,239,224,0.95); }
+
+  /* Cards */
+  .doc-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 4px; padding: 24px 26px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .doc-card:hover {
+    border-color: var(--border-hover);
+    background: rgba(201,168,76,0.04);
+  }
+  .doc-card-full { grid-column: 1 / -1; }
+  .doc-card-label {
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold-dim);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .doc-card-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(201,168,76,0.12);
+  }
+  .doc-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600;
+    color: rgba(245,239,224,0.92);
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .doc-card p {
+    font-size: 15.5px; line-height: 1.7;
+    color: rgba(245,239,224,0.65);
+  }
+  .doc-card p + p { margin-top: 10px; }
+  .doc-card p strong { color: rgba(245,239,224,0.88); }
+  .doc-card p em { color: rgba(201,168,76,0.75); font-style: italic; }
+
+  /* Voice quotation block */
+  .voice-block {
+    grid-column: 1 / -1;
+    border-left: 3px solid var(--gold-dim);
+    padding: 18px 26px;
+    background: rgba(201,168,76,0.04);
+    border-radius: 0 4px 4px 0;
+  }
+  .voice-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 20px; color: var(--gold-light);
+    margin-bottom: 10px; line-height: 1.9;
+    direction: rtl;
+  }
+  .voice-trans {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-style: italic;
+    color: rgba(245,239,224,0.82); line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .voice-source {
+    font-size: 12.5px; color: var(--gold-dim);
+    letter-spacing: 0.08em;
+  }
+  .voice-source em { font-style: italic; }
+
+  /* Five roots — special layout */
+  .roots-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 8px 0;
+  }
+  @media(max-width:900px) { .roots-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media(max-width:560px) { .roots-grid { grid-template-columns: 1fr 1fr; } }
+
+  .root-card {
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 4px; padding: 16px 14px;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .root-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.08);
+  }
+  .root-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 22px; color: var(--gold);
+    display: block; margin-bottom: 6px;
+    direction: rtl;
+  }
+  .root-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 600;
+    color: rgba(245,239,224,0.9);
+    display: block; margin-bottom: 3px;
+  }
+  .root-trans {
+    font-size: 11.5px; color: var(--text-faint);
+    letter-spacing: 0.08em; display: block;
+    margin-bottom: 10px;
+  }
+  .root-desc {
+    font-size: 13px; color: rgba(245,239,224,0.55);
+    line-height: 1.55; text-align: left;
+  }
+
+  /* Spectrum bar for Wilayat al-Faqih debate */
+  .spectrum-block {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px; margin: 4px 0;
+  }
+  @media(max-width:640px) { .spectrum-block { grid-template-columns: 1fr; } }
+  .spectrum-card {
+    border: 1px solid var(--border);
+    border-radius: 4px; padding: 20px 18px;
+    background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s;
+  }
+  .spectrum-card:hover { border-color: var(--border-hover); }
+  .spectrum-label {
+    font-size: 10px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold-dim);
+    margin-bottom: 8px;
+  }
+  .spectrum-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 600;
+    color: rgba(245,239,224,0.9); margin-bottom: 6px;
+  }
+  .spectrum-rep {
+    font-size: 12px; color: var(--text-faint);
+    font-style: italic; margin-bottom: 10px;
+  }
+  .spectrum-desc {
+    font-size: 14px; color: rgba(245,239,224,0.6); line-height: 1.6;
+  }
+
+  /* Karbala three-readings layout */
+  .readings-grid {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px; margin: 4px 0;
+  }
+  @media(max-width:640px) { .readings-grid { grid-template-columns: 1fr; } }
+  .reading-card {
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 22px 20px; background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s;
+  }
+  .reading-card:hover { border-color: var(--border-hover); }
+  .reading-num {
+    font-size: 10px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold-dim); margin-bottom: 8px;
+  }
+  .reading-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 600;
+    color: rgba(245,239,224,0.9); margin-bottom: 6px; line-height: 1.3;
+  }
+  .reading-thinker {
+    font-size: 12px; font-style: italic;
+    color: rgba(201,168,76,0.5); margin-bottom: 10px;
+  }
+  .reading-desc {
+    font-size: 14px; color: rgba(245,239,224,0.6); line-height: 1.6;
+  }
+
+  /* Figures list */
+  .figures-list {
+    grid-column: 1 / -1;
+    display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px;
+  }
+  .figure-chip {
+    display: inline-flex; flex-direction: column;
+    padding: 9px 16px; border-radius: 3px;
+    border: 1px solid rgba(201,168,76,0.18);
+    background: rgba(201,168,76,0.04);
+    transition: border-color 0.2s;
+  }
+  .figure-chip:hover { border-color: rgba(201,168,76,0.35); }
+  .figure-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; color: rgba(245,239,224,0.88); margin-bottom: 2px;
+  }
+  .figure-role {
+    font-size: 12px; letter-spacing: 0.08em;
+    color: var(--text-faint); line-height: 1.3;
+  }
+
+  /* Page footer */
+  .page-footer {
+    text-align: center; padding: 60px 28px;
+    font-size: 13px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-faint);
+  }
+  .page-footer a { color: var(--gold-dim); text-decoration: none; }
+  .page-footer a:hover { color: var(--gold); }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── CARD LEDE — one-sentence entry point for each card ── */
+  .card-lede {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-style: italic;
+    color: rgba(245,239,224,0.88);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  /* ── INLINE QUOTE — for embedded text passages inside cards ── */
+  .inline-quote {
+    border-left: 2px solid rgba(201,168,76,0.3);
+    padding: 10px 16px;
+    margin: 12px 0;
+    background: rgba(201,168,76,0.03);
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(245,239,224,0.72);
+    line-height: 1.65;
+  }
+
+  /* ── CARD SPLIT — two-column layout inside a full-width card ── */
+  .card-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  @media(max-width:640px) { .card-split { grid-template-columns: 1fr; } }
+  .card-split-label {
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold-dim);
+    margin-bottom: 8px;
+  }
+  .card-split p {
+    font-size: 15px; line-height: 1.68;
+    color: rgba(245,239,224,0.62);
+  }
+  .card-split p strong { color: rgba(245,239,224,0.85); }
+  .card-split p em { color: rgba(201,168,76,0.75); }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-logo">The Imamate & Its Legacy</div>
+  <div class="topbar-nav">
+    <a href="shia-timeline.html"  class="topbar-btn">I · Timeline</a>
+    <a href="shia-academia.html"  class="topbar-btn">II · Academic Map</a>
+    <a href="shia-encounters.html" class="topbar-btn">III · Encounters</a>
+    <button class="topbar-btn active" onclick="void(0)">IV · Doctrine</button>
+  </div>
+</nav>
+
+<!-- SECTION NAV -->
+<nav class="doc-nav" id="doc-nav">
+  <button class="doc-nav-arrow left" id="doc-arrow-left" onclick="docNavScroll(-1)">&#8249;</button>
+  <div class="doc-nav-scroll" id="doc-nav-scroll">
+    <div class="doc-nav-inner">
+      <button class="doc-btn active" onclick="scrollToDoc('doc-architecture')">I · Theological Architecture</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-imamate')">II · The Imamate</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-karbala')">III · Karbala as Paradigm</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-embodied')">IV · The Embodied Tradition</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-just-order')">V · The Just Order</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-authority')">VI · Authority in Occultation</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-irfan')">VII · ʿIrfān</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-akhlaq')">VIII · Akhlāq</button>
+    </div>
+  </div>
+  <button class="doc-nav-arrow right" id="doc-arrow-right" onclick="docNavScroll(1)">&#8250;</button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="star-field"></div>
+  <div class="page-eyebrow">Page IV · Doctrine & Debate</div>
+  <h1 class="page-title">What the Tradition <em>Believes</em></h1>
+  <p class="page-desc">Beyond history and argument lies the tradition's own interior: what it holds to be true, the practices through which those convictions become embodied, the debates that remain unresolved, and the inner life that doctrine alone cannot exhaust.</p>
+</div>
+
+
+<!-- ═══════════════════ I · THEOLOGICAL ARCHITECTURE ══ -->
+<section class="doc-section" id="doc-architecture">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section I</div>
+    <h2 class="doc-title">The Theological <em>Architecture</em></h2>
+    <div class="doc-subtitle">The Five Roots · Uṣūl al-Dīn</div>
+    <p class="doc-question">"What does a Shia Muslim hold to be true, and how do those beliefs form a single coherent structure?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">Shia theology organizes its foundations into five <em>Uṣūl al-Dīn</em> — roots of religion — rather than the six articles of Sunni faith. The difference is not incidental: the addition of <em>Adl</em> and the elevation of the <em>Imamate</em> to foundational status are theological choices that produce a different structure of belief. These five roots are not a checklist — they are a system, each one implying the next.</p>
+
+    <div class="roots-grid">
+      <div class="root-card">
+        <span class="root-arabic">التوحيد</span>
+        <span class="root-name">Tawḥīd</span>
+        <span class="root-trans">Divine Unity</span>
+        <p class="root-desc">God is absolutely one — not merely numerically, but in being, attributes, and act. No partner, no co-equal, no division. All of theology follows from this: existence itself is a single gradient of being descending from the divine unity.</p>
+      </div>
+      <div class="root-card">
+        <span class="root-arabic">العدل</span>
+        <span class="root-name">ʿAdl</span>
+        <span class="root-trans">Divine Justice</span>
+        <p class="root-desc">God does not act unjustly — by necessity, not merely convention. This Mu'tazilite inheritance distinguishes Shia theology from Ash'ari Sunni determinism. If God is just, then human moral responsibility is real, divine reward and punishment are rational, and the world is ordered toward goodness.</p>
+      </div>
+      <div class="root-card">
+        <span class="root-arabic">النبوة</span>
+        <span class="root-name">Nubuwwa</span>
+        <span class="root-trans">Prophethood</span>
+        <p class="root-desc">God sends prophets — infallible, divinely guided — to convey the law and guide humanity. The chain of prophethood runs from Adam through Abraham, Moses, Jesus, and is sealed by Muhammad ﷺ. The Quran is the final and preserved revelation.</p>
+      </div>
+      <div class="root-card">
+        <span class="root-arabic">الإمامة</span>
+        <span class="root-name">Imāma</span>
+        <span class="root-trans">Imamate</span>
+        <p class="root-desc">Divine guidance did not end with the Prophet's death. The Imam — divinely designated, infallible, possessing complete knowledge of the religion — continues the guidance of the community. This root is the defining Shia contribution to Islamic theology and the source of every other doctrinal distinction.</p>
+      </div>
+      <div class="root-card">
+        <span class="root-arabic">المعاد</span>
+        <span class="root-name">Maʿād</span>
+        <span class="root-trans">Resurrection</span>
+        <p class="root-desc">The body and soul are resurrected for divine judgment. Every act has consequence; justice that is deferred in this world is fulfilled in the next. The return of the Hidden Imam before the final hour is the penultimate act of this cosmic drama.</p>
+      </div>
+    </div>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">The Logic of the System</div>
+      <h3>Why These Five — and Why in This Order</h3>
+      <p>The sequence is not arbitrary. <strong>Tawhid</strong> establishes that there is one God whose nature is absolute goodness. <strong>ʿAdl</strong> establishes that this God acts justly — which means human choices have real moral weight, and that God would not abandon humanity without guidance. <strong>Nubuwwa</strong> explains how that guidance arrives: through prophets whose infallibility guarantees the message is uncorrupted. But prophets die. <strong>Imamate</strong> answers the question divine justice raises: would a just God leave the community without an infallible guide after the Prophet? Shia theology answers: no — and the necessity of the Imam follows from the same rational arguments that establish prophecy itself. <strong>Maʿād</strong> is the horizon that gives all of this moral weight: because there is a judgment, every choice matters; because the Hidden Imam will return, history is not purposeless.</p>
+      <p>The inclusion of <em>ʿAdl</em> as a root — absent from classical Sunni formulations — reflects the Shia tradition's inheritance from Mu'tazilite rationalism: that God's justice is a fact about God's nature, not merely a description of whatever God happens to do. This single difference produces a theology in which human reason, moral responsibility, and divine accountability are structurally primary.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ II · THE IMAMATE ══ -->
+<section class="doc-section" id="doc-imamate">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section II</div>
+    <h2 class="doc-title">The <em>Imamate</em></h2>
+    <div class="doc-subtitle">The Doctrine That Defines · From Ghadir to the Occultation</div>
+    <p class="doc-question">"Why is the Imam necessary — and what kind of being is the Imam?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">The Imamate is not merely a political theory about who should lead after the Prophet. It is a theological claim about the structure of divine guidance: that God, whose justice demands that humanity never be left without a reliable source of truth, designates an infallible Imam from the Ahlul Bayt to continue the Prophet's mission in every dimension except prophethood itself. <strong>This is the doctrine that defines Twelver Shia Islam</strong> — every other distinctive belief either supports it or follows from it.</p>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Rational Argument</div>
+      <h3>Why the Imam Is Necessary</h3>
+      <p class="card-lede">A just God would not leave humanity without an infallible guide — and that single premise carries the entire weight of the Imamate's rational necessity.</p>
+      <p>The classic formulation, systematized by Nasir al-Din al-Tusi and elaborated by Allama al-Hilli in his commentary <em>Kashf al-Murad</em>: <strong>divine grace (luṭf) requires an infallible guide</strong>. God is just; a just God would not leave humanity dependent on fallible human scholars, who may err, contradict each other, and produce uncertainty in the very matters on which salvation depends. Therefore God designates an infallible guide. The only question is who that guide is and how he is identified.</p>
+      <p>This argument grounds the Imamate not in scripture alone but in a logic that applies to any community in any age — which is why Shia <em>kalām</em> considered it decisive against opponents who rejected specific hadith.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Nature of the Imam</div>
+      <h3>ʿIṣma, ʿIlm, and Wilāya</h3>
+      <p class="card-lede">The Imam is not a better scholar — he is a categorically different kind of being, defined by three attributes that together constitute his role.</p>
+      <p><strong>ʿIṣma (infallibility)</strong>: the Imam does not sin and does not err in matters of religion. This is not omniscience — it is God's protection of the guidance-function. <strong>ʿIlm (divinely-granted knowledge)</strong>: the Imam possesses complete knowledge of all religious rulings, the Quran's inner meanings, and everything necessary to guide the community. <strong>Wilāya (authority and proximity)</strong>: the Imam's authority is not merely legal but ontological — he is the <em>walī</em>, the friend and representative of God on earth, the cosmic intermediary between creation and the divine.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Quranic Foundation</div>
+      <h3>Three Verses the Tradition Reads as Imamate Proofs</h3>
+      <p class="card-lede">Shia exegesis reads specific Quranic verses as explicit divine authentication of the Ahlul Bayt's authority — not as inference but as direct address.</p>
+      <p>The <strong>Verse of Purification</strong> (33:33): <em>"God desires only to remove impurity from you, O People of the House, and to purify you completely."</em> Shia exegesis holds this addresses the Panjtan Pak — the Prophet, Fatima, Ali, Hasan, Husayn — establishing their infallibility.</p>
+      <p>The <strong>Verse of Wilāya</strong> (5:55): <em>"Your guardian is only God and His Messenger and those who believe, who establish prayer and give zakāt while they bow"</em> — identified as referring to Ali's act of giving his ring in charity during prayer.</p>
+      <p>The <strong>Verse of Obedience</strong> (4:59): <em>"Obey God and obey the Messenger and those in authority among you"</em> — <em>ūlū al-amr</em> (those in authority) identified as the infallible Imams, since no fallible ruler merits absolute obedience.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Imamate & the Quran</div>
+      <h3>The Imam as Interpreter</h3>
+      <p class="card-lede">The Quran has an outer meaning accessible to all and an inner meaning whose complete understanding belongs to the Imam alone.</p>
+      <p>The Imam is not merely authorized to rule — he is the authorized interpreter of the Quran's hidden dimensions. Every verse has levels of meaning; the Imam knows all of them. This is why Shia tafsīr always draws on Imamic hadith — the Imam's interpretation is not one opinion among many but authoritative transmission from the divine source. The tradition holds that without the Imam's guidance, large portions of the Quran remain permanently misread.</p>
+    </div>
+
+    <!-- Fatima as the link — full-width card, elevated treatment -->
+    <div class="doc-card doc-card-full" style="border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04);">
+      <div class="doc-card-label">The Link That Cannot Be Broken</div>
+      <h3>Fatima al-Zahra ع — The Theological Center</h3>
+      <p class="card-lede">The Imamate passes through one person. Without Fatima, the bloodline of the Prophet and the authority of the Imamate do not converge — making her not a peripheral figure but a structural necessity.</p>
+
+      <div class="card-split">
+        <div>
+          <p class="card-split-label">Her Theological Status</p>
+          <p>Fatima is held to be <em>maʿṣuma</em> — infallible, like the Imams — and a <em>ḥujja</em> (proof of God) in her own right, not derivatively from her father or husband. The Hadith al-Kisa' — in which the Prophet gathers Ali, Fatima, Hasan, and Husayn under his cloak — is the scriptural foundation for the <em>Panjtan Pak</em> (Five Pure Ones). The verse of purification (33:33) is understood as addressed to this household specifically.</p>
+          <p style="margin-top:10px;">In the <em>ʿirfānī</em> tradition she is identified with divine grace (<em>fayd</em>) itself — the feminine principle of mercy through which creation receives the light descending from the Prophet. Allama Tabataba'i describes her as the <em>mazhar</em> (manifestation) of the most intimate divine attribute.</p>
+        </div>
+        <div>
+          <p class="card-split-label">Her Grief as Testimony</p>
+          <div class="inline-quote">"Fatima is a part of me. Whoever angers her angers me, and whoever angers me angers God."<br><span style="font-size:12px;color:var(--gold-dim);font-style:normal;">— The Prophet Muhammad ﷺ</span></div>
+          <p>Her sustained grief after the Prophet's death — the Khutba al-Fadakiyya delivered in the mosque of Medina, her refusal to forgive, her burial at night at her own request — is treated by the tradition not as personal emotion but as <em>judicial testimony</em>: evidence, preserved across fourteen centuries, that the covenant of Ghadir was broken. <strong>The Imam's claim is inseparable from her witness.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Imam Ali</span><span class="figure-role">1st Imam · designated at Ghadir</span></div>
+      <div class="figure-chip"><span class="figure-name">Allama al-Hilli</span><span class="figure-role">Classical rational argument for Imamate</span></div>
+      <div class="figure-chip"><span class="figure-name">Sheikh al-Mufid</span><span class="figure-role">Systematized Imamate theology</span></div>
+      <div class="figure-chip"><span class="figure-name">Allama Tabataba'i</span><span class="figure-role">20th-c. philosophical defense of Imamate</span></div>
+      <div class="figure-chip"><span class="figure-name">Fatima al-Zahra ع</span><span class="figure-role">Link between prophethood and Imamate</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ III · KARBALA AS PARADIGM ══ -->
+<section class="doc-section" id="doc-karbala">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section III</div>
+    <h2 class="doc-title">Karbala <em>as Paradigm</em></h2>
+    <div class="doc-subtitle">The Event That Defines the Tradition · 680 CE – Present</div>
+    <p class="doc-question">"What does Husayn's martyrdom mean — not as a historical fact, but as a living theological claim on every generation?"</p>
+  </div>
+  <div class="doc-body reveal">
+
+    <div class="voice-block">
+      <div class="voice-arabic">«هَيهَاتَ مِنَّا الذِّلَّة»</div>
+      <div class="voice-trans">"Disgrace is far from us."</div>
+      <div class="voice-source">— Imam Husayn ibn Ali ع, on the morning of Ashura, 10 Muharram 61 AH</div>
+    </div>
+
+    <p class="doc-intro">Karbala is not merely a tragedy that happened in 680 CE. In Shia theology it is a <em>paradigm</em> — a structure of meaning that recurs in every age, a choice that every community must face: whether to submit to illegitimate power for the sake of survival, or to refuse at the cost of everything. The tradition holds three readings of what Karbala means. They are not alternatives — they operate at different registers, and most Shia Muslims hold all three simultaneously.</p>
+
+    <div class="readings-grid">
+      <div class="reading-card">
+        <div class="reading-num">Reading I</div>
+        <div class="reading-name">The Soteriological Reading</div>
+        <div class="reading-thinker">Popular piety · majlis · lamentation tradition</div>
+        <p class="reading-desc">Husayn's death is a redemptive sacrifice whose spiritual effects extend beyond 680 CE. The mourner's tears are an act of participation — a crossing of time that brings the mourner into the presence of the event itself. To weep for Husayn is to be seen by him; his intercession on the Day of Judgment belongs to those who wept. This reading sustains the <em>majlis</em>, the lamentation poetry, the matam — the entire devotional infrastructure of Shia practice.</p>
+      </div>
+      <div class="reading-card">
+        <div class="reading-num">Reading II</div>
+        <div class="reading-name">The Ethical-Political Reading</div>
+        <div class="reading-thinker">Ali Shariati · Red Shi'ism / Black Shi'ism</div>
+        <p class="reading-desc">Shariati's argument: <strong>Black Shi'ism</strong> converts Karbala into ritual mourning that is politically inert — grief as an end in itself, annually renewed, leaving the social order undisturbed. <strong>Red Shi'ism</strong> reads Karbala as a permanent moral demand: Husayn did not die so that you would weep; he died so that each generation would choose whether to stand with the Imam or with Yazid. <em>"Every day is Ashura, every land is Karbala"</em> — not as consolation, but as summons.</p>
+      </div>
+      <div class="reading-card">
+        <div class="reading-num">Reading III</div>
+        <div class="reading-name">The Mystical-Philosophical Reading</div>
+        <div class="reading-thinker">ʿIrfāni tradition · Imam Khomeini's mystical writings</div>
+        <p class="reading-desc">Husayn is the <em>mazhar</em> (manifestation) of divine attributes in their most concentrated form — the one whose death reveals the nature of reality as a place where the highest truth is always opposed by the forces of mere power. His martyrdom is not a failure of the divine plan but its most perfect expression: the willingness to be annihilated for what is real is the supreme act of <em>fana'</em> (self-extinction) — the mystic's goal made historical and political.</p>
+      </div>
+    </div>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">The Three Readings Held Together</div>
+      <h3>Why the Tension Is Generative, Not a Problem to Resolve</h3>
+      <p>The three readings of Karbala are sometimes set against each other — Shariati's political reading against the devotional tradition, or the mystical reading against the historical. But the tradition at its deepest holds them simultaneously. The lamentation that seems passive to Shariati is also, for those who practice it, an act of moral solidarity with the suffering of truth — it is not indifference but grief that knows what it is grieving for. The political reading without the devotional one risks reducing Husayn to a symbol; the devotional reading without the political one risks making grief a substitute for action. The mystical reading without either risks abstraction.</p>
+      <p>What unites all three: <strong>Husayn's refusal was free.</strong> He was not surprised; he knew what would happen. He chose it, explicitly, with full knowledge — sending his family members away and accepting each companion's choice to stay or leave. That freedom is the theological core of Karbala: it was not fate but <em>decision</em>, which is why it constitutes an example rather than merely a tragedy.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ IV · THE EMBODIED TRADITION ══ -->
+<section class="doc-section" id="doc-embodied">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section IV</div>
+    <h2 class="doc-title">The <em>Embodied Tradition</em></h2>
+    <div class="doc-subtitle">ʿĀshūrāʾ · Ziyara · Du'a · The Hussainiyya · The Poetry of Grief</div>
+    <p class="doc-question">"Theology becomes a tradition when it moves from the mind into the body, the calendar, the communal gathering, the tear. What does it feel like to be Shia?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">Every doctrine in the Shia tradition has an embodied counterpart — a practice that enacts what theology argues. The Imamate's claim that the Imam remains present finds expression in Ziyara, the pilgrimage-as-conversation. Karbala's demand that each generation choose finds expression in ʿĀshūrāʾ, the annual re-enactment of grief and commitment. The tradition's insistence on the soul's direct relationship with God finds expression in du'a, the vast literature of personal supplication. <strong>These practices are not decorations on the theology — they are the theology made felt.</strong> Women have been the primary transmitters and organizers of this embodied culture across centuries, a fact the tradition's intellectual histories chronically underreport.</p>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">ʿĀshūrāʾ — The Tenth of Muharram</div>
+      <h3>The Central Ritual: Grief, Renewal, and the Annual Choice</h3>
+      <p class="card-lede">The annual commemoration of Karbala is simultaneously the tradition's deepest grief and its most powerful act of communal renewal — not a memorial for the past but a re-commitment made every year.</p>
+      <div class="card-split">
+        <div>
+          <p class="card-split-label">The Practice</p>
+          <p>On the 10th of Muharram, communities worldwide gather through the <em>majlis</em> (gathering of lamentation), processions, <em>matam</em> (ritual mourning), <em>marsiya</em> recitation, and in South Asia and Iran the staging of <em>taziya</em> (passion plays). The ten days of Muharram structure the Shia ritual calendar — its emotional peak, its communal center, its annual return to the founding event.</p>
+        </div>
+        <div>
+          <p class="card-split-label">The Debate Within</p>
+          <p>Ali Shariati's question shadows every gathering: is this grief that ends in itself, or grief that demands something? His <em>Red Shi'ism / Black Shi'ism</em> set passive lamentation against <em>"every day is Ashura, every land is Karbala"</em> as an active summons. But the tradition at its deepest refuses the dichotomy — the lamentation <em>is</em> the moral act. To weep for Husayn is to acknowledge that what was lost mattered, that the world's injustice is not acceptable. Grief and resistance are the same recognition in different registers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Ziyara — Pilgrimage as Conversation</div>
+      <h3>The Theology of the Shrine</h3>
+      <p class="card-lede">Shia pilgrimage is not veneration of the dead — it is conversation with the living. The shrine is a gate, not a grave.</p>
+      <p>The formal ziyara texts are addressed directly to the Imam in the second person, as if to someone present — presupposing that the Imam remains spiritually present and capable of intercession (<em>shafāʿa</em>). The shrine is a <em>bāb</em> between the visible world and the divine reality the Imam embodies. <strong>Arbaeen</strong> — the fortieth-day pilgrimage to Karbala — draws over 20 million people annually, the largest regular human gathering on earth. That scale is the embodied assertion that fourteen centuries have not dimmed the Imam's presence.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Du'a — The Liturgy of Intimacy</div>
+      <h3>Supplication as Theological Act</h3>
+      <p class="card-lede">The Shia supplication literature is doctrine felt from the inside — every claim about God's justice and the soul's nature made not as proposition but as direct address.</p>
+      <p>Du'a Kumayl (Imam Ali), Du'a Nudba (lamentation for the Hidden Imam), Du'a Arafah (Imam Husayn), Du'a Abu Hamza al-Thumali (Imam al-Sajjad) — these are not merely prayers but full theological statements in the first person. The Sahifa al-Sajjadiyya — the 4th Imam's supplication collection, composed under Umayyad surveillance — encodes the entire Imamic worldview in the language of prayer. Its tone is intimate, urgent, often anguished: theology as felt experience, not observed doctrine.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Hussainiyya</div>
+      <h3>The Social Architecture of Shia Community Life</h3>
+      <p class="card-lede">The hussainiyya is the institutional backbone of Shia community life — and it has been sustained largely by women, a fact invisible in most intellectual histories of the tradition.</p>
+      <p>Neither mosque nor school, the hussainiyya is where the community gathers for ʿĀshūrāʾ majalis, lamentation poetry, religious lectures, and the social bonds that make a community. In diaspora — Dearborn, London, Karachi, Lagos — it often becomes the primary institution of communal identity. The logistics of ʿĀshūrāʾ across ten days — food, hospitality, coordination — fall primarily on women's networks. The tradition's living transmission has been carried by women across generations even as the tradition's intellectual histories focus almost exclusively on male scholars.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Marsiya — The Poetry of Holy Grief</div>
+      <h3>Lamentation as Literature and Theology</h3>
+      <p class="card-lede">The marsiya is moral instruction encoded in beauty — to learn this tradition is to learn Shia theology in its most emotionally direct form.</p>
+      <p>Running from Arabic <em>rithāʾ</em> through Persian <em>marthiya</em> to Urdu marsiya, the tradition reached its classical height in 18th–19th century Lucknow under Mir Anees and Mirza Dabir — metrically complex compositions narrating Karbala's events in exhaustive emotional detail. Allama Iqbal's poetry stands in direct continuity with this tradition. Zaynab bint Ali — who survived Karbala and addressed Yazid's court — is its original voice: the one who turned catastrophe into testimony, and without whom the event would have had no witness.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Imam Ali ibn Husayn</span><span class="figure-role">Sahifa al-Sajjadiyya — du'a as theological literature</span></div>
+      <div class="figure-chip"><span class="figure-name">Zaynab bint Ali</span><span class="figure-role">Survivor of Karbala; first transmitter of its meaning</span></div>
+      <div class="figure-chip"><span class="figure-name">Mir Anees</span><span class="figure-role">1803–1874 · pinnacle of Urdu marsiya tradition</span></div>
+      <div class="figure-chip"><span class="figure-name">Ali Shariati</span><span class="figure-role">Red/Black Shi'ism — the ʿĀshūrāʾ question</span></div>
+      <div class="figure-chip"><span class="figure-name">Allama Iqbal</span><span class="figure-role">Karbala as philosophical paradigm in Urdu-Persian poetry</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ V · THE JUST ORDER ══ -->
+<section class="doc-section" id="doc-just-order">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section V</div>
+    <h2 class="doc-title">The <em>Just Order</em></h2>
+    <div class="doc-subtitle">Society, Wealth & Governance · The Social Vision of the Tradition</div>
+    <p class="doc-question">"Islam came as a doctrine not only for individuals but for society as a whole. What does the Shia tradition claim about how human community should be ordered?"</p>
+  </div>
+  <div class="doc-body reveal">
+
+    <div class="voice-block">
+      <div class="voice-arabic">«اعْلَمْ أَنَّ الرَّعِيَّةَ طَبَقَاتٌ لَا يَصْلُحُ بَعْضُهَا إِلَّا بِبَعْضٍ، وَلَا غِنَى بِبَعْضِهَا عَنْ بَعْضٍ»</div>
+      <div class="voice-trans">"Know that the people are of different classes, none of which can function without the others, and none of which can do without the others."</div>
+      <div class="voice-source">— Imam Ali ibn Abi Talib ع, <em>Letter to Malik al-Ashtar</em> (Governor of Egypt), Nahj al-Balagha · Letter 53, c. 657 CE</div>
+    </div>
+
+    <p class="doc-intro">The Letter to Malik al-Ashtar is a complete theory of just governance written by the first Imam to his appointed governor of Egypt. It covers the obligations of rulers to the ruled, the treatment of enemies, the protection of the poor, the accountability of administrators, the danger of flattery, and the moral psychology of power. It is not a medieval curiosity — it is a living document, cited in legal proceedings and governance debates across the Muslim world. <strong>It establishes that in the Shia tradition, concern for the social order is not an addition to theology but its direct expression.</strong></p>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Social Compact in Shia Theology</div>
+      <h3>Justice (ʿAdl) as a Social Obligation</h3>
+      <p class="card-lede">The Imam's authority always encompassed the social order — not just doctrine, but governance, distribution, and the protection of the vulnerable.</p>
+      <p>The Quranic injunction to <em>amr bil-maʿrūf wa-nahy ʿan al-munkar</em> (commanding right, forbidding wrong) requires social institutions and the willingness to bear cost. This is why the political representation sought by the Imams — and by Shia communities after them — was never merely about power. It was about the conditions under which justice could be realized. The absence of the Imam during the Occultation does not dissolve this obligation; it transfers it to the community and its scholars.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">From the Letter to Malik al-Ashtar</div>
+      <h3>On the Rights of the Poor</h3>
+      <p class="card-lede">The measure of just governance is what happens to those with no institutional voice — and the ruler's first obligation is to seek them out, not wait for them to arrive.</p>
+      <div class="inline-quote">"Let the largest part of your attention be devoted to those whose condition is invisible to you — the poor whose affairs no one advocates, the weak who can neither sue nor complain."</div>
+      <div class="inline-quote">"Appoint a trusted person to report to you about them... for they are the ones who need your justice most, and their gratitude will be the truest you receive — because the wealthy have advocates, and the poor have only you."</div>
+      <p>This is a structural claim, not a platitude about charity. The ruler's obligations to the invisible are not optional acts of generosity but the core accountability of governance.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Khums & the Economy of the Sacred</div>
+      <h3>Wealth as Trusteeship, Not Ownership</h3>
+      <p class="card-lede">Khums is not a tax — it is a theological claim that humans hold wealth in trust, not ownership, and that trust carries social obligations structurally embedded in it.</p>
+      <p>One-fifth of annual surplus income flows through the marja' as representative of the Hidden Imam — half supporting descendants of the Prophet, half funding the hawza and Shia institutions globally. Muhammad Baqir al-Sadr developed this premise into a systematic framework in <em>Iqtiṣādunā</em> (Our Economics, 1960): neither capitalism's private ownership as ultimate right nor Marxism's state control, but stewardship (<em>istikhlāf</em>) — all property held in trust, with social obligations woven into its use from the start.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Marja' as Social Institution</div>
+      <h3>A Transnational Infrastructure Without a State</h3>
+      <p class="card-lede">Through taqlid and khums, the marja' sustains a global network of schools, hospitals, and community institutions — entirely through voluntary religious obligation, with no state and no single geographic center.</p>
+      <p>Every Shia Muslim following a marja' pays khums to his institution and receives his <em>risāla ʿamaliyya</em> (manual of practical rulings) for everyday decisions. Through millions of such relationships, the marja' funds hawzas in Najaf, Qum, Karbala, and Mashhad; community centers from Dearborn to Lagos to Karachi. This infrastructure explains how Shia communities have survived — and often flourished — as minorities across fourteen centuries of political marginality.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Imam Ali</span><span class="figure-role">Letter to Malik al-Ashtar — the tradition's political philosophy</span></div>
+      <div class="figure-chip"><span class="figure-name">Muhammad Baqir al-Sadr</span><span class="figure-role"><em>Iqtiṣādunā</em> — Islamic economics as a third way</span></div>
+      <div class="figure-chip"><span class="figure-name">Sheikh al-Ansari</span><span class="figure-role">Formalized the marja' as global institution</span></div>
+      <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role">Argued social justice requires political authority</span></div>
+      <div class="figure-chip"><span class="figure-name">Grand Ayatullah Sistani</span><span class="figure-role">Quietist social authority; humanitarian engagement</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ VI · AUTHORITY IN OCCULTATION ══ -->
+<section class="doc-section" id="doc-authority">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section VI</div>
+    <h2 class="doc-title">Authority <em>in Occultation</em></h2>
+    <div class="doc-subtitle">Who Leads When the Imam Is Hidden? · 941 CE – Present</div>
+    <p class="doc-question">"Given that the Imam is the guarantor of the just social order — and the Imam is absent — who holds that responsibility, and how much of it?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">This is the defining live debate of Shia political theology, and it is live — not historical. The Hidden Imam's absence since 941 CE created a question the tradition has never stopped arguing about: what authority does the qualified jurist (<em>faqīh</em>) hold in the Imam's absence? The answers range from minimal advisory functions to full political sovereignty. The positions are not merely political preferences — each is grounded in a reading of Imamic hadith, jurisprudential theory, and the logic of divine governance. <strong>This is a genuine theological disagreement among deeply serious scholars.</strong></p>
+
+    <div class="spectrum-block">
+      <div class="spectrum-card">
+        <div class="spectrum-label">The Quietist Position</div>
+        <div class="spectrum-name">Limited Juristic Authority</div>
+        <div class="spectrum-rep">Ansari → Khoei → Sistani · Najaf tradition</div>
+        <p class="spectrum-desc">The jurist's authority is real but bounded: he issues religious rulings, collects and distributes khums, arbitrates religious disputes, and provides authoritative guidance on matters of law. He does not claim political sovereignty. Governance belongs to the absent Imam alone — and to usurp it, even in the Imam's name, is an overreach that taints religious authority with the corruptions of power. The jurist's strength lies precisely in his institutional independence from the state.</p>
+      </div>
+      <div class="spectrum-card" style="border-color: rgba(201,168,76,0.3);">
+        <div class="spectrum-label">Intermediate Positions</div>
+        <div class="spectrum-name">Supervisory or Constitutional Role</div>
+        <div class="spectrum-rep">Muhammad Baqir al-Sadr · Fadlallah · many contemporary scholars</div>
+        <p class="spectrum-desc">The jurist has a legitimate role in political life — providing oversight, setting ethical limits, supporting constitutional governance — without claiming absolute sovereignty. Al-Sadr's model: the jurist supervises a constitutional order in which the people govern themselves within an Islamic framework. Fadlallah's model: religious authority and political engagement, without the claim that the jurist is the sovereign representative of the Hidden Imam.</p>
+      </div>
+      <div class="spectrum-card">
+        <div class="spectrum-label">The Activist Position</div>
+        <div class="spectrum-name">Absolute Guardianship (Wilāyat al-Faqīh)</div>
+        <div class="spectrum-rep">Imam Khomeini · Islamic Republic of Iran · Qum tradition</div>
+        <p class="spectrum-desc">The qualified jurist's authority during Occultation is co-extensive with the Imam's own authority — including full political sovereignty over all social affairs. The rational argument: if the Imam's political authority was divinely established, and the Imam is absent, that authority cannot simply disappear — it must vest in his qualified representative. To refuse to govern when governance is possible and necessary is to abandon the community to injustice that the Imam himself would not permit.</p>
+      </div>
+    </div>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">The Argument Structure</div>
+      <h3>Why This Is a Theological Dispute, Not a Political One</h3>
+      <p>Both the quietist and activist positions claim the same sources: the same Imamic hadith, the same principles of jurisprudence, the same commitment to the Hidden Imam's eventual return. The difference lies in how those sources are read. The quietist reads hadith about the jurist's authority as referring specifically to religious functions — and reads the absence of explicit political delegation as a constraint. The activist reads the same hadith as establishing a general principle: whoever holds the Imam's religious authority holds his political authority as well, because religion and politics are inseparable in Islam.</p>
+      <p>Grand Ayatullah Montazeri — who helped construct the Islamic Republic's constitutional framework and then turned against it — identified the deepest problem: <strong>Wilayat al-Faqih as implemented concentrates power in a single jurist who cannot be removed, creating a structure that corrupts both religious and political authority</strong>. His critique came from within, grounded in the same tradition's sources, and represents the most serious internal challenge to the Khomeini model.</p>
+      <p>The disagreement is not resolved, and it defines contemporary Shia political life: the difference between Najaf and Qum, between Sistani and Khamenei, between the quietist diaspora and the resistance axis, is ultimately this question — how much authority does the absent Imam delegate, to whom, and for what purposes.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Taqlīd in Daily Life</div>
+      <h3>What It Means to Follow a Marja'</h3>
+      <p>For ordinary Shia Muslims, the Occultation question is not abstract — it shapes daily practice. <em>Taqlīd</em> (emulation of the marja') means selecting the most learned living jurist and following his rulings on every practical religious question: prayer, fasting, business, marriage, medical ethics, political obligation. The marja' issues a <em>risāla ʿamaliyya</em> — a manual covering thousands of scenarios — and his rulings carry religious binding force on his followers.</p>
+      <p>This is not merely legal compliance. It is a theological act: by following the marja', the Shia Muslim acknowledges that the Imam's guidance — though the Imam is hidden — continues to reach the community through the jurist. The relationship connects the individual believer, through the scholar, through the chain of transmission, to the Imam himself.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Sheikh al-Ansari</span><span class="figure-role">First formalization of limited juristic authority</span></div>
+      <div class="figure-chip"><span class="figure-name">Grand Ayatullah Khoei</span><span class="figure-role">Quietist marja'; authority without political claim</span></div>
+      <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role">Wilayat al-Faqih al-Mutlaqa — absolute guardianship</span></div>
+      <div class="figure-chip"><span class="figure-name">Muhammad Baqir al-Sadr</span><span class="figure-role">Constitutional model; <em>Iqtiṣādunā</em></span></div>
+      <div class="figure-chip"><span class="figure-name">Grand Ayatullah Montazeri</span><span class="figure-role">Internal critic; limits of absolute guardianship</span></div>
+      <div class="figure-chip"><span class="figure-name">Grand Ayatullah Sistani</span><span class="figure-role">Contemporary quietism; surgical political engagement</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ VII · ʿIRFĀN ══ -->
+<section class="doc-section" id="doc-irfan">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section VII</div>
+    <h2 class="doc-title">ʿIrfān — <em>The Inner Dimension</em></h2>
+    <div class="doc-subtitle">The Soul's Journey · Mysticism Within the Tradition</div>
+    <p class="doc-question">"Beneath the law and the theology — what does the tradition say about the soul's direct encounter with God?"</p>
+  </div>
+  <div class="doc-body reveal">
+
+    <div class="voice-block">
+      <div class="voice-arabic">«مَنْ عَرَفَ نَفْسَهُ فَقَدْ عَرَفَ رَبَّهُ»</div>
+      <div class="voice-trans">"Whoever knows himself has known his Lord."</div>
+      <div class="voice-source">— Attributed to Imam Ali ibn Abi Talib ع · the axiom of the entire ʿirfāni tradition</div>
+    </div>
+
+    <p class="doc-intro">ʿIrfān is the Shia term for the inner life of religion — the path of the soul's purification, its journey through stations and states, and ultimately its encounter with the divine reality that underlies all of existence. It is not a marginal practice but a living tradition within the hawza, inseparable from jurisprudence and theology for those who practice it. <strong>Shia ʿirfān is distinguished from Sufism institutionally</strong> — it has no separate orders, no independent chains of authority — but shares its vocabulary and its goals, grounding them in the Imams as the authentic masters of the esoteric dimension.</p>
+
+    <div class="doc-card">
+      <div class="doc-card-label">ʿIrfān Naẓarī & ʿIrfān ʿAmalī</div>
+      <h3>Theory and Practice of the Inner Life</h3>
+      <p class="card-lede">ʿIrfān has two dimensions: a systematic metaphysics of the soul's relationship to God, and an actual path the soul walks — with stations, states, and a destination.</p>
+      <p><em>ʿIrfān naẓarī</em> (theoretical gnosis) draws on Ibn ʿArabi's <em>waḥdat al-wujūd</em>, Mulla Sadra's transcendent wisdom, and Imamic hadith into a philosophical account of how divine unity produces multiplicity, and how the soul traces its way back to the source. It is taught in advanced hawza curricula alongside jurisprudence and theology.</p>
+      <p><em>ʿIrfān ʿamalī</em> (practical gnosis) is the actual path — stations (<em>maqāmāt</em>) of repentance, renunciation, trust, contentment, love, annihilation (<em>fanāʾ</em>), and subsistence in God (<em>baqāʾ</em>). The ultimate teacher is the Imam himself, whose guidance reaches the sincere seeker through prayer and the inner meaning of the Ahlul Bayt's teachings.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Imam as Spiritual Master</div>
+      <h3>Why Shia ʿIrfān Has No Separate Orders</h3>
+      <p class="card-lede">Shia ʿirfān holds that the authentic spiritual chain runs through the Imams themselves — not through any independent Sufi order — which is why the jurist and the mystic are not opposing types but ideally the same person.</p>
+      <p>Sufi traditions authenticate the path through a <em>silsila</em> (chain of masters). Shia ʿirfān holds that chain runs through the Imams, whose teachings are preserved in the hadith corpus. This is why ʿirfān operates within the hawza rather than in separate lodges. Ayatullah Khomeini wrote extensive mystical commentaries alongside his jurisprudential works; Allama Tabataba'i's dialogues with Henry Corbin ranged across Quranic exegesis and the metaphysics of the imaginal world; Hasan-Zadeh Amoli and Jawadi Amoli continue this synthesis today.</p>
+    </div>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">What ʿIrfān Adds to the Picture</div>
+      <h3>The Tradition's Own Account of Its Depth</h3>
+      <p class="card-lede">Theology tells you what God commands and what God is. ʿIrfān tells you what the soul discovers when it takes those commands seriously enough to be changed by them.</p>
+      <p>The tradition's own account of why ʿirfān exists: the Quran is addressed to beings capable of understanding it from the inside, not merely from the outside. The same verse can be a legal ruling, a theological argument, and a map of the soul's geography simultaneously. The Imam's knowledge encompasses all three registers at once. ʿIrfān is the tradition's way of saying that the outermost layer — law and doctrine — is not the only one, and that a life of genuine practice eventually begins to open the others.</p>
+      <p>This is not mysticism as escape from religion's demands but as their intensification. The ʿārif (gnostic) does not abandon the law — he inhabits it fully enough that it begins to reveal what it points toward. That is the tradition's claim, and it is why ʿirfān has never been separable from the Shia scholarly tradition at its highest levels.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Ibn ʿArabi</span><span class="figure-role"><em>Waḥdat al-wujūd</em> — absorbed into Shia ʿirfān</span></div>
+      <div class="figure-chip"><span class="figure-name">Mulla Sadra</span><span class="figure-role">Transcendent Wisdom — philosophy and ʿirfān unified</span></div>
+      <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role">Mystical commentaries alongside jurisprudence</span></div>
+      <div class="figure-chip"><span class="figure-name">Allama Tabataba'i</span><span class="figure-role">Dialogues with Corbin; ʿirfān and tafsīr</span></div>
+      <div class="figure-chip"><span class="figure-name">Hasan-Zadeh Amoli</span><span class="figure-role">Contemporary ʿārif within the hawza</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ VIII · AKHLĀQ ══ -->
+<section class="doc-section" id="doc-akhlaq">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section VIII</div>
+    <h2 class="doc-title">Akhlāq — <em>The Formation of Character</em></h2>
+    <div class="doc-subtitle">Ethics · Virtue · The Person the Tradition Hopes to Produce</div>
+    <p class="doc-question">"Theology establishes what is true. Law establishes what is permitted. What does the tradition say about who a person should become?"</p>
+  </div>
+  <div class="doc-body reveal">
+
+    <div class="voice-block">
+      <div class="voice-arabic">«قِيمَةُ كُلِّ امرِئٍ مَا يُحسِنُه»</div>
+      <div class="voice-trans">"The worth of every person is what he does well."</div>
+      <div class="voice-source">— Imam Ali ibn Abi Talib ع, <em>Nahj al-Balagha</em>, Aphorism 81</div>
+    </div>
+
+    <p class="doc-intro">Between the law that governs conduct and the mystical path that transforms the soul lies the tradition of <em>akhlāq</em> — Islamic ethics of character. This is not ethics as rules but ethics as formation: the systematic cultivation of virtues that make a person capable of the life the tradition envisions. Shia akhlāq draws on Aristotelian virtue theory absorbed through al-Farabi and Ibn Miskawayh, the Imamic hadith corpus, and the ʿirfāni tradition — producing a literature that is simultaneously philosophical, devotional, and intensely practical. <strong>It is the tradition's account of what a human being is in the process of becoming.</strong></p>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Philosophical Inheritance</div>
+      <h3>Virtue as the Mean — and Its Islamic Transformation</h3>
+      <p class="card-lede">Shia ethical philosophy absorbed Aristotelian virtue theory early and transformed it: the virtues are not simply habituated dispositions but faculties oriented toward divine proximity.</p>
+      <p>Ibn Miskawayh's <em>Tahdhīb al-Akhlāq</em> (The Refinement of Character, 10th c.) is the foundational text — an Aristotelian account of the soul's three faculties (rational, irascible, appetitive) and the virtues that represent their proper development. Wisdom, courage, temperance, and justice are the four cardinal virtues; their deficiency or excess produces the corresponding vices. Nasir al-Din al-Tusi's <em>Akhlāq-i Nāṣirī</em> (13th c.) extends this framework into an explicitly Islamic register, grounding the virtues in the divine attributes the human person is called to reflect. The goal is not Aristotle's flourishing citizen but the person whose character has become transparent to the divine.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Imamic Foundation</div>
+      <h3>Character in the Hadith of the Ahlul Bayt</h3>
+      <p class="card-lede">The Imams did not only transmit legal rulings — they transmitted an account of what good character looks like, grounded in their own practice under conditions of sustained oppression.</p>
+      <p>The Imamic hadith corpus is saturated with ethical teaching: on patience (<em>ṣabr</em>) as active endurance rather than passive resignation; on generosity (<em>karam</em>) as a disposition rather than occasional action; on truthfulness (<em>ṣidq</em>) as the foundation of all other virtues. Imam Ali's <em>Risālat al-Ḥuqūq</em> (Treatise on Rights) — the earliest systematic Shia ethical text — lists the obligations a person bears toward God, themselves, their body, their family, their enemies, and their community. It is comprehensive and exacting: every relationship is an ethical field, every encounter a test of character.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Modern Synthesis</div>
+      <h3>Mutahharī and the Ethics of Self-Transcendence</h3>
+      <p class="card-lede">Murtadha Mutahharī's ethical writings are the most widely read in the modern Shia world — a synthesis of philosophical rigor, Imamic authority, and direct engagement with contemporary moral questions.</p>
+      <p>Mutahharī (1920–1979) argued that Islamic ethics cannot be reduced to compliance with law — the tradition aims at the transformation of the self, not merely the regulation of behavior. His <em>Āshnāyī bā ʿUlūm-i Islāmī</em> and <em>Adl-i Ilāhī</em> (Divine Justice) engage Western ethical philosophy directly, arguing that the Shia tradition's account of divine justice, human freedom, and moral responsibility offers resources that secular ethics lacks. He was assassinated by the Mojahedin-e Khalq in 1979, having become one of Khomeini's closest intellectual collaborators — a reminder that the ethics of character did not insulate scholars from the violence of politics.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Akhlāq and ʿIrfān</div>
+      <h3>The Relationship Between Character and the Inner Life</h3>
+      <p class="card-lede">The ethical tradition and the mystical tradition are not parallel tracks — akhlāq is the necessary preparation for ʿirfān, and ʿirfān is the completion of akhlāq.</p>
+      <p>In the Shia understanding, the mystical stations — repentance, renunciation, trust, love — are not psychological states to be achieved but character traits to be formed through sustained practice. The ʿārif who speaks of <em>fanāʾ</em> (self-annihilation) is not speaking of the dissolution of personhood but of the elimination of those character defects — pride, envy, attachment to reputation — that stand between the self and God. Akhlāq clears the ground. ʿIrfān is what grows on it. The tradition's clearest statement of this relationship is in the opening pages of Imam Khomeini's <em>Forty Hadith</em> — a commentary on Imamic traditions whose real subject is the progressive formation of the self.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Ibn Miskawayh</span><span class="figure-role"><em>Tahdhīb al-Akhlāq</em> — the foundational Aristotelian synthesis</span></div>
+      <div class="figure-chip"><span class="figure-name">Nasir al-Din al-Tusi</span><span class="figure-role"><em>Akhlāq-i Nāṣirī</em> — virtue ethics in Islamic register</span></div>
+      <div class="figure-chip"><span class="figure-name">Imam Ali ibn Husayn</span><span class="figure-role"><em>Risālat al-Ḥuqūq</em> — the earliest systematic Shia ethical text</span></div>
+      <div class="figure-chip"><span class="figure-name">Murtadha Mutahharī</span><span class="figure-role">Modern synthesis; character over compliance</span></div>
+      <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role"><em>Forty Hadith</em> — akhlāq as preparation for ʿirfān</span></div>
+    </div>
+  </div>
+</section>
+
+
+<div class="doc-closing reveal" style="max-width:780px; margin:0 auto; padding:64px 28px 80px; text-align:center;">
+  <div style="width:40px; height:1px; background:rgba(201,168,76,0.25); margin:0 auto 40px;"></div>
+  <div style="font-family:'Noto Naskh Arabic',serif; font-size:22px; color:var(--gold-light); line-height:2; direction:rtl; margin-bottom:16px;">
+    «مَنْ عَرَفَ نَفْسَهُ جَاهَدَهَا، وَمَنْ جَهِلَ نَفْسَهُ أَهْمَلَهَا»
+  </div>
+  <div style="font-family:'Playfair Display',serif; font-size:18px; font-style:italic; color:rgba(245,239,224,0.78); line-height:1.7; margin-bottom:12px;">
+    "Whoever knows himself struggles against himself;<br>whoever is ignorant of himself neglects himself."
+  </div>
+  <div style="font-size:13px; color:var(--gold-dim); letter-spacing:0.1em;">
+    — Imam Ali ibn Abi Talib ع, <em>Ghurar al-Hikam</em>
+  </div>
+  <p style="margin-top:36px; font-size:16px; color:rgba(245,239,224,0.45); line-height:1.8; font-style:italic; max-width:620px; margin-left:auto; margin-right:auto;">
+    The tradition covered in these pages — its theology, its history, its arguments, its grief — is not finally an object of study. It is an account of what a human being is for, and what a community is for, and what knowledge is for. The ʿārif, the faqīh, the martyr, and the mourner are answering the same question from different directions. That question is the tradition.
+  </p>
+  <div style="width:40px; height:1px; background:rgba(201,168,76,0.25); margin:40px auto 0;"></div>
+</div>
+
+<div class="page-footer">
+  <p style="margin-bottom:14px;">
+    <a href="shia-timeline.html">I · Timeline</a>
+    &nbsp;·&nbsp;
+    <a href="shia-academia.html">II · Academic Map</a>
+    &nbsp;·&nbsp;
+    <a href="shia-encounters.html">III · Encounters</a>
+    &nbsp;·&nbsp;
+    IV · Doctrine &amp; Debate
+  </p>
+  <p>The Imamate &amp; Its Legacy</p>
+  <p style="margin-top:12px; font-size:12px; opacity:0.4; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">This project presents Shia Islamic history from within the tradition's own framework while situating it in broader historical context. Theological claims are presented as the tradition understands them; historical claims aim for scholarly accuracy.</p>
+</div>
+
+
+<script>
+// ── SECTION NAV ──────────────────────────────────────────
+function docNavScroll(dir) {
+  const s = document.getElementById('doc-nav-scroll');
+  if (s) s.scrollBy({ left: dir * 200, behavior: 'smooth' });
+}
+
+function updateDocNavArrows() {
+  const s = document.getElementById('doc-nav-scroll');
+  const l = document.getElementById('doc-arrow-left');
+  const r = document.getElementById('doc-arrow-right');
+  if (!s || !l || !r) return;
+  l.classList.toggle('visible', s.scrollLeft > 4);
+  r.classList.toggle('visible', s.scrollLeft < s.scrollWidth - s.clientWidth - 4);
+}
+
+function scrollToDoc(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const nav = document.getElementById('doc-nav');
+  const topbar = document.querySelector('.topbar');
+  const offset = (topbar ? topbar.offsetHeight : 52) + (nav ? nav.offsetHeight : 44) + 8;
+  const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+// ── ACTIVE SECTION TRACKING ──────────────────────────────
+const sections = ['doc-architecture','doc-imamate','doc-karbala','doc-embodied','doc-just-order','doc-authority','doc-irfan','doc-akhlaq'];
+
+function updateActiveBtn() {
+  const nav = document.getElementById('doc-nav');
+  const topbar = document.querySelector('.topbar');
+  const offset = (topbar ? topbar.offsetHeight : 52) + (nav ? nav.offsetHeight : 44) + 20;
+  let current = sections[0];
+  for (const id of sections) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= offset) current = id;
+  }
+  document.querySelectorAll('.doc-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', sections[i] === current);
+  });
+  // Scroll active button into view in the nav
+  const activeBtn = document.querySelector('.doc-btn.active');
+  const scroll = document.getElementById('doc-nav-scroll');
+  if (activeBtn && scroll) {
+    const target = activeBtn.offsetLeft - scroll.clientWidth / 2 + activeBtn.offsetWidth / 2;
+    scroll.scrollTo({ left: target, behavior: 'smooth' });
+  }
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── INIT ──────────────────────────────────────────────────
+const navScroll = document.getElementById('doc-nav-scroll');
+if (navScroll) navScroll.addEventListener('scroll', updateDocNavArrows);
+window.addEventListener('scroll', () => { updateActiveBtn(); });
+window.addEventListener('resize', updateDocNavArrows);
+updateDocNavArrows();
+updateActiveBtn();
+</script>
+</body>
+</html>
