@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Imamate & Its Legacy — A Shia Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #7a6030;
+    --ink: #0e0c08;
+    --parchment: #f5efe0;
+    --parchment-dark: #e8dfc8;
+    --lapis: #1a2a4a;
+    --lapis-light: #243660;
+    --crimson: #8b1a1a;
+    --emerald: #1a4a2e;
+    --text-main: #1a1508;
+    --text-soft: #5a4e38;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--ink);
+    color: var(--parchment);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, #1e1608 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, #0a1428 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 70%, #1a0a0a 0%, transparent 60%),
+      #080604;
+  }
+
+  .star-field {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(201,168,76,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 60% 10%, rgba(201,168,76,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 55%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 25%, rgba(201,168,76,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 70%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 20%, rgba(255,255,255,0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 90%, rgba(201,168,76,0.35) 0%, transparent 100%);
+  }
+
+  .geometric-border {
+    position: absolute;
+    top: 30px; left: 30px; right: 30px; bottom: 30px;
+    border: 1px solid rgba(201,168,76,0.15);
+    pointer-events: none;
+  }
+  .geometric-border::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .corner-ornament {
+    position: absolute;
+    width: 40px; height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.6;
+  }
+  .corner-ornament.tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+  .corner-ornament.tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
+  .corner-ornament.bl { bottom: 30px; left: 30px; border-width: 0 0 2px 2px; }
+  .corner-ornament.br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
+
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 800px; }
+
+  .bismillah {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--parchment);
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgba(245,239,224,0.6);
+    margin-top: 20px;
+    font-style: italic;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .divider-ornament {
+    display: flex; align-items: center; gap: 16px;
+    margin: 32px auto;
+    width: 280px;
+    color: var(--gold-dim);
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  }
+  .divider-ornament span { font-size: 20px; color: var(--gold); }
+
+  .scroll-hint {
+    margin-top: 48px;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.4);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:.9} }
+
+  /* ── ERA NAV ── */
+  .sticky-nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 150;
+  }
+  .era-nav {
+    background: rgba(8,6,4,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  .era-nav::-webkit-scrollbar { display: none; }
+  .era-nav-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 40px; /* space for arrow buttons */
+  }
+  .era-nav-scroll::-webkit-scrollbar { display: none; }
+  .era-nav-inner {
+    display: flex; align-items: stretch;
+    gap: 0;
+    white-space: nowrap;
+    width: max-content;
+    min-width: 100%;
+  }
+  .era-nav-arrow {
+    position: absolute; top: 0; bottom: 0;
+    width: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(201,168,76,0.5);
+    font-size: 16px;
+    transition: color 0.2s, opacity 0.2s;
+    z-index: 2;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .era-nav-arrow.visible { opacity: 1; pointer-events: all; }
+  .era-nav-arrow:hover { color: var(--gold); }
+  .era-nav-arrow.left { left: 0; background: linear-gradient(to right, rgba(8,6,4,0.97) 60%, transparent); padding-right: 8px; }
+  .era-nav-arrow.right { right: 0; background: linear-gradient(to left, rgba(8,6,4,0.97) 60%, transparent); padding-left: 8px; }
+  .era-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 14px 20px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,239,224,0.45);
+    border-bottom: 2px solid transparent;
+    transition: all 0.25s;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .era-btn:hover { color: var(--gold-light); }
+  .era-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── TIMELINE BODY ── */
+  .timeline-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 120px;
+  }
+
+  /* ── ERA SECTION ── */
+  .era-section {
+    padding-top: 80px;
+    margin-bottom: 20px;
+  }
+
+  .era-header {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 48px;
+  }
+  .era-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    opacity: 0.12;
+    color: var(--gold);
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .era-header-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 600;
+    color: var(--parchment);
+  }
+  .era-header-text h2 em { color: var(--gold-light); font-style: italic; }
+  .era-header-text p {
+    font-size: 15px;
+    color: rgba(245,239,224,0.5);
+    margin-top: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  .era-line {
+    width: 100%; height: 1px;
+    background: linear-gradient(to right, var(--gold-dim), rgba(201,168,76,0.1), transparent);
+    margin-bottom: 48px;
+  }
+
+  /* ── ENTRY CARDS ── */
+  .entries-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+  }
+  .entries-grid::before {
+    content: '';
+    position: absolute;
+    left: 140px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.25) 5%, rgba(201,168,76,0.25) 95%, transparent);
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0 32px;
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .entry-date {
+    text-align: right;
+    padding: 20px 0;
+    padding-right: 32px;
+    position: relative;
+  }
+  .entry-date .year {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+  }
+  .entry-date .hijri {
+    font-size: 11px;
+    color: rgba(201,168,76,0.45);
+    display: block;
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .entry-date::after {
+    content: '';
+    position: absolute;
+    right: -5px; top: 26px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 2px solid var(--gold-dim);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .entry:hover .entry-date::after {
+    border-color: var(--gold);
+    transform: scale(1.4);
+  }
+  .entry.imam .entry-date::after {
+    background: rgba(201,168,76,0.3);
+    border-color: var(--gold);
+    width: 11px; height: 11px;
+    right: -6px;
+  }
+  .entry.occultation .entry-date::after {
+    background: rgba(26,42,74,0.6);
+    border-color: #5a7ab5;
+    border-width: 2px;
+  }
+  .entry.scholar .entry-date::after {
+    background: rgba(26,74,46,0.4);
+    border-color: #4a9a6a;
+  }
+  .entry.event .entry-date::after {
+    background: rgba(139,26,26,0.3);
+    border-color: #c05050;
+  }
+
+  .entry-body {
+    padding: 16px 0 16px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    transition: background 0.2s;
+    position: relative;
+  }
+  .entry:hover .entry-body {
+    background: rgba(201,168,76,0.03);
+    padding-left: 8px;
+    margin-left: -8px;
+  }
+
+  /* Expand indicator — only show on entries that have expandable content */
+  .entry-expand-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.4);
+    font-family: 'Crimson Pro', serif;
+    transition: color 0.2s;
+    user-select: none;
+  }
+  .entry-expand-hint::before {
+    content: '+';
+    font-size: 14px;
+    line-height: 1;
+    transition: transform 0.25s ease, color 0.2s;
+    display: inline-block;
+  }
+  .entry.open .entry-expand-hint { color: rgba(201,168,76,0.7); }
+  .entry.open .entry-expand-hint::before { content: '−'; }
+  .entry:hover .entry-expand-hint { color: rgba(201,168,76,0.65); }
+
+  .entry-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
+  }
+  .tag-imam { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+  .tag-event { background: rgba(139,26,26,0.15); color: #e08080; border: 1px solid rgba(139,26,26,0.3); }
+  .tag-occultation { background: rgba(26,42,74,0.3); color: #8ab0e0; border: 1px solid rgba(90,122,181,0.3); }
+  .tag-scholar { background: rgba(26,74,46,0.2); color: #80c098; border: 1px solid rgba(74,154,106,0.3); }
+  .tag-institution { background: rgba(74,46,26,0.25); color: #c8a070; border: 1px solid rgba(180,120,60,0.3); }
+  .tag-theological { background: rgba(60,26,74,0.25); color: #b080d0; border: 1px solid rgba(120,60,150,0.3); }
+  .tag-political { background: rgba(26,50,74,0.25); color: #70a0c8; border: 1px solid rgba(60,100,150,0.3); }
+
+  .entry-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--parchment);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .entry-title .arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15px;
+    color: var(--gold-dim);
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  .entry-body-text {
+    font-size: 15px;
+    color: rgba(245,239,224,0.65);
+    line-height: 1.65;
+    margin-top: 4px;
+    max-width: 720px;
+  }
+  .entry-body-text strong { color: rgba(245,239,224,0.85); font-weight: 600; }
+
+  .entry-expand {
+    margin-top: 10px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .entry.open .entry-expand { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+
+  .expand-divider {
+    width: 40px; height: 1px;
+    background: rgba(201,168,76,0.3);
+    margin: 10px 0;
+  }
+  .expand-text {
+    font-size: 14.5px;
+    color: rgba(245,239,224,0.55);
+    line-height: 1.7;
+    max-width: 680px;
+    font-style: italic;
+  }
+  .expand-text strong { color: var(--gold-dim); font-style: normal; }
+
+  /* ── SPECIAL: Imam Chain ── */
+  .imam-chain {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 32px 0 48px;
+  }
+
+  /* Prophet & Fatima pre-chain row */
+  .ahlulbayt-anchor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 28px 0 20px;
+  }
+  @media(max-width:560px) { .ahlulbayt-anchor { grid-template-columns: 1fr; } }
+
+  .anchor-card {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 16px 18px;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .anchor-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-dim));
+    border-radius: 4px 4px 0 0;
+  }
+  .anchor-card:hover {
+    background: rgba(201,168,76,0.12);
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-1px);
+  }
+  .anchor-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 5px; font-family: 'Crimson Pro', serif;
+  }
+  .chain-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 4px 0 20px;
+    color: rgba(201,168,76,0.25);
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: 'Crimson Pro', serif;
+  }
+  .chain-divider::before, .chain-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(201,168,76,0.12);
+  }
+
+  .imam-card {
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 14px 16px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .imam-card:hover {
+    background: rgba(201,168,76,0.09);
+    border-color: rgba(201,168,76,0.35);
+    transform: translateY(-1px);
+  }
+  .imam-card-hint {
+    font-size: 10px;
+    color: rgba(201,168,76,0.3);
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── IMAM MODAL ── */
+  .imam-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 600;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .imam-modal-overlay.open { display: flex; }
+  .imam-modal-box {
+    background: #100e0a;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    max-width: 620px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 32px 36px;
+    position: relative;
+    animation: imamModalIn 0.22s ease;
+  }
+  @keyframes imamModalIn { from{opacity:0;transform:scale(0.97)} to{opacity:1;transform:scale(1)} }
+  .imam-modal-close {
+    position: absolute; top: 14px; right: 18px;
+    background: none; border: none;
+    color: rgba(245,239,224,0.35);
+    font-size: 20px; cursor: pointer; padding: 4px 8px;
+    transition: color 0.15s; line-height: 1;
+  }
+  .imam-modal-close:hover { color: var(--parchment); }
+  .imam-modal-num {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 6px;
+  }
+  .imam-modal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--parchment); line-height: 1.15; margin-bottom: 4px;
+  }
+  .imam-modal-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 18px; color: var(--gold-dim); margin-bottom: 6px;
+  }
+  .imam-modal-epithet {
+    font-size: 14px; font-style: italic;
+    color: rgba(201,168,76,0.6); margin-bottom: 4px;
+  }
+  .imam-modal-dates {
+    font-size: 12px; color: rgba(245,239,224,0.35);
+    margin-bottom: 18px; letter-spacing: 0.05em;
+  }
+  .imam-modal-divider {
+    height: 1px; background: rgba(201,168,76,0.15); margin-bottom: 16px;
+  }
+  .imam-modal-body {
+    font-size: 15px; color: rgba(245,239,224,0.65);
+    line-height: 1.75; margin-bottom: 16px;
+  }
+  .imam-modal-body strong { color: rgba(245,239,224,0.85); }
+  .imam-modal-section {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-dim); margin: 16px 0 8px;
+  }
+  .imam-modal-legacy {
+    font-size: 14px; color: rgba(245,239,224,0.5);
+    line-height: 1.7; font-style: italic;
+    border-left: 2px solid rgba(201,168,76,0.2);
+    padding-left: 14px;
+  }
+  .imam-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .imam-name-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--parchment);
+    line-height: 1.2;
+  }
+  .imam-name-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 13px;
+    color: var(--gold-dim);
+    margin-top: 3px;
+  }
+  .imam-dates {
+    font-size: 11px;
+    color: rgba(245,239,224,0.35);
+    margin-top: 5px;
+  }
+  .imam-epithet {
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(201,168,76,0.5);
+    margin-top: 2px;
+  }
+
+  /* ── SPECIAL: Marjaiyyah Map ── */
+  .center-map {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 32px 0 48px;
+  }
+  .center-card {
+    background: rgba(26,42,74,0.15);
+    border: 1px solid rgba(90,122,181,0.2);
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+  .center-city {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #8ab0e0;
+    margin-bottom: 4px;
+  }
+  .center-role {
+    font-size: 12px;
+    color: rgba(138,176,224,0.55);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .center-scholars {
+    font-size: 13px;
+    color: rgba(245,239,224,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .hadith-block {
+    border-left: 3px solid var(--gold-dim);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: rgba(201,168,76,0.04);
+  }
+  .hadith-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    line-height: 1.8;
+    direction: rtl;
+  }
+  .hadith-trans {
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(245,239,224,0.6);
+  }
+  .hadith-source {
+    font-size: 12px;
+    color: var(--gold-dim);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(245,239,224,0.25);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .footer span { color: var(--gold-dim); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .entries-grid::before { left: 80px; }
+    .entry { grid-template-columns: 80px 1fr; gap: 0 16px; }
+    .entry-date { padding-right: 16px; }
+    .entry-date .year { font-size: 11px; }
+    .era-number { font-size: 48px; }
+    .imam-chain { grid-template-columns: repeat(2, 1fr); }
+
+    /* Keep ornaments but push them behind all content */
+    .geometric-border,
+    .geometric-border::before,
+    .corner-ornament {
+      z-index: 0;
+      pointer-events: none;
+    }
+    /* Hero content stays above decorative layers */
+    .hero-content { position: relative; z-index: 2; padding: 0 8px; }
+
+    /* Prevent timeline vertical line from overlapping entry text */
+    .entries-grid::before { opacity: 0.4; }
+
+    /* Compact hadith block */
+    .hadith-block { padding: 12px 14px; }
+    .hadith-arabic { font-size: 16px; }
+
+    /* Era header on mobile */
+    .era-header { gap: 10px; }
+    .era-header-text h2 { font-size: 20px; }
+
+    /* Topbar compact */
+    .topbar-global { padding: 0 10px !important; height: 44px !important; }
+    .topbar-global span { display: none; } /* hide logo */
+
+    /* Imam modal padding */
+    .imam-modal-box { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="star-field"></div>
+  <div class="geometric-border"></div>
+  <div class="corner-ornament tl"></div>
+  <div class="corner-ornament tr"></div>
+  <div class="corner-ornament bl"></div>
+  <div class="corner-ornament br"></div>
+
+  <div class="hero-content">
+    <div class="bismillah">بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="hero-eyebrow">A Living Chronicle</div>
+    <h1 class="hero-title">The <em>Imamate</em><br>& Its Legacy</h1>
+    <div class="divider-ornament"><span>✦</span></div>
+    <p class="hero-subtitle">From the Prophet's mission and the Household of divine guidance, through the Long Occultation, to the scholars and nations who carry the tradition forward.</p>
+    <div class="scroll-hint">↓ &nbsp; Scroll to enter history &nbsp; ↓</div>
+  </div>
+</section>
+
+<!-- ERA NAV -->
+<!-- STICKY NAV WRAPPER — both bars stick together as one unit -->
+<div class="sticky-nav-wrapper">
+<nav class="topbar-global" style="display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:52px;background:rgba(8,6,4,0.98);border-bottom:1px solid rgba(201,168,76,0.15);font-family:Crimson Pro,serif;"><span style="font-style:italic;color:#7a6030;font-size:15px;letter-spacing:.04em;flex-shrink:0;">The Imamate &amp; Its Legacy</span><div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;"><a style="background:none;border:1px solid rgba(201,168,76,0.35);color:var(--gold);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-timeline.html">I · Timeline</a><a style="background:none;border:1px solid rgba(201,168,76,0.2);color:rgba(245,239,224,0.5);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-academia.html">II · Academic Map</a><a style="background:none;border:1px solid rgba(201,168,76,0.2);color:rgba(245,239,224,0.5);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-encounters.html">III · Encounters</a><a style="background:none;border:1px solid rgba(201,168,76,0.2);color:rgba(245,239,224,0.5);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-doctrine.html">IV · Doctrine</a></div></nav>
+<nav class="era-nav" id="era-nav">
+  <button class="era-nav-arrow left" id="era-arrow-left" onclick="eraNavScroll(-1)" aria-label="Scroll left">&#8249;</button>
+  <div class="era-nav-scroll" id="era-nav-scroll">
+    <div class="era-nav-inner">
+      <button class="era-btn active" onclick="scrollToEra('era-1')">I · The Prophet & Imamate</button>
+      <button class="era-btn" onclick="scrollToEra('era-2')">II · The Twelve Imams</button>
+      <button class="era-btn" onclick="scrollToEra('era-3')">III · Minor Occultation</button>
+      <button class="era-btn" onclick="scrollToEra('era-4')">IV · Major Occultation</button>
+      <button class="era-btn" onclick="scrollToEra('era-5')">V · Classical Scholarship</button>
+      <button class="era-btn" onclick="scrollToEra('era-6')">VI · Safavid & Transformation</button>
+      <button class="era-btn" onclick="scrollToEra('era-7')">VII · Modern Marjaiyyah</button>
+      <button class="era-btn" onclick="scrollToEra('era-8')">VIII · Contemporary World</button>
+    </div>
+  </div>
+  <button class="era-nav-arrow right" id="era-arrow-right" onclick="eraNavScroll(1)" aria-label="Scroll right">&#8250;</button>
+</nav>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="timeline-wrapper">
+
+  <!-- ═══════════════════════════════════════ ERA I ═══ -->
+  <section class="era-section" id="era-1">
+    <div class="era-header">
+      <div class="era-number">I</div>
+      <div class="era-header-text">
+        <h2>The Prophet & the <em>Ahlul Bayt</em></h2>
+        <p>570 – 661 CE · 1 BH – 40 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="hadith-block">
+      <div class="hadith-arabic">«إِنِّي تَارِكٌ فِيكُمُ الثَّقَلَيْنِ: كِتَابَ اللهِ وَعِتْرَتِي أَهْلَ بَيْتِي»</div>
+      <div class="hadith-trans">"I am leaving among you two weighty things: the Book of God and my progeny, my Ahlul Bayt."</div>
+      <div class="hadith-source">— Hadith al-Thaqalayn, narrated across Sunni and Shia sources</div>
+    </div>
+
+    <div class="entries-grid">
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">c. 570 CE</span><span class="hijri">~53 BH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-event">Birth</span>
+          <div class="entry-title">The Prophet Muhammad ﷺ born in Mecca <span class="arabic">محمد</span></div>
+          <div class="entry-body-text">Born in the Year of the Elephant into the Hashimite clan of Quraysh. Orphaned early, raised by his uncle Abu Talib — whose household would become the nucleus of the Imamate.</div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">610 CE</span><span class="hijri">1 BH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-event">Revelation</span>
+          <div class="entry-title">First Revelation on Mount Hira</div>
+          <div class="entry-body-text">The Prophethood commences with the descent of Jibreel in the cave of Hira. Khadijah bint Khuwaylid and Ali ibn Abi Talib are among the first to accept Islam, forming the founding household of the faith.</div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">632 CE</span><span class="hijri">10 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-event">Key Event</span>
+          <div class="entry-title">Event of Ghadir Khumm <span class="arabic">غدير خم</span></div>
+          <div class="entry-body-text">Returning from the Farewell Pilgrimage, the Prophet ﷺ halts at Ghadir Khumm and declares: <em>"Whoever's master I am, Ali is his master."</em> For Twelver Shia, this is the explicit appointment of the First Imam and the foundational event of the Imamate.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The declaration is preserved in both Sunni and Shia hadith collections. The Shia interpretation holds this as explicit designation (<strong>nass</strong>) of Ali's wilayah over the community — a binding spiritual and political authority. The subsequent events of Saqifah, where Abu Bakr was selected as Caliph, are understood by Shia Muslims as a tragic deviation from this divinely sanctioned appointment.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">632 CE</span><span class="hijri">11 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-event">Loss</span>
+          <div class="entry-title">Passing of the Prophet ﷺ</div>
+          <div class="entry-body-text">The Prophet ﷺ passes in Medina. His daughter Fatimah al-Zahra — the Lady of Light — and Imam Ali are denied their rights in the events following. Fatimah passes within months, never having recovered her father's legacy.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA II ═══ -->
+  <section class="era-section" id="era-2">
+    <div class="era-header">
+      <div class="era-number">II</div>
+      <div class="era-header-text">
+        <h2>The <em>Twelve Imams</em></h2>
+        <p>661 – 874 CE · 40 – 260 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <p style="color:rgba(245,239,224,0.5); font-size:15px; margin-bottom:28px; font-style:italic;">The chain of divine guidance from the Ahlul Bayt, each Imam carrying the light of wilayah through an era of political peril and intellectual brilliance.</p>
+
+    <!-- Prophet & Fatima — Roots of the Chain -->
+    <div class="ahlulbayt-anchor">
+      <div class="anchor-card" onclick="openImamModal('prophet')">
+        <div class="anchor-label">Foundation</div>
+        <div class="imam-name-en">The Prophet Muhammad ﷺ</div>
+        <div class="imam-name-ar">محمد رسول الله</div>
+        <div class="imam-epithet">al-Mustafa — The Chosen · 570–632 CE</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="anchor-card" onclick="openImamModal('fatima')">
+        <div class="anchor-label">The Link</div>
+        <div class="imam-name-en">Fatima al-Zahra ع</div>
+        <div class="imam-name-ar">فاطمة الزهراء</div>
+        <div class="imam-epithet">Sayyidat Nisa' al-ʿAlamin · c. 605–632 CE</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+    </div>
+    <div class="chain-divider">The Twelve Imams</div>
+
+    <!-- Imam Chain Cards -->
+    <div class="imam-chain">
+      <div class="imam-card" onclick="openImamModal(1)">
+        <div class="imam-num">1st Imam</div>
+        <div class="imam-name-en">Ali ibn Abi Talib</div>
+        <div class="imam-name-ar">علي بن أبي طالب</div>
+        <div class="imam-epithet">al-Murtadha — The Chosen</div>
+        <div class="imam-dates">600 – 661 CE · martyred Kufa</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(2)">
+        <div class="imam-num">2nd Imam</div>
+        <div class="imam-name-en">Hasan ibn Ali</div>
+        <div class="imam-name-ar">الحسن بن علي</div>
+        <div class="imam-epithet">al-Mujtaba — The Chosen One</div>
+        <div class="imam-dates">625 – 670 CE · poisoned, Medina</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(3)">
+        <div class="imam-num">3rd Imam</div>
+        <div class="imam-name-en">Husayn ibn Ali</div>
+        <div class="imam-name-ar">الحسين بن علي</div>
+        <div class="imam-epithet">Sayyid al-Shuhada — Master of Martyrs</div>
+        <div class="imam-dates">626 – 680 CE · martyred Karbala</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(4)">
+        <div class="imam-num">4th Imam</div>
+        <div class="imam-name-en">Ali ibn Husayn</div>
+        <div class="imam-name-ar">علي بن الحسين</div>
+        <div class="imam-epithet">Zayn al-Abidin — Ornament of the Worshippers</div>
+        <div class="imam-dates">658 – 713 CE · poisoned, Medina</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(5)">
+        <div class="imam-num">5th Imam</div>
+        <div class="imam-name-en">Muhammad al-Baqir</div>
+        <div class="imam-name-ar">محمد الباقر</div>
+        <div class="imam-epithet">al-Baqir — Splitter of Knowledge</div>
+        <div class="imam-dates">677 – 733 CE · poisoned, Medina</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(6)">
+        <div class="imam-num">6th Imam</div>
+        <div class="imam-name-en">Ja'far al-Sadiq</div>
+        <div class="imam-name-ar">جعفر الصادق</div>
+        <div class="imam-epithet">al-Sadiq — The Truthful</div>
+        <div class="imam-dates">702 – 765 CE · poisoned, Medina</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(7)">
+        <div class="imam-num">7th Imam</div>
+        <div class="imam-name-en">Musa al-Kadhim</div>
+        <div class="imam-name-ar">موسى الكاظم</div>
+        <div class="imam-epithet">al-Kadhim — The One Who Suppresses Anger</div>
+        <div class="imam-dates">745 – 799 CE · poisoned, Baghdad</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(8)">
+        <div class="imam-num">8th Imam</div>
+        <div class="imam-name-en">Ali al-Ridha</div>
+        <div class="imam-name-ar">علي الرضا</div>
+        <div class="imam-epithet">al-Ridha — The One Pleasing to God</div>
+        <div class="imam-dates">765 – 818 CE · poisoned, Mashhad</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(9)">
+        <div class="imam-num">9th Imam</div>
+        <div class="imam-name-en">Muhammad al-Jawad</div>
+        <div class="imam-name-ar">محمد الجواد</div>
+        <div class="imam-epithet">al-Taqi — The Pious</div>
+        <div class="imam-dates">810 – 835 CE · poisoned, Kadhimiyya</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(10)">
+        <div class="imam-num">10th Imam</div>
+        <div class="imam-name-en">Ali al-Hadi</div>
+        <div class="imam-name-ar">علي الهادي</div>
+        <div class="imam-epithet">al-Hadi — The Guide</div>
+        <div class="imam-dates">828 – 868 CE · poisoned, Samarra</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(11)">
+        <div class="imam-num">11th Imam</div>
+        <div class="imam-name-en">Hasan al-Askari</div>
+        <div class="imam-name-ar">الحسن العسكري</div>
+        <div class="imam-epithet">al-Askari — Of the Military Camp</div>
+        <div class="imam-dates">846 – 874 CE · poisoned, Samarra</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+      <div class="imam-card" onclick="openImamModal(12)" style="border-color:rgba(90,122,181,0.4); background:rgba(26,42,74,0.2);">
+        <div class="imam-num">12th Imam</div>
+        <div class="imam-name-en">Muhammad al-Mahdi</div>
+        <div class="imam-name-ar">محمد المهدي</div>
+        <div class="imam-epithet">al-Qa'im, Sahib al-Zaman — The Hidden Imam</div>
+        <div class="imam-dates">869 CE – present · in Occultation</div>
+        <div class="imam-card-hint">Tap to learn more</div>
+      </div>
+    </div>
+
+    <div class="entries-grid">
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">680 CE</span><span class="hijri">61 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-event">Martyrdom</span>
+          <div class="entry-title">The Event of Karbala <span class="arabic">كربلاء</span></div>
+          <div class="entry-body-text">Imam Husayn ibn Ali, his family and 72 companions are martyred by the forces of Yazid ibn Muawiyah on the plains of Karbala. This event becomes the moral and spiritual axis of Shia identity — the eternal protest of righteousness against tyranny.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The tragedy of Karbala reverberates through every dimension of Shia life: theology, jurisprudence, poetry, mourning rituals, political ethics, and eschatology. The yearly commemoration of <strong>Ashura</strong> on the 10th of Muharram transforms grief into communal renewal. Imam Husayn's refusal to pledge allegiance to Yazid, his famous declaration — <em>"Death with dignity is better than a life of humiliation"</em> — becomes a template for resistance across centuries and cultures. Karbala is also the site of one of the holiest shrines in the Shia world.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">713 CE</span><span class="hijri">94 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Legacy</span>
+          <div class="entry-title">Sahifa al-Sajjadiyya <span class="arabic">الصحيفة السجادية</span></div>
+          <div class="entry-body-text">The great supplication-compendium of Imam Ali ibn Husayn (4th Imam), known as "the Psalms of the Ahlul Bayt." Written under Umayyad surveillance, it transmits theology, ethics, and intimate devotion in the language of prayer — one of the most profound documents of Islamic spirituality.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">702–765 CE</span><span class="hijri">83–148 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Academy</span>
+          <div class="entry-title">The Academy of Imam al-Sadiq <span class="arabic">جعفر الصادق</span></div>
+          <div class="entry-body-text">Taking advantage of the transition between Umayyad and Abbasid rule, the 6th Imam opens one of the most expansive intellectual schools in Islamic history — training over 4,000 students in jurisprudence, theology, philosophy, and natural science. The Ja'fari school of law is named for him.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His students include figures who shaped all of Islamic thought: <strong>Abu Hanifa</strong> (founder of the Hanafi school) studied under him, as did <strong>Jabir ibn Hayyan</strong>, the father of chemistry. The 6th Imam's teachings codified Shia doctrine on the Imamate, on tawhid, and on fiqh. His emphasis on reason alongside revelation, and his meticulous hadith transmission, remain foundational to Shia scholarship.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">817 CE</span><span class="hijri">201 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Politics</span>
+          <div class="entry-title">Imam al-Ridha as Crown Prince <span class="arabic">علي الرضا</span></div>
+          <div class="entry-body-text">Caliph al-Mamun appoints the 8th Imam as his designated heir — a political maneuver that the Imam accepts with conditions, while refusing executive authority. The Imam's debates at the Abbasid court on theology, medicine and philosophy are legendary. He is later martyred by poisoning in Tus (modern Mashhad), where his shrine becomes one of the most visited pilgrimage sites in the world.</div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">848–874 CE</span><span class="hijri">234–260 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Confinement</span>
+          <div class="entry-title">House Arrest in Samarra <span class="arabic">سامراء</span></div>
+          <div class="entry-body-text">The 10th and 11th Imams are effectively placed under surveillance and house arrest by Abbasid caliphs in the garrison city of Samarra. The community communicates with the Imam through trusted deputies. This period anticipates and prepares the community for the structure of the Occultation.</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA III ═══ -->
+  <section class="era-section" id="era-3">
+    <div class="era-header">
+      <div class="era-number">III</div>
+      <div class="era-header-text">
+        <h2>The <em>Minor Occultation</em></h2>
+        <p>874 – 941 CE · 260 – 329 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="entries-grid">
+      <div class="entry occultation" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">874 CE</span><span class="hijri">260 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-occultation">Occultation</span>
+          <div class="entry-title">Martyrdom of Imam al-Askari & Beginning of the Minor Occultation <span class="arabic">الغيبة الصغرى</span></div>
+          <div class="entry-body-text">Upon the poisoning of the 11th Imam, his five-year-old son Muhammad al-Mahdi enters a state of concealment (<em>ghayba</em>). The community is shaken but prepared — the Imam had appeared to a select circle to confirm his existence. He communicates through a series of four special deputies (<em>nawwab</em>).</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The four deputies through whom the Hidden Imam communicated are: <strong>Uthman ibn Sa'id al-Askari</strong>, <strong>Muhammad ibn Uthman</strong>, <strong>Husayn ibn Ruh al-Nawbakhti</strong>, and <strong>Ali ibn Muhammad al-Samarri</strong>. Their role was to transmit questions to the Imam and bring back his replies — signed letters whose authenticity was accepted by the community. This 67-year period is a bridge between direct Imamate and the long era of scholarly authority that would follow.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry occultation" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">874–941 CE</span><span class="hijri">260–329 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-occultation">Deputies</span>
+          <div class="entry-title">The Four Special Deputies <span class="arabic">النواب الأربعة</span></div>
+          <div class="entry-body-text">The line of intermediaries between the Hidden Imam and the Shia community. Their period establishes precedent for institutional Shia authority, demonstrating that the community can function through trusted scholarly intermediaries. Theological questions, legal disputes and community affairs are handled through this relay.</div>
+        </div>
+      </div>
+
+      <div class="entry occultation" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">941 CE</span><span class="hijri">329 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-occultation">Transition</span>
+          <div class="entry-title">Death of Ali ibn Muhammad al-Samarri — End of Minor Occultation</div>
+          <div class="entry-body-text">The fourth and final deputy dies, and before his death conveys a letter from the Imam indicating that no fifth deputy will be appointed. The Major Occultation begins. The letter states: <em>"There is no appointment for a fifth... God has an affair which He will carry to its conclusion."</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA IV ═══ -->
+  <section class="era-section" id="era-4">
+    <div class="era-header">
+      <div class="era-number">IV</div>
+      <div class="era-header-text">
+        <h2>The <em>Major Occultation</em> — Early Period</h2>
+        <p>941 – 1000 CE · 329 – 390 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="entries-grid">
+      <div class="entry occultation" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">941 CE</span><span class="hijri">329 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-occultation">Occultation</span>
+          <div class="entry-title">Major Occultation Begins <span class="arabic">الغيبة الكبرى</span></div>
+          <div class="entry-body-text">The 12th Imam enters the <em>Ghayba al-Kubra</em> — the prolonged absence that continues to the present day. The community must now reorganize around scholarly authority in the absence of direct access to the Imam. A profound theological question emerges: who leads the community, and by what mandate?</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The Occultation doctrine holds that the Imam is alive, present in the world in some form, and will return at the end of time as the <strong>Qa'im</strong> — the one who rises — to fill the earth with justice after it has been filled with oppression. Theologically, this requires new frameworks for legitimate authority, jurisprudential guidance, and communal organization. The centuries following the Major Occultation see the gradual, contested rise of the jurist (<strong>faqih</strong>) as the Imam's functional deputy.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">c. 941–991 CE</span><span class="hijri">329–380 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Sheikh al-Kulayni <span class="arabic">الكليني</span></div>
+          <div class="entry-body-text">Muhammad ibn Ya'qub al-Kulayni compiles the <em>al-Kafi</em> — the most authoritative hadith collection in Twelver Shia Islam, containing over 16,000 traditions across theology, jurisprudence, and ethics. He dies in 941 CE, at the very dawn of the Major Occultation, leaving the community its most vital hadith reference.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">c. 923–991 CE</span><span class="hijri">311–381 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Sheikh al-Saduq <span class="arabic">الشيخ الصدوق</span></div>
+          <div class="entry-body-text">Ibn Babawayh al-Qummi, known as al-Saduq, is the era's foremost hadith scholar. His <em>Man la Yahduruh al-Faqih</em> is one of the Four Books of Shia hadith. He is reportedly born in answer to a prayer conveyed through the last deputy to the Hidden Imam — a story central to his legendary standing.</div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">945–1055 CE</span><span class="hijri">334–447 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Dynasty</span>
+          <div class="entry-title">Buyid Shia Patronage <span class="arabic">البويهيون</span></div>
+          <div class="entry-body-text">The Buyid dynasty, a Shia Persian force, effectively controls the Abbasid Caliphate. Under their patronage, Shia scholarship flourishes openly in Baghdad. The theological center of Shia learning moves from Qum to Baghdad. Ashura commemoration becomes public. A golden age of Shia rationalist theology begins.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA V ═══ -->
+  <section class="era-section" id="era-5">
+    <div class="era-header">
+      <div class="era-number">V</div>
+      <div class="era-header-text">
+        <h2><em>Classical Scholarship</em> & Theology</h2>
+        <p>1000 – 1500 CE · 390 – 900 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="entries-grid">
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">948–1022 CE</span><span class="hijri">338–413 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Sheikh al-Mufid <span class="arabic">الشيخ المفيد</span></div>
+          <div class="entry-body-text">Muhammad ibn Nu'man al-Mufid revolutionizes Shia theology in Baghdad, synthesizing rational Mu'tazilite methods with Imami tradition. He defends the role of reason (<em>aql</em>) in theology against pure textualism and trains the two titans of the next generation: Sayyid al-Murtadha and Sheikh al-Tusi. Considered the father of Shia scholastic theology (<em>kalam</em>).</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Al-Mufid's key contribution was legitimizing the scope of juristic authority during Occultation — he argued that senior scholars could exercise limited supervision over communal affairs. This planted the seed that would eventually grow into the full doctrine of <strong>Wilayat al-Faqih</strong>. His debate with the Mu'tazilites and Ash'arites shaped the intellectual identity of Shia theology for centuries. His work <em>al-Irshad</em> remains the primary classical source on the Twelve Imams.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">966–1044 CE</span><span class="hijri">355–436 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Sayyid al-Murtadha <span class="arabic">السيد المرتضى</span></div>
+          <div class="entry-body-text">Ali ibn Husayn al-Musawi, known as Alam al-Huda (Beacon of Guidance), brings Mu'tazilite rationalism most fully into Shia theology. He argues for the <em>obligatory nature of reason</em> in deriving religious knowledge, and expands the scope of scholarly authority. Prolific poet, theologian, and jurist at the Baghdad court.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">995–1067 CE</span><span class="hijri">385–460 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Sheikh al-Tusi — Transfer to Najaf <span class="arabic">الشيخ الطوسي</span></div>
+          <div class="entry-body-text">Muhammad ibn Hasan al-Tusi — "Sheikh al-Ta'ifa" (Sheikh of the Sect) — synthesizes hadith, theology and jurisprudence into a coherent Shia legal system. Fleeing Seljuk persecution in Baghdad (his house and library burned), he relocates to Najaf and establishes the <strong>Hawza of Najaf</strong> — which becomes the preeminent seminary of Shia Islam for nearly a millennium.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Al-Tusi's works — including <em>al-Mabsut</em>, <em>al-Nihaya</em>, and <em>al-Istibsar</em> (one of the Four Books of hadith) — codified Shia jurisprudence in a systematic form rivaling the great Sunni legal schools. His founding of the Najaf hawza around the shrine of Imam Ali created an institutional base for Shia learning that would outlast empires. For nearly two centuries after his death, the authority of his legal opinions went largely unchallenged — a period known as the "taqlid of Sheikh al-Tusi."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1205–1277 CE</span><span class="hijri">602–676 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Muhaqqiq al-Hilli <span class="arabic">المحقق الحلي</span></div>
+          <div class="entry-body-text">Najm al-Din al-Hilli is the greatest jurist of the Mongol era. His <em>Shara'i al-Islam</em> becomes the standard Shia legal text, studied in seminaries to this day. He navigates the catastrophic Mongol conquest — which ironically creates space for Shia influence — and lays the groundwork for the juristic independence of the Shia scholarly class.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1201–1274 CE</span><span class="hijri">599–672 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Philosophy</span>
+          <div class="entry-title">Nasir al-Din al-Tusi & Islamic Philosophy <span class="arabic">نصير الدين الطوسي</span></div>
+          <div class="entry-body-text">The polymath Nasir al-Din al-Tusi — Shia philosopher, theologian, astronomer, and mathematician — survives the Mongol conquest as court scholar to Hulagu Khan. His <em>Tajrid al-I'tiqad</em> becomes the most studied text in Islamic scholastic theology (<em>kalam</em>), representing a synthesis of Shia theology with Avicennan philosophy that defines Islamic intellectual life for centuries.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1250–1325 CE</span><span class="hijri">648–725 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Allama al-Hilli <span class="arabic">العلامة الحلي</span></div>
+          <div class="entry-body-text">Hasan ibn Yusuf al-Hilli — "Allama al-Hilli" (the great scholar of Hilla) — is the most significant Shia theologian and jurist of the post-Mongol period. He debates successfully before the Mongol-turned-Muslim ruler Oljeitu, reportedly influencing his adoption of Shia Islam. His treatises on the Imamate and usul al-fiqh remain definitive.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA VI ═══ -->
+  <section class="era-section" id="era-6">
+    <div class="era-header">
+      <div class="era-number">VI</div>
+      <div class="era-header-text">
+        <h2><em>Safavid</em> Iran & the Transformation</h2>
+        <p>1501 – 1722 CE · 906 – 1134 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="entries-grid">
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1501 CE</span><span class="hijri">906 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Empire</span>
+          <div class="entry-title">Safavid Shah Ismail I Declares Twelver Shia as State Religion</div>
+          <div class="entry-body-text">Shah Ismail I conquers Tabriz and declares Ithna-Ashari (Twelver) Shia Islam the official religion of Iran — the first time in history a major state adopts this confession. A predominantly Sunni Persian population is converted, often coercively, over generations. Arab Shia scholars from Lebanon and Bahrain are imported to build the clerical infrastructure of the new empire.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">This decision reshapes Islamic geopolitics permanently. The Safavid-Ottoman rivalry — partly religious, partly imperial — consolidates the Sunni-Shia geographic divide that still defines the region. Critically, it creates the first Shia state willing to fund and empower a clerical class, enabling the development of institutional marjaiyyah. However, it also entangles scholarly authority with state power in ways that generate lasting tensions. The importation of Arab scholars — particularly from Jabal Amil in Lebanon — establishes Arab intellectual influence in Persian Shia culture.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">c. 1464–1534 CE</span><span class="hijri">869–940 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Ali ibn Abd al-Ali al-Karaki — Muhaqqiq al-Karaki <span class="arabic">المحقق الكركي</span></div>
+          <div class="entry-body-text">The Lebanese Shia scholar brought to Iran by the Safavids, al-Karaki becomes the first to articulate the doctrine of <em>niyabat al-'amma</em> — general deputyship of qualified jurists — in explicit terms. He argues that during Occultation, the <em>faqih</em> can exercise Friday prayer leadership and collect religious taxes. Deeply controversial but historically decisive.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1506–1558 CE</span><span class="hijri">911–965 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Shahid al-Thani — The Second Martyr <span class="arabic">الشهيد الثاني</span></div>
+          <div class="entry-body-text">Zayn al-Din al-Juba'i al-Amili from Jabal Amil (modern Lebanon) — the foremost jurist of his era. He teaches at a university in Ba'albak attended by students from all traditions. Executed by Ottoman authorities on charges of Shia propagation. His <em>Sharh al-Lum'a al-Dimashqiyya</em> becomes the most studied legal text in Shia seminaries to this day.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1571–1640 CE</span><span class="hijri">979–1050 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Philosophy</span>
+          <div class="entry-title">Mulla Sadra & Transcendent Wisdom <span class="arabic">ملا صدرا</span></div>
+          <div class="entry-body-text">Sadr al-Din al-Shirazi — Mulla Sadra — creates the <em>al-Hikma al-Muta'aliya</em> (Transcendent Wisdom), the most sophisticated philosophical synthesis in Islamic history. Blending Avicennism, Suhrawardi's Illuminationism, and Sufi metaphysics with Shia theology, he develops the doctrine of <em>asalat al-wujud</em> (primacy of being) which profoundly shapes Shia intellectual culture.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Mulla Sadra's philosophical system — including his doctrines of the <strong>substantial motion</strong> of being (<em>harakat jawhariyya</em>) — represents a uniquely Shia synthesis where philosophy, mysticism and theology are integrated rather than opposed. His school produces a continuous chain of philosophers through to the 20th century, including figures like <strong>Mulla Hadi Sabzawari</strong> and ultimately influencing <strong>Allama Tabataba'i</strong>. This tradition gives Shia Islam a distinctly different relationship to philosophy compared to mainstream Sunni thought.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">17th c.</span><span class="hijri">11th AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-institution">Hawza</span>
+          <div class="entry-title">Rise of the Isfahani School — Mulla Baqir Majlisi <span class="arabic">العلامة المجلسي</span></div>
+          <div class="entry-body-text">Muhammad Baqir Majlisi — <em>Sheikh al-Islam</em> under Shah Sultan Husayn — compiles the encyclopedic <em>Bihar al-Anwar</em> (Oceans of Lights), a 110-volume collection of Shia hadith that remains the most comprehensive hadith reference in existence. He also pursues aggressive anti-Sufi and anti-philosophy policies, reshaping the Safavid religious landscape toward textualism.</div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1722 CE</span><span class="hijri">1134 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Collapse</span>
+          <div class="entry-title">Fall of the Safavid Empire — Afghan Invasion</div>
+          <div class="entry-body-text">The Ghilzai Afghan forces under Mahmud Hotaki sack Isfahan and destroy the Safavid capital. The collapse of Safavid power forces the clerical establishment to reorganize around the shrine cities of Iraq — Najaf and Karbala — under Ottoman rule, laying the foundations for a more autonomous clerical institution less dependent on state power.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA VII ═══ -->
+  <section class="era-section" id="era-7">
+    <div class="era-header">
+      <div class="era-number">VII</div>
+      <div class="era-header-text">
+        <h2>Formation of the <em>Marjaiyyah</em></h2>
+        <p>1722 – 1960 CE · 1134 – 1379 AH</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="entries-grid">
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1706–1791 CE</span><span class="hijri">1118–1205 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Debate</span>
+          <div class="entry-title">Akhbari–Usuli Controversy & Wahid Bihbahani <span class="arabic">الوحيد البهبهاني</span></div>
+          <div class="entry-body-text">The pivotal intellectual conflict of 18th-century Shia thought. <strong>Akhbaris</strong> hold that only Imamic hadith is authoritative — rejecting independent juristic reasoning (<em>ijtihad</em>). <strong>Usulis</strong> defend the right of qualified scholars to engage in independent legal reasoning. Wahid Bihbahani defeats the Akhbari school in Karbala, establishing Usuli supremacy — and with it, the intellectual foundation for a powerful marjaiyyah.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The Usuli victory was not merely academic. It established that the community of believers is obligated to follow a living <strong>marja' al-taqlid</strong> (source of emulation) — the most learned qualified jurist. This creates the hierarchical structure of modern Shia religious authority. Without the Usuli victory, there would be no marjaiyyah as we know it, and no theoretical basis for concepts like Wilayat al-Faqih. Wahid Bihbahani is known as the "Murawwij" — the reviver of the Usuli school.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1800–1864 CE</span><span class="hijri">1215–1281 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Marja'</span>
+          <div class="entry-title">Sheikh Murtadha al-Ansari — First Modern Marja' <span class="arabic">الشيخ الأنصاري</span></div>
+          <div class="entry-body-text">The Najaf-based jurist whose <em>al-Makasib</em> and <em>Fara'id al-Usul</em> (Rasa'il) become the canonical texts of Shia legal methodology to this day. He is widely considered the first jurist to be recognized as <em>marja' al-taqlid</em> by Shia Muslims globally — the first truly universal source of emulation, consolidating the modern marjaiyyah as a transnational institution.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1815–1895 CE</span><span class="hijri">1230–1312 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Marja'</span>
+          <div class="entry-title">Mirza Muhammad Hasan Shirazi — Tobacco Fatwa <span class="arabic">الميرزا الشيرازي</span></div>
+          <div class="entry-body-text">The most dramatic demonstration of marjaiyyah political power in the 19th century. When Qajar Iran grants a tobacco monopoly to Britain, Mirza Shirazi issues a single-line fatwa: <em>"The use of tobacco is tantamount to war against the Imam of the Age."</em> The entire country stops smoking. The Shah is forced to cancel the contract. The political authority of the marja' is established.</div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1909–1920 CE</span><span class="hijri">1327–1338 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Politics</span>
+          <div class="entry-title">Iranian Constitutional Revolution & Shia Clerical Division</div>
+          <div class="entry-body-text">The Constitutional Revolution divides the marjaiyyah: <strong>Mirza Husayn Na'ini</strong> writes <em>Tanbih al-Umma</em>, a landmark Shia justification for constitutional government; Sheikh Fazlullah Nuri opposes it as un-Islamic. Nuri is executed. Na'ini's tract establishes a Shia intellectual framework for democratic governance that resurfaces in Islamic Republic debates 70 years later.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1875–1961 CE</span><span class="hijri">1292–1380 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Marja'</span>
+          <div class="entry-title">Grand Ayatullah Sayyid Husayn Borujerdi <span class="arabic">البروجردي</span></div>
+          <div class="entry-body-text">The last truly undisputed single <em>marja' al-mutlaq</em> (universal absolute source of emulation) of the modern era. Based in Qum, he modernizes the hawza, establishes the Shia presence in international scholarly dialogue (including with al-Azhar), and keeps the marjaiyyah explicitly apolitical. His death in 1961 begins the pluralistic era of competing mara'ja.</div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1920 CE</span><span class="hijri">1338 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Jihad</span>
+          <div class="entry-title">Iraqi Revolution — Najaf Marjaiyyah Against British Occupation</div>
+          <div class="entry-body-text">Grand Ayatullah Mirza Muhammad Taqi Shirazi issues a fatwa declaring armed resistance to British occupation of Iraq obligatory. The 1920 Iraqi Revolution follows. The marjaiyyah demonstrates its capacity to mobilize mass political action. Najaf cements its role not just as a center of learning but as a center of Shia political consciousness.</div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1921 CE</span><span class="hijri">1340 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-institution">Hawza</span>
+          <div class="entry-title">Hawza of Qum Founded — Sheikh Abdul Karim Ha'eri Yazdi</div>
+          <div class="entry-body-text">Sheikh Abdul Karim Ha'eri Yazdi arrives in Qum at the invitation of local scholars and formally establishes the modern Hawza Ilmiyya of Qum in 1921–22 — transforming it from a secondary provincial seminary into Iran's premier center of Shia scholarship. Under Ha'eri (d. 1937), and later Grand Ayatullah Borujerdi, Qum becomes a rival to Najaf, creating the dual-center structure of Shia scholarship that persists today.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ERA VIII ═══ -->
+  <section class="era-section" id="era-8">
+    <div class="era-header">
+      <div class="era-number">VIII</div>
+      <div class="era-header-text">
+        <h2>The <em>Contemporary</em> Shia World</h2>
+        <p>1960 – Present · 1380 AH – Present</p>
+      </div>
+    </div>
+    <div class="era-line"></div>
+
+    <div class="entries-grid">
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1899–1992 CE</span><span class="hijri">1317–1413 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Marja'</span>
+          <div class="entry-title">Grand Ayatullah Sayyid Abu al-Qasim al-Khoei <span class="arabic">السيد الخوئي</span></div>
+          <div class="entry-body-text">The towering marja' of Najaf for three decades. Al-Khoei represents the traditional quietist position — the marjaiyyah as purely religious institution, neither claiming nor exercising political power. His <em>Minhaj al-Salihin</em> is the most widely distributed Shia legal manual. He trained virtually every major Shia scholar of the next generation, including Sistani. He is also a pioneering Quranic scholar and founder of the al-Khoei Foundation.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1902–1989 CE</span><span class="hijri">1320–1409 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Revolution</span>
+          <div class="entry-title">Imam Ruhollah Khomeini — Wilayat al-Faqih <span class="arabic">الإمام الخميني</span></div>
+          <div class="entry-body-text">The most consequential Shia political theorist of the modern era. Khomeini develops and radicalizes the doctrine of <em>Wilayat al-Faqih</em> (Guardianship of the Jurist) — arguing that the qualified jurist must exercise full political governance during Occultation. The 1979 Iranian Revolution embeds this theory in state structure. Deeply controversial even within the Shia scholarly world, it permanently redraws the lines of religion and politics.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Khomeini's doctrine of Wilayat al-Faqih al-Mutlaqa (absolute guardianship) was a radical departure from even his own earlier positions. It argued that the scope of the jurist's authority during Occultation is co-extensive with the Prophet's and Imam's own authority — including governance of all social and political affairs. This was rejected by most senior scholars — including al-Khoei, Sistani, and later Fadlallah. The tension between the "activist" and "quietist" poles of the marjaiyyah structures contemporary Shia politics and defines the difference between Najaf's and Qum's approaches.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1935–1980 CE</span><span class="hijri">1353–1400 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Martyr</span>
+          <div class="entry-title">Sayyid Muhammad Baqir al-Sadr — Martyr of Najaf <span class="arabic">الشهيد الصدر</span></div>
+          <div class="entry-body-text">The most brilliant Shia intellectual of the 20th century. Al-Sadr founds the Islamic Da'wa Party, writes <em>Iqtisaduna</em> (Our Economics) — a foundational work of Islamic economics — and <em>Falsafatuna</em> (Our Philosophy), engaging Marxism and Western philosophy on their own terms. He is executed by Saddam Hussein's Ba'ath regime in 1980 along with his sister. His martyrdom galvanizes Shia political consciousness globally.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1903–1981 CE</span><span class="hijri">1321–1402 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Philosophy</span>
+          <div class="entry-title">Allama Muhammad Husayn Tabataba'i <span class="arabic">العلامة الطباطبائي</span></div>
+          <div class="entry-body-text">The pre-eminent Shia philosopher and Quranic scholar of the 20th century. His <em>al-Mizan fi Tafsir al-Quran</em> (20 volumes) is the most comprehensive Shia Quranic commentary of the modern era — drawing on philosophy, irfan, and hadith in unprecedented synthesis. His philosophical dialogues with the French thinker Henry Corbin brought Shia thought to global attention. He trained the next generation of Shia philosophers including Murtadha Mutahhari and Jawadi Amoli.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1930–present</span><span class="hijri">1349 AH–</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Marja'</span>
+          <div class="entry-title">Grand Ayatullah Sayyid Ali al-Sistani <span class="arabic">السيد السيستاني</span></div>
+          <div class="entry-body-text">The most widely followed Shia marja' in the world, based in Najaf. Sistani represents the quintessential quietist tradition — enormous religious authority exercised with restraint and surgical precision. His 2014 fatwa calling Iraqis to arms against ISIS mobilized over 100,000 volunteers. His management of Iraq's post-Saddam transition and his influence on Lebanese, Iranian, and South Asian Shia communities makes him arguably the most globally consequential religious leader of his generation.</div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">1935–2010 CE</span><span class="hijri">1354–1431 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Grand Ayatullah Sayyid Muhammad Husayn Fadlallah — Lebanon <span class="arabic">السيد فضل الله</span></div>
+          <div class="entry-body-text">The most intellectually independent major marja' of the late 20th century. Based in Beirut, Fadlallah engaged feminist jurisprudence, international law, and political philosophy in ways that challenged both quietism and Khomeini's model. He influenced Lebanese Shia political consciousness and Hizbullah's early formation, while later distancing from direct political control. His tafsir <em>Min Wahy al-Quran</em> is widely read.</div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)">
+        <div class="entry-date"><span class="year">2003 CE</span><span class="hijri">1424 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Turning Point</span>
+          <div class="entry-title">US Invasion of Iraq — Reemergence of Najaf</div>
+          <div class="entry-body-text">The fall of Saddam's Ba'ath regime — which had suppressed the Najaf hawza and killed hundreds of scholars — allows the Shia scholarly center to begin rebuilding after decades of devastation. Sistani's Najaf re-emerges as a counterweight to Khamenei's Qum. Karbala and Najaf return to global attention as the Arbaeen pilgrimage grows to become the largest human gathering on earth.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contemporary Centers -->
+    <div style="margin-top:48px; margin-bottom:16px;">
+      <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--parchment); margin-bottom:8px;">Contemporary Centers of Shia Scholarship & Influence</h3>
+      <p style="font-size:14px; color:rgba(245,239,224,0.45); font-style:italic; margin-bottom:24px;">The distributed geography of the modern marjaiyyah and Shia political presence</p>
+    </div>
+    <div class="center-map">
+      <div class="center-card">
+        <div class="center-city">Najaf, Iraq</div>
+        <div class="center-role">Seat of the quietist marjaiyyah</div>
+        <div class="center-scholars">Sistani, Ishaqi, Hakim family. The oldest continuous center — site of Imam Ali's shrine. Historically the preeminent hawza, suppressed under Ba'ath, now reviving.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">Qum, Iran</div>
+        <div class="center-role">State-linked Islamic Republic hawza</div>
+        <div class="center-scholars">Khamenei, Makarem Shirazi, Javadi Amoli. Iran's religious capital since Safavid reorganization. The largest seminary enrollment in the world. Produces scholars for export globally.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">Karbala, Iraq</div>
+        <div class="center-role">Pilgrimage & emerging scholarship</div>
+        <div class="center-scholars">Site of Imam Husayn's shrine. The Arbaeen gathering — 20+ million pilgrims annually — is the world's largest human assembly. Growing scholarly institutions.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">Beirut / Lebanon</div>
+        <div class="center-role">Arab Shia political theology</div>
+        <div class="center-scholars">Hizbullah, Fadlallah legacy, Musa al-Sadr's founding of Amal. Jabal Amil has historically produced major scholars including Shahid al-Thani and al-Karaki.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">Mashhad, Iran</div>
+        <div class="center-role">Shrine city & scholarship</div>
+        <div class="center-scholars">Site of Imam al-Ridha's shrine. One of the most visited pilgrimage sites globally. Major seminary and theological university (Ferdowsi). Key to Iranian Shia identity.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">Samarra, Iraq</div>
+        <div class="center-role">Shrine of the 10th & 11th Imams</div>
+        <div class="center-scholars">Site of the Askari shrine — bombed by Salafi extremists in 2006, triggering Iraq's sectarian civil war. Symbol of Shia vulnerability and resilience.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">South Asia</div>
+        <div class="center-role">The largest Shia population base</div>
+        <div class="center-scholars">Pakistan (20M+), India (40–50M), including Lucknow's historic Shia culture. Distinct traditions of devotion, Muharram, and Urdu religious literature.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-city">Eastern Arabia</div>
+        <div class="center-role">Shia minorities under pressure</div>
+        <div class="center-scholars">Bahrain (Shia majority), Saudi Qatif and al-Ahsa. Sheikh Nimr al-Nimr — executed by Saudi Arabia in 2016 — represented a generation of Shia Arab political resistance.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="imam-modal-overlay" id="imam-modal" onclick="closeImamModal(event)">
+  <div class="imam-modal-box">
+    <button class="imam-modal-close" onclick="closeImamModal()">✕</button>
+    <div id="imam-modal-content"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="divider-ornament" style="margin:0 auto 20px;"><span>✦</span></div>
+  <p style="margin-bottom:12px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.5;">
+    <a href="shia-timeline.html" style="color:var(--gold-dim); text-decoration:none;">I · Timeline</a>
+    &nbsp;·&nbsp;
+    <a href="shia-academia.html" style="color:var(--gold-dim); text-decoration:none; opacity:0.7;">II · Academic Map</a>
+    &nbsp;·&nbsp;
+    <a href="shia-encounters.html" style="color:var(--gold-dim); text-decoration:none; opacity:0.7;">III · Encounters</a>
+    &nbsp;·&nbsp;
+    <a href="shia-doctrine.html" style="color:var(--gold-dim); text-decoration:none; opacity:0.7;">IV · Doctrine</a>
+  </p>
+  <p>Compiled as a reference for the history of the <span>Twelver Shia tradition</span> · From Ghadir to the Present</p>
+  <p style="margin-top:12px; font-size:12px; opacity:0.4; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">This project presents Shia Islamic history from within the tradition's own framework while situating it in broader historical context. Theological claims are presented as the tradition understands them; historical claims aim for scholarly accuracy. Dates follow the Common Era unless otherwise noted.</p>
+  <p style="margin-top:8px; font-size:11px; opacity:0.5;">Click any entry to expand · Scroll freely · Navigate by era above</p>
+</footer>
+
+<script>
+// ── IMAM DATA ──────────────────────────────────────────────
+const IMAM_DATA = {
+  1: {
+    num: '1st Imam', name: 'Ali ibn Abi Talib', arabic: 'علي بن أبي طالب',
+    epithet: 'al-Murtadha — The Chosen One', dates: '600–661 CE · Martyred in Kufa, 40 AH',
+    shrine: 'Najaf, Iraq',
+    bio: 'The cousin and son-in-law of the Prophet ﷺ, husband of Fatimah al-Zahra, and father of Hasan and Husayn. Ali was among the first to accept Islam and was the Prophet\'s constant companion, described as his "self" in the Hadith al-Mubahala. For Shia Muslims, he was explicitly designated as successor at Ghadir Khumm. He assumed the Caliphate after Uthman\'s assassination (656 CE) but his tenure was consumed by three civil wars — the Battle of the Camel, the Battle of Siffin against Muawiyah, and the Battle of Nahrawan against the Khawarij. He was struck by a poisoned sword during the Fajr prayer in the mosque of Kufa and died two days later.',
+    legacy: 'His collected sermons, letters, and aphorisms — preserved in Nahj al-Balagha — constitute the most important text in Shia tradition after the Quran. His teachings on justice, governance, the nature of God, and the inner life of the soul have shaped Shia theology, ethics, and spirituality for fourteen centuries. His shrine in Najaf is the most visited in the Shia world after Karbala.'
+  },
+  2: {
+    num: '2nd Imam', name: 'Hasan ibn Ali', arabic: 'الحسن بن علي',
+    epithet: 'al-Mujtaba — The Chosen', dates: '625–670 CE · Poisoned in Medina, 50 AH',
+    shrine: 'Medina (al-Baqi\' cemetery)',
+    bio: 'The elder son of Imam Ali and Fatimah al-Zahra, and the Prophet\'s beloved grandson whom he famously carried on his shoulders. After his father\'s martyrdom, he assumed leadership and faced the overwhelming military force of Muawiyah ibn Abi Sufyan. Rather than subject the community to a destructive civil war, he negotiated a treaty — ceding political authority to Muawiyah while preserving the Imamate\'s spiritual and moral standing. This decision, deeply misunderstood by some and profoundly wise to others, preserved the community\'s religious integrity. He was subsequently poisoned, reportedly at Muawiyah\'s instigation, by his own wife.',
+    legacy: 'His peace treaty, and the suffering it imposed on him personally, became a model of sacrificial wisdom in Shia tradition — the choice of the community\'s wellbeing over personal honor. His approach to political authority under duress prefigured the quietist strand of Shia political thought.'
+  },
+  3: {
+    num: '3rd Imam', name: 'Husayn ibn Ali', arabic: 'الحسين بن علي',
+    epithet: 'Sayyid al-Shuhada — Master of Martyrs', dates: '626–680 CE · Martyred at Karbala, 61 AH',
+    shrine: 'Karbala, Iraq',
+    bio: 'The younger son of Imam Ali and Fatimah al-Zahra, and the Prophet\'s beloved grandson. When Yazid ibn Muawiyah — whose moral corruption made his rule a violation of Islamic principles — demanded Husayn\'s allegiance, Husayn refused, declaring that a person of his standing could not legitimize tyranny through silence. He set out from Medina to Kufa with his family and a small band of companions, was intercepted on the plains of Karbala, and was denied water for three days before the massacre of Ashura (10 Muharram, 61 AH). He was beheaded alongside 72 companions; the women and children of his household were taken captive to Damascus.',
+    legacy: 'The martyrdom of Karbala is the moral and spiritual axis of Shia identity — the event that transforms an abstract theological commitment into a lived, embodied tradition of grief, resistance, and renewal. "Every day is Ashura, every land is Karbala" encapsulates the universalization of his sacrifice. The annual commemoration on Ashura and the pilgrimage to his shrine — Arbaeen, now the world\'s largest human gathering — testify to the living power of his memory.'
+  },
+  4: {
+    num: '4th Imam', name: 'Ali ibn Husayn', arabic: 'علي بن الحسين',
+    epithet: 'Zayn al-Abidin — Ornament of the Worshippers / al-Sajjad — The Prostrator',
+    dates: '658–713 CE · Poisoned in Medina, 95 AH',
+    shrine: 'Medina (al-Baqi\' cemetery)',
+    bio: 'Survivor of Karbala — he was too ill to fight and was thus spared. Taken captive to Damascus with the women, he delivered a fearless speech before Yazid\'s court that shamed the regime and began the process of turning public opinion against it. Returning to Medina, he lived under Umayyad surveillance that precluded direct teaching. He transmitted the tradition instead through supplication — composing the Sahifa al-Sajjadiyya, 54 prayers of extraordinary theological and literary depth that encode the entire worldview of the Imamate in the language of intimacy with God.',
+    legacy: 'The Sahifa al-Sajjadiyya — called the "Psalms of the Ahlul Bayt" — is the primary Shia devotional text and one of the great spiritual documents of world literature. His Risalat al-Huquq (Treatise on Rights) is the most comprehensive early Shia ethical text. His choice of supplication as his medium of transmission, under political constraint, exemplifies the Imamic tradition\'s capacity to preserve its depth even under oppression.'
+  },
+  5: {
+    num: '5th Imam', name: 'Muhammad al-Baqir', arabic: 'محمد الباقر',
+    epithet: 'al-Baqir — Splitter of Knowledge', dates: '677–733 CE · Poisoned in Medina, 114 AH',
+    shrine: 'Medina (al-Baqi\' cemetery)',
+    bio: 'Son of Imam Ali ibn Husayn and a grandson of Imam Husayn. Taking advantage of the weakening Umayyad grip on power after the Second Civil War, he opened the Imamate\'s intellectual tradition more widely — teaching theology, jurisprudence, and Quranic hermeneutics to a growing circle of students. The Prophet had reportedly foretold that one of his descendants bearing this name would "split knowledge open" (baqara al-\'ilm), and his legacy justifies the epithet. He established the hermeneutical principles for understanding the Quran\'s deeper meanings in light of Imamic authority.',
+    legacy: 'Al-Baqir\'s teaching circle in Medina laid the intellectual foundations that his son al-Sadiq would expand into the most significant academy in early Islamic history. His theological positions on free will (amr bayna\'l-amrayn), divine justice, and the necessity of the Imamate became the normative Shia positions that every subsequent kalām school was measured against.'
+  },
+  6: {
+    num: '6th Imam', name: "Ja'far al-Sadiq", arabic: 'جعفر الصادق',
+    epithet: 'al-Sadiq — The Truthful', dates: '702–765 CE · Poisoned in Medina, 148 AH',
+    shrine: 'Medina (al-Baqi\' cemetery)',
+    bio: 'The most intellectually prolific of the Imams, who presided over the greatest flowering of Imamic learning. The transition from Umayyad to Abbasid rule created a window of political opportunity he used to teach openly, attracting over 4,000 students across the disciplines of theology, jurisprudence, natural philosophy, and esoteric knowledge. His students include Abu Hanifa (founder of the Hanafi school), Malik ibn Anas (founder of the Maliki school), and Jabir ibn Hayyan (the father of chemistry). The Shia school of jurisprudence — the Ja\'fari madhhab — is named for him. He was eventually poisoned on the orders of the Abbasid caliph al-Mansur.',
+    legacy: 'The Ja\'fari legal tradition, codified from his transmitted rulings, is the official school of law in the Islamic Republic of Iran and the school followed by the majority of Shia Muslims globally. His theological teachings on tawḥīd (divine unity), the nature of the soul, and the hidden dimensions of the Quran form the backbone of Shia intellectual tradition. His is the most cited authority in the Shia hadith corpus.'
+  },
+  7: {
+    num: '7th Imam', name: 'Musa al-Kadhim', arabic: 'موسى الكاظم',
+    epithet: 'al-Kadhim — The One Who Suppresses Anger', dates: '745–799 CE · Poisoned in Baghdad, 183 AH',
+    shrine: 'Kadhimiyya, Baghdad, Iraq',
+    bio: 'Son of Imam al-Sadiq who faced a dramatically harsher political environment — the Abbasid caliphate, initially a vehicle of Alid hopes, had become a direct oppressor of the Imams. Al-Kadhim spent much of his Imamate in Abbasid prisons, having been arrested multiple times by Harun al-Rashid. He was ultimately poisoned in Baghdad\'s prison, his body reportedly left unattended for days as a political humiliation. His epithet reflects the extraordinary patience and self-restraint he maintained in the face of sustained persecution — he is said never to have returned an insult with anger.',
+    legacy: 'His shrine in Kadhimiyya (Baghdad) became one of the most important Shia pilgrimage sites. His imprisonment and martyrdom deepened the Shia community\'s understanding that the Imamate operates in conditions of political oppression — a theological reality that shaped the tradition\'s subsequent relationship to power. The Waqifi sect, which held that he was the final Imam and had not died, emerged after his death — rejected by the mainstream Imami community.'
+  },
+  8: {
+    num: '8th Imam', name: 'Ali al-Ridha', arabic: 'علي الرضا',
+    epithet: 'al-Ridha — The One Pleasing to God', dates: '765–818 CE · Poisoned in Mashhad, 203 AH',
+    shrine: 'Mashhad, Iran',
+    bio: 'The Imam with the most politically exposed position — appointed Crown Prince of the Abbasid Caliphate by Caliph al-Mamun in 817 CE in what was widely understood as a political maneuver to neutralize Alid opposition by co-opting its leader. Imam al-Ridha accepted on the explicit condition that he would exercise no administrative authority — preserving the Imamate\'s independence while accepting the nominal honor. He engaged in legendary theological debates at the Abbasid court on philosophy, medicine, and the rational foundations of religion. Al-Mamun reportedly poisoned him after the political arrangement became a liability.',
+    legacy: 'His shrine in Mashhad (meaning "place of martyrdom") is the most visited pilgrimage site in Iran and one of the most visited in the world, receiving tens of millions of pilgrims annually. His theological debates — preserved in collections like \'Uyun Akhbar al-Ridha — are among the most sophisticated Imamic engagements with philosophy and comparative religion. His appointment as Crown Prince, and his principled refusal to exercise that power, became a model for the Shia tradition\'s navigation of proximity to political authority.'
+  },
+  9: {
+    num: '9th Imam', name: 'Muhammad al-Jawad', arabic: 'محمد الجواد',
+    epithet: 'al-Taqi — The Pious / al-Jawad — The Generous', dates: '810–835 CE · Poisoned in Kadhimiyya, 220 AH',
+    shrine: 'Kadhimiyya, Baghdad, Iraq',
+    bio: 'The youngest Imam to assume the Imamate — he was between 7 and 9 years old when his father al-Ridha was martyred. His early assumption of the role generated theological controversy that forced the Imami community to develop more sophisticated doctrines of Imamic knowledge independent of age or worldly learning. He was called to Baghdad by the Abbasid caliph al-Mamun and married to his daughter — another political attempt to domesticate Alid influence. He died at approximately 25, the shortest-lived of the Imams, poisoned in Baghdad.',
+    legacy: 'His early Imamate forced the Shia community to articulate clearly that the Imam\'s knowledge is divinely granted rather than acquired through experience — a doctrine that became central to Imami theology. His debates with Abbasid jurists as a young boy, defeating scholars decades his senior, became famous demonstrations of this divinely-given wisdom. He is buried alongside his grandfather al-Kadhim in Kadhimiyya, whose shrine complex bears both their names.'
+  },
+  10: {
+    num: '10th Imam', name: 'Ali al-Hadi', arabic: 'علي الهادي',
+    epithet: 'al-Hadi — The Guide / al-Naqi — The Pure', dates: '828–868 CE · Poisoned in Samarra, 254 AH',
+    shrine: 'Samarra, Iraq (Askari Shrine)',
+    bio: 'Forcibly relocated by the Abbasid caliph al-Mutawakkil from Medina to the garrison city of Samarra — a move designed to place him under direct surveillance and cut him off from his community. He lived the rest of his life in effective house arrest in Samarra, communicating with followers through a network of trusted deputies (wikāla). Despite this confinement, he maintained the Imamate\'s theological and jurisprudential guidance, and his famous letters addressing the debate between rational theology (kalām) and pure hadith transmission helped shape the intellectual direction of the community.',
+    legacy: 'His confinement in Samarra, and his development of the wikāla (agency) system for communicating with the dispersed community, directly prepared the structural framework that would sustain the community through the Occultation. His shrine in Samarra — shared with his son al-Askari — was twice bombed by Salafi extremists (2006, 2007), triggering Iraq\'s sectarian civil war and becoming a symbol of Shia vulnerability and resilience.'
+  },
+  11: {
+    num: '11th Imam', name: 'Hasan al-Askari', arabic: 'الحسن العسكري',
+    epithet: 'al-Askari — Of the Military Garrison', dates: '846–874 CE · Poisoned in Samarra, 260 AH',
+    shrine: 'Samarra, Iraq (Askari Shrine)',
+    bio: 'Born in Medina and raised in Samarra under the most intensive surveillance of any Imam — the Abbasid regime, aware that Shia tradition prophesied a twelfth Imam who would bring eschatological transformation, attempted to prevent the birth of such a child. The Imam kept the existence of his son Muhammad (born c. 869 CE) almost entirely secret, revealing him only to a small trusted circle. He managed the increasingly elaborate wikāla network and died at 28, poisoned — the youngest martyrdom age of any Imam.',
+    legacy: 'His primary legacy is the preservation and concealment of his successor — the 12th Imam Muhammad al-Mahdi. His management of the transition to the Occultation, and the network of deputies he established and tested, made the subsequent Minor Occultation structurally possible. His letters and theological teachings, preserved despite the conditions of his imprisonment, continued to guide the community\'s doctrinal development.'
+  },
+  12: {
+    num: '12th Imam', name: 'Muhammad al-Mahdi', arabic: 'محمد المهدي',
+    epithet: 'al-Qa\'im, al-Hujja, Sahib al-Zaman, al-Mahdi — The Hidden Imam',
+    dates: '869 CE – present · in Occultation (al-Ghayba)',
+    shrine: 'The Mosque of Jamkaran (Iran); Samarra crypt',
+    bio: 'The son of Imam al-Askari, born in Samarra around 869 CE and kept in concealment from the Abbasid regime. Upon his father\'s martyrdom in 874 CE, he entered the Minor Occultation — communicating with the community through four successive deputies (the Bab, Gate) over 67 years. In 941 CE, the fourth deputy Ali ibn Muhammad al-Samarri conveyed a final letter declaring that no fifth deputy would be appointed — and the Major Occultation began. Shia doctrine holds that he is alive, present in the world in some veiled form, and will return at the end of time as the Qa\'im (the one who rises) to establish global justice.',
+    legacy: 'The doctrine of the Occultation is not a doctrine of absence but of veiled presence — the Imam is believed to be in the world, aware of the community\'s condition, and interacting with it in ways that transcend ordinary perception. The theological challenge his absence poses — who leads the community? who has authority? — drove the development of the marjaiyyah and, ultimately, the theory of Wilayat al-Faqih. His anticipated return, and the signs that will precede it, are among the most discussed topics in Shia eschatology and popular piety.'
+  },
+
+  prophet: {
+    num: 'Foundation of the Imamate', name: 'The Prophet Muhammad ﷺ', arabic: 'محمد رسول الله',
+    epithet: 'al-Mustafa — The Chosen · Seal of the Prophets',
+    dates: 'c. 570–632 CE · 53 BH – 11 AH',
+    shrine: null,
+    bio: 'Born in Mecca into the Hashimite clan of Quraysh, orphaned young, raised in the household of his uncle Abu Talib — the same household that would be the nucleus of the Imamate. The Prophethood commenced in 610 CE with the first revelation on Mount Hira. Over 23 years he built the first Muslim community in Mecca and Medina, establishing the foundations of Islamic law, theology, and practice. For Shia Muslims, the Prophet\'s mission included not only conveying the Quran but explicitly designating the succession. The culminating act of his life was at Ghadir Khumm on the return from the Farewell Pilgrimage, where he gathered the community and declared: <em>"Whoever\'s master I am (mawla), Ali is his master."</em> He returned to Medina and passed from this world within three months, on 28 Safar 11 AH.',
+    legacy: 'The Prophet occupies a singular position in Shia theology: he is not merely the transmitter of divine law but the one who established the entire Imamic chain through divine command. The hadith of Thaqalayn — "I leave among you two weighty things: the Book of God and my progeny, my Ahlul Bayt" — is understood as the Prophet\'s final constitution for the community, binding them to both the Quran and the Imams as co-equal guides. Every Imam derives their authority from his explicit or implicit designation. His Ahlul Bayt — Fatima, Ali, Hasan, and Husayn — are those for whom the verse of purification (Quran 33:33) was revealed. His relationship to his daughter Fatima was one of extraordinary love and spiritual recognition: he called her "a part of me."'
+  },
+
+  fatima: {
+    num: 'The Link Between Prophethood & Imamate', name: 'Fatima al-Zahra ع', arabic: 'فاطمة الزهراء',
+    epithet: 'Sayyidat Nisa\' al-ʿAlamin — Lady of the Women of All Worlds',
+    dates: 'c. 605–632 CE · died 75–95 days after the Prophet ﷺ',
+    shrine: null,
+    bio: 'The youngest and most beloved daughter of the Prophet ﷺ and Khadijah al-Kubra, wife of Imam Ali, mother of Hasan, Husayn, Zaynab, and Umm Kulthum. In Shia theology she is not a peripheral figure — she is the biological and spiritual bridge between prophethood and Imamate, the one through whom the sacred lineage passes. The Prophet described her in the hadith: <em>"Fatima is a part of me. Whoever angers her angers me, and whoever angers me angers God."</em> After the Prophet\'s death, she stood alone in openly contesting the seizure of political authority from her husband. Her sermon in the mosque of Medina — the Khutba al-Fadakiyya — is one of the most rhetorically powerful texts in Arabic literature: a sustained argument from Quran and logic that the community had betrayed its covenant. She died of her injuries and grief within three months of her father, having never forgiven those who had wronged her family. She was buried at night, secretly, at her own request.',
+    legacy: 'Fatima\'s theological status in Shia Islam is unique and profound. She is held to be <em>maʿṣuma</em> — infallible, like the Imams — and a <em>ḥujja</em> (proof of God) in her own right. The hadith of the Cloak (Hadith al-Kisa\') — in which the Prophet gathers Ali, Fatima, Hasan, and Husayn under his mantle and prays for their purification — is the scriptural foundation for the Panjtan Pak (the Five Pure Ones). Her grief after Karbala is mirrored, in the tradition\'s understanding, by the grief of the entire cosmos — she wept for Husayn even before his birth, according to Imamic hadith. In the ʿirfāni tradition, she is understood as the manifestation of divine grace (fayd) itself. The Fatimiyya days — the period of her martyrdom anniversary — are observed with mourning across the Shia world. She remains, fourteen centuries later, the most invoked name in Shia prayer after God and the Prophet.'
+  }
+};
+
+function openImamModal(num) {
+  const imam = IMAM_DATA[num];
+  if (!imam) return;
+  const box = document.getElementById('imam-modal-content');
+  box.innerHTML = `
+    <div class="imam-modal-num">${imam.num}</div>
+    <div class="imam-modal-name">${imam.name}</div>
+    <div class="imam-modal-arabic">${imam.arabic}</div>
+    <div class="imam-modal-epithet">${imam.epithet}</div>
+    <div class="imam-modal-dates">📅 ${imam.dates}${imam.shrine ? `  ·  🕌 Shrine: ${imam.shrine}` : ''}</div>
+    <div class="imam-modal-divider"></div>
+    <div class="imam-modal-body">${imam.bio}</div>
+    <div class="imam-modal-section">Legacy & Significance</div>
+    <div class="imam-modal-legacy">${imam.legacy}</div>`;
+  document.getElementById('imam-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImamModal(e) {
+  if (e && e.target !== document.getElementById('imam-modal')) return;
+  document.getElementById('imam-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleEntry(el) {
+  el.classList.toggle('open');
+}
+
+function eraNavScroll(dir) {
+  const scroller = document.getElementById('era-nav-scroll');
+  if (scroller) scroller.scrollBy({ left: dir * 200, behavior: 'smooth' });
+}
+
+function updateEraNavArrows() {
+  const scroller = document.getElementById('era-nav-scroll');
+  const left = document.getElementById('era-arrow-left');
+  const right = document.getElementById('era-arrow-right');
+  if (!scroller || !left || !right) return;
+  const canLeft = scroller.scrollLeft > 4;
+  const canRight = scroller.scrollLeft < scroller.scrollWidth - scroller.clientWidth - 4;
+  left.classList.toggle('visible', canLeft);
+  right.classList.toggle('visible', canRight);
+}
+
+function scrollActiveEraBtn() {
+  const scroller = document.getElementById('era-nav-scroll');
+  const active = document.querySelector('.era-btn.active');
+  if (!scroller || !active) return;
+  const btnLeft = active.offsetLeft;
+  const btnWidth = active.offsetWidth;
+  const scrollerWidth = scroller.clientWidth;
+  const target = btnLeft - (scrollerWidth / 2) + (btnWidth / 2);
+  scroller.scrollTo({ left: target, behavior: 'smooth' });
+}
+
+function scrollToEra(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const wrapper = document.querySelector('.sticky-nav-wrapper');
+    const navHeight = wrapper ? wrapper.offsetHeight : 97;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
+// Add expand hints to entries that have expandable content
+document.querySelectorAll('.entry').forEach(el => {
+  if (el.querySelector('.entry-expand')) {
+    const hint = document.createElement('div');
+    hint.className = 'entry-expand-hint';
+    hint.textContent = 'More';
+    el.querySelector('.entry-body').appendChild(hint);
+  }
+});
+
+
+const eras = ['era-1','era-2','era-3','era-4','era-5','era-6','era-7','era-8'];
+const btns = document.querySelectorAll('.era-btn');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = eras.indexOf(entry.target.id);
+      btns.forEach(b => b.classList.remove('active'));
+      if (idx >= 0) {
+        btns[idx].classList.add('active');
+        scrollActiveEraBtn();
+        updateEraNavArrows();
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -65% 0px' });
+
+eras.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+// Fade-in entries as they scroll into view
+const entryObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateX(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.entry').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateX(-8px)';
+  el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+  entryObserver.observe(el);
+});
+
+// Era nav arrows — init and keep updated
+const eraScroller = document.getElementById('era-nav-scroll');
+if (eraScroller) {
+  eraScroller.addEventListener('scroll', updateEraNavArrows, { passive: true });
+  // Use ResizeObserver so arrows update if viewport changes
+  new ResizeObserver(updateEraNavArrows).observe(eraScroller);
+  updateEraNavArrows();
+}
+</script>
+</body>
+</html>
