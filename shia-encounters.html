@@ -109,7 +109,7 @@
   }
   .enc-btn {
     background: none; border: none; cursor: pointer;
-    padding: 11px 16px;
+    padding: 14px 20px;
     font-family: 'Crimson Pro', serif;
     font-size: 12.5px;
     letter-spacing: 0.12em;
@@ -211,83 +211,98 @@
   .rel-dot { width: 7px; height: 7px; border-radius: 50%; }
 
   /* ── SECTION ── */
+  /* ── ENCOUNTER ORIENTATION ── */
+  .enc-orientation {
+    max-width: 780px; margin: 0 auto;
+    padding: 36px 28px 32px;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    text-align: center;
+  }
+  .enc-orientation p {
+    font-size: 17px; line-height: 1.72;
+    color: rgba(245,239,224,0.5);
+    font-style: italic;
+  }
+
   .encounter-section {
-    border-bottom: 1px solid var(--border);
     scroll-margin-top: 100px;
   }
+
+  /* Collapsible header */
   .enc-header {
     max-width: 1100px; margin: 0 auto;
-    padding: 56px 28px 36px;
+    padding: 36px 28px 28px;
+    border-top: 1px solid rgba(201,168,76,0.08);
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 16px 40px;
-    align-items: start;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: padding 0.3s ease;
   }
-  .enc-title-block {}
-  .enc-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 11px; letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 10px;
-  }
-  .enc-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 3.5vw, 36px);
-    font-weight: 600; line-height: 1.2;
-    color: rgba(245,239,224,0.95);
-    margin-bottom: 8px;
-  }
-  .enc-title em { color: var(--gold-light); font-style: italic; }
-  .enc-subtitle {
-    font-size: 15px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--text-faint);
-  }
-  .enc-rel-badge {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 7px 16px; border-radius: 3px;
-    border: 1px solid; font-size: 11.5px;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    font-family: 'Crimson Pro', serif;
-    white-space: nowrap; margin-top: 4px;
-  }
+  .encounter-section:first-of-type .enc-header { border-top: none; }
+  .enc-header:hover .enc-title { color: rgba(245,239,224,1); }
+  .enc-header:hover { background: rgba(255,255,255,0.012); }
 
-  /* Cards grid */
+  .enc-toggle-icon {
+    width: 28px; height: 28px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-dim); font-size: 16px; line-height: 1;
+    transition: transform 0.3s ease, border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .enc-header:hover .enc-toggle-icon { border-color: rgba(201,168,76,0.5); }
+  .encounter-section.open .enc-toggle-icon { transform: rotate(45deg); }
+
+  /* Body collapse/expand */
   .enc-body {
     max-width: 1100px; margin: 0 auto;
     padding: 0 28px 56px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    overflow: hidden;
+    max-height: 0;
+    padding-top: 0; padding-bottom: 0;
+    opacity: 0;
+    transition: max-height 0.45s ease, opacity 0.3s ease, padding 0.3s ease;
   }
+  .encounter-section.open .enc-body {
+    max-height: 8000px;
+    padding-bottom: 56px;
+    opacity: 1;
+  }
+
   @media(max-width:720px) {
     .enc-body { grid-template-columns: 1fr; }
-    .enc-header { grid-template-columns: 1fr; }
-    .enc-rel-badge { margin-top: 0; }
+    .enc-header { grid-template-columns: 1fr auto; padding: 24px 20px 20px; }
+    .enc-rel-badge { display: none; }
   }
 
   .enc-intro {
     grid-column: 1 / -1;
     font-size: 18px; line-height: 1.72;
     color: rgba(245,239,224,0.78);
-    padding-bottom: 4px;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    margin-bottom: 6px;
+    border-bottom: 2px solid var(--enc-color, rgba(201,168,76,0.15));
+    margin-bottom: 16px;
     padding-bottom: 20px;
   }
   .enc-intro strong { color: rgba(245,239,224,0.95); }
 
   .enc-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 24px 26px;
+    background: rgba(255,255,255,0.018);
+    border: 1px solid rgba(201,168,76,0.08);
+    border-left: 3px solid var(--enc-color, rgba(201,168,76,0.3));
+    border-radius: 0 2px 2px 0;
+    padding: 20px 22px;
     transition: border-color 0.25s, background 0.25s;
     cursor: default;
   }
   .enc-card:hover {
-    border-color: var(--border-hover);
-    background: rgba(201,168,76,0.04);
+    background: rgba(255,255,255,0.03);
   }
   .enc-card-label {
     font-size: 11px; letter-spacing: 0.25em;
@@ -295,9 +310,9 @@
     margin-bottom: 10px;
     display: flex; align-items: center; gap: 8px;
   }
-  .enc-card-label::after {
-    content: ''; flex: 1;
-    height: 1px; background: rgba(201,168,76,0.12);
+  .enc-card-label {
+    padding-bottom: 6px;
+    margin-bottom: 8px;
   }
   .enc-card h3 {
     font-family: 'Playfair Display', serif;
@@ -332,7 +347,7 @@
     margin-bottom: 2px;
   }
   .figure-role {
-    font-size: 12px; letter-spacing: 0.08em;
+    font-size: 13px; letter-spacing: 0.08em;
     color: var(--text-faint); line-height: 1.3;
   }
 
@@ -390,6 +405,18 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── CROSS-PAGE LINKS ── */
+  .cross-link {
+    color: var(--gold-dim);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.2s;
+  }
+  .cross-link:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
 </style>
 </head>
 <body>
@@ -402,7 +429,7 @@
     <a href="shia-academia.html" class="topbar-btn">II · Academic Map</a>
     <button class="topbar-btn active" onclick="void(0)">III · Encounters</button>
     <a href="shia-doctrine.html" class="topbar-btn">IV · Doctrine</a>
-    <a href="shia-doctrine.html" class="topbar-btn">IV · Doctrine</a>
+    <a href="about.html" class="topbar-btn">About</a>
   </div>
 </nav>
 
@@ -436,9 +463,15 @@
 </div>
 
 
+
+<div class="enc-orientation">
+  <p>Eleven encounters, organized by the nature of the relationship — from the founding schism that forged Shia identity, through the philosophical and mystical traditions that enriched it, to the modern collisions that continue to define it.</p>
+</div>
+
+
 <!-- ═══════════════════════════════════ I · SUNNI ISLAM ══ -->
-<section class="encounter-section" id="enc-sunni">
-  <div class="enc-header">
+<section class="encounter-section open" id="enc-sunni" style="--enc-color:#c97a4c">
+  <div class="enc-header" onclick="toggleEncounter('enc-sunni')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter I</div>
       <h2 class="enc-title">Sunni Islam — <em>The Great Schism</em></h2>
@@ -447,14 +480,16 @@
     <span class="enc-rel-badge" style="border-color:rgba(201,122,76,0.4);color:#e8a070;">
       <span class="rel-dot" style="background:var(--rivalry)"></span>Rivalry & Shared Roots
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
-    <p class="enc-intro">Shia Islam was not born in opposition to a fully formed Sunni orthodoxy — that orthodoxy crystallized alongside and partly in response to Shia challenges. The split over succession to the Prophet ﷺ at Saqifah generated a centuries-long theological, legal, and political argument that neither tradition could resolve. Yet the two shared the Quran, the Prophet, the five pillars, and much of the hadith corpus — which made their disagreements sharper, not softer. <strong>Shia theology was forged in this crucible</strong>: every major doctrine — Imamate, ʿisma, taqiyya, the status of the Companions — was articulated as a counter-position to Sunni consensus.</p>
+    <p class="enc-intro">Shia Islam was not born in opposition to a fully formed Sunni orthodoxy — that orthodoxy crystallized alongside and partly in response to Shia challenges. The split over succession to the Prophet ﷺ at Saqifah generated a centuries-long theological, legal, and political argument that neither tradition could resolve. Yet the two shared the Quran, the Prophet, the five pillars, and much of the hadith corpus — which made their disagreements sharper, not softer. <strong>Shia theology was forged in this crucible</strong>: every major doctrine — Imamate, ʿisma, taqiyya, the status of the Companions — was articulated as a counter-position to Sunni consensus. The doctrine of <a href="shia-doctrine.html#doc-contested" class="cross-link">taqiyya</a> (dissimulation under persecution) emerged directly from this encounter.</p>
 
     <div class="enc-card">
       <div class="enc-card-label">The Core Disagreement</div>
       <h3>Succession & the Nature of Authority</h3>
-      <p>The question was not merely political. For Shia, <strong>Imamate is a theological necessity</strong> — God would not leave the community without an infallible guide after the Prophet. For Sunni thought, the community (or its scholars, or its rulers) could collectively determine succession. This divergence in the theory of religious authority ramifies into every domain of law, theology, and practice.</p>
+      <p>The question was not merely political. For Shia, <strong><a href="shia-doctrine.html#doc-imamate" class="cross-link">Imamate</a> is a theological necessity</strong> — God would not leave the community without an infallible guide after the Prophet. For Sunni thought, the community (or its scholars, or its rulers) could collectively determine succession. This divergence in the theory of religious authority ramifies into every domain of law, theology, and practice.</p>
     </div>
 
     <div class="enc-card">
@@ -466,13 +501,13 @@
     <div class="enc-card">
       <div class="enc-card-label">Legal Rivalry</div>
       <h3>Jaʿfari Fiqh vs. the Four Sunni Schools</h3>
-      <p>Imam al-Sadiq's jurisprudence — the Jaʿfari madhhab — emerged in direct dialogue with Abu Hanifa and Malik ibn Anas, both of whom reportedly studied under him. Shia law differs from Sunni schools on dozens of issues: inheritance (daughters' shares), divorce, mut'a marriage, the Friday prayer during Occultation, and the authority of the living jurist. Al-Azhar's 1959 recognition of Jaʿfari fiqh as a <strong>fifth valid school</strong> marked a modern rapprochement.</p>
+      <p><a href="shia-timeline.html#imam-6" class="cross-link">Imam al-Sadiq's</a> jurisprudence — the Jaʿfari madhhab — emerged in direct dialogue with Abu Hanifa and Malik ibn Anas, both of whom reportedly studied under him. Shia law differs from Sunni schools on dozens of issues: inheritance (daughters' shares), divorce, mut'a marriage, the Friday prayer during Occultation, and the authority of the living jurist. Al-Azhar's 1959 recognition of Jaʿfari fiqh as a <strong>fifth valid school</strong> marked a modern rapprochement.</p>
     </div>
 
     <div class="enc-card">
       <div class="enc-card-label">Theological Polemics</div>
       <h3>From Ibn Taymiyya to the Modern Day</h3>
-      <p>The Sunni scholar Ibn Taymiyya (d. 1328) wrote voluminously against Shia doctrine, particularly targeting shrine veneration, the status of ʿAli, and taqiyya. His legacy shaped Wahhabi and Salafi hostility toward Shia Islam from the 18th century onward. Allama al-Hilli's <em>Minhāj al-Karāma</em> — written in direct response — exemplifies the sustained medieval polemic. This debate persists in contemporary Salafi-Shia tensions across the Muslim world.</p>
+      <p>The Sunni scholar Ibn Taymiyya (d. 1328) wrote voluminously against Shia doctrine, particularly targeting shrine veneration, the status of ʿAli, and taqiyya. His legacy shaped Wahhabi and Salafi hostility toward Shia Islam from the 18th century onward. <a href="shia-academia.html#scholar-hilli" class="cross-link">Allama al-Ḥillī's</a> <em>Minhāj al-Karāma</em> — written in direct response — exemplifies the sustained medieval polemic. This debate persists in contemporary Salafi-Shia tensions across the Muslim world.</p>
     </div>
 
     <div class="enc-card">
@@ -488,19 +523,19 @@
     </div>
 
     <div class="figures-list">
-      <div class="figure-chip"><span class="figure-name">Imam al-Sadiq</span><span class="figure-role">Teacher of Abu Hanifa & Malik</span></div>
-      <div class="figure-chip"><span class="figure-name">Allama al-Hilli</span><span class="figure-role">Converted Ilkhanid court to Shiism; debated Sunni scholars</span></div>
+      <div class="figure-chip"><span class="figure-name" onclick="showScholarPopup('')" style="cursor:pointer">Imam al-Sadiq</span><span class="figure-role">Teacher of Abu Hanifa & Malik</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-hilli" class="cross-link"><span class="figure-name">Allama al-Ḥillī</span></a><span class="figure-role">Converted Ilkhanid court to Shiism; debated Sunni scholars</span></div>
       <div class="figure-chip"><span class="figure-name">Ibn Taymiyya</span><span class="figure-role">Sunni polemicist; shaped anti-Shia Salafism</span></div>
       <div class="figure-chip"><span class="figure-name">Mirza Na'ini</span><span class="figure-role">Shia-Sunni convergence on constitutional governance</span></div>
       <div class="figure-chip"><span class="figure-name">Borujerdi & Shaltut</span><span class="figure-role">20th-c. taqrīb leadership</span></div>
-      <div class="figure-chip"><span class="figure-name">Muhammad Baqir al-Sadr</span><span class="figure-role">Engaged Sunni political Islam directly</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-sadr" class="cross-link"><span class="figure-name">Muḥammad Bāqir al-Ṣadr</span></a><span class="figure-role">Engaged Sunni political Islam directly</span></div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════ II · ISMAILIS & ZAYDIS ══ -->
-<section class="encounter-section" id="enc-ismaili">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-ismaili" style="--enc-color:#7ac97a">
+  <div class="enc-header" onclick="toggleEncounter('enc-ismaili')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter II</div>
       <h2 class="enc-title">Ismailis, Zaydis, <em>& Other Shia</em></h2>
@@ -509,6 +544,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(122,201,122,0.4);color:#90d890;">
       <span class="rel-dot" style="background:var(--parallel)"></span>Parallel Development
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">Twelver Shiism is not the only Shia tradition — it is the largest and most institutionalized branch of a much wider family. The deaths of each Imam generated succession disputes and doctrinal splits. Zaydis, Ismailis (Seveners), and various smaller groups represent alternative readings of who the legitimate Imam was — and those different answers produced strikingly different theologies, politics, and philosophies. <strong>Understanding Twelver Shia requires knowing what it rejected</strong> from within its own family.</p>
@@ -522,7 +559,7 @@
     <div class="enc-card">
       <div class="enc-card-label">The Ismaili Branch</div>
       <h3>The Esoteric Imamate</h3>
-      <p>Ismailis follow Ismail ibn Ja'far (d. 755) — the son Imam al-Sadiq reportedly designated before he predeceased his father. The Ismaili tradition developed a radical philosophical esotericism: every external religious practice (zāhir) has a hidden meaning (bātin), and the Imam is the interpreter of that inner truth. The <strong>Fatimid Caliphate (909–1171)</strong> was an Ismaili state stretching from North Africa to Egypt to Syria. Their philosophical tradition — Neoplatonized, cosmologically rich — diverges sharply from Twelver rationalism.</p>
+      <p>Ismailis follow Ismail ibn Ja'far (d. 755) — the son <a href="shia-timeline.html#imam-6" class="cross-link">Imam al-Sadiq</a> reportedly designated before he predeceased his father. The Ismaili tradition developed a radical philosophical esotericism: every external religious practice (zāhir) has a hidden meaning (bātin), and the Imam is the interpreter of that inner truth. The <strong>Fatimid Caliphate (909–1171)</strong> was an Ismaili state stretching from North Africa to Egypt to Syria. Their philosophical tradition — Neoplatonized, cosmologically rich — diverges sharply from Twelver rationalism.</p>
     </div>
 
     <div class="enc-card">
@@ -534,7 +571,7 @@
     <div class="enc-card">
       <div class="enc-card-label">Philosophical Exchange</div>
       <h3>What Twelvers Absorbed from Ismaili Thought</h3>
-      <p>Despite rejection, Ismaili philosophy — particularly the <strong>Neoplatonism of al-Farabi and Ibn Sina</strong>, who were influenced by Ismaili intellectual culture — deeply shaped Twelver philosophical tradition through Mulla Sadra and Allama Tabataba'i. The concept of the walī as cosmic interpreter of reality, the primacy of esoteric meaning, the spiritual anthropology of Ibn ʿArabi — all have Ismaili resonances absorbed and re-theologized within the Twelver tradition.</p>
+      <p>Despite rejection, Ismaili philosophy — particularly the <strong>Neoplatonism of al-Farabi and Ibn Sina</strong>, who were influenced by Ismaili intellectual culture — deeply shaped Twelver philosophical tradition through <a href="shia-academia.html#scholar-mulla-sadra" class="cross-link">Mulla Ṣadrā</a> and <a href="shia-academia.html#scholar-tabatabai" class="cross-link">Allama Ṭabāṭabāʾī</a>. The concept of the walī as cosmic interpreter of reality, the primacy of esoteric meaning, the spiritual anthropology of Ibn ʿArabi — all have Ismaili resonances absorbed and re-theologized within the Twelver tradition.</p>
     </div>
 
     <div class="enc-card">
@@ -552,8 +589,8 @@
 </section>
 
 <!-- ═══════════════════════════════════ III · SUFISM ══ -->
-<section class="encounter-section" id="enc-sufism">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-sufism" style="--enc-color:#7ab8c9">
+  <div class="enc-header" onclick="toggleEncounter('enc-sufism')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter III</div>
       <h2 class="enc-title">Sufism & <em>ʿIrfān</em></h2>
@@ -562,6 +599,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(122,184,201,0.4);color:#8ecde0;">
       <span class="rel-dot" style="background:var(--synthesis)"></span>Deep Synthesis
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">No outside tradition shaped Twelver Shia intellectual culture more profoundly — or more ambivalently — than Sufism. The Sufi tradition's roots in the spiritual authority of ʿAli ibn Abi Talib, its doctrines of the <em>walī</em> and <em>bāṭin</em>, and its metaphysics of divine love all found natural resonance in Shia piety. Yet the relationship was also fraught: Sufi orders operated outside the ulama's institutional control, their metaphysics (especially Ibn ʿArabi's <em>waḥdat al-wujūd</em>) alarmed the literalists, and the major Shia hadith scholar Majlisi launched an aggressive campaign against them. <strong>ʿIrfān is what happened when Sufism was fully absorbed into Shia theology</strong> — domesticated, systematized, and made orthodox.</p>
@@ -569,13 +608,13 @@
     <div class="enc-card">
       <div class="enc-card-label">The Shia Sufi Genealogy</div>
       <h3>ʿAli as the Spiritual Source</h3>
-      <p>Most major Sufi silsilas (chains of transmission) trace their spiritual lineage through <strong>ʿAli ibn Abi Talib</strong>. The Naqshbandi order — largest in the Sunni world — connects through Abu Bakr, not ʿAli, making it uniquely non-Alid. For Shia, this genealogy is not incidental: it means the Imams are the original masters of the esoteric dimension of Islam. Imam al-Sadiq and Imam al-Ridha appear prominently in Sufi chains across traditions.</p>
+      <p>Most major Sufi silsilas (chains of transmission) trace their spiritual lineage through <strong><a href="shia-timeline.html#imam-1" class="cross-link">ʿAli ibn Abi Talib</a></strong>. The Naqshbandi order — largest in the Sunni world — connects through Abu Bakr, not ʿAli, making it uniquely non-Alid. For Shia, this genealogy is not incidental: it means the Imams are the original masters of the esoteric dimension of Islam. <a href="shia-timeline.html#imam-6" class="cross-link">Imam al-Sadiq</a> and <a href="shia-timeline.html#imam-8" class="cross-link">Imam al-Ridha</a> appear prominently in Sufi chains across traditions.</p>
     </div>
 
     <div class="enc-card">
       <div class="enc-card-label">The Central Synthesis</div>
       <h3>Ibn ʿArabi & the Twelver Tradition</h3>
-      <p>Muḥyī al-Dīn Ibn ʿArabi (d. 1240) was not Shia — he was Andalusian and Sunni. But his doctrine of <strong>waḥdat al-wujūd</strong> (the unity of being) and his concept of the Perfect Man (<em>al-insān al-kāmil</em>) found their greatest elaborators in the Shia philosophical tradition: Mulla Sadra domesticated them within Transcendent Wisdom; Allama Tabataba'i defended their compatibility with Shia doctrine; contemporary Shia ʿārifūn treat Ibn ʿArabi as foundational. His veneration of ʿAli and his eschatological role for the Mahdi made assimilation natural.</p>
+      <p>Muḥyī al-Dīn Ibn ʿArabi (d. 1240) was not Shia — he was Andalusian and Sunni. But his doctrine of <strong>waḥdat al-wujūd</strong> (the unity of being) and his concept of the Perfect Man (<em>al-insān al-kāmil</em>) found their greatest elaborators in the Shia philosophical tradition: <a href="shia-academia.html#scholar-mulla-sadra" class="cross-link">Mulla Ṣadrā</a> domesticated them within Transcendent Wisdom; <a href="shia-academia.html#scholar-tabatabai" class="cross-link">Allama Ṭabāṭabāʾī</a> defended their compatibility with Shia doctrine; contemporary Shia ʿārifūn treat Ibn ʿArabi as foundational. His veneration of ʿAli and his eschatological role for the Mahdi made assimilation natural.</p>
     </div>
 
     <div class="enc-card">
@@ -587,14 +626,14 @@
     <div class="enc-card">
       <div class="enc-card-label">The Surviving Synthesis</div>
       <h3>ʿIrfān as Institutionalized Mysticism</h3>
-      <p>What survived Majlisi's campaign was a domesticated, hawza-compatible mysticism: <em>ʿirfān naẓarī</em> (theoretical gnosis — systematic Sufi metaphysics taught as philosophy) and <em>ʿirfān ʿamalī</em> (practical gnosis — the spiritual path, but within the framework of sharia and under scholarly supervision). <strong>Ayatullah Khomeini</strong> was a notable practitioner of this tradition — his early writings on Mulla Sadra and Ibn ʿArabi reveal a profound mystical dimension beneath the political theorist. Figures like Jawadi Amoli and Hasan-Zadeh Amoli continue this tradition today.</p>
+      <p>What survived Majlisi's campaign was a domesticated, hawza-compatible mysticism: <a href="shia-doctrine.html#doc-irfan" class="cross-link"><em>ʿirfān naẓarī</em></a> (theoretical gnosis — systematic Sufi metaphysics taught as philosophy) and <em>ʿirfān ʿamalī</em> (practical gnosis — the spiritual path, but within the framework of sharia and under scholarly supervision). <strong><a href="shia-academia.html#scholar-khomeini" class="cross-link">Ayatullah Khomeini</a></strong> was a notable practitioner of this tradition — his early writings on Mulla Sadra and Ibn ʿArabi reveal a profound mystical dimension beneath the political theorist. Figures like Jawadi Amoli and Hasan-Zadeh Amoli continue this tradition today.</p>
     </div>
 
     <div class="figures-list">
       <div class="figure-chip"><span class="figure-name">Ibn ʿArabi</span><span class="figure-role">Andalusian Sufi master; waḥdat al-wujūd; absorbed into Shia ʿirfān</span></div>
-      <div class="figure-chip"><span class="figure-name">Mulla Sadra</span><span class="figure-role">Synthesized Sufi metaphysics with Shia theology</span></div>
-      <div class="figure-chip"><span class="figure-name">Majlisi</span><span class="figure-role">Anti-Sufi campaign; defined institutional limits</span></div>
-      <div class="figure-chip"><span class="figure-name">Khomeini</span><span class="figure-role">Practitioner of ʿirfān within the hawza tradition</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-mulla-sadra" class="cross-link"><span class="figure-name">Mulla Ṣadrā</span></a><span class="figure-role">Synthesized Sufi metaphysics with Shia theology</span></div>
+      <div class="figure-chip" onclick="showScholarPopup('majlisi')" style="cursor:pointer"><span class="figure-name">Majlisi</span><span class="figure-role">Anti-Sufi campaign; defined institutional limits</span></div>
+      <div class="figure-chip" onclick="showScholarPopup('khomeini')" style="cursor:pointer"><span class="figure-name">Khomeini</span><span class="figure-role">Practitioner of ʿirfān within the hawza tradition</span></div>
       <div class="figure-chip"><span class="figure-name">Seyyed Hossein Nasr</span><span class="figure-role">Presented Shia ʿirfān to Western audiences</span></div>
       <div class="figure-chip"><span class="figure-name">Rumi</span><span class="figure-role">Persian Sufi poet; venerates Imam ʿAli; read widely by Shia</span></div>
     </div>
@@ -602,8 +641,8 @@
 </section>
 
 <!-- ═══════════════════════════════ IV · GREEK PHILOSOPHY ══ -->
-<section class="encounter-section" id="enc-greek">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-greek" style="--enc-color:#9a7ac9">
+  <div class="enc-header" onclick="toggleEncounter('enc-greek')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter IV</div>
       <h2 class="enc-title">Greek Philosophy <em>& Logic</em></h2>
@@ -612,6 +651,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(154,122,201,0.4);color:#c0a0e8;">
       <span class="rel-dot" style="background:var(--source)"></span>Source & Transformation
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">When the Abbasid translation movement (8th–10th c.) rendered Aristotle, Plato, Plotinus, and Galen into Arabic, it set in motion an intellectual transformation that Shia theology would feel more deeply than Sunni theology. While mainstream Sunni scholarship (following al-Ghazali's critique in the 11th century) increasingly sidelined Aristotelian philosophy, <strong>the Shia philosophical tradition preserved and extended it</strong> — integrating Neoplatonic ontology, Peripatetic logic, and Stoic ethics into a distinctively Islamic synthesis that culminated in the School of Isfahan.</p>
@@ -631,7 +672,7 @@
     <div class="enc-card">
       <div class="enc-card-label">The Sunni Critique</div>
       <h3>Al-Ghazali's Incoherence & Its Shia Rejection</h3>
-      <p>Al-Ghazali's <em>Tahāfut al-Falāsifa</em> (The Incoherence of the Philosophers, 1095) identified <strong>twenty positions where philosophy contradicts Islam</strong> — including the eternity of the world, God's knowledge of particulars, and bodily resurrection. His attack effectively ended the Peripatetic tradition's influence in mainstream Sunni thought. Shia scholars largely rejected his critique: Nasir al-Din al-Tusi, Allama al-Hilli, and ultimately Mulla Sadra all engaged al-Ghazali's arguments and defended the philosophical tradition — though on new, non-Peripatetic grounds.</p>
+      <p>Al-Ghazali's <em>Tahāfut al-Falāsifa</em> (The Incoherence of the Philosophers, 1095) identified <strong>twenty positions where philosophy contradicts Islam</strong> — including the eternity of the world, God's knowledge of particulars, and bodily resurrection. His attack effectively ended the Peripatetic tradition's influence in mainstream Sunni thought. Shia scholars largely rejected his critique: <a href="shia-academia.html#scholar-tusi-nasir" class="cross-link">Nasir al-Din al-Ṭūsī</a>, <a href="shia-academia.html#scholar-hilli" class="cross-link">Allama al-Ḥillī</a>, and ultimately <a href="shia-academia.html#scholar-mulla-sadra" class="cross-link">Mulla Ṣadrā</a> all engaged al-Ghazālī's arguments and defended the philosophical tradition — though on new, non-Peripatetic grounds.</p>
     </div>
 
     <div class="enc-card">
@@ -649,8 +690,8 @@
 </section>
 
 <!-- ═════════════════════════════════ V · CHRISTIANITY ══ -->
-<section class="encounter-section" id="enc-christianity">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-christianity" style="--enc-color:#9a7ac9">
+  <div class="enc-header" onclick="toggleEncounter('enc-christianity')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter V</div>
       <h2 class="enc-title">Christianity — <em>Transmission & Theology</em></h2>
@@ -659,6 +700,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(154,122,201,0.4);color:#c0a0e8;">
       <span class="rel-dot" style="background:var(--source)"></span>Transmission & Parallel
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">Christianity shaped Shia Islam at multiple levels: as the vehicle through which Greek philosophy reached Islamic civilization, as a theological parallel whose doctrines of intercession, martyrdom, and redemptive suffering resonate with Shia piety, and as a co-inhabitant of the same geographic and political space — particularly in Lebanon, Iraq, and Iran. <strong>The structural parallels between the Imami theology of the Ahlul Bayt and Catholic theology of the saints and intercession are striking</strong> — and were noticed by both Christian and Muslim thinkers.</p>
@@ -690,8 +733,8 @@
 </section>
 
 <!-- ═══════════════════════════════════ VI · JUDAISM ══ -->
-<section class="encounter-section" id="enc-judaism">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-judaism" style="--enc-color:#7ac97a">
+  <div class="enc-header" onclick="toggleEncounter('enc-judaism')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter VI</div>
       <h2 class="enc-title">Judaism — <em>Scripture, Law & Messianism</em></h2>
@@ -700,6 +743,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(122,201,122,0.4);color:#90d890;">
       <span class="rel-dot" style="background:var(--parallel)"></span>Parallel Development
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">The parallels between Shia Islam and Rabbinic Judaism are structurally remarkable — and largely independent. Both are minority traditions within a broader sibling religion; both developed an elaborate tradition of textual commentary after the loss of direct prophetic authority; both center on messianic expectation; and both possess a sophisticated jurisprudential literature generated by communities navigating diaspora and marginality. <strong>These parallels were recognized by Islamic scholars themselves</strong>, who drew on Jewish sources (Isrāʾīliyyāt) and engaged Jewish interlocutors in the cosmopolitan world of Abbasid Baghdad.</p>
@@ -731,8 +776,8 @@
 </section>
 
 <!-- ═══════════════════════════ VII · PERSIAN & ZOROASTRIAN ══ -->
-<section class="encounter-section" id="enc-persian">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-persian" style="--enc-color:#c9c44c">
+  <div class="enc-header" onclick="toggleEncounter('enc-persian')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter VII</div>
       <h2 class="enc-title">Persian Culture <em>& Zoroastrianism</em></h2>
@@ -741,6 +786,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(201,196,76,0.4);color:#e0da80;">
       <span class="rel-dot" style="background:var(--substrate)"></span>Cultural Substrate
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">The Islamization of Iran was not a cultural erasure — it was a fusion. Persian civilization, with its imperial administrative traditions, its literary culture, its Zoroastrian cosmology and ethics, and its concept of sacred kingship, was absorbed into and transformed by Islam — and transformed Islam in return. <strong>Shia Islam took root in Iran more completely than anywhere else</strong>, and its deepest characteristics — the emphasis on suffering and justice, the valorization of martyrdom, the richness of its philosophical tradition, the centrality of the Imam as cosmic mediator — were shaped by the pre-Islamic Persian substrate that received it.</p>
@@ -772,8 +819,8 @@
 </section>
 
 <!-- ════════════════════════════════ VIII · INDIAN WORLD ══ -->
-<section class="encounter-section" id="enc-india">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-india" style="--enc-color:#c9c44c">
+  <div class="enc-header" onclick="toggleEncounter('enc-india')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter VIII</div>
       <h2 class="enc-title">The <em>Indian World</em></h2>
@@ -782,6 +829,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(201,196,76,0.4);color:#e0da80;">
       <span class="rel-dot" style="background:var(--substrate)"></span>Cultural Transplant
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">The Indian subcontinent received Shia Islam early and developed one of its most distinct regional expressions. From the Fatimid-era Ismaili missionaries who established communities in Gujarat and Sindh, to the consistently Shia Qutb Shahi sultanate of Golconda and the intermittently Shia Adil Shahis of Bijapur in the Deccan, to the Shia-aligned Nawabs of Awadh who made Lucknow a center of Shia art and scholarship, <strong>South Asian Shia culture became something genuinely new</strong> — blending Persianate aesthetics, Indian vernacular traditions, and Shia theology into the world's second-largest Shia community.</p>
@@ -813,8 +862,8 @@
 </section>
 
 <!-- ════════════════════════════════ IX · ORIENTALISM ══ -->
-<section class="encounter-section" id="enc-orientalism">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-orientalism" style="--enc-color:#c94c4c">
+  <div class="enc-header" onclick="toggleEncounter('enc-orientalism')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter IX</div>
       <h2 class="enc-title">Orientalism <em>& the Colonial Gaze</em></h2>
@@ -823,6 +872,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(201,76,76,0.4);color:#e09090;">
       <span class="rel-dot" style="background:var(--critique)"></span>Critique & Resistance
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">From the 18th century onward, European scholars, colonial administrators, and missionaries constructed an image of Shia Islam that shaped both Western policy and — through the Shia encounter with modernity — the tradition's own self-understanding. <strong>Edward Said's <em>Orientalism</em> (1978) gave a name and a theory to this problem</strong>, but Shia scholars had been responding to European misreadings long before Said. The colonial encounter forced Shia thinkers into a defensive posture that both constrained and energized their tradition.</p>
@@ -830,7 +881,7 @@
     <div class="enc-card">
       <div class="enc-card-label">European Scholars on Shia Islam</div>
       <h3>From Curiousity to Condescension</h3>
-      <p>Early European Orientalists — Silvestre de Sacy, Edward Henry Palmer, Edward Browne — approached Shia texts with genuine philological curiosity but within frameworks that classified Shia Islam as irrational, emotional, or politically subversive. <strong>Edward Browne's Literary History of Persia</strong> (1902–1924) was the most sympathetic major Western treatment of Persian-Shia culture — but still framed through Romantic notions of Persian decadence. Later sociological approaches (Max Weber, H.A.R. Gibb) categorized Shia millenarianism as a pathology of political powerlessness.</p>
+      <p>Early European Orientalists — Silvestre de Sacy, Edward Henry Palmer, Edward Browne — approached Shia texts with genuine philological curiosity but within frameworks that classified Shia Islam as irrational, emotional, or politically subversive. The doctrine of the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Occultation</a> was particularly misunderstood. <strong>Edward Browne's Literary History of Persia</strong> (1902–1924) was the most sympathetic major Western treatment of Persian-Shia culture — but still framed through Romantic notions of Persian decadence. Later sociological approaches (Max Weber, H.A.R. Gibb) categorized Shia millenarianism as a pathology of political powerlessness.</p>
     </div>
 
     <div class="enc-card">
@@ -842,20 +893,20 @@
     <div class="enc-card">
       <div class="enc-card-label">Henry Corbin & Shia Philosophy</div>
       <h3>The Sympathetic Outsider</h3>
-      <p>The French philosopher <strong>Henry Corbin (1903–1978)</strong> represents an exceptional figure in the Western encounter with Shia Islam. His sustained engagement with the School of Isfahan — translating Suhrawardi, Mulla Sadra, and Shia philosophical texts — introduced this tradition to European philosophy. His concept of the <em>mundus imaginalis</em> (the imaginal world) drew directly from Shia cosmology. Allama Tabataba'i collaborated with Corbin in famous dialogues. Whatever its distortions — Corbin read Shia philosophy through a Gnostic-Jungian lens — this encounter opened a genuine intellectual exchange.</p>
+      <p>The French philosopher <strong>Henry Corbin (1903–1978)</strong> represents an exceptional figure in the Western encounter with Shia Islam. His sustained engagement with the School of Isfahan — translating Suhrawardi, <a href="shia-academia.html#scholar-mulla-sadra" class="cross-link">Mulla Ṣadrā</a>, and Shia philosophical texts — introduced this tradition to European philosophy. His concept of the <em>mundus imaginalis</em> (the imaginal world) drew directly from Shia cosmology. <a href="shia-academia.html#scholar-tabatabai" class="cross-link">Allama Ṭabāṭabāʾī</a> collaborated with Corbin in famous dialogues. Whatever its distortions — Corbin read Shia philosophy through a Gnostic-Jungian lens — this encounter opened a genuine intellectual exchange.</p>
     </div>
 
     <div class="enc-card">
       <div class="enc-card-label">The Shia Response</div>
       <h3>Falsafatuna, Iqtisaduna & the Counter-Discourse</h3>
-      <p>Muhammad Baqir al-Sadr's project — <em>Falsafatuna</em> (Our Philosophy) and <em>Iqtisaduna</em> (Our Economics) — was explicitly a response to the Western intellectual challenge. <strong>He engaged Marxism, positivism, and Western economics on their own terms</strong>, arguing that Islamic philosophy and economics offered superior solutions. This was not apologetics but genuine philosophical engagement. Similarly, Allama Tabataba'i's <em>Usul-e Falsafa</em>, with Mutahhari's commentary, was written to show that Islamic philosophy could answer the materialist challenge that colonialism's intellectual aftermath had posed to Iranian Muslim youth.</p>
+      <p><a href="shia-academia.html#scholar-sadr" class="cross-link">Muhammad Baqir al-Ṣadr's</a> project — <em>Falsafatuna</em> (Our Philosophy) and <em>Iqtisaduna</em> (Our Economics) — was explicitly a response to the Western intellectual challenge. <strong>He engaged Marxism, positivism, and Western economics on their own terms</strong>, arguing that Islamic philosophy and economics offered superior solutions. This was not apologetics but genuine philosophical engagement. Similarly, <a href="shia-academia.html#scholar-tabatabai" class="cross-link">Allama Ṭabāṭabāʾī's</a> <em>Uṣūl-e Falsafa</em>, with Mutahhari's commentary, was written to show that Islamic philosophy could answer the materialist challenge that colonialism's intellectual aftermath had posed to Iranian Muslim youth.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════ X · MARXISM & THE LEFT ══ -->
-<section class="encounter-section" id="enc-left">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-left" style="--enc-color:#7ab8c9">
+  <div class="enc-header" onclick="toggleEncounter('enc-left')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter X</div>
       <h2 class="enc-title">Marxism, Socialism <em>& the Left</em></h2>
@@ -864,6 +915,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(122,184,201,0.4);color:#8ecde0;">
       <span class="rel-dot" style="background:var(--synthesis)"></span>Contested Synthesis
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">In the 20th century, Marxism posed the most serious intellectual and political challenge Shia Islam had ever faced from a non-religious ideology. In Iran, Iraq, and Lebanon, Communist and socialist movements attracted exactly the young urban Shia who might otherwise have been the tradition's intellectual vanguard. The Shia response was not simply rejection: the encounter produced a creative and sometimes explosive synthesis — a <strong>theology of liberation, a social Islam, a revolutionary reading of Karbala</strong> — that permanently transformed both Shia political thought and the shape of the 1979 revolution.</p>
@@ -871,19 +924,19 @@
     <div class="enc-card">
       <div class="enc-card-label">Ali Shariati</div>
       <h3>The Marxist-Shia Revolutionary Synthesis</h3>
-      <p><strong>Ali Shariati (1933–1977)</strong> is the most important figure in this encounter. Educated in Paris under Louis Massignon and in contact with Frantz Fanon and Jean-Paul Sartre, he returned to Iran with a radical reinterpretation of Shia history: Husayn's stand at Karbala was a revolutionary act against class oppression; Imam ʿAli was the first anti-imperialist; Islam was the religion of the <em>mustazafin</em> (the oppressed). He stripped the clerical establishment of interpretive monopoly and gave Shia history a Marxist-inflected revolutionary grammar. Millions of young Iranians read him. Khomeini's revolution would not have had its mass base without Shariati's prior intellectual work.</p>
+      <p><strong>Ali Shariati (1933–1977)</strong> is the most important figure in this encounter. Educated in Paris under Louis Massignon and in contact with Frantz Fanon and Jean-Paul Sartre, he returned to Iran with a radical reinterpretation of Shia history: Husayn's stand at <a href="shia-doctrine.html#doc-karbala" class="cross-link">Karbala</a> was a revolutionary act against class oppression; Imam ʿAli was the first anti-imperialist; Islam was the religion of the <em>mustazafin</em> (the oppressed) — a reading that drew on the tradition's own doctrine of the <a href="shia-doctrine.html#doc-just-order" class="cross-link">just social order</a>. He stripped the clerical establishment of interpretive monopoly and gave Shia history a Marxist-inflected revolutionary grammar. Millions of young Iranians read him. Khomeini's revolution would not have had its mass base without Shariati's prior intellectual work.</p>
     </div>
 
     <div class="enc-card">
       <div class="enc-card-label">Muhammad Baqir al-Sadr</div>
       <h3>Islamic Economics Against Marx</h3>
-      <p>Al-Sadr's response to Marxism was philosophical rather than revolutionary-romantic. <em>Iqtisaduna</em> argues that neither capitalism nor Marxism correctly identifies the problem of economic justice — capitalism errs in absolute property rights, Marxism in abolishing them entirely. <strong>Islamic economics proposes a third path</strong>: private ownership within social constraints derived from sharia, with the state as trustee rather than owner. This was not mere apologetics — it was a rigorous engagement with Marx's critique of capital that produced genuine theoretical novelty. The Iraqi Da'wa party, which al-Sadr helped found, was partly an attempt to build the organizational alternative to the Communist party.</p>
+      <p><a href="shia-academia.html#scholar-sadr" class="cross-link">Al-Ṣadr's</a> response to Marxism was philosophical rather than revolutionary-romantic. <em>Iqtiṣādunā</em> argues that neither capitalism nor Marxism correctly identifies the problem of economic justice — capitalism errs in absolute property rights, Marxism in abolishing them entirely. <strong>Islamic economics proposes a third path</strong>: private ownership within social constraints derived from sharia, with the state as trustee rather than owner. This was not mere apologetics — it was a rigorous engagement with Marx's critique of capital that produced genuine theoretical novelty. The Iraqi Da'wa party, which al-Sadr helped found, was partly an attempt to build the organizational alternative to the Communist party.</p>
     </div>
 
     <div class="enc-card">
       <div class="enc-card-label">After the Revolution</div>
       <h3>The Islamic Republic vs. Its Left Allies</h3>
-      <p>The 1979 Iranian Revolution was made by a coalition that included Marxists, liberals, and Islamists. Within two years, <strong>Khomeini's Islamic Republic had executed most of its leftist allies</strong> — the Mojahedin-e Khalq (who blended Shariati's Islam with Marxist organization) and the Tudeh (Communist) party were suppressed with extreme violence. The revolutionary synthesis that Shariati imagined proved unstable: the clerical establishment that took power had no intention of sharing it with secular leftists. The Islamic Republic's subsequent economics were neither socialist nor Marxist — but the language of mustazafin and anti-imperialism remained its ideological vocabulary.</p>
+      <p>The 1979 Iranian Revolution was made by a coalition that included Marxists, liberals, and Islamists. Within two years, <strong><a href="shia-academia.html#scholar-khomeini" class="cross-link">Khomeini's</a> Islamic Republic had executed most of its leftist allies</strong> — the Mojahedin-e Khalq (who blended Shariati's Islam with Marxist organization) and the Tudeh (Communist) party were suppressed with extreme violence. The revolutionary synthesis that Shariati imagined proved unstable: the clerical establishment that took power had no intention of sharing it with secular leftists. The Islamic Republic's subsequent economics were neither socialist nor Marxist — but the language of mustazafin and anti-imperialism remained its ideological vocabulary.</p>
     </div>
 
     <div class="enc-card">
@@ -901,8 +954,8 @@
 </section>
 
 <!-- ════════════════════════════ XI · HUMANISM & MODERNITY ══ -->
-<section class="encounter-section" id="enc-humanism">
-  <div class="enc-header">
+<section class="encounter-section" id="enc-humanism" style="--enc-color:#7ab8c9">
+  <div class="enc-header" onclick="toggleEncounter('enc-humanism')" role="button" aria-expanded="false">
     <div class="enc-title-block">
       <div class="enc-number">Encounter XI</div>
       <h2 class="enc-title">Humanism, <em>Rights & Secular Modernity</em></h2>
@@ -911,6 +964,8 @@
     <span class="enc-rel-badge" style="border-color:rgba(122,184,201,0.4);color:#8ecde0;">
       <span class="rel-dot" style="background:var(--synthesis)"></span>Ongoing Negotiation
     </span>
+
+    <span class="enc-toggle-icon">+</span>
   </div>
   <div class="enc-body">
     <p class="enc-intro">The encounter with modern humanism — its assertion of universal human dignity, individual rights, democratic governance, gender equality, and the separation of religious and civil authority — is the defining intellectual challenge Shia Islam faces today. The responses range from wholesale rejection (the Islamic Republic's opposition to liberal democracy) to sophisticated reinterpretation (reformist thinkers who argue that Islamic sources contain their own human rights logic) to pragmatic accommodation. <strong>The question has not been resolved — it is the live argument of the tradition right now.</strong></p>
@@ -924,7 +979,7 @@
     <div class="enc-card">
       <div class="enc-card-label">Democratic Theory</div>
       <h3>Wilayat al-Faqih vs. Sovereignty of the People</h3>
-      <p>Khomeini's doctrine that the qualified jurist holds political sovereignty during Occultation is in direct structural tension with popular sovereignty. <strong>The Islamic Republic's constitution attempts a hybrid</strong>: elected institutions alongside appointed clerical oversight (the Guardian Council, the Supreme Leader). Critics from within the Shia tradition — most notably Grand Ayatullah Montazeri, who turned against the system he helped create — argued that this hybrid destroys both genuine democracy and genuine religious authority. The ongoing tension is unresolved and defines Iranian political life.</p>
+      <p><a href="shia-academia.html#scholar-khomeini" class="cross-link">Khomeini's</a> doctrine that the qualified jurist holds political sovereignty during <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Occultation</a> is in direct structural tension with popular sovereignty. <strong>The Islamic Republic's constitution attempts a hybrid</strong>: elected institutions alongside appointed clerical oversight (the Guardian Council, the Supreme Leader). Critics from within the Shia tradition — most notably Grand Ayatullah Montazeri, who turned against the system he helped create — argued that this hybrid destroys both genuine democracy and genuine religious authority. The ongoing tension is unresolved and defines Iranian political life.</p>
     </div>
 
     <div class="enc-card">
@@ -966,6 +1021,8 @@
     III · Encounters &amp; Influences
     &nbsp;·&nbsp;
     <a href="shia-doctrine.html">IV · Doctrine</a>
+    &nbsp;·&nbsp;
+    <a href="about.html">About</a>
   </p>
   <p>The Imamate &amp; Its Legacy</p>
   <p style="margin-top:12px; font-size:12px; opacity:0.4; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">This project presents Shia Islamic history from within the tradition's own framework while situating it in broader historical context. Theological claims are presented as the tradition understands them; historical claims aim for scholarly accuracy.</p>
@@ -994,13 +1051,48 @@ function scrollActiveEncBtn() {
   s.scrollTo({ left: a.offsetLeft - s.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
 }
 
+function toggleEncounter(id) {
+  const section = document.getElementById(id);
+  if (!section) return;
+  const isOpen = section.classList.contains('open');
+  section.classList.toggle('open');
+  const header = section.querySelector('.enc-header');
+  if (header) header.setAttribute('aria-expanded', !isOpen);
+}
+
 function scrollToEnc(id) {
   const el = document.getElementById(id);
-  if (el) {
+  if (!el) return;
+  if (!el.classList.contains('open')) {
+    el.classList.add('open');
+    const header = el.querySelector('.enc-header');
+    if (header) header.setAttribute('aria-expanded', 'true');
+  }
+  setTimeout(() => {
     const navH = (document.getElementById('enc-nav') || { offsetHeight: 97 }).offsetHeight + 52;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH - 8, behavior: 'smooth' });
-  }
+    history.pushState(null, null, '#' + id);
+  }, 40);
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash;
+  if (hash) {
+    const id = hash.slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      if (!el.classList.contains('open')) {
+        el.classList.add('open');
+        const header = el.querySelector('.enc-header');
+        if (header) header.setAttribute('aria-expanded', 'true');
+      }
+      setTimeout(() => {
+        const navH = (document.getElementById('enc-nav') || { offsetHeight: 97 }).offsetHeight + 52;
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH - 8, behavior: 'smooth' });
+      }, 80);
+    }
+  }
+});
 
 // Highlight active section on scroll
 const sections = ['enc-sunni','enc-ismaili','enc-sufism','enc-greek','enc-christianity','enc-judaism','enc-persian','enc-india','enc-orientalism','enc-left','enc-humanism'];
@@ -1032,7 +1124,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '0px 0px -60px 0px' });
 
-document.querySelectorAll('.enc-card, .figure-chip, .enc-intro').forEach(el => {
+document.querySelectorAll('.enc-card, .figure-chip, .enc-intro, .enc-header').forEach(el => {
   el.classList.add('reveal');
   revealObserver.observe(el);
 });
@@ -1044,6 +1136,19 @@ if (eraScroller) {
   new ResizeObserver(updateEncNavArrows).observe(eraScroller);
   updateEncNavArrows();
 }
+
+// ── KEYBOARD ACCESSIBILITY ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+});
 </script>
+<script src="scholar-popup.js"></script>
 </body>
 </html>

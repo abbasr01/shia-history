@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About This Project — The Imamate & Its Legacy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: #7a6030;
+  --ink: #0e0c08;
+  --parchment: #f5efe0;
+  --parchment-dark: #e8dfc8;
+  --lapis: #1a2a4a;
+  --lapis-light: #243660;
+  --crimson: #8b1a1a;
+  --emerald: #1a4a2e;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px;
+  height: 52px;
+  background: rgba(8,6,4,0.98);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  position: sticky; top: 0; z-index: 200;
+}
+.topbar-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-style: italic;
+  color: var(--gold-dim);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.topbar-nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.topbar-nav::-webkit-scrollbar { display: none; }
+.topbar-btn {
+  background: none; border: 1px solid rgba(201,168,76,0.2);
+  color: rgba(245,239,224,0.5);
+  padding: 6px 14px; border-radius: 2px;
+  font-family: 'Crimson Pro', serif; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.topbar-btn:hover {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(201,168,76,0.06);
+}
+.topbar-btn.active {
+  border-color: rgba(201,168,76,0.35); color: var(--gold);
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 72px 40px 56px;
+  max-width: 820px; margin: 0 auto;
+  text-align: center;
+}
+.page-eyebrow {
+  font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 20px;
+}
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 600; line-height: 1.2;
+  color: var(--parchment);
+  margin-bottom: 20px;
+}
+.page-title em { font-style: italic; color: var(--gold-light); }
+.page-desc {
+  font-size: 18px; color: rgba(245,239,224,0.6);
+  line-height: 1.8; max-width: 640px; margin: 0 auto;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  width: 60px; height: 1px;
+  background: rgba(201,168,76,0.3);
+  margin: 0 auto 64px;
+}
+
+/* ── MAIN CONTENT ── */
+.content-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+}
+
+/* ── SECTIONS ── */
+.about-section {
+  margin-bottom: 64px;
+}
+.section-label {
+  font-size: 10.5px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.12);
+}
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+.section-heading em { font-style: italic; }
+
+.prose p {
+  color: rgba(245,239,224,0.72);
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: rgba(245,239,224,0.9); font-weight: 600; }
+.prose em { color: rgba(245,239,224,0.85); font-style: italic; }
+
+/* ── METHODOLOGY BOX ── */
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+.method-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-left: 3px solid rgba(201,168,76,0.4);
+  padding: 20px 22px;
+  border-radius: 0 3px 3px 0;
+}
+.method-card-label {
+  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 8px;
+}
+.method-card-text {
+  font-size: 15px; color: rgba(245,239,224,0.6);
+  line-height: 1.7;
+}
+
+/* ── SELECTION CRITERIA LIST ── */
+.criteria-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.criteria-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  align-items: start;
+}
+.criteria-item:last-child { border-bottom: none; }
+.criteria-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px; color: var(--gold-dim);
+  padding-top: 2px;
+  text-align: right;
+}
+.criteria-text {
+  font-size: 16px; color: rgba(245,239,224,0.65);
+  line-height: 1.75;
+}
+.criteria-text strong { color: rgba(245,239,224,0.88); }
+
+/* ── GAPS BOX ── */
+.gaps-block {
+  background: rgba(139,26,26,0.07);
+  border: 1px solid rgba(139,26,26,0.2);
+  border-left: 3px solid rgba(139,26,26,0.5);
+  padding: 24px 28px;
+  margin-top: 24px;
+  border-radius: 0 3px 3px 0;
+}
+.gaps-block p {
+  font-size: 16px; color: rgba(245,239,224,0.62);
+  line-height: 1.8; margin-bottom: 14px;
+}
+.gaps-block p:last-child { margin-bottom: 0; }
+
+/* ── FEEDBACK BLOCK ── */
+.feedback-block {
+  background: rgba(201,168,76,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 28px 32px;
+  text-align: center;
+  margin-top: 24px;
+}
+.feedback-block p {
+  font-size: 16px; color: rgba(245,239,224,0.6);
+  margin-bottom: 20px; line-height: 1.75;
+}
+.feedback-link {
+  display: inline-block;
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+  padding: 10px 28px;
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.feedback-link:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 32px; text-align: center;
+  color: rgba(245,239,224,0.2); font-size: 12px; letter-spacing: 0.08em;
+}
+.footer a {
+  color: var(--gold-dim); text-decoration: none;
+  transition: color 0.2s;
+}
+.footer a:hover { color: var(--gold); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .topbar { padding: 0 10px; height: 44px; }
+  .topbar-logo { display: none; }
+  .topbar-btn { padding: 4px 8px; font-size: 10.5px; letter-spacing: 0.04em; }
+  .page-hero { padding: 48px 24px 40px; }
+  .content-wrap { padding: 0 24px 64px; }
+  .method-grid { grid-template-columns: 1fr; }
+  .feedback-block { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-logo">The Imamate & Its Legacy</div>
+  <div class="topbar-nav">
+    <a href="shia-timeline.html" class="topbar-btn">I · Timeline</a>
+    <a href="shia-academia.html" class="topbar-btn">II · Academic Map</a>
+    <a href="shia-encounters.html" class="topbar-btn">III · Encounters</a>
+    <a href="shia-doctrine.html" class="topbar-btn">IV · Doctrine</a>
+    <button class="topbar-btn active" onclick="void(0)">About</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-eyebrow">The Imamate & Its Legacy</div>
+  <h1 class="page-title">About This <em>Project</em></h1>
+  <p class="page-desc">What this resource is, how it works, what it does not claim to be, and how to engage with it critically.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="content-wrap">
+
+  <!-- SECTION 1: ABOUT THE PROJECT -->
+  <section class="about-section">
+    <div class="section-label">The Project</div>
+    <h2 class="section-heading">What This Is</h2>
+    <div class="prose">
+      <p><em>The Imamate & Its Legacy</em> is an independent scholarly project presenting the history, intellectual tradition, encounters, and doctrine of Twelver Shia Islam across four interconnected pages. It is designed for the general public, university students, community members, and any reader seeking an academically serious introduction to a tradition that has shaped — and continues to shape — a significant portion of the Islamic world.</p>
+      <p>The project is not affiliated with any seminary, mosque, political institution, or academic department. It has no editorial board and represents no formal body. Its authority, such as it is, rests entirely on the quality of its sourcing, the precision of its claims, and its willingness to acknowledge what it does not know.</p>
+      <p>It is a living document. Corrections, additions, and substantive challenges are welcomed and taken seriously.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: METHODOLOGY -->
+  <section class="about-section">
+    <div class="section-label">Methodology</div>
+    <h2 class="section-heading">How Claims Are Made</h2>
+    <div class="prose">
+      <p>This project operates with a deliberate distinction between two categories of claim, which are handled differently throughout:</p>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-card-label">Theological Claims</div>
+        <div class="method-card-text">Presented from within the tradition's own self-understanding. When the project states that the Imam possesses <em>ʿiṣma</em> (infallibility) or that the Occultation is a living reality, it is rendering the tradition's own position, not asserting a philosophical or empirical claim. This is the appropriate register for intellectual history: to present a tradition's beliefs accurately is not to endorse them.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-card-label">Historical Claims</div>
+        <div class="method-card-text">Aim for scholarly accuracy and are subject to revision. Dates, biographical details, textual attributions, and historical sequences draw on the secondary scholarly literature as well as primary sources where accessible. Disputed points are flagged. Where the tradition's account and the historian's account diverge, both are acknowledged.</div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top: 28px;">
+      <p>This distinction matters because conflating the two produces either apologetics (presenting theological claims as historical fact) or reductionism (dismissing theological claims as mere ideology). Neither serves the reader. The goal is to render the tradition legible — to explain what Shia Islam believes, how it developed, and why it takes the forms it does — without either endorsing or dismissing it from the outside.</p>
+      <p>Where scholarly consensus is absent or genuinely contested — on questions such as the historical circumstances of the Occultation, the authenticity of specific hadith, or the scope of the Hidden Imam's authority — the project flags the dispute rather than arbitrating it.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SELECTION LOGIC -->
+  <section class="about-section">
+    <div class="section-label">Selection Logic</div>
+    <h2 class="section-heading">Why These Scholars, Domains, and Encounters</h2>
+    <div class="prose">
+      <p>Every project of this kind makes choices that require justification. The scholars, intellectual domains, historical encounters, and doctrinal categories included here were selected according to the following criteria:</p>
+    </div>
+
+    <div class="criteria-list">
+      <div class="criteria-item">
+        <div class="criteria-num">i</div>
+        <div class="criteria-text"><strong>Foundational impact on the hawza curriculum.</strong> Scholars whose works are still read in Shia seminaries — whose texts define how subsequent generations were trained — receive priority over figures who were significant in their time but did not reshape the institutional tradition.</div>
+      </div>
+      <div class="criteria-item">
+        <div class="criteria-num">ii</div>
+        <div class="criteria-text"><strong>Role in defining major intellectual shifts.</strong> Figures who represent turning points — the consolidation of the Four Books, the Uṣūlī-Akhbārī resolution, the synthesis of falsafa and kalām, the emergence of the modern marjaʿiyya — are included because understanding them is necessary to understanding the tradition's development.</div>
+      </div>
+      <div class="criteria-item">
+        <div class="criteria-num">iii</div>
+        <div class="criteria-text"><strong>Representativeness across eras and domains.</strong> The selection attempts to cover the full chronological range — from the Imamic period through the present — and to represent each of the major intellectual domains in which Shia scholarship has operated.</div>
+      </div>
+      <div class="criteria-item">
+        <div class="criteria-num">iv</div>
+        <div class="criteria-text"><strong>Historical encounters with demonstrable intellectual consequence.</strong> The encounters included on Page III are not merely contact events but exchanges that left traceable marks on Shia thought — moments where the tradition absorbed, resisted, or transformed an external influence in ways that shaped its subsequent development.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: GAPS -->
+  <section class="about-section">
+    <div class="section-label">Acknowledged Gaps</div>
+    <h2 class="section-heading">What This Project Does Not Yet Do Well</h2>
+    <div class="prose">
+      <p>Intellectual honesty requires naming the project's limitations explicitly rather than allowing them to remain invisible.</p>
+    </div>
+
+    <div class="gaps-block">
+      <p><strong>Women scholars remain a small minority of documented figures.</strong> The Academic Map currently documents two women — Nusrat Amin (Bānū Amīn, 1886–1983), one of the very few women in history to receive recognition as a mujtahida, and Āmina al-Ṣadr (Bint al-Hudā, 1937–1980), educator and martyr. Their presence reflects historical reality: the institutional hawza was overwhelmingly male, and the record of women's scholarship is correspondingly sparse. Both figures are documented in the By Scholar tab. The gap is real and the tradition has not yet adequately accounted for it.</p>
+      <p><strong>Geographic focus is weighted toward Najaf and Qum.</strong> The hawzas of Najaf and Qum dominate the Academic Map because they dominate the historical record of Shia institutional scholarship. This understates the contributions of scholars from Jabal ʿĀmil (Lebanon) — where the two Shahids and Muḥaqqiq al-Karakī were formed — Bahrain, al-Aḥsāʾ, the Indian subcontinent, and East Africa. Regional traditions of Shia learning deserve fuller treatment.</p>
+      <p><strong>The Academic Map documents thirty scholars across eight domains.</strong> This is a serious selection, not an exhaustive one. Significant figures not yet included include Sayyid Mahdī Baḥr al-ʿUlūm (the great student of Bihbahānī), Akhund Khorāsānī's constitutional-era contemporaries (Nāʾīnī, Ākhund Māzandarānī), the Akhbārī school's leading voices (particularly Muḥammad Amīn al-Astarābādī, who founded the school), and a fuller representation of the Indian Shia scholarly tradition. These gaps are noted and not treated as final.</p>
+      <p><strong>Primary source citations are not yet systematic.</strong> The project draws on established secondary scholarship and, where accessible, primary sources. A more rigorous citation apparatus — with specific textual references for substantive claims — is a goal for future development. Claims about particular scholars' positions or works should be verified against specialist scholarship before being cited.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: FEEDBACK -->
+  <section class="about-section">
+    <div class="section-label">Corrections & Feedback</div>
+    <h2 class="section-heading">Engage Critically</h2>
+    <div class="prose">
+      <p>This project is improved by challenge. Factual errors, misrepresentations of scholarly positions, missing figures, and anachronistic framings are all correctable — but only if they are identified. Scholars, students, and community members with substantive engagement to offer are encouraged to write.</p>
+      <p>What distinguishes a trustworthy resource is not the absence of errors but the commitment to correcting them when found. That commitment is the foundation of this project.</p>
+    </div>
+
+    <div class="feedback-block">
+      <p>To suggest a correction, flag a disputed claim, or identify a significant omission, please write to:</p>
+      <a href="/cdn-cgi/l/email-protection#27444855554244534e48495467544f4e460a4f4e545348555e09494253" class="feedback-link">Suggest a Correction</a>
+      <p style="margin-top:18px; margin-bottom:0; font-size:14px; color:rgba(245,239,224,0.35);">All substantive correspondence is read. Responses cannot be guaranteed for volume.</p>
+    </div>
+  </section>
+
+</div><!-- /content-wrap -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p style="margin-bottom:12px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.5;">
+    <a href="shia-timeline.html">I · Timeline</a>
+    &nbsp;·&nbsp;
+    <a href="shia-academia.html">II · Academic Map</a>
+    &nbsp;·&nbsp;
+    <a href="shia-encounters.html">III · Encounters</a>
+    &nbsp;·&nbsp;
+    <a href="shia-doctrine.html">IV · Doctrine</a>
+    &nbsp;·&nbsp;
+    About
+  </p>
+  <p>The Imamate & Its Legacy</p>
+  <p style="margin-top:10px; font-size:12px; opacity:0.4; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">An independent scholarly project presenting the history, intellectual tradition, and doctrine of 

@@ -744,11 +744,61 @@
     .era-header-text h2 { font-size: 20px; }
 
     /* Topbar compact */
-    .topbar-global { padding: 0 10px !important; height: 44px !important; }
-    .topbar-global span { display: none; } /* hide logo */
+    .topbar { padding: 0 10px; height: 44px; }
+    .topbar-logo { display: none; }
+    .topbar-btn { padding: 4px 8px; font-size: 10.5px; letter-spacing: 0.04em; flex-shrink: 0; }
 
     /* Imam modal padding */
     .imam-modal-box { padding: 24px 20px; }
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px; height: 52px;
+    background: rgba(8,6,4,0.98);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    position: sticky; top: 0; z-index: 200;
+  }
+  .topbar-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-style: italic;
+    color: var(--gold-dim); letter-spacing: 0.04em; flex-shrink: 0;
+  }
+  .topbar-nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .topbar-nav::-webkit-scrollbar { display: none; }
+  .topbar-btn {
+    background: none; border: 1px solid rgba(201,168,76,0.2);
+    color: rgba(245,239,224,0.5);
+    padding: 6px 14px; border-radius: 2px;
+    font-family: 'Crimson Pro', serif; font-size: 13px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.2s; flex-shrink: 0;
+  }
+  .topbar-btn:hover { color: var(--gold-light); border-color: rgba(201,168,76,0.5); }
+  .topbar-btn.active { border-color: rgba(201,168,76,0.35); color: var(--gold); }
+
+  /* ── CROSS-PAGE LINKS ── */
+  .cross-link {
+    color: var(--gold-dim);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.2s;
+  }
+  .cross-link:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── ERA THEME ── */
+  .era-theme {
+    font-size: 15px;
+    color: rgba(245,239,224,0.42);
+    margin-top: 8px;
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 580px;
   }
 </style>
 </head>
@@ -777,12 +827,21 @@
 <!-- ERA NAV -->
 <!-- STICKY NAV WRAPPER — both bars stick together as one unit -->
 <div class="sticky-nav-wrapper">
-<nav class="topbar-global" style="display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:52px;background:rgba(8,6,4,0.98);border-bottom:1px solid rgba(201,168,76,0.15);font-family:Crimson Pro,serif;"><span style="font-style:italic;color:#7a6030;font-size:15px;letter-spacing:.04em;flex-shrink:0;">The Imamate &amp; Its Legacy</span><div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;"><a style="background:none;border:1px solid rgba(201,168,76,0.35);color:var(--gold);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-timeline.html">I · Timeline</a><a style="background:none;border:1px solid rgba(201,168,76,0.2);color:rgba(245,239,224,0.5);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-academia.html">II · Academic Map</a><a style="background:none;border:1px solid rgba(201,168,76,0.2);color:rgba(245,239,224,0.5);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-encounters.html">III · Encounters</a><a style="background:none;border:1px solid rgba(201,168,76,0.2);color:rgba(245,239,224,0.5);padding:6px 14px;border-radius:2px;font-family:Crimson Pro,serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;" href="shia-doctrine.html">IV · Doctrine</a></div></nav>
+<nav class="topbar">
+  <div class="topbar-logo">The Imamate &amp; Its Legacy</div>
+  <div class="topbar-nav">
+    <button class="topbar-btn active" onclick="void(0)">I · Timeline</button>
+    <a href="shia-academia.html" class="topbar-btn">II · Academic Map</a>
+    <a href="shia-encounters.html" class="topbar-btn">III · Encounters</a>
+    <a href="shia-doctrine.html" class="topbar-btn">IV · Doctrine</a>
+    <a href="about.html" class="topbar-btn">About</a>
+  </div>
+</nav>
 <nav class="era-nav" id="era-nav">
   <button class="era-nav-arrow left" id="era-arrow-left" onclick="eraNavScroll(-1)" aria-label="Scroll left">&#8249;</button>
   <div class="era-nav-scroll" id="era-nav-scroll">
     <div class="era-nav-inner">
-      <button class="era-btn active" onclick="scrollToEra('era-1')">I · The Prophet & Imamate</button>
+      <button class="era-btn active" onclick="scrollToEra('era-1')">I · The Prophet & Ahlul Bayt</button>
       <button class="era-btn" onclick="scrollToEra('era-2')">II · The Twelve Imams</button>
       <button class="era-btn" onclick="scrollToEra('era-3')">III · Minor Occultation</button>
       <button class="era-btn" onclick="scrollToEra('era-4')">IV · Major Occultation</button>
@@ -806,6 +865,7 @@
       <div class="era-header-text">
         <h2>The Prophet & the <em>Ahlul Bayt</em></h2>
         <p>570 – 661 CE · 1 BH – 40 AH</p>
+        <p class="era-theme">The Prophetic foundation and the explicit designation of the Imams — the events from which all Shia theology flows.</p>
       </div>
     </div>
     <div class="era-line"></div>
@@ -817,30 +877,38 @@
     </div>
 
     <div class="entries-grid">
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">c. 570 CE</span><span class="hijri">~53 BH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-event">Birth</span>
-          <div class="entry-title">The Prophet Muhammad ﷺ born in Mecca <span class="arabic">محمد</span></div>
+          <div class="entry-title">The Prophet Muhammad ﷺ born in Mecca <span class="arabic" lang="ar" dir="rtl">محمد</span></div>
           <div class="entry-body-text">Born in the Year of the Elephant into the Hashimite clan of Quraysh. Orphaned early, raised by his uncle Abu Talib — whose household would become the nucleus of the Imamate.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The Prophet's ﷺ birth into the Banu Hashim — the most honored clan of Quraysh — is understood in Shia tradition as providential. His uncle Abu Talib sheltered him through the years of persecution and raised Ali ibn Abi Talib in the same household, creating the formative bond between the Prophet and his eventual successor. Shia theology holds that the light of the Prophet (<em>nūr Muḥammadī</em>) was present in creation before the physical world — placing his birth within a cosmic narrative that precedes Mecca and the 6th century entirely.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">610 CE</span><span class="hijri">1 BH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-event">Revelation</span>
           <div class="entry-title">First Revelation on Mount Hira</div>
           <div class="entry-body-text">The Prophethood commences with the descent of Jibreel in the cave of Hira. Khadijah bint Khuwaylid and Ali ibn Abi Talib are among the first to accept Islam, forming the founding household of the faith.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The significance of Ali's early acceptance — he was a child in the Prophet's household at the time — is understood in Shia tradition as the beginning of the Imam's formation under direct prophetic instruction. For thirteen years in Mecca, and ten in Medina, Ali's knowledge, character, and authority were shaped in the Prophet's immediate presence. The first Shia is therefore understood not as a convert but as someone raised within the light of prophethood from the beginning.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">632 CE</span><span class="hijri">10 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-event">Key Event</span>
-          <div class="entry-title">Event of Ghadir Khumm <span class="arabic">غدير خم</span></div>
-          <div class="entry-body-text">Returning from the Farewell Pilgrimage, the Prophet ﷺ halts at Ghadir Khumm and declares: <em>"Whoever's master I am, Ali is his master."</em> For Twelver Shia, this is the explicit appointment of the First Imam and the foundational event of the Imamate.</div>
+          <div class="entry-title">Event of Ghadir Khumm <span class="arabic" lang="ar" dir="rtl">غدير خم</span></div>
+          <div class="entry-body-text">Returning from the Farewell Pilgrimage, the Prophet ﷺ halts at Ghadir Khumm and declares: <em>"Whoever's master I am, Ali is his master."</em> For Twelver Shia, this is the explicit appointment of the First Imam — the foundational event of the <a href="shia-doctrine.html#doc-imamate" class="cross-link">Imamate</a>.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
             <div class="expand-text">The declaration is preserved in both Sunni and Shia hadith collections. The Shia interpretation holds this as explicit designation (<strong>nass</strong>) of Ali's wilayah over the community — a binding spiritual and political authority. The subsequent events of Saqifah, where Abu Bakr was selected as Caliph, are understood by Shia Muslims as a tragic deviation from this divinely sanctioned appointment.</div>
@@ -848,12 +916,16 @@
         </div>
       </div>
 
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">632 CE</span><span class="hijri">11 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-event">Loss</span>
           <div class="entry-title">Passing of the Prophet ﷺ</div>
           <div class="entry-body-text">The Prophet ﷺ passes in Medina. His daughter Fatimah al-Zahra — the Lady of Light — and Imam Ali are denied their rights in the events following. Fatimah passes within months, never having recovered her father's legacy.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">While the Prophet lay ill, a gathering at Saqifah Bani Sa'ida chose Abu Bakr as successor — bypassing Ali and the explicit declaration at Ghadir Khumm. Fatimah al-Zahra's claim to the orchard of Fadak was rejected; her public sermon (<em>Khutba al-Fadakiyya</em>) in the mosque of Medina is one of the most powerful political speeches in early Islamic history. She died within two to six months of her father — the exact date deliberately obscured, according to Shia tradition, at her own request, as a final act of testimony against those who wronged her. Ali, meanwhile, buried the Prophet and prepared the Quran, deferring his political claim while preserving the community's unity.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -866,6 +938,7 @@
       <div class="era-header-text">
         <h2>The <em>Twelve Imams</em></h2>
         <p>661 – 874 CE · 40 – 260 AH</p>
+        <p class="era-theme">The Twelve Imams transmit divine knowledge under political suppression — their teachings, preserved in hadith, become the living constitution of the tradition.</p>
       </div>
     </div>
     <div class="era-line"></div>
@@ -992,56 +1065,94 @@
     </div>
 
     <div class="entries-grid">
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">656–661 CE</span><span class="hijri">35–40 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Caliphate</span>
+          <div class="entry-title">The Caliphate of Imam Ali <span class="arabic" lang="ar" dir="rtl">خلافة الإمام علي</span></div>
+          <div class="entry-body-text">After the assassination of Uthman, Imam Ali ibn Abi Talib assumes the caliphate — the only period in which the Shia Imam and the political head of the Muslim community are the same person. His four-and-a-half year tenure is defined by an uncompromising insistence on justice, and by three civil wars that fracture the early community permanently.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The three conflicts of Ali's caliphate each represent a distinct challenge. The <strong>Battle of the Camel</strong> (656 CE) pitted him against a coalition led by ʿĀʾisha, Talha, and Zubayr — figures of the Prophet's inner circle — who opposed his governance. The <strong>Battle of Siffin</strong> (657 CE) was a prolonged military confrontation with Muawiyah ibn Abi Sufyan, the Umayyad governor of Syria, who refused to acknowledge Ali's authority and demanded investigation of Uthman's assassination. The arbitration that followed Siffin produced the <strong>Kharijite</strong> schism — a faction that left Ali's army believing he had compromised divine authority by submitting to human arbitration. Ali was assassinated by a Kharijite in the mosque of Kufa in 661 CE. For Shia tradition, his caliphate is the model of just governance — and its violent end by those who should have been his allies is a wound that runs through every subsequent Shia political thought.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">661 CE</span><span class="hijri">41 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Treaty</span>
+          <div class="entry-title">Imam Hasan's Treaty with Muawiyah <span class="arabic" lang="ar" dir="rtl">صلح الحسن</span></div>
+          <div class="entry-body-text">Following his father's assassination, Imam Hasan ibn Ali faces an overwhelming military imbalance against Muawiyah's Syrian forces and a fragmented, demoralized Iraqi army. He negotiates a conditional treaty ceding political authority to Muawiyah — while preserving the Imamate's religious and moral standing. He is subsequently poisoned, reportedly at Muawiyah's instigation, in 670 CE.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The treaty's conditions — that Muawiyah would not appoint his own successor, that he would not persecute Shia, that the treasury would be maintained — were never honored. Muawiyah's appointment of his son Yazid as successor directly violated the agreement and set in motion the chain of events that led to Karbala. The Shia tradition's reading of Imam Hasan's decision is not capitulation but strategic wisdom: the community's survival and the preservation of the Imamate's spiritual integrity were worth more than a military confrontation that could not be won. The contrast between his approach — measured, strategic withdrawal — and Imam Husayn's absolute refusal twenty years later is one of the most discussed questions in Shia political theology. Both are understood as correct responses to different circumstances, neither as failure.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">680 CE</span><span class="hijri">61 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-event">Martyrdom</span>
-          <div class="entry-title">The Event of Karbala <span class="arabic">كربلاء</span></div>
-          <div class="entry-body-text">Imam Husayn ibn Ali, his family and 72 companions are martyred by the forces of Yazid ibn Muawiyah on the plains of Karbala. This event becomes the moral and spiritual axis of Shia identity — the eternal protest of righteousness against tyranny.</div>
+          <div class="entry-title">The Event of Karbala <span class="arabic" lang="ar" dir="rtl">كربلاء</span></div>
+          <div class="entry-body-text">Imam Husayn ibn Ali, his family and 72 companions are martyred on the plains of Karbala — an event that becomes the eternal moral axis of Shia identity.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">The tragedy of Karbala reverberates through every dimension of Shia life: theology, jurisprudence, poetry, mourning rituals, political ethics, and eschatology. The yearly commemoration of <strong>Ashura</strong> on the 10th of Muharram transforms grief into communal renewal. Imam Husayn's refusal to pledge allegiance to Yazid, his famous declaration — <em>"Death with dignity is better than a life of humiliation"</em> — becomes a template for resistance across centuries and cultures. Karbala is also the site of one of the holiest shrines in the Shia world.</div>
+            <div class="expand-text">This event is not merely historical: it is the ongoing paradigm of righteousness confronting tyranny. Its theological dimensions are explored on the <a href="shia-doctrine.html#doc-karbala" class="cross-link">Doctrine page</a>. The tragedy of Karbala reverberates through every dimension of Shia life: theology, jurisprudence, poetry, mourning rituals, political ethics, and eschatology. The yearly commemoration of <strong>Ashura</strong> on the 10th of Muharram transforms grief into communal renewal. Imam Husayn's refusal to pledge allegiance to Yazid, his famous declaration — <em>"Death with dignity is better than a life of humiliation"</em> — becomes a template for resistance across centuries and cultures. Karbala is also the site of one of the holiest shrines in the Shia world.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">713 CE</span><span class="hijri">94 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-theological">Legacy</span>
-          <div class="entry-title">Sahifa al-Sajjadiyya <span class="arabic">الصحيفة السجادية</span></div>
-          <div class="entry-body-text">The great supplication-compendium of Imam Ali ibn Husayn (4th Imam), known as "the Psalms of the Ahlul Bayt." Written under Umayyad surveillance, it transmits theology, ethics, and intimate devotion in the language of prayer — one of the most profound documents of Islamic spirituality.</div>
-        </div>
-      </div>
-
-      <div class="entry scholar" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">702–765 CE</span><span class="hijri">83–148 AH</span></div>
-        <div class="entry-body">
-          <span class="entry-tag tag-theological">Academy</span>
-          <div class="entry-title">The Academy of Imam al-Sadiq <span class="arabic">جعفر الصادق</span></div>
-          <div class="entry-body-text">Taking advantage of the transition between Umayyad and Abbasid rule, the 6th Imam opens one of the most expansive intellectual schools in Islamic history — training over 4,000 students in jurisprudence, theology, philosophy, and natural science. The Ja'fari school of law is named for him.</div>
+          <div class="entry-title">Sahifa al-Sajjadiyya <span class="arabic" lang="ar" dir="rtl">الصحيفة السجادية</span></div>
+          <div class="entry-body-text">The great supplication-compendium of Imam Ali ibn Husayn (4th Imam), known as "the Psalms of the Ahlul Bayt." Written under Umayyad surveillance, it transmits theology, ethics, and intimate devotion in the language of prayer — one of the most profound documents of Islamic spirituality — its place in Shia <a href="shia-doctrine.html#doc-embodied" class="cross-link">devotional practice</a> remains central.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">His students include figures who shaped all of Islamic thought: <strong>Abu Hanifa</strong> (founder of the Hanafi school) studied under him, as did <strong>Jabir ibn Hayyan</strong>, the father of chemistry. The 6th Imam's teachings codified Shia doctrine on the Imamate, on tawhid, and on fiqh. His emphasis on reason alongside revelation, and his meticulous hadith transmission, remain foundational to Shia scholarship.</div>
+            <div class="expand-text">Imam al-Sajjad survived Karbala as a young man too ill to fight, which placed on him the unique burden of survivor and witness. Under constant Umayyad surveillance that made direct political or theological teaching impossible, he transmitted the Imam's knowledge through the medium of supplication — each du'a encoding doctrine in the first person, addressed directly to God. Du'a Kumayl, Du'a Abu Hamza al-Thumali, and the Sahifa al-Sajjadiyya as a whole remain the most widely recited Shia supplication texts today. The Sahifa is sometimes called the <strong>Fourth Book</strong> alongside the canonical hadith collections.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry event" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">817 CE</span><span class="hijri">201 AH</span></div>
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">702–765 CE</span><span class="hijri">83–148 AH</span></div>
         <div class="entry-body">
-          <span class="entry-tag tag-political">Politics</span>
-          <div class="entry-title">Imam al-Ridha as Crown Prince <span class="arabic">علي الرضا</span></div>
-          <div class="entry-body-text">Caliph al-Mamun appoints the 8th Imam as his designated heir — a political maneuver that the Imam accepts with conditions, while refusing executive authority. The Imam's debates at the Abbasid court on theology, medicine and philosophy are legendary. He is later martyred by poisoning in Tus (modern Mashhad), where his shrine becomes one of the most visited pilgrimage sites in the world.</div>
+          <span class="entry-tag tag-theological">Academy</span>
+          <div class="entry-title">The Academy of Imam al-Sadiq <span class="arabic" lang="ar" dir="rtl">جعفر الصادق</span></div>
+          <div class="entry-body-text">Taking advantage of the transition between Umayyad and Abbasid rule, the 6th Imam opens one of the most expansive intellectual schools in Islamic history — training over 4,000 students in jurisprudence, theology, philosophy, and natural science. The Ja'fari school of law is named for him.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His students include figures who shaped all of Islamic thought: <strong>Abu Hanifa</strong> (founder of the Hanafi school) studied under him, as did <strong>Jabir ibn Hayyan</strong>, the father of chemistry. The encounter with <a href="shia-encounters.html#enc-greek" class="cross-link">Greek philosophy</a> begins here. The 6th Imam's teachings codified Shia doctrine on the Imamate, on tawhid, and on fiqh. His emphasis on reason alongside revelation, and his meticulous hadith transmission, remain foundational to Shia scholarship.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">817 CE</span><span class="hijri">201 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Politics</span>
+          <div class="entry-title">Imam al-Ridha as Crown Prince <span class="arabic" lang="ar" dir="rtl">علي الرضا</span></div>
+          <div class="entry-body-text">Caliph al-Mamun appoints the 8th Imam as his designated heir — a political maneuver that the Imam accepts with conditions, while refusing executive authority. The Imam's debates at the Abbasid court on theology, medicine and philosophy are legendary. He is later martyred by poisoning in Tus (modern Mashhad), where his shrine becomes one of the most visited pilgrimage sites in the world.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Al-Mamun's motive in appointing the Imam as crown prince is debated — some historians see a genuine rapprochement attempt, others a trap to neutralize Shia political opposition by co-opting its figurehead. The Imam accepted on explicit conditions: he would not appoint or dismiss officials, issue commands, or involve himself in governance. His famous theological debates in Khorasan — preserved in hadith collections — covered the proofs for God's existence, the nature of divine attributes, and the distinction between prophethood and Imamate. His tomb in Tus, now the city of Mashhad, draws millions of pilgrims annually, making it the largest city in northeastern Iran and one of the holiest sites in the Shia world.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">848–874 CE</span><span class="hijri">234–260 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Confinement</span>
-          <div class="entry-title">House Arrest in Samarra <span class="arabic">سامراء</span></div>
+          <div class="entry-title">House Arrest in Samarra <span class="arabic" lang="ar" dir="rtl">سامراء</span></div>
           <div class="entry-body-text">The 10th and 11th Imams are effectively placed under surveillance and house arrest by Abbasid caliphs in the garrison city of Samarra. The community communicates with the Imam through trusted deputies. This period anticipates and prepares the community for the structure of the Occultation.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The Abbasids moved the 10th Imam, Ali al-Hadi, from Medina to Samarra in 848 CE to keep him under close surveillance — isolated from his followers but accessible enough for the authorities to monitor. Both he and his son Hasan al-Askari lived under conditions that modern scholars compare to house arrest. The Abbasid court knew the prophecy of twelve Imams; agents were reportedly present at the 11th Imam's household in anticipation of a twelfth birth. That the 12th Imam survived and entered concealment is understood by Shia tradition as both miraculous and historically explicable — the community had already spent decades learning to sustain itself through intermediaries rather than direct access.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1055,16 +1166,17 @@
       <div class="era-header-text">
         <h2>The <em>Minor Occultation</em></h2>
         <p>874 – 941 CE · 260 – 329 AH</p>
+        <p class="era-theme">A 67-year bridge between direct Imamate and scholarly authority — the Hidden Imam communicates through four trusted deputies before withdrawing entirely.</p>
       </div>
     </div>
     <div class="era-line"></div>
 
     <div class="entries-grid">
-      <div class="entry occultation" onclick="toggleEntry(this)">
+      <div class="entry occultation" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">874 CE</span><span class="hijri">260 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-occultation">Occultation</span>
-          <div class="entry-title">Martyrdom of Imam al-Askari & Beginning of the Minor Occultation <span class="arabic">الغيبة الصغرى</span></div>
+          <div class="entry-title">Martyrdom of Imam al-Askari & Beginning of the Minor Occultation <span class="arabic" lang="ar" dir="rtl">الغيبة الصغرى</span></div>
           <div class="entry-body-text">Upon the poisoning of the 11th Imam, his five-year-old son Muhammad al-Mahdi enters a state of concealment (<em>ghayba</em>). The community is shaken but prepared — the Imam had appeared to a select circle to confirm his existence. He communicates through a series of four special deputies (<em>nawwab</em>).</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
@@ -1073,21 +1185,16 @@
         </div>
       </div>
 
-      <div class="entry occultation" onclick="toggleEntry(this)">
+      <div class="entry occultation" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">874–941 CE</span><span class="hijri">260–329 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-occultation">Deputies</span>
-          <div class="entry-title">The Four Special Deputies <span class="arabic">النواب الأربعة</span></div>
-          <div class="entry-body-text">The line of intermediaries between the Hidden Imam and the Shia community. Their period establishes precedent for institutional Shia authority, demonstrating that the community can function through trusted scholarly intermediaries. Theological questions, legal disputes and community affairs are handled through this relay.</div>
-        </div>
-      </div>
-
-      <div class="entry occultation" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">941 CE</span><span class="hijri">329 AH</span></div>
-        <div class="entry-body">
-          <span class="entry-tag tag-occultation">Transition</span>
-          <div class="entry-title">Death of Ali ibn Muhammad al-Samarri — End of Minor Occultation</div>
-          <div class="entry-body-text">The fourth and final deputy dies, and before his death conveys a letter from the Imam indicating that no fifth deputy will be appointed. The Major Occultation begins. The letter states: <em>"There is no appointment for a fifth... God has an affair which He will carry to its conclusion."</em></div>
+          <div class="entry-title">The Four Deputies & End of the Minor Occultation <span class="arabic" lang="ar" dir="rtl">النواب الأربعة</span></div>
+          <div class="entry-body-text">Four trusted intermediaries relay the Hidden Imam's communications to the community over 67 years, until the last transmits his final letter: <em>"There is no appointment for a fifth... God has an affair which He will carry to its conclusion."</em></div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The four deputies (<em>nuwwāb arbaʿa</em>) in order: <strong>Uthman ibn Sa'id al-Askari</strong> — who had served both the 10th and 11th Imams and was trusted by the community as the Imam's closest agent; <strong>Muhammad ibn Uthman</strong>, his son, who served the longest deputyship (c. 38 years) and is credited with composing or transmitting many du'as and instructions from the Imam; <strong>Husayn ibn Ruh al-Nawbakhti</strong> — from the influential Nawbakhti family of Baghdad scholars, a figure of considerable political skill who navigated Abbasid court politics; and <strong>Ali ibn Muhammad al-Samarri</strong>, the final deputy. Before his death in 941 CE, al-Samarri conveyed the Imam's letter announcing no fifth deputy would be named. The community had grown accustomed to the structure of the deputies over 67 years; the announcement forced a fundamental rethinking of how the Imam's authority would reach them. The question of <em>who leads in the Imam's absence</em> — which would preoccupy Shia jurisprudence for the next millennium — begins here. The letters transmitted through the four deputies, signed with the Imam's seal, survive in hadith collections.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1100,48 +1207,74 @@
       <div class="era-header-text">
         <h2>The <em>Major Occultation</em> — Early Period</h2>
         <p>941 – 1000 CE · 329 – 390 AH</p>
+        <p class="era-theme">The community learns to govern itself without the Imam — scholarship and hadith become the institutional anchors of Shia life.</p>
       </div>
     </div>
     <div class="era-line"></div>
 
     <div class="entries-grid">
-      <div class="entry occultation" onclick="toggleEntry(this)">
+      <div class="entry occultation" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">941 CE</span><span class="hijri">329 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-occultation">Occultation</span>
-          <div class="entry-title">Major Occultation Begins <span class="arabic">الغيبة الكبرى</span></div>
-          <div class="entry-body-text">The 12th Imam enters the <em>Ghayba al-Kubra</em> — the prolonged absence that continues to the present day. The community must now reorganize around scholarly authority in the absence of direct access to the Imam. A profound theological question emerges: who leads the community, and by what mandate?</div>
+          <div class="entry-title">Major Occultation Begins <span class="arabic" lang="ar" dir="rtl">الغيبة الكبرى</span></div>
+          <div class="entry-body-text">The 12th Imam enters <em>Ghayba al-Kubra</em> — the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">prolonged absence</a> that continues to the present day.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">The Occultation doctrine holds that the Imam is alive, present in the world in some form, and will return at the end of time as the <strong>Qa'im</strong> — the one who rises — to fill the earth with justice after it has been filled with oppression. Theologically, this requires new frameworks for legitimate authority, jurisprudential guidance, and communal organization. The centuries following the Major Occultation see the gradual, contested rise of the jurist (<strong>faqih</strong>) as the Imam's functional deputy.</div>
+            <div class="expand-text">The community must now reorganize around scholarly authority in the absence of direct access to the Imam. A profound theological question emerges: who leads the community, and by what mandate? The full theology of the Occultation is treated in the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Doctrine page</a>. The Occultation doctrine holds that the Imam is alive, present in the world in some form, and will return at the end of time as the <strong>Qa'im</strong> — the one who rises — to fill the earth with justice after it has been filled with oppression. Theologically, this requires new frameworks for legitimate authority, jurisprudential guidance, and communal organization. The centuries following the Major Occultation see the gradual, contested rise of the jurist (<strong>faqih</strong>) as the Imam's functional deputy.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">c. 941–991 CE</span><span class="hijri">329–380 AH</span></div>
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">c. 864–941 CE</span><span class="hijri">250–329 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Sheikh al-Kulayni <span class="arabic">الكليني</span></div>
-          <div class="entry-body-text">Muhammad ibn Ya'qub al-Kulayni compiles the <em>al-Kafi</em> — the most authoritative hadith collection in Twelver Shia Islam, containing over 16,000 traditions across theology, jurisprudence, and ethics. He dies in 941 CE, at the very dawn of the Major Occultation, leaving the community its most vital hadith reference.</div>
+          <div class="entry-title">Sheikh al-Kulayni <span class="arabic" lang="ar" dir="rtl">الكليني</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-kulayni" class="cross-link">Al-Kulayni</a> compiles <em>al-Kāfī</em> — over 16,000 traditions across theology, jurisprudence, and ethics — the most authoritative hadith collection in Twelver Shia Islam.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Completed at the very dawn of the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Major Occultation</a>, it leaves the community its most vital hadith reference. <em>Al-Kafi</em> (The Sufficient) is divided into three parts: <strong>Usul</strong> (foundations — theology, the Imamate, divine knowledge), <strong>Furu'</strong> (branches — jurisprudence), and <strong>Rawda</strong> (miscellaneous traditions). Its theological sections contain the most systematic Imamic hadith on divine unity and the nature of the Imam's knowledge — the bedrock of Shia rational theology. Compiled in Baghdad during the Minor Occultation and in proximity to the deputies, the tradition regards its authenticity as exceptional. It is the first and most authoritative of the classical <strong>Four Books</strong> of Shia hadith — the others being al-Saduq's <em>Man la Yahduruh al-Faqih</em> and al-Tusi's <em>Tahdhib al-Ahkam</em> and <em>al-Istibsar</em>.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">c. 923–991 CE</span><span class="hijri">311–381 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Sheikh al-Saduq <span class="arabic">الشيخ الصدوق</span></div>
-          <div class="entry-body-text">Ibn Babawayh al-Qummi, known as al-Saduq, is the era's foremost hadith scholar. His <em>Man la Yahduruh al-Faqih</em> is one of the Four Books of Shia hadith. He is reportedly born in answer to a prayer conveyed through the last deputy to the Hidden Imam — a story central to his legendary standing.</div>
+          <div class="entry-title">Sheikh al-Saduq <span class="arabic" lang="ar" dir="rtl">الشيخ الصدوق</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-saduq" class="cross-link">Al-Ṣadūq</a> is the era's foremost hadith scholar; his <em>Man lā Yaḥḍuruh al-Faqīh</em> — one of the Four Books — was composed as a practical legal guide for ordinary Shia without access to a living jurist.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">He is reportedly born in answer to a prayer conveyed through the last deputy to the Hidden Imam — a story central to his legendary standing. Al-Saduq's approach to hadith was more traditionalist than al-Mufid's later rationalism — he was deeply committed to the transmitted text and suspicious of excessive rational interpretation. His <em>Man la Yahduruh al-Faqih</em> (For the One Without Access to a Jurist) was explicitly designed as a practical legal reference for ordinary Shia Muslims who could not consult a living scholar — a remarkably modern conception of popular legal education. His other major works include <em>Kamal al-Din</em> (on the Occultation), <em>al-Tawhid</em> (on divine unity), and <em>Uyun Akhbar al-Ridha</em> (traditions of the 8th Imam). His prolific output across theology, biography, and jurisprudence makes him the most comprehensive Shia scholar of the early Occultation period.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry institution" onclick="toggleEntry(this)">
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">945–1055 CE</span><span class="hijri">334–447 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Dynasty</span>
-          <div class="entry-title">Buyid Shia Patronage <span class="arabic">البويهيون</span></div>
-          <div class="entry-body-text">The Buyid dynasty, a Shia Persian force, effectively controls the Abbasid Caliphate. Under their patronage, Shia scholarship flourishes openly in Baghdad. The theological center of Shia learning moves from Qum to Baghdad. Ashura commemoration becomes public. A golden age of Shia rationalist theology begins.</div>
+          <div class="entry-title">Buyid Shia Patronage <span class="arabic" lang="ar" dir="rtl">البويهيون</span></div>
+          <div class="entry-body-text">A Shia Persian dynasty takes effective control of the Abbasid Caliphate — creating the first protected space for open Shia scholarship and launching the golden age of rationalist theology in Baghdad.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Under their patronage, the theological center of Shia learning moves from Qum to Baghdad; <a href="shia-doctrine.html#doc-karbala" class="cross-link">Ashura</a> commemoration becomes public for the first time. The Buyid period is one of the most paradoxical in Islamic history: a Shia dynasty holding the Abbasid Caliph — the nominal head of Sunni Islam — as a political figurehead while allowing Shia scholars unprecedented freedom in the capital. Under Buyid rule, public Ashura commemorations began in Baghdad; Shia scholars debated openly; the great rationalist theologians al-Mufid, al-Murtadha, and al-Tusi all flourished in this environment. The Buyids did not impose Shia Islam on their subjects but created a protected space for its intellectual development. The dynasty's collapse before the Seljuk Turks in 1055 — who were staunchly Sunni — drove the Shia scholarly center to Najaf, but the theological architecture built under Buyid patronage would define Shia thought for centuries.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">c. 963 CE</span><span class="hijri">352 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-event">Devotional Life</span>
+          <div class="entry-title">Public Ashura — The Majlis Takes Institutional Form <span class="arabic" lang="ar" dir="rtl">مجالس العزاء</span></div>
+          <div class="entry-body-text">Under the Buyid ruler Muizz al-Dawla, public <a href="shia-doctrine.html#doc-karbala" class="cross-link">Ashura</a> processions are held openly in Baghdad for the first time — the state authorizing the collective mourning that becomes the primary space of Shia communal formation.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The institutionalization of public Ashura under Buyid patronage represents a decisive shift: for the first time in centuries, the grief of Karbala could be expressed collectively and publicly. The <em>majlis</em> — the gathering at which an orator recites the narrative of Karbala — became the Shia equivalent of the Friday sermon: a weekly or seasonal occasion for communal identity, theological instruction, and emotional renewal. The tradition of <em>taʿziya</em> (lamentation poetry and performance) developed alongside it. These institutions — the majlis, the procession, the recitation of maqtal literature — are the primary means by which most Shia Muslims across history have experienced the <a href="shia-doctrine.html#doc-embodied" class="cross-link">Imamate</a>. They travel wherever Shia communities settle: from Baghdad to Lucknow to Detroit.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1154,70 +1287,87 @@
       <div class="era-header-text">
         <h2><em>Classical Scholarship</em> & Theology</h2>
         <p>1000 – 1500 CE · 390 – 900 AH</p>
+        <p class="era-theme">Rational theology and systematic jurisprudence are forged in Baghdad, refined through the Mongol catastrophe, and transmitted to seminaries that endure to this day.</p>
       </div>
     </div>
     <div class="era-line"></div>
 
     <div class="entries-grid">
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">948–1022 CE</span><span class="hijri">338–413 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Sheikh al-Mufid <span class="arabic">الشيخ المفيد</span></div>
-          <div class="entry-body-text">Muhammad ibn Nu'man al-Mufid revolutionizes Shia theology in Baghdad, synthesizing rational Mu'tazilite methods with Imami tradition. He defends the role of reason (<em>aql</em>) in theology against pure textualism and trains the two titans of the next generation: Sayyid al-Murtadha and Sheikh al-Tusi. Considered the father of Shia scholastic theology (<em>kalam</em>).</div>
+          <div class="entry-title">Sheikh al-Mufid <span class="arabic" lang="ar" dir="rtl">الشيخ المفيد</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-mufid" class="cross-link">Al-Mufid</a> founds Shia scholastic theology (<em>kalām</em>) in Buyid Baghdad — fusing Muʿtazilite rational methods with Imami tradition, and training al-Murtaḍā and al-Ṭūsī.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">Al-Mufid's key contribution was legitimizing the scope of juristic authority during Occultation — he argued that senior scholars could exercise limited supervision over communal affairs. This planted the seed that would eventually grow into the full doctrine of <strong>Wilayat al-Faqih</strong>. His debate with the Mu'tazilites and Ash'arites shaped the intellectual identity of Shia theology for centuries. His work <em>al-Irshad</em> remains the primary classical source on the Twelve Imams.</div>
+            <div class="expand-text">His key contribution was legitimizing the scope of juristic authority during the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Occultation</a>, planting the seed that would eventually grow into <a href="shia-doctrine.html#doc-authority" class="cross-link">Wilāyat al-Faqīh</a>. Al-Mufid's key contribution was legitimizing the scope of juristic authority during Occultation — he argued that senior scholars could exercise limited supervision over communal affairs. This planted the seed that would eventually grow into the full doctrine of <strong>Wilayat al-Faqih</strong>. His debate with the Mu'tazilites and Ash'arites shaped the intellectual identity of Shia theology for centuries. His work <em>al-Irshad</em> remains the primary classical source on the Twelve Imams.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">966–1044 CE</span><span class="hijri">355–436 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Sayyid al-Murtadha <span class="arabic">السيد المرتضى</span></div>
-          <div class="entry-body-text">Ali ibn Husayn al-Musawi, known as Alam al-Huda (Beacon of Guidance), brings Mu'tazilite rationalism most fully into Shia theology. He argues for the <em>obligatory nature of reason</em> in deriving religious knowledge, and expands the scope of scholarly authority. Prolific poet, theologian, and jurist at the Baghdad court.</div>
-        </div>
-      </div>
-
-      <div class="entry scholar" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">995–1067 CE</span><span class="hijri">385–460 AH</span></div>
-        <div class="entry-body">
-          <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Sheikh al-Tusi — Transfer to Najaf <span class="arabic">الشيخ الطوسي</span></div>
-          <div class="entry-body-text">Muhammad ibn Hasan al-Tusi — "Sheikh al-Ta'ifa" (Sheikh of the Sect) — synthesizes hadith, theology and jurisprudence into a coherent Shia legal system. Fleeing Seljuk persecution in Baghdad (his house and library burned), he relocates to Najaf and establishes the <strong>Hawza of Najaf</strong> — which becomes the preeminent seminary of Shia Islam for nearly a millennium.</div>
+          <div class="entry-title">Sayyid al-Murtadha <span class="arabic" lang="ar" dir="rtl">السيد المرتضى</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-murtadha" class="cross-link">Al-Murtaḍā</a> carries al-Mufid's rationalism to its limit — reason alone is sufficient to establish religious obligation, and any hadith contradicting rational proof must yield.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">Al-Tusi's works — including <em>al-Mabsut</em>, <em>al-Nihaya</em>, and <em>al-Istibsar</em> (one of the Four Books of hadith) — codified Shia jurisprudence in a systematic form rivaling the great Sunni legal schools. His founding of the Najaf hawza around the shrine of Imam Ali created an institutional base for Shia learning that would outlast empires. For nearly two centuries after his death, the authority of his legal opinions went largely unchallenged — a period known as the "taqlid of Sheikh al-Tusi."</div>
+            <div class="expand-text">Known as Alam al-Huda (Beacon of Guidance), he was a prolific poet, theologian, and jurist at the Buyid court, and championed the authority of scholars to exercise communal functions — a step toward <a href="shia-doctrine.html#doc-authority" class="cross-link">Wilāyat al-Faqīh</a>. Al-Murtadha went further than his teacher al-Mufid in integrating Mu'tazilite epistemology — he argued that rational certainty (<em>qat'</em>) is the only acceptable basis for religious belief, and that any hadith contradicting rational proof must be rejected or reinterpreted. This positioned him as the most rationalist voice in the Baghdad school. His <em>al-Dhakhira fi ʿIlm al-Kalam</em> and <em>al-Shafi fi al-Imama</em> (a major defense of the Imamate) remain significant theological references. As a descendant of Imam Ali and a figure of considerable social prestige under Buyid patronage, he also championed the authority of scholars to exercise communal functions — a step toward the eventual doctrine of Wilayat al-Faqih. His brother, Sheikh al-Tusi, carried this synthesis to Najaf after Baghdad's fall.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">995–1067 CE</span><span class="hijri">385–460 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Sheikh al-Tusi — Transfer to Najaf <span class="arabic" lang="ar" dir="rtl">الشيخ الطوسي</span></div>
+          <div class="entry-body-text">Fleeing the Seljuk burning of his Baghdad library, <a href="shia-academia.html#scholar-tusi-sheikh" class="cross-link">al-Ṭūsī</a> establishes the <strong>Hawza of Najaf</strong> — the preeminent seminary of Shia Islam for nearly a millennium.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">"Sheikh al-Ṭāʾifa" (Sheikh of the Sect) synthesized hadith, theology and jurisprudence into a coherent Shia legal system. Al-Tusi's works — including <em>al-Mabsut</em>, <em>al-Nihaya</em>, and <em>al-Istibsar</em> (one of the Four Books of hadith) — codified Shia jurisprudence in a systematic form rivaling the great Sunni legal schools. His founding of the Najaf hawza around the shrine of Imam Ali created an institutional base for Shia learning that would outlast empires. For nearly two centuries after his death, the authority of his legal opinions went largely unchallenged — a period known as the "taqlid of Sheikh al-Tusi."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1205–1277 CE</span><span class="hijri">602–676 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Muhaqqiq al-Hilli <span class="arabic">المحقق الحلي</span></div>
-          <div class="entry-body-text">Najm al-Din al-Hilli is the greatest jurist of the Mongol era. His <em>Shara'i al-Islam</em> becomes the standard Shia legal text, studied in seminaries to this day. He navigates the catastrophic Mongol conquest — which ironically creates space for Shia influence — and lays the groundwork for the juristic independence of the Shia scholarly class.</div>
+          <div class="entry-title">Muhaqqiq al-Hilli <span class="arabic" lang="ar" dir="rtl">المحقق الحلي</span></div>
+          <div class="entry-body-text">Muḥaqqiq al-Ḥillī's <em>Sharāʾiʿ al-Islām</em> — composed during the Mongol era — remains required reading in Shia seminaries nearly 800 years later.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The greatest jurist of the Mongol era, he navigated the catastrophic conquest — which ironically created space for Shia influence — and laid the groundwork for the juristic independence of the scholarly class. <em>Shara'i al-Islam</em> (The Laws of Islam) is remarkable for its systematic clarity — organizing Shia jurisprudence into a coherent structure that could be taught, memorized, and applied without access to a living jurist. It remains required reading in Shia seminaries today, nearly 800 years after its composition. Muhaqqiq al-Hilli was the uncle and teacher of Allama al-Hilli, the even more influential figure who followed. Together they represented the Hilla school's peak — a tradition that survived the Mongol destruction of Baghdad by relocating to the smaller city of Hilla in southern Iraq, which ironically became a center of Shia learning precisely because the Mongols, unlike the Abbasids, had no theological investment in suppressing it.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1201–1274 CE</span><span class="hijri">599–672 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-theological">Philosophy</span>
-          <div class="entry-title">Nasir al-Din al-Tusi & Islamic Philosophy <span class="arabic">نصير الدين الطوسي</span></div>
-          <div class="entry-body-text">The polymath Nasir al-Din al-Tusi — Shia philosopher, theologian, astronomer, and mathematician — survives the Mongol conquest as court scholar to Hulagu Khan. His <em>Tajrid al-I'tiqad</em> becomes the most studied text in Islamic scholastic theology (<em>kalam</em>), representing a synthesis of Shia theology with Avicennan philosophy that defines Islamic intellectual life for centuries.</div>
+          <div class="entry-title">Nasir al-Din al-Tusi & Islamic Philosophy <span class="arabic" lang="ar" dir="rtl">نصير الدين الطوسي</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-tusi-nasir" class="cross-link">Nasir al-Din al-Ṭūsī</a> — philosopher, theologian, astronomer — survives the Mongol conquest as court scholar to Hulagu Khan; his <em>Tajrīd al-Iʿtiqād</em> becomes the most studied text in Islamic scholastic theology.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His synthesis of Shia theology with Avicennan philosophy defines Islamic intellectual life for centuries — and the <a href="shia-encounters.html#enc-greek" class="cross-link">Greek philosophical tradition</a>'s permanent integration into Shia thought. Al-Tusi's position as Hulagu Khan's court scholar gave him the resources to establish the Maragha Observatory — the most sophisticated astronomical institution of the medieval world, whose planetary models influenced Copernicus. His <em>Tajrid al-I'tiqad</em> (Abstraction of Doctrine) distilled Shia kalām into a dense, logically rigorous set of propositions that generated commentaries for centuries — most famously Allama al-Hilli's <em>Kashf al-Murad</em>. In jurisprudence, his formulation of the <strong>luṭf argument</strong> — that divine grace necessitates an infallible Imam — became the canonical rational proof for the Imamate. He is the figure who most completely unified the scientific, philosophical, and theological dimensions of Shia intellectual culture into a single coherent system.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1250–1325 CE</span><span class="hijri">648–725 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Allama al-Hilli <span class="arabic">العلامة الحلي</span></div>
-          <div class="entry-body-text">Hasan ibn Yusuf al-Hilli — "Allama al-Hilli" (the great scholar of Hilla) — is the most significant Shia theologian and jurist of the post-Mongol period. He debates successfully before the Mongol-turned-Muslim ruler Oljeitu, reportedly influencing his adoption of Shia Islam. His treatises on the Imamate and usul al-fiqh remain definitive.</div>
+          <div class="entry-title">Allama al-Hilli <span class="arabic" lang="ar" dir="rtl">العلامة الحلي</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-hilli" class="cross-link">Allama al-Ḥillī</a> debates before the Mongol ruler Oljeitu — reportedly winning his adoption of Shia Islam — and writes the definitive commentary on al-Ṭūsī's theology.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The most significant Shia theologian of the post-Mongol period, his treatises on the <a href="shia-doctrine.html#doc-imamate" class="cross-link">Imamate</a> and uṣūl al-fiqh remain foundational. Allama al-Hilli was the nephew and student of Muhaqqiq al-Hilli and studied under Nasir al-Din al-Tusi — placing him at the intersection of the two dominant intellectual traditions of the era. His <em>Kashf al-Murad</em>, a commentary on al-Tusi's <em>Tajrid</em>, remains the most widely studied theological text in Shia seminaries. His <em>Minhaj al-Karama</em> — a defense of Shia Imamate doctrine — prompted the Sunni polemicist Ibn Taymiyya's famous rebuttal <em>Minhaj al-Sunna</em>, one of the most significant Sunni-Shia intellectual exchanges in history. His successful disputation before Oljeitu Khan — which reportedly led to the Mongol ruler declaring Shia Islam the state religion of the Ilkhanate, briefly — demonstrated the political reach of scholastic theology in the medieval period.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1230,70 +1380,100 @@
       <div class="era-header-text">
         <h2><em>Safavid</em> Iran & the Transformation</h2>
         <p>1501 – 1722 CE · 906 – 1134 AH</p>
+        <p class="era-theme">For the first time in history, a major state adopts Twelver Shia Islam — reshaping both the tradition's reach and its entanglement with political power.</p>
       </div>
     </div>
     <div class="era-line"></div>
 
     <div class="entries-grid">
-      <div class="entry institution" onclick="toggleEntry(this)">
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1501 CE</span><span class="hijri">906 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Empire</span>
           <div class="entry-title">Safavid Shah Ismail I Declares Twelver Shia as State Religion</div>
-          <div class="entry-body-text">Shah Ismail I conquers Tabriz and declares Ithna-Ashari (Twelver) Shia Islam the official religion of Iran — the first time in history a major state adopts this confession. A predominantly Sunni Persian population is converted, often coercively, over generations. Arab Shia scholars from Lebanon and Bahrain are imported to build the clerical infrastructure of the new empire.</div>
+          <div class="entry-body-text">Shah Ismail I declares Twelver Shia Islam the official religion of Iran — the first time in history a major state has adopted this confession, reshaping Islamic geopolitics permanently.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">This decision reshapes Islamic geopolitics permanently. The Safavid-Ottoman rivalry — partly religious, partly imperial — consolidates the Sunni-Shia geographic divide that still defines the region. Critically, it creates the first Shia state willing to fund and empower a clerical class, enabling the development of institutional marjaiyyah. However, it also entangles scholarly authority with state power in ways that generate lasting tensions. The importation of Arab scholars — particularly from Jabal Amil in Lebanon — establishes Arab intellectual influence in Persian Shia culture.</div>
+            <div class="expand-text">A predominantly Sunni Persian population is converted, often coercively, over generations. Arab Shia scholars from Lebanon and Bahrain are imported to build the clerical infrastructure — establishing an Arab intellectual presence in Persian Shia culture that persists. This decision reshapes Islamic geopolitics permanently. The Safavid-Ottoman rivalry — partly religious, partly imperial — consolidates the Sunni-Shia geographic divide that still defines the region. Critically, it creates the first Shia state willing to fund and empower a clerical class, enabling the development of institutional marjaiyyah. However, it also entangles scholarly authority with state power in ways that generate lasting tensions. The importation of Arab scholars — particularly from Jabal Amil in Lebanon — establishes Arab intellectual influence in Persian Shia culture.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">c. 1464–1534 CE</span><span class="hijri">869–940 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Ali ibn Abd al-Ali al-Karaki — Muhaqqiq al-Karaki <span class="arabic">المحقق الكركي</span></div>
-          <div class="entry-body-text">The Lebanese Shia scholar brought to Iran by the Safavids, al-Karaki becomes the first to articulate the doctrine of <em>niyabat al-'amma</em> — general deputyship of qualified jurists — in explicit terms. He argues that during Occultation, the <em>faqih</em> can exercise Friday prayer leadership and collect religious taxes. Deeply controversial but historically decisive.</div>
-        </div>
-      </div>
-
-      <div class="entry scholar" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">1506–1558 CE</span><span class="hijri">911–965 AH</span></div>
-        <div class="entry-body">
-          <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Shahid al-Thani — The Second Martyr <span class="arabic">الشهيد الثاني</span></div>
-          <div class="entry-body-text">Zayn al-Din al-Juba'i al-Amili from Jabal Amil (modern Lebanon) — the foremost jurist of his era. He teaches at a university in Ba'albak attended by students from all traditions. Executed by Ottoman authorities on charges of Shia propagation. His <em>Sharh al-Lum'a al-Dimashqiyya</em> becomes the most studied legal text in Shia seminaries to this day.</div>
-        </div>
-      </div>
-
-      <div class="entry scholar" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">1571–1640 CE</span><span class="hijri">979–1050 AH</span></div>
-        <div class="entry-body">
-          <span class="entry-tag tag-theological">Philosophy</span>
-          <div class="entry-title">Mulla Sadra & Transcendent Wisdom <span class="arabic">ملا صدرا</span></div>
-          <div class="entry-body-text">Sadr al-Din al-Shirazi — Mulla Sadra — creates the <em>al-Hikma al-Muta'aliya</em> (Transcendent Wisdom), the most sophisticated philosophical synthesis in Islamic history. Blending Avicennism, Suhrawardi's Illuminationism, and Sufi metaphysics with Shia theology, he develops the doctrine of <em>asalat al-wujud</em> (primacy of being) which profoundly shapes Shia intellectual culture.</div>
+          <div class="entry-title">Ali ibn Abd al-Ali al-Karaki — Muhaqqiq al-Karaki <span class="arabic" lang="ar" dir="rtl">المحقق الكركي</span></div>
+          <div class="entry-body-text">Imported from Lebanon by the Safavids, al-Karakī is the first to explicitly argue that the qualified jurist is a general deputy of the Hidden Imam — entitled to lead Friday prayer and collect religious taxes during the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Occultation</a>.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">Mulla Sadra's philosophical system — including his doctrines of the <strong>substantial motion</strong> of being (<em>harakat jawhariyya</em>) — represents a uniquely Shia synthesis where philosophy, mysticism and theology are integrated rather than opposed. His school produces a continuous chain of philosophers through to the 20th century, including figures like <strong>Mulla Hadi Sabzawari</strong> and ultimately influencing <strong>Allama Tabataba'i</strong>. This tradition gives Shia Islam a distinctly different relationship to philosophy compared to mainstream Sunni thought.</div>
+            <div class="expand-text">Deeply controversial but historically decisive: he is the direct intellectual ancestor of <a href="shia-doctrine.html#doc-authority" class="cross-link">Wilāyat al-Faqīh</a>, though he never claimed nearly as much authority. Al-Karaki's importance lies in making explicit what earlier scholars had implied: that the qualified jurist is not merely a legal advisor but a functional deputy of the Hidden Imam, with authority extending into domains previously reserved for the Imam himself. His willingness to authorize Friday prayer — which many earlier scholars held should be suspended during Occultation — was fiercely contested by more cautious contemporaries, particularly the Akhbari-leaning scholars who mistrusted juristic expansion. His relocation from Jabal Amil in Lebanon to Safavid Iran established the pattern of Arab Shia scholars serving Persian Shia states that would define the tradition's geography for two centuries. He is a direct intellectual ancestor of Khomeini's Wilayat al-Faqih, though he never went nearly as far.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry institution" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">17th c.</span><span class="hijri">11th AH</span></div>
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">1506–1558 CE</span><span class="hijri">911–965 AH</span></div>
         <div class="entry-body">
-          <span class="entry-tag tag-institution">Hawza</span>
-          <div class="entry-title">Rise of the Isfahani School — Mulla Baqir Majlisi <span class="arabic">العلامة المجلسي</span></div>
-          <div class="entry-body-text">Muhammad Baqir Majlisi — <em>Sheikh al-Islam</em> under Shah Sultan Husayn — compiles the encyclopedic <em>Bihar al-Anwar</em> (Oceans of Lights), a 110-volume collection of Shia hadith that remains the most comprehensive hadith reference in existence. He also pursues aggressive anti-Sufi and anti-philosophy policies, reshaping the Safavid religious landscape toward textualism.</div>
+          <span class="entry-tag tag-scholar">Scholar</span>
+          <div class="entry-title">Shahid al-Thani — The Second Martyr <span class="arabic" lang="ar" dir="rtl">الشهيد الثاني</span></div>
+          <div class="entry-body-text">Executed by Ottoman authorities for teaching Shia jurisprudence, <a href="shia-academia.html#scholar-shahid2" class="cross-link">al-Juba'ī al-ʿĀmilī's</a> <em>Sharḥ al-Lumʿa</em> has been the standard introductory legal text in Shia seminaries for nearly 500 years.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The "Second Martyr" from Jabal Amil was the foremost jurist of his era — his execution by Ottoman authorities is a reminder that Shia scholarship outside Safavid protection operated under genuine physical danger. <em>Sharh al-Lum'a al-Dimashqiyya</em> (Commentary on the Damascene Gleam) — his masterwork, a commentary on an earlier text by Shahid al-Awwal (the First Martyr, d. 1384) — is still the standard introductory legal text in Shia seminaries after nearly 500 years. Its longevity reflects both its pedagogical clarity and the continuity of the hawza curriculum. His execution by Ottoman authorities is a reminder that Shia scholarship outside Safavid protection operated under genuine physical danger throughout this period. The epithet "Second Martyr" places him in explicit continuity with Muhammad ibn Makki al-Amili (Shahid al-Awwal), executed in 1384 — both from Jabal Amil, both killed for the same cause, a century apart.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry institution" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">1571–1640 CE</span><span class="hijri">979–1050 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Philosophy</span>
+          <div class="entry-title">Mulla Sadra & Transcendent Wisdom <span class="arabic" lang="ar" dir="rtl">ملا صدرا</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-mulla-sadra" class="cross-link">Mulla Ṣadrā</a>'s <em>al-Ḥikma al-Mutaʿāliya</em> (Transcendent Wisdom) — fusing Avicennism, Illuminationism, and Shia theology — is the most sophisticated philosophical synthesis in Islamic history.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His doctrine of <em>aṣālat al-wujūd</em> (primacy of being) and <em>ḥaraka jawhariyya</em> (substantial motion) give Shia Islam a distinctly different relationship to <a href="shia-encounters.html#enc-greek" class="cross-link">philosophy</a> compared to mainstream Sunni thought. His school produces a continuous chain of philosophers through to <a href="shia-academia.html#scholar-tabatabai" class="cross-link">Allama Tabataba'i</a>. Mulla Sadra's philosophical system — including his doctrines of the <strong>substantial motion</strong> of being (<em>harakat jawhariyya</em>) — represents a uniquely Shia synthesis where philosophy, mysticism and theology are integrated rather than opposed. His school produces a continuous chain of philosophers through to the 20th century, including figures like <strong>Mulla Hadi Sabzawari</strong> and ultimately influencing <strong>Allama Tabataba'i</strong>. This tradition gives Shia Islam a distinctly different relationship to philosophy compared to mainstream Sunni thought.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">16th–17th c.</span><span class="hijri">10th–11th AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-institution">Pilgrimage</span>
+          <div class="entry-title">Safavid Shrine Patronage — Mashhad, Karbala, and Najaf as Imperial Projects <span class="arabic" lang="ar" dir="rtl">المشهد الرضوي</span></div>
+          <div class="entry-body-text">The Safavid shahs transform the shrine cities into imperial monuments — their endowments establishing the architecture of <a href="shia-doctrine.html#doc-embodied" class="cross-link">Shia pilgrimage culture</a> (<em>ziyara</em>) that persists to this day.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text"><em>Ziyara</em> — pilgrimage to the tombs of the Imams — is theologically understood not as worship of the dead but as renewal of covenant with the living spiritual reality of the Imamate. The Safavid investment served both religious and political purposes: the shrines drew Persian pilgrims into a Shia imperial geography. Mashhad's Imam Riḍā shrine complex became a city within a city — caravanserais, bazaars, religious colleges radiating outward from the tomb. The tile-covered domes, gilded interiors, and surrounding hawzas established the visual vocabulary of Shia sacred architecture. This architecture now defines the landscape of Najaf, Karbala, Mashhad, Kāẓimayn, and Samarra. The <a href="shia-encounters.html#enc-persian" class="cross-link">Persian cultural inheritance</a> — its poetry, its aesthetics, its architecture — was absorbed into and transformed by this sacred geography.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">17th c.</span><span class="hijri">11th AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-institution">Hawza</span>
+          <div class="entry-title">Rise of the Isfahani School — Mulla Baqir Majlisi <span class="arabic" lang="ar" dir="rtl">العلامة المجلسي</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-majlisi" class="cross-link">Majlisī</a> compiles <em>Biḥār al-Anwār</em> — a 110-volume hadith encyclopaedia, the most comprehensive in existence — while simultaneously suppressing <a href="shia-encounters.html#enc-sufism" class="cross-link">Sufi orders</a> and philosophical speculation as Sheikh al-Islām.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The irony: the very comprehensiveness of Biḥār al-Anwār preserved the mystical and philosophical traditions he personally opposed — making it an indispensable resource for the <a href="shia-doctrine.html#doc-irfan" class="cross-link">ʿirfānī</a> scholars who came after him. <em>Bihar al-Anwar</em> is both a monument and a provocation. As a monument: nothing like it existed before — a systematic collection of virtually every hadith tradition in the Shia corpus, organized thematically, with commentary. As a provocation: Majlisi used his position as Sheikh al-Islam to suppress Sufi orders and philosophical speculation, viewing both as corruptions of the transmitted religion. His policies targeted figures in the tradition of Mulla Sadra and drove philosophical teaching underground for a generation. The irony is that the very comprehensiveness of <em>Bihar al-Anwar</em> preserved the mystical and philosophical hadith traditions he personally opposed — making it an indispensable resource for the ʿirfāni scholars who came after him. His tenure also coincided with the declining years of the Safavid state, whose fall in 1722 ended the era of clerical dependence on Persian imperial patronage.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1722 CE</span><span class="hijri">1134 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Collapse</span>
           <div class="entry-title">Fall of the Safavid Empire — Afghan Invasion</div>
-          <div class="entry-body-text">The Ghilzai Afghan forces under Mahmud Hotaki sack Isfahan and destroy the Safavid capital. The collapse of Safavid power forces the clerical establishment to reorganize around the shrine cities of Iraq — Najaf and Karbala — under Ottoman rule, laying the foundations for a more autonomous clerical institution less dependent on state power.</div>
+          <div class="entry-body-text">The Afghan invasion ends the Safavid empire — forcing the clerical establishment to rebuild in Najaf and Karbala, paradoxically producing a more autonomous marjaiyyah independent of state power.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Two centuries of state patronage had made the clerical establishment dependent on Persian imperial resources; the collapse stripped that away. Adversity produced institutional autonomy. The fall of the Safavids is one of the most consequential moments in Shia institutional history — not because of what was lost, but because of what it forced. Two centuries of state patronage had made the clerical establishment dependent on Persian imperial resources; the collapse stripped that away and required scholars to rebuild authority on purely religious grounds. The migration of scholars to Najaf and Karbala — cities under Ottoman Sunni rule where Shia institutions survived through the shrine economy and the loyalty of Iraqi and Iranian pilgrims — produced the conditions for the independent marjaiyyah that emerged in the 18th and 19th centuries. Adversity, paradoxically, produced institutional autonomy.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1306,75 +1486,100 @@
       <div class="era-header-text">
         <h2>Formation of the <em>Marjaiyyah</em></h2>
         <p>1722 – 1960 CE · 1134 – 1379 AH</p>
+        <p class="era-theme">The marjaiyyah emerges as a transnational institution independent of any state — demonstrating its reach from the Tobacco Fatwa to the Constitutional Revolution.</p>
       </div>
     </div>
     <div class="era-line"></div>
 
     <div class="entries-grid">
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1706–1791 CE</span><span class="hijri">1118–1205 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-theological">Debate</span>
-          <div class="entry-title">Akhbari–Usuli Controversy & Wahid Bihbahani <span class="arabic">الوحيد البهبهاني</span></div>
-          <div class="entry-body-text">The pivotal intellectual conflict of 18th-century Shia thought. <strong>Akhbaris</strong> hold that only Imamic hadith is authoritative — rejecting independent juristic reasoning (<em>ijtihad</em>). <strong>Usulis</strong> defend the right of qualified scholars to engage in independent legal reasoning. Wahid Bihbahani defeats the Akhbari school in Karbala, establishing Usuli supremacy — and with it, the intellectual foundation for a powerful marjaiyyah.</div>
+          <div class="entry-title">Akhbari–Usuli Controversy & Wahid Bihbahani <span class="arabic" lang="ar" dir="rtl">الوحيد البهبهاني</span></div>
+          <div class="entry-body-text"><strong>Akhbārīs</strong> reject independent juristic reasoning; <strong>Uṣūlīs</strong> defend it. Bihbahānī's decisive victory in Karbala establishes the Uṣūlī position — and with it, the intellectual foundation for the modern marjaiyyah.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">The Usuli victory was not merely academic. It established that the community of believers is obligated to follow a living <strong>marja' al-taqlid</strong> (source of emulation) — the most learned qualified jurist. This creates the hierarchical structure of modern Shia religious authority. Without the Usuli victory, there would be no marjaiyyah as we know it, and no theoretical basis for concepts like Wilayat al-Faqih. Wahid Bihbahani is known as the "Murawwij" — the reviver of the Usuli school.</div>
+            <div class="expand-text">Without the Uṣūlī victory, there would be no theoretical basis for the marja' al-taqlīd as we know it — and no conceptual framework within which <a href="shia-doctrine.html#doc-authority" class="cross-link">Wilāyat al-Faqīh</a> could have been proposed. The Usuli victory was not merely academic. It established that the community of believers is obligated to follow a living <strong>marja' al-taqlid</strong> (source of emulation) — the most learned qualified jurist. This creates the hierarchical structure of modern Shia religious authority. Without the Usuli victory, there would be no marjaiyyah as we know it, and no theoretical basis for concepts like Wilayat al-Faqih. Wahid Bihbahani is known as the "Murawwij" — the reviver of the Usuli school.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1800–1864 CE</span><span class="hijri">1215–1281 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Marja'</span>
-          <div class="entry-title">Sheikh Murtadha al-Ansari — First Modern Marja' <span class="arabic">الشيخ الأنصاري</span></div>
-          <div class="entry-body-text">The Najaf-based jurist whose <em>al-Makasib</em> and <em>Fara'id al-Usul</em> (Rasa'il) become the canonical texts of Shia legal methodology to this day. He is widely considered the first jurist to be recognized as <em>marja' al-taqlid</em> by Shia Muslims globally — the first truly universal source of emulation, consolidating the modern marjaiyyah as a transnational institution.</div>
+          <div class="entry-title">Sheikh Murtadha al-Ansari — First Modern Marja' <span class="arabic" lang="ar" dir="rtl">الشيخ الأنصاري</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-ansari" class="cross-link">Al-Anṣārī</a> — the first jurist recognized as universal <em>marjaʿ al-taqlīd</em> — consolidates the modern marjaiyyah; his <em>al-Makāsib</em> and <em>Farāʾid al-Uṣūl</em> remain the standard advanced curriculum in Shia seminaries today.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">He established the model of the marja' as purely scholarly authority — influence derived entirely from the quality of reasoning, not state entanglement. Every subsequent marja', including <a href="shia-academia.html#scholar-khoei" class="cross-link">al-Khoeī</a> and <a href="shia-academia.html#scholar-sistani" class="cross-link">Sistanī</a>, built directly on his methodological foundation. Al-Ansari's achievement was methodological as much as doctrinal. His <em>Fara'id al-Usul</em> — known simply as <em>al-Rasa'il</em> — systematized the principles by which a jurist navigates legal uncertainty, producing a framework for juristic reasoning so rigorous that it remains the standard advanced curriculum in Shia seminaries today. His <em>al-Makasib</em> (Transactions) did the same for commercial law. Together they established a model of the marja' not as a political figure but as a purely scholarly authority whose influence derived entirely from the quality of his reasoning — a quiet but decisive repositioning of religious authority away from state entanglement. Every subsequent marja', including Khoei and Sistani, built directly on his methodological foundation.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1815–1895 CE</span><span class="hijri">1230–1312 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Marja'</span>
-          <div class="entry-title">Mirza Muhammad Hasan Shirazi — Tobacco Fatwa <span class="arabic">الميرزا الشيرازي</span></div>
-          <div class="entry-body-text">The most dramatic demonstration of marjaiyyah political power in the 19th century. When Qajar Iran grants a tobacco monopoly to Britain, Mirza Shirazi issues a single-line fatwa: <em>"The use of tobacco is tantamount to war against the Imam of the Age."</em> The entire country stops smoking. The Shah is forced to cancel the contract. The political authority of the marja' is established.</div>
+          <div class="entry-title">Mirza Muhammad Hasan Shirazi — Tobacco Fatwa <span class="arabic" lang="ar" dir="rtl">الميرزا الشيرازي</span></div>
+          <div class="entry-body-text">Mirza Shirazi issues a single fatwa — <em>"The use of tobacco is tantamount to war against the Imam of the Age"</em> — and the entire country stops smoking, forcing the Shah to cancel a British monopoly.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The first modern demonstration that a single religious ruling could mobilize a population against both a state decision and a foreign colonial power. The marja's transnational reach — ruling from Iraq, obeyed across Iran — is established. The Tobacco Protest of 1891–92 is the first modern demonstration that a single religious ruling could mobilize a population against a state decision — and against a foreign colonial power. The concession granted to the British Imperial Tobacco Corporation had given a foreign company control over the production, sale, and export of all Iranian tobacco. Mirza Shirazi's fatwa — reportedly just one sentence, issued from Samarra in Iraq — was transmitted through the clerical network and obeyed with striking unanimity, including reportedly by the Shah's own household. The concession was cancelled within months. The episode established two things simultaneously: the transnational reach of the marja' (ruling from Iraq, obeyed across Iran) and the potential of religious authority as a tool of anti-colonial resistance — a template that would be invoked repeatedly through the 20th century.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry institution" onclick="toggleEntry(this)">
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1909–1920 CE</span><span class="hijri">1327–1338 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Politics</span>
           <div class="entry-title">Iranian Constitutional Revolution & Shia Clerical Division</div>
-          <div class="entry-body-text">The Constitutional Revolution divides the marjaiyyah: <strong>Mirza Husayn Na'ini</strong> writes <em>Tanbih al-Umma</em>, a landmark Shia justification for constitutional government; Sheikh Fazlullah Nuri opposes it as un-Islamic. Nuri is executed. Na'ini's tract establishes a Shia intellectual framework for democratic governance that resurfaces in Islamic Republic debates 70 years later.</div>
+          <div class="entry-body-text">The marjaiyyah divides: Na'īnī writes the landmark Shia justification for constitutional governance; Nūrī opposes it as illegitimate. Both argue from the same tradition — and their debate resurfaces verbatim in the Islamic Republic 70 years later.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Nūrī's position — that sovereignty belongs to God alone and no human constitution is legitimate — is structurally identical to Khomeini's argument for <a href="shia-doctrine.html#doc-authority" class="cross-link">clerical governance</a>, though with a different conclusion about who exercises sovereignty. Na'ini's <em>Tanbih al-Umma wa Tanzih al-Milla</em> (Admonishment of the Community) argued that constitutional governance — with its constraints on arbitrary executive power — was actually more consistent with Shia principles than absolutist monarchy, since no human ruler has the legitimacy of the Imam. His argument: if we cannot have the just rule of the infallible Imam, a constitution that limits tyranny is the closest available approximation. This was a creative Shia reframing of modern constitutionalism, not a wholesale adoption of Western liberalism. Fazlullah Nuri's opposing position — that sovereignty belongs to God alone and no human-made constitution can be legitimate — is structurally identical to the argument later made by Khomeini for clerical governance, though with a very different conclusion about who exercises that sovereignty.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1875–1961 CE</span><span class="hijri">1292–1380 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Marja'</span>
-          <div class="entry-title">Grand Ayatullah Sayyid Husayn Borujerdi <span class="arabic">البروجردي</span></div>
-          <div class="entry-body-text">The last truly undisputed single <em>marja' al-mutlaq</em> (universal absolute source of emulation) of the modern era. Based in Qum, he modernizes the hawza, establishes the Shia presence in international scholarly dialogue (including with al-Azhar), and keeps the marjaiyyah explicitly apolitical. His death in 1961 begins the pluralistic era of competing mara'ja.</div>
+          <div class="entry-title">Grand Ayatullah Sayyid Husayn Borujerdi <span class="arabic" lang="ar" dir="rtl">البروجردي</span></div>
+          <div class="entry-body-text">The last undisputed universal <em>marjaʿ al-muṭlaq</em> of the modern era — his death in 1961 fractures the marjaiyyah into the plural landscape of <a href="shia-academia.html#scholar-khomeini" class="cross-link">Khomeini</a>, <a href="shia-academia.html#scholar-khoei" class="cross-link">al-Khoeī</a>, and others that persists today.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His collaboration with al-Azhar's Sheikh Mahmud Shaltut — who in 1959 issued a fatwa recognizing the Jaʿfarī school as a legitimate fifth madhhab — was the high-water mark of 20th-century <a href="shia-encounters.html#enc-sunni" class="cross-link">Sunni-Shia rapprochement</a>. Borujerdi's significance lies partly in what he prevented. During his tenure, the Shah's land reform and modernization programs threatened religious endowments; Borujerdi's quiet authority and studied political restraint preserved the hawza's independence without open confrontation. His collaboration with al-Azhar's Sheikh Mahmud Shaltut — who in 1959 issued a fatwa recognizing the Jaʿfari school as a legitimate fifth madhab — was a genuine ecumenical achievement, the high-water mark of 20th-century Sunni-Shia rapprochement. His death left no consensus successor, and the marjaiyyah fractured into the plural landscape of Khomeini, Khoei, Golpaygani, and others — each with different geographic bases and political orientations. That fracture is the condition of Shia religious authority to this day.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry institution" onclick="toggleEntry(this)">
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1920 CE</span><span class="hijri">1338 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Jihad</span>
           <div class="entry-title">Iraqi Revolution — Najaf Marjaiyyah Against British Occupation</div>
-          <div class="entry-body-text">Grand Ayatullah Mirza Muhammad Taqi Shirazi issues a fatwa declaring armed resistance to British occupation of Iraq obligatory. The 1920 Iraqi Revolution follows. The marjaiyyah demonstrates its capacity to mobilize mass political action. Najaf cements its role not just as a center of learning but as a center of Shia political consciousness.</div>
+          <div class="entry-body-text">Grand Ayatullah Shirazi's fatwa declaring armed resistance to British occupation obligatory triggers the 1920 Iraqi Revolution — establishing Najaf as a center of Shia political consciousness, not only scholarship.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The same transnational logic as the Tobacco Fatwa: ruling from Samarra, obeyed across Iraq. The marjaiyyah's capacity to mobilize mass action across borders is confirmed. The 1920 Iraqi Revolution — known in Arabic as <em>Thawrat al-Ishrin</em> — was a broad-based uprising against British mandatory rule that drew together Shia tribal confederations, Sunni nationalists, and urban communities. The Najaf marjaiyyah's fatwa gave the revolt both religious legitimacy and organizational momentum. Britain suppressed the uprising militarily but was forced to negotiate a modified administrative arrangement; Iraq achieved nominal independence under the Hashemite monarchy in 1932. For Shia political theology, the episode demonstrated that a marja' issuing from a foreign city (Shirazi was based in Samarra) could mobilize populations across a country — the same transnational logic that made the Tobacco Fatwa and, later, the 1979 Revolution possible.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry institution" onclick="toggleEntry(this)">
+      <div class="entry institution" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1921 CE</span><span class="hijri">1340 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-institution">Hawza</span>
           <div class="entry-title">Hawza of Qum Founded — Sheikh Abdul Karim Ha'eri Yazdi</div>
-          <div class="entry-body-text">Sheikh Abdul Karim Ha'eri Yazdi arrives in Qum at the invitation of local scholars and formally establishes the modern Hawza Ilmiyya of Qum in 1921–22 — transforming it from a secondary provincial seminary into Iran's premier center of Shia scholarship. Under Ha'eri (d. 1937), and later Grand Ayatullah Borujerdi, Qum becomes a rival to Najaf, creating the dual-center structure of Shia scholarship that persists today.</div>
+          <div class="entry-body-text">Ha'erī Yazdī transforms Qum from a provincial seminary into Iran's premier hawza — attracting a young <a href="shia-academia.html#scholar-khomeini" class="cross-link">Khomeini</a> among his students, and creating the Najaf-Qum dual structure that defines Shia scholarship today.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The dual structure of Najaf (quietist, Arab-Iraqi) and Qum (activist, Persian-Iranian) is one of the defining organizational facts of contemporary Shia Islam. Ha'eri's arrival in Qum was preceded by a period of scholarly invitation and negotiation — the city's proximity to Tehran and the shrine of Fatima al-Maʿsuma (sister of Imam al-Ridha) made it a natural candidate for revitalization. His organizational work — regularizing student stipends, establishing curricula, attracting senior scholars — created institutional infrastructure where previously there had been informal networks. Among the students he attracted to Qum was a young Ruhollah Khomeini, who would arrive in the 1920s and spend the next four decades there before exile. The Qum hawza's later role as the intellectual center of the 1979 Revolution traces directly to Ha'eri's founding work. The dual structure of Najaf (quietist, Arab-Iraqi) and Qum (activist, Persian-Iranian) is one of the defining organizational facts of contemporary Shia Islam.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1387,70 +1592,130 @@
       <div class="era-header-text">
         <h2>The <em>Contemporary</em> Shia World</h2>
         <p>1960 – Present · 1380 AH – Present</p>
+        <p class="era-theme">The Shia world fractures between quietism and activism, Najaf and Qum — while Shia communities from Lebanon to South Asia remake global politics.</p>
       </div>
     </div>
     <div class="era-line"></div>
 
     <div class="entries-grid">
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1899–1992 CE</span><span class="hijri">1317–1413 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Marja'</span>
-          <div class="entry-title">Grand Ayatullah Sayyid Abu al-Qasim al-Khoei <span class="arabic">السيد الخوئي</span></div>
-          <div class="entry-body-text">The towering marja' of Najaf for three decades. Al-Khoei represents the traditional quietist position — the marjaiyyah as purely religious institution, neither claiming nor exercising political power. His <em>Minhaj al-Salihin</em> is the most widely distributed Shia legal manual. He trained virtually every major Shia scholar of the next generation, including Sistani. He is also a pioneering Quranic scholar and founder of the al-Khoei Foundation.</div>
-        </div>
-      </div>
-
-      <div class="entry scholar" onclick="toggleEntry(this)">
-        <div class="entry-date"><span class="year">1902–1989 CE</span><span class="hijri">1320–1409 AH</span></div>
-        <div class="entry-body">
-          <span class="entry-tag tag-theological">Revolution</span>
-          <div class="entry-title">Imam Ruhollah Khomeini — Wilayat al-Faqih <span class="arabic">الإمام الخميني</span></div>
-          <div class="entry-body-text">The most consequential Shia political theorist of the modern era. Khomeini develops and radicalizes the doctrine of <em>Wilayat al-Faqih</em> (Guardianship of the Jurist) — arguing that the qualified jurist must exercise full political governance during Occultation. The 1979 Iranian Revolution embeds this theory in state structure. Deeply controversial even within the Shia scholarly world, it permanently redraws the lines of religion and politics.</div>
+          <div class="entry-title">Grand Ayatullah Sayyid Abu al-Qasim al-Khoei <span class="arabic" lang="ar" dir="rtl">السيد الخوئي</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-khoei" class="cross-link">Al-Khoeī</a> — towering quietist marjaʿ of Najaf for three decades — trained virtually every major Shia scholar of the next generation, including <a href="shia-academia.html#scholar-sistani" class="cross-link">Sistanī</a>, while explicitly rejecting <a href="shia-doctrine.html#doc-authority" class="cross-link">Wilāyat al-Faqīh</a>.</div>
           <div class="entry-expand">
             <div class="expand-divider"></div>
-            <div class="expand-text">Khomeini's doctrine of Wilayat al-Faqih al-Mutlaqa (absolute guardianship) was a radical departure from even his own earlier positions. It argued that the scope of the jurist's authority during Occultation is co-extensive with the Prophet's and Imam's own authority — including governance of all social and political affairs. This was rejected by most senior scholars — including al-Khoei, Sistani, and later Fadlallah. The tension between the "activist" and "quietist" poles of the marjaiyyah structures contemporary Shia politics and defines the difference between Najaf's and Qum's approaches.</div>
+            <div class="expand-text">His <em>Minhāj al-Ṣāliḥīn</em> is the most widely distributed Shia legal manual; his <em>Muʿjam Rijāl al-Ḥadīth</em> is the standard reference for Shia hadith transmitter evaluation. Al-Khoei's authority rested on unparalleled scholarly output — his <em>Minhaj al-Salihin</em> running to multiple volumes, his encyclopedic work on Quranic transmitters (<em>Mu'jam Rijal al-Hadith</em>), and his meticulous legal methodology. He explicitly rejected Khomeini's Wilayat al-Faqih, holding that political governance was not a function delegated to jurists during Occultation. When Saddam Hussein placed him under house arrest after the 1991 Shia uprising — one he had cautiously encouraged — his helplessness illustrated the vulnerability of a quietist marjaiyyah without state protection. His foundation, headquartered in London, continues to fund Shia educational and charitable institutions globally, demonstrating how transnational religious philanthropy sustains the tradition independently of any state.</div>
           </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">1902–1989 CE</span><span class="hijri">1320–1409 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-theological">Revolution</span>
+          <div class="entry-title">Imam Ruhollah Khomeini — Wilayat al-Faqih <span class="arabic" lang="ar" dir="rtl">الإمام الخميني</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-khomeini" class="cross-link">Khomeini</a> argues that the qualified jurist must exercise full political sovereignty during the <a href="shia-doctrine.html#doc-ghayba" class="cross-link">Occultation</a> — embedding <a href="shia-doctrine.html#doc-authority" class="cross-link"><em>Wilāyat al-Faqīh</em></a> in the 1979 Iranian state.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Rejected by most senior scholars — including <a href="shia-academia.html#scholar-khoei" class="cross-link">al-Khoeī</a> and <a href="shia-academia.html#scholar-sistani" class="cross-link">Sistanī</a> — the tension between activist and quietist poles defines contemporary <a href="shia-doctrine.html#doc-authority" class="cross-link">Shia political theology</a>. Khomeini's doctrine of Wilayat al-Faqih al-Mutlaqa (absolute guardianship) was a radical departure from even his own earlier positions. It argued that the scope of the jurist's authority during Occultation is co-extensive with the Prophet's and Imam's own authority — including governance of all social and political affairs. This was rejected by most senior scholars — including al-Khoei, Sistani, and later Fadlallah. The tension between the "activist" and "quietist" poles of the marjaiyyah structures contemporary Shia politics and defines the difference between Najaf's and Qum's approaches.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1935–1980 CE</span><span class="hijri">1353–1400 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Martyr</span>
-          <div class="entry-title">Sayyid Muhammad Baqir al-Sadr — Martyr of Najaf <span class="arabic">الشهيد الصدر</span></div>
-          <div class="entry-body-text">The most brilliant Shia intellectual of the 20th century. Al-Sadr founds the Islamic Da'wa Party, writes <em>Iqtisaduna</em> (Our Economics) — a foundational work of Islamic economics — and <em>Falsafatuna</em> (Our Philosophy), engaging Marxism and Western philosophy on their own terms. He is executed by Saddam Hussein's Ba'ath regime in 1980 along with his sister. His martyrdom galvanizes Shia political consciousness globally.</div>
+          <div class="entry-title">Sayyid Muhammad Baqir al-Sadr — Martyr of Najaf <span class="arabic" lang="ar" dir="rtl">الشهيد الصدر</span></div>
+          <div class="entry-body-text">Executed by Saddam in 1980, <a href="shia-academia.html#scholar-sadr" class="cross-link">al-Ṣadr</a> leaves behind <em>Iqtiṣādunā</em> and <em>Falsafatunā</em> — the most rigorous Islamic responses to <a href="shia-encounters.html#enc-left" class="cross-link">Marxism</a> and Western philosophy produced in the 20th century.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">The most brilliant Shia intellectual of the modern era, his range was extraordinary — from Islamic economics engaging Marx and Keynes to jurisprudential works that remain advanced seminary texts. His execution alongside his sister <a href="shia-doctrine.html#doc-embodied" class="cross-link">Bint al-Hudā</a> galvanized Shia political consciousness globally. Al-Sadr's execution alongside his sister Bint al-Huda — a scholar and novelist in her own right — was one of the most brutal acts of the Ba'athist campaign against the Najaf hawza. He had been under house arrest for years, his students arrested and killed; his final days are documented in letters of extraordinary clarity and spiritual depth. Intellectually, his range was extraordinary: <em>Iqtisaduna</em> engaged Marx and Keynes directly; <em>Falsafatuna</em> offered a systematic Islamic response to dialectical materialism; his jurisprudential works on the principles of legal inference remain advanced seminary texts. His political thought — closer to al-Sadr's constitutional model than Khomeini's absolute guardianship — influenced a generation of Shia political movements from Iraq to Lebanon. His cousin Musa al-Sadr founded the Amal movement in Lebanon; his wider family network remains central to Iraqi Shia politics.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1903–1981 CE</span><span class="hijri">1321–1402 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-theological">Philosophy</span>
-          <div class="entry-title">Allama Muhammad Husayn Tabataba'i <span class="arabic">العلامة الطباطبائي</span></div>
-          <div class="entry-body-text">The pre-eminent Shia philosopher and Quranic scholar of the 20th century. His <em>al-Mizan fi Tafsir al-Quran</em> (20 volumes) is the most comprehensive Shia Quranic commentary of the modern era — drawing on philosophy, irfan, and hadith in unprecedented synthesis. His philosophical dialogues with the French thinker Henry Corbin brought Shia thought to global attention. He trained the next generation of Shia philosophers including Murtadha Mutahhari and Jawadi Amoli.</div>
+          <div class="entry-title">Allama Muhammad Husayn Tabataba'i <span class="arabic" lang="ar" dir="rtl">العلامة الطباطبائي</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-tabatabai" class="cross-link">Ṭabāṭabāʾī</a>'s 20-volume <em>al-Mīzān</em> is the most comprehensive modern Shia Quranic commentary; his dialogues with Henry Corbin introduced <a href="shia-encounters.html#enc-orientalism" class="cross-link">Shia philosophy to Western audiences</a> for the first time.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Trained in the Sadraean school, he unified philosophy, <a href="shia-doctrine.html#doc-irfan" class="cross-link">ʿirfān</a>, and tafsīr in a single practice. His students — Muṭahharī, Jawādī Āmolī, Ḥasan-Zāda Āmolī — are the preeminent living inheritors of this tradition. Tabataba'i's philosophical formation was deeply shaped by Mulla Sadra's transcendent wisdom — he studied under disciples of the Sadraean school in Tabriz and Najaf before settling in Qum. His <em>al-Mizan</em> interprets each verse of the Quran through multiple lenses simultaneously: grammatical, jurisprudential, philosophical, and mystical — demonstrating by practice the Shia claim that the Quran has inexhaustible levels of meaning. His dialogues with Henry Corbin, published as <em>Shi'ite Islam</em>, introduced Western intellectual audiences to the tradition's philosophical depth for the first time. Among his students, Mutahhari became the most publicly influential before his assassination in 1979; Javadi Amoli and Hasan-Zadeh Amoli continue the school today as the preeminent living inheritors of the philosophical tradition he transmitted.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1930–present</span><span class="hijri">1349 AH–</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Marja'</span>
-          <div class="entry-title">Grand Ayatullah Sayyid Ali al-Sistani <span class="arabic">السيد السيستاني</span></div>
-          <div class="entry-body-text">The most widely followed Shia marja' in the world, based in Najaf. Sistani represents the quintessential quietist tradition — enormous religious authority exercised with restraint and surgical precision. His 2014 fatwa calling Iraqis to arms against ISIS mobilized over 100,000 volunteers. His management of Iraq's post-Saddam transition and his influence on Lebanese, Iranian, and South Asian Shia communities makes him arguably the most globally consequential religious leader of his generation.</div>
+          <div class="entry-title">Grand Ayatullah Sayyid Ali al-Sistani <span class="arabic" lang="ar" dir="rtl">السيد السيستاني</span></div>
+          <div class="entry-body-text"><a href="shia-academia.html#scholar-sistani" class="cross-link">Sistanī</a> — the most widely followed Shia marjaʿ in the world — exercises enormous religious authority with surgical precision; his 2014 fatwa mobilized over 100,000 volunteers against ISIS.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His quietism is not passivity — it is a carefully calibrated philosophy of when religious authority should engage political life. His management of Iraq's post-Saddam transition and his global influence across <a href="shia-encounters.html#enc-india" class="cross-link">South Asia</a> and the diaspora makes him arguably the most consequential religious leader of his generation. Sistani's quietism is not passivity — it is a carefully calibrated philosophy of when and how religious authority should engage with political life. He spent the first years after Saddam's fall refusing to meet foreign officials and communicating only through intermediaries, yet his interventions — issued precisely and rarely — shaped the Iraqi constitutional process, prevented full-scale civil war on multiple occasions, and mobilized the Popular Mobilization Units against ISIS in 2014. His fatwa calling Iraqis to defend their country — issued within days of the ISIS capture of Mosul — is credited with preventing a complete collapse of the Iraqi state. He is reportedly working against the inheritance of his position by his son, consistent with his view that the marjaiyyah must be earned through scholarship rather than transmitted through family. His student base spans Iraq, Iran, India, Pakistan, and the global Shia diaspora.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry scholar" onclick="toggleEntry(this)">
+      <div class="entry scholar" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">1935–2010 CE</span><span class="hijri">1354–1431 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-scholar">Scholar</span>
-          <div class="entry-title">Grand Ayatullah Sayyid Muhammad Husayn Fadlallah — Lebanon <span class="arabic">السيد فضل الله</span></div>
-          <div class="entry-body-text">The most intellectually independent major marja' of the late 20th century. Based in Beirut, Fadlallah engaged feminist jurisprudence, international law, and political philosophy in ways that challenged both quietism and Khomeini's model. He influenced Lebanese Shia political consciousness and Hizbullah's early formation, while later distancing from direct political control. His tafsir <em>Min Wahy al-Quran</em> is widely read.</div>
+          <div class="entry-title">Grand Ayatullah Sayyid Muhammad Husayn Fadlallah — Lebanon <span class="arabic" lang="ar" dir="rtl">السيد فضل الله</span></div>
+          <div class="entry-body-text">Based in Beirut, Fadlallah challenged both quietism and <a href="shia-academia.html#scholar-khomeini" class="cross-link">Khomeini's</a> model — engaging feminist jurisprudence, international law, and political philosophy on their own terms while maintaining independence from political parties.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">His willingness to engage <a href="shia-encounters.html#enc-humanism" class="cross-link">modernity</a> on its own terms — while remaining grounded in traditional jurisprudence — makes him the most significant example of a Shia scholar operating in a Western-influenced urban context. Fadlallah's jurisprudential positions were often controversial: he issued rulings permitting women to defend themselves against domestic violence, questioned some traditional hadith attributed to Fatima al-Zahra, and engaged directly with Western human rights frameworks. His relationship with Hizbullah was complex — he was initially seen as a spiritual reference for the movement but consistently denied formal organizational ties, maintaining the independence of his religious authority from partisan politics. He survived multiple assassination attempts, including a 1985 car bombing in Beirut's southern suburbs that killed 80 people and was widely attributed to CIA-linked operatives.</div>
+          </div>
         </div>
       </div>
 
-      <div class="entry event" onclick="toggleEntry(this)">
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">1974 CE</span><span class="hijri">1394 AH</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">Lebanon</span>
+          <div class="entry-title">Musa al-Sadr Founds Amal — The Lebanese Shia Political Awakening <span class="arabic" lang="ar" dir="rtl">موسى الصدر</span></div>
+          <div class="entry-body-text">Sayyid Musa al-Sadr founds the Movement of the Deprived and its militia Amal — mobilizing the historically marginalized Lebanese Shia community and demonstrating that <a href="shia-encounters.html#enc-left" class="cross-link">Shia political organization</a> could rival secular leftist movements.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Lebanese Shia had for centuries been economically and politically marginalized — concentrated in the south and the Beqaa Valley, underrepresented in the confessional state, and largely absent from the Lebanese commercial and political elite. Musa al-Sadr changed this through a combination of religious authority, social institution-building, and political organizing. His disappearance — he traveled to Libya to meet Muammar Gaddafi in August 1978 and was never seen again — transformed him into a martyr-figure whose image remains displayed across Lebanese Shia communities. The political space he opened was later occupied, and dramatically expanded, by Hizbullah after the 1982 Israeli invasion. His cousin, <a href="shia-academia.html#scholar-sadr" class="cross-link">Muhammad Baqir al-Sadr</a>, was simultaneously building the Iraqi Da'wa party in Najaf.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">1947–present</span><span class="hijri">1367 AH–</span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-political">South Asia</span>
+          <div class="entry-title">South Asian Shiism — The World's Largest Shia Population Base <span class="arabic" lang="ar" dir="rtl">جنوب آسيا</span></div>
+          <div class="entry-body-text">Pakistan and India together contain the world's largest Shia population — divided by the 1947 partition, with Pakistani Shia facing growing sectarian violence from the 1980s onward, driven by Saudi-funded movements and state policy under Zia ul-Haq.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">South Asian Shiism has its own distinct traditions: the Urdu elegiac tradition (<em>marsiya</em>) reaches its apex in the 19th-century poetry of Mir Anis and Mirza Dabir at Lucknow; the Imambaras of Lucknow are among the finest examples of Shia architectural patronage outside Iran and Iraq; and the Muharram processions of the subcontinent incorporate South Asian musical and performative traditions entirely distinct from their Arab and Persian counterparts. The Nawabs of Awadh were the major Shia royal patrons of the pre-colonial period. Pakistani anti-Shia violence — which escalated dramatically after Zia ul-Haq's Islamization program in the 1980s — has killed thousands of Shia in targeted bombings of processions, mosques, and Imambaras. The <a href="shia-encounters.html#enc-india" class="cross-link">Indian subcontinent's engagement</a> with Shia thought represents one of the tradition's most creative and understudied chapters.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
+        <div class="entry-date"><span class="year">20th c.–present</span><span class="hijri"></span></div>
+        <div class="entry-body">
+          <span class="entry-tag tag-scholar">Women</span>
+          <div class="entry-title">Women in the Shia Scholarly Tradition — Presence and Erasure <span class="arabic" lang="ar" dir="rtl">العالمات</span></div>
+          <div class="entry-body-text">Women transmitted hadith, financed hawzas, and organized Ashura commemorations across centuries — yet remain largely absent from the scholarly record. Nusrat Amin (Bānū Amīn, d. 1983), who authored a 15-volume Quranic commentary and achieved recognition as a mujtahida, is among the very few whose name survives.</div>
+          <div class="entry-expand">
+            <div class="expand-divider"></div>
+            <div class="expand-text">Nusrat Amin (1886–1983) — known as Bānū Amīn — was one of the very few women in Shia history to receive formal recognition as a mujtahida: a scholar qualified to exercise independent juristic reasoning. Based in Isfahan, she wrote a 15-volume Quranic commentary (<em>Makhzan al-ʿIrfān</em>) and taught at the University of Isfahan. Āmina al-Ṣadr (Bint al-Hudā, 1937–1980) — novelist and educator, sister of <a href="shia-academia.html#scholar-sadr" class="cross-link">Shahid al-Sadr</a> — was executed alongside him by Saddam Hussein; her educational writings shaped the intellectual formation of an entire generation of Iraqi Shia women. The scholarly contributions of women have historically been routed through informal channels: hadith transmission within family networks, financial patronage of endowments (<em>waqf</em>), and organization of devotional practice. Their erasure from standard historical accounts is being slowly reversed by contemporary scholarship.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry event" onclick="toggleEntry(this)" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){toggleEntry(this);event.preventDefault()}">
         <div class="entry-date"><span class="year">2003 CE</span><span class="hijri">1424 AH</span></div>
         <div class="entry-body">
           <span class="entry-tag tag-political">Turning Point</span>
@@ -1668,6 +1933,7 @@ function closeImamModal(e) {
 }
 
 function toggleEntry(el) {
+  el.setAttribute('aria-expanded', el.classList.contains('open') ? 'false' : 'true');
   el.classList.toggle('open');
 }
 
@@ -1766,6 +2032,19 @@ if (eraScroller) {
   new ResizeObserver(updateEraNavArrows).observe(eraScroller);
   updateEraNavArrows();
 }
+
+// ── IMAM HASH HANDLER ─────────────────────────────────────────────────────
+// Supports inbound links: shia-timeline.html#imam-1 through #imam-12,
+// #imam-prophet, #imam-fatima
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#imam-')) {
+    const key = hash.slice(6); // '1', 'prophet', 'fatima', etc.
+    const num = /^\d+$/.test(key) ? parseInt(key) : key;
+    setTimeout(() => openImamModal(num), 120);
+  }
+});
 </script>
+<script src="scholar-popup.js"></script>
 </body>
 </html>

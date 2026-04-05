@@ -147,6 +147,57 @@
     font-size: 18px; line-height: 1.65; color: var(--text-dim);
   }
 
+  /* ── DOCTRINE TABLE OF CONTENTS ── */
+  .doc-toc {
+    max-width: 1100px; margin: 0 auto;
+    padding: 40px 28px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-toc-heading {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--gold-dim);
+    margin-bottom: 28px;
+  }
+  .doc-toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media(max-width: 600px) { .doc-toc-grid { grid-template-columns: 1fr; } }
+  .doc-toc-item {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 11px 20px 11px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: background 0.18s;
+  }
+  .doc-toc-item:nth-child(even) {
+    padding-left: 28px; padding-right: 0;
+    border-left: 1px solid rgba(255,255,255,0.04);
+  }
+  .doc-toc-item:last-child,
+  .doc-toc-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .doc-toc-item:hover { background: rgba(201,168,76,0.03); }
+  .doc-toc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px; color: var(--gold-dim);
+    flex-shrink: 0; width: 18px; text-align: right;
+    padding-top: 2px;
+  }
+  .doc-toc-text { flex: 1; }
+  .doc-toc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14.5px; font-weight: 600;
+    color: rgba(245,239,224,0.82);
+    display: block; margin-bottom: 2px;
+    line-height: 1.25;
+  }
+  .doc-toc-desc {
+    font-size: 12.5px; color: rgba(245,239,224,0.35);
+    line-height: 1.4; display: block;
+  }
+
   /* ── SECTIONS ── */
   .doc-section {
     border-bottom: 1px solid var(--border);
@@ -455,6 +506,18 @@
   }
   .card-split p strong { color: rgba(245,239,224,0.85); }
   .card-split p em { color: rgba(201,168,76,0.75); }
+
+  /* ── CROSS-PAGE LINKS ── */
+  .cross-link {
+    color: var(--gold-dim);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.2s;
+  }
+  .cross-link:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
 </style>
 </head>
 <body>
@@ -467,6 +530,7 @@
     <a href="shia-academia.html"  class="topbar-btn">II · Academic Map</a>
     <a href="shia-encounters.html" class="topbar-btn">III · Encounters</a>
     <button class="topbar-btn active" onclick="void(0)">IV · Doctrine</button>
+    <a href="about.html" class="topbar-btn">About</a>
   </div>
 </nav>
 
@@ -477,12 +541,16 @@
     <div class="doc-nav-inner">
       <button class="doc-btn active" onclick="scrollToDoc('doc-architecture')">I · Theological Architecture</button>
       <button class="doc-btn" onclick="scrollToDoc('doc-imamate')">II · The Imamate</button>
-      <button class="doc-btn" onclick="scrollToDoc('doc-karbala')">III · Karbala as Paradigm</button>
-      <button class="doc-btn" onclick="scrollToDoc('doc-embodied')">IV · The Embodied Tradition</button>
-      <button class="doc-btn" onclick="scrollToDoc('doc-just-order')">V · The Just Order</button>
-      <button class="doc-btn" onclick="scrollToDoc('doc-authority')">VI · Authority in Occultation</button>
-      <button class="doc-btn" onclick="scrollToDoc('doc-irfan')">VII · ʿIrfān</button>
-      <button class="doc-btn" onclick="scrollToDoc('doc-akhlaq')">VIII · Akhlāq</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-isma')">III · ʿIṣma</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-ghayba')">IV · The Living Absence</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-authority')">V · Authority in Occultation</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-karbala')">VI · Karbala as Paradigm</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-embodied')">VII · The Embodied Tradition</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-just-order')">VIII · The Just Order</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-irfan')">IX · ʿIrfān</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-akhlaq')">X · Akhlāq</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-contested')">XI · Contested Doctrines</button>
+      <button class="doc-btn" onclick="scrollToDoc('doc-eschatology')">XII · Eschatology</button>
     </div>
   </div>
   <button class="doc-nav-arrow right" id="doc-arrow-right" onclick="docNavScroll(1)">&#8250;</button>
@@ -494,6 +562,111 @@
   <div class="page-eyebrow">Page IV · Doctrine & Debate</div>
   <h1 class="page-title">What the Tradition <em>Believes</em></h1>
   <p class="page-desc">Beyond history and argument lies the tradition's own interior: what it holds to be true, the practices through which those convictions become embodied, the debates that remain unresolved, and the inner life that doctrine alone cannot exhaust.</p>
+</div>
+
+
+<!-- DOCTRINE TABLE OF CONTENTS -->
+<div class="doc-toc">
+  <div class="doc-toc-heading">Twelve sections — click any to navigate</div>
+  <div class="doc-toc-grid">
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-architecture')">
+      <span class="doc-toc-num">I</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">Theological Architecture</span>
+        <span class="doc-toc-desc">The five roots of Uṣūl al-Dīn and the logic that holds them together</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-imamate')">
+      <span class="doc-toc-num">II</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">The Imamate</span>
+        <span class="doc-toc-desc">The defining doctrine — why the Imam is necessary and what kind of being he is</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-isma')">
+      <span class="doc-toc-num">III</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">ʿIṣma</span>
+        <span class="doc-toc-desc">Infallibility of Prophets and Imams — the foundation of reliable guidance</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-ghayba')">
+      <span class="doc-toc-num">IV</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">The Living Absence</span>
+        <span class="doc-toc-desc">The theology of the Occultation — longing, veiled presence, and the wait for return</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-authority')">
+      <span class="doc-toc-num">V</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">Authority in Occultation</span>
+        <span class="doc-toc-desc">The live debate: how much authority does the absent Imam delegate?</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-karbala')">
+      <span class="doc-toc-num">VI</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">Karbala as Paradigm</span>
+        <span class="doc-toc-desc">The event that recurs in every generation — three readings held simultaneously</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-embodied')">
+      <span class="doc-toc-num">VII</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">The Embodied Tradition</span>
+        <span class="doc-toc-desc">ʿĀshūrāʾ, Ziyara, duʿā — the practices that make theology felt</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-just-order')">
+      <span class="doc-toc-num">VIII</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">The Just Order</span>
+        <span class="doc-toc-desc">Social ethics, wealth as trusteeship, and the letter to Malik al-Ashtar</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-irfan')">
+      <span class="doc-toc-num">IX</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">ʿIrfān</span>
+        <span class="doc-toc-desc">The inner life of the tradition — mystical stations, the soul's journey to God</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-akhlaq')">
+      <span class="doc-toc-num">X</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">Akhlāq</span>
+        <span class="doc-toc-desc">Ethics of character — the person the tradition hopes to produce</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-contested')">
+      <span class="doc-toc-num">XI</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">Contested Doctrines</span>
+        <span class="doc-toc-desc">Tawassul, shirk, and taqiyya — what the tradition actually teaches</span>
+      </div>
+    </div>
+
+    <div class="doc-toc-item" role="button" tabindex="0" onclick="scrollToDoc('doc-eschatology')">
+      <span class="doc-toc-num">XII</span>
+      <div class="doc-toc-text">
+        <span class="doc-toc-name">Eschatology</span>
+        <span class="doc-toc-desc">The Mahdī's return, rajʿa, resurrection — how the tradition understands the end</span>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
@@ -510,31 +683,31 @@
 
     <div class="roots-grid">
       <div class="root-card">
-        <span class="root-arabic">التوحيد</span>
+        <span class="root-arabic" lang="ar" dir="rtl">التوحيد</span>
         <span class="root-name">Tawḥīd</span>
         <span class="root-trans">Divine Unity</span>
         <p class="root-desc">God is absolutely one — not merely numerically, but in being, attributes, and act. No partner, no co-equal, no division. All of theology follows from this: existence itself is a single gradient of being descending from the divine unity.</p>
       </div>
       <div class="root-card">
-        <span class="root-arabic">العدل</span>
+        <span class="root-arabic" lang="ar" dir="rtl">العدل</span>
         <span class="root-name">ʿAdl</span>
         <span class="root-trans">Divine Justice</span>
         <p class="root-desc">God does not act unjustly — by necessity, not merely convention. This Mu'tazilite inheritance distinguishes Shia theology from Ash'ari Sunni determinism. If God is just, then human moral responsibility is real, divine reward and punishment are rational, and the world is ordered toward goodness.</p>
       </div>
       <div class="root-card">
-        <span class="root-arabic">النبوة</span>
+        <span class="root-arabic" lang="ar" dir="rtl">النبوة</span>
         <span class="root-name">Nubuwwa</span>
         <span class="root-trans">Prophethood</span>
         <p class="root-desc">God sends prophets — infallible, divinely guided — to convey the law and guide humanity. The chain of prophethood runs from Adam through Abraham, Moses, Jesus, and is sealed by Muhammad ﷺ. The Quran is the final and preserved revelation.</p>
       </div>
       <div class="root-card">
-        <span class="root-arabic">الإمامة</span>
+        <span class="root-arabic" lang="ar" dir="rtl">الإمامة</span>
         <span class="root-name">Imāma</span>
         <span class="root-trans">Imamate</span>
         <p class="root-desc">Divine guidance did not end with the Prophet's death. The Imam — divinely designated, infallible, possessing complete knowledge of the religion — continues the guidance of the community. This root is the defining Shia contribution to Islamic theology and the source of every other doctrinal distinction.</p>
       </div>
       <div class="root-card">
-        <span class="root-arabic">المعاد</span>
+        <span class="root-arabic" lang="ar" dir="rtl">المعاد</span>
         <span class="root-name">Maʿād</span>
         <span class="root-trans">Resurrection</span>
         <p class="root-desc">The body and soul are resurrected for divine judgment. Every act has consequence; justice that is deferred in this world is fulfilled in the next. The return of the Hidden Imam before the final hour is the penultimate act of this cosmic drama.</p>
@@ -566,7 +739,7 @@
       <div class="doc-card-label">The Rational Argument</div>
       <h3>Why the Imam Is Necessary</h3>
       <p class="card-lede">A just God would not leave humanity without an infallible guide — and that single premise carries the entire weight of the Imamate's rational necessity.</p>
-      <p>The classic formulation, systematized by Nasir al-Din al-Tusi and elaborated by Allama al-Hilli in his commentary <em>Kashf al-Murad</em>: <strong>divine grace (luṭf) requires an infallible guide</strong>. God is just; a just God would not leave humanity dependent on fallible human scholars, who may err, contradict each other, and produce uncertainty in the very matters on which salvation depends. Therefore God designates an infallible guide. The only question is who that guide is and how he is identified.</p>
+      <p>The classic formulation, systematized by <a href="shia-academia.html#scholar-tusi-nasir" class="cross-link">Nasir al-Din al-Ṭūsī</a> and elaborated by <a href="shia-academia.html#scholar-hilli" class="cross-link">Allama al-Ḥillī</a> in his commentary <em>Kashf al-Murad</em>: <strong>divine grace (luṭf) requires an infallible guide</strong>. God is just; a just God would not leave humanity dependent on fallible human scholars, who may err, contradict each other, and produce uncertainty in the very matters on which salvation depends. Therefore God designates an infallible guide. The only question is who that guide is and how he is identified.</p>
       <p>This argument grounds the Imamate not in scripture alone but in a logic that applies to any community in any age — which is why Shia <em>kalām</em> considered it decisive against opponents who rejected specific hadith.</p>
     </div>
 
@@ -607,7 +780,7 @@
         </div>
         <div>
           <p class="card-split-label">Her Grief as Testimony</p>
-          <div class="inline-quote">"Fatima is a part of me. Whoever angers her angers me, and whoever angers me angers God."<br><span style="font-size:12px;color:var(--gold-dim);font-style:normal;">— The Prophet Muhammad ﷺ</span></div>
+          <div class="inline-quote">"Fatimah al-Zahrāʾ is a part of me. Whoever angers her angers me, and whoever angers me angers God."<br><span style="font-size:12px;color:var(--gold-dim);font-style:normal;">— The Prophet Muhammad ﷺ</span></div>
           <p>Her sustained grief after the Prophet's death — the Khutba al-Fadakiyya delivered in the mosque of Medina, her refusal to forgive, her burial at night at her own request — is treated by the tradition not as personal emotion but as <em>judicial testimony</em>: evidence, preserved across fourteen centuries, that the covenant of Ghadir was broken. <strong>The Imam's claim is inseparable from her witness.</strong></p>
         </div>
       </div>
@@ -615,9 +788,9 @@
 
     <div class="figures-list">
       <div class="figure-chip"><span class="figure-name">Imam Ali</span><span class="figure-role">1st Imam · designated at Ghadir</span></div>
-      <div class="figure-chip"><span class="figure-name">Allama al-Hilli</span><span class="figure-role">Classical rational argument for Imamate</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-hilli" class="cross-link"><span class="figure-name">Allama al-Ḥillī</span></a><span class="figure-role">Classical rational argument for Imamate</span></div>
       <div class="figure-chip"><span class="figure-name">Sheikh al-Mufid</span><span class="figure-role">Systematized Imamate theology</span></div>
-      <div class="figure-chip"><span class="figure-name">Allama Tabataba'i</span><span class="figure-role">20th-c. philosophical defense of Imamate</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#<a href="shia-academia.html#scholar-tabatabai" class="cross-link"><span class="figure-name">Allama Ṭabāṭabāʾī</span></a>" class="cross-link"><span class="figure-name">doc-irfan tabatabai chip</span></a><span class="figure-role">20th-c. philosophical defense of Imamate</span></div>
       <div class="figure-chip"><span class="figure-name">Fatima al-Zahra ع</span><span class="figure-role">Link between prophethood and Imamate</span></div>
     </div>
   </div>
@@ -625,183 +798,107 @@
 
 
 <!-- ═══════════════════ III · KARBALA AS PARADIGM ══ -->
-<section class="doc-section" id="doc-karbala">
+<section class="doc-section" id="doc-isma">
   <div class="doc-header reveal">
     <div class="doc-number">Section III</div>
-    <h2 class="doc-title">Karbala <em>as Paradigm</em></h2>
-    <div class="doc-subtitle">The Event That Defines the Tradition · 680 CE – Present</div>
-    <p class="doc-question">"What does Husayn's martyrdom mean — not as a historical fact, but as a living theological claim on every generation?"</p>
+    <h2 class="doc-title">ʿIṣma — <em>Infallibility</em></h2>
+    <div class="doc-subtitle">Prophets, Imams & the Guarantee of Reliable Guidance</div>
+    <p class="doc-question">"If the Imam is the guarantor of truth, what guarantees the Imam? How does the tradition ground the claim that any human being is protected from error?"</p>
   </div>
   <div class="doc-body reveal">
+    <p class="doc-intro">ʿIṣma — divinely granted infallibility — is the doctrine that certain human beings are protected by God from sin and error in matters essential to their role as guides. It is not a claim about omniscience or the inability to sin, but about the reliability of guidance: a just God would not designate as guides persons whose guidance could mislead. The doctrine applies to the Prophets universally in Shia theology, and extends to the Imams and Fatima al-Zahra as a distinctive Shia contribution. <strong>It is the hinge on which the entire Imamate doctrine turns.</strong></p>
 
-    <div class="voice-block">
-      <div class="voice-arabic">«هَيهَاتَ مِنَّا الذِّلَّة»</div>
-      <div class="voice-trans">"Disgrace is far from us."</div>
-      <div class="voice-source">— Imam Husayn ibn Ali ع, on the morning of Ashura, 10 Muharram 61 AH</div>
+    <div class="doc-card">
+      <div class="doc-card-label">The Rational Foundation</div>
+      <h3>Why Infallibility Is a Logical Necessity</h3>
+      <p class="card-lede">If the purpose of divine guidance is to provide reliable access to truth, then the guide must be reliably truthful — otherwise the guidance defeats itself.</p>
+      <p>The argument runs from the same luṭf principle that establishes the Imamate: God is just; a just God provides adequate guidance; adequate guidance requires a reliable source; reliability requires protection from error in matters of guidance. This is not a claim that the Prophet or Imam is divine — it is a claim about what divine wisdom requires of the guidance system. Allama al-Hilli formalizes this: if the Imam could err, his followers would need another guide to identify those errors, and that guide would require the same protection, producing an infinite regress. Only infallibility terminates the regress.</p>
     </div>
 
-    <p class="doc-intro">Karbala is not merely a tragedy that happened in 680 CE. In Shia theology it is a <em>paradigm</em> — a structure of meaning that recurs in every age, a choice that every community must face: whether to submit to illegitimate power for the sake of survival, or to refuse at the cost of everything. The tradition holds three readings of what Karbala means. They are not alternatives — they operate at different registers, and most Shia Muslims hold all three simultaneously.</p>
-
-    <div class="readings-grid">
-      <div class="reading-card">
-        <div class="reading-num">Reading I</div>
-        <div class="reading-name">The Soteriological Reading</div>
-        <div class="reading-thinker">Popular piety · majlis · lamentation tradition</div>
-        <p class="reading-desc">Husayn's death is a redemptive sacrifice whose spiritual effects extend beyond 680 CE. The mourner's tears are an act of participation — a crossing of time that brings the mourner into the presence of the event itself. To weep for Husayn is to be seen by him; his intercession on the Day of Judgment belongs to those who wept. This reading sustains the <em>majlis</em>, the lamentation poetry, the matam — the entire devotional infrastructure of Shia practice.</p>
-      </div>
-      <div class="reading-card">
-        <div class="reading-num">Reading II</div>
-        <div class="reading-name">The Ethical-Political Reading</div>
-        <div class="reading-thinker">Ali Shariati · Red Shi'ism / Black Shi'ism</div>
-        <p class="reading-desc">Shariati's argument: <strong>Black Shi'ism</strong> converts Karbala into ritual mourning that is politically inert — grief as an end in itself, annually renewed, leaving the social order undisturbed. <strong>Red Shi'ism</strong> reads Karbala as a permanent moral demand: Husayn did not die so that you would weep; he died so that each generation would choose whether to stand with the Imam or with Yazid. <em>"Every day is Ashura, every land is Karbala"</em> — not as consolation, but as summons.</p>
-      </div>
-      <div class="reading-card">
-        <div class="reading-num">Reading III</div>
-        <div class="reading-name">The Mystical-Philosophical Reading</div>
-        <div class="reading-thinker">ʿIrfāni tradition · Imam Khomeini's mystical writings</div>
-        <p class="reading-desc">Husayn is the <em>mazhar</em> (manifestation) of divine attributes in their most concentrated form — the one whose death reveals the nature of reality as a place where the highest truth is always opposed by the forces of mere power. His martyrdom is not a failure of the divine plan but its most perfect expression: the willingness to be annihilated for what is real is the supreme act of <em>fana'</em> (self-extinction) — the mystic's goal made historical and political.</p>
-      </div>
+    <div class="doc-card">
+      <div class="doc-card-label">Infallibility of the Prophets</div>
+      <h3>ʿIṣmat al-Anbiyāʾ — Scope and Meaning</h3>
+      <p class="card-lede">Prophetic infallibility is shared across Islamic traditions but differs in scope — Shia theology extends protection to the Prophet's entire life, not only to the reception and transmission of revelation.</p>
+      <p>Shia theology holds that the Prophet ﷺ is protected from sin and error before and after prophethood, in both religious rulings and practical conduct. The Quran verses that appear to criticize prophetic decisions — such as the permission for ransom after Badr, or the address to a blind man (80:1) — are interpreted as divine instruction for refinement rather than as evidence of moral error. ʿIṣma is understood as a quality that develops through proximity to God, sustained divine guidance, and the profound awareness of divine punishment that makes disobedience psychologically impossible for the infallible person — not an external constraint, but an achieved inner state.</p>
     </div>
 
-    <div class="doc-card doc-card-full">
-      <div class="doc-card-label">The Three Readings Held Together</div>
-      <h3>Why the Tension Is Generative, Not a Problem to Resolve</h3>
-      <p>The three readings of Karbala are sometimes set against each other — Shariati's political reading against the devotional tradition, or the mystical reading against the historical. But the tradition at its deepest holds them simultaneously. The lamentation that seems passive to Shariati is also, for those who practice it, an act of moral solidarity with the suffering of truth — it is not indifference but grief that knows what it is grieving for. The political reading without the devotional one risks reducing Husayn to a symbol; the devotional reading without the political one risks making grief a substitute for action. The mystical reading without either risks abstraction.</p>
-      <p>What unites all three: <strong>Husayn's refusal was free.</strong> He was not surprised; he knew what would happen. He chose it, explicitly, with full knowledge — sending his family members away and accepting each companion's choice to stay or leave. That freedom is the theological core of Karbala: it was not fate but <em>decision</em>, which is why it constitutes an example rather than merely a tragedy.</p>
+    <div class="doc-card">
+      <div class="doc-card-label">Infallibility of the Imams</div>
+      <h3>Extension Beyond Prophethood — the Distinctive Shia Claim</h3>
+      <p class="card-lede">The extension of infallibility to the Imams is the most theologically distinctive aspect of Shia doctrine — and the one that generates the most sustained challenge from Sunni and Mu'tazilite critics.</p>
+      <p>The Imam is not a prophet — he receives no new revelation and brings no new law. Yet his function as authoritative interpreter of the Quran, transmitter of the Prophet's Sunna, and guide of the community requires the same protection from error in those functions. The Shia argument: if the Imam could misinterpret the Quran, his interpretation is no more reliable than any scholar's, and the doctrine of the Imamate adds nothing. ʿIṣma is thus the condition that makes the Imamate theologically coherent rather than merely politically convenient. The Verse of Purification (33:33) and the Hadith al-Thaqalayn are the primary scriptural anchors.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Fatima al-Zahra ع</div>
+      <h3>Infallibility as Ḥujja — Beyond the Twelve</h3>
+      <p class="card-lede">The inclusion of Fatima al-Zahra in the circle of the infallible is not an extension of wifely or filial status — it is a theological claim about her independent standing as a proof of God.</p>
+      <p>Shia theology holds Fatima to be <em>maʿṣūma</em> in her own right — not derivatively from her father or husband. The Hadith al-Kisa' places her within the purified household addressed by Quran 33:33. Her ʿiṣma is evidenced by her Khutba al-Fadakiyya — the mosque address after the Prophet's death — which the tradition treats as authoritative testimony, not merely personal grief. A fallible Fatima could not serve as the theological and genealogical link between prophethood and the Imamate; her infallibility is structurally required by the same logic that establishes the Imams'.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Nasir al-Din al-Tusi</span><span class="figure-role">Systematized ʿiṣma in <em>Tajrid al-Iʿtiqad</em></span></div>
+      <div class="figure-chip"><span class="figure-name">Allama al-Hilli</span><span class="figure-role">Infinite regress argument for necessary infallibility</span></div>
+      <div class="figure-chip"><span class="figure-name">Sheikh al-Mufid</span><span class="figure-role">Defined ʿiṣma as achieved inner state, not external constraint</span></div>
+      <div class="figure-chip"><span class="figure-name">Fatima al-Zahra ع</span><span class="figure-role">Infallible ḥujja — the link between prophethood and Imamate</span></div>
     </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════ IV · THE EMBODIED TRADITION ══ -->
-<section class="doc-section" id="doc-embodied">
+<!-- ═══════════════════ X · TAWASSUL, SHIRK & TAQIYYA ══ -->
+<section class="doc-section" id="doc-ghayba">
   <div class="doc-header reveal">
     <div class="doc-number">Section IV</div>
-    <h2 class="doc-title">The <em>Embodied Tradition</em></h2>
-    <div class="doc-subtitle">ʿĀshūrāʾ · Ziyara · Du'a · The Hussainiyya · The Poetry of Grief</div>
-    <p class="doc-question">"Theology becomes a tradition when it moves from the mind into the body, the calendar, the communal gathering, the tear. What does it feel like to be Shia?"</p>
+    <h2 class="doc-title">The <em>Living Absence</em></h2>
+    <div class="doc-subtitle">The Theology of the Occultation · Longing, Presence & Return</div>
+    <p class="doc-question">"Section VI asks who leads when the Imam is hidden. This section asks the harder question: what does it mean — theologically, spiritually, existentially — that he is hidden at all?"</p>
   </div>
   <div class="doc-body reveal">
-    <p class="doc-intro">Every doctrine in the Shia tradition has an embodied counterpart — a practice that enacts what theology argues. The Imamate's claim that the Imam remains present finds expression in Ziyara, the pilgrimage-as-conversation. Karbala's demand that each generation choose finds expression in ʿĀshūrāʾ, the annual re-enactment of grief and commitment. The tradition's insistence on the soul's direct relationship with God finds expression in du'a, the vast literature of personal supplication. <strong>These practices are not decorations on the theology — they are the theology made felt.</strong> Women have been the primary transmitters and organizers of this embodied culture across centuries, a fact the tradition's intellectual histories chronically underreport.</p>
+    <p class="doc-intro">The Occultation is the most distinctively Shia theological fact — no other Islamic tradition holds that the divinely designated Imam is alive, hidden, and will return. Section VI addressed its jurisprudential consequences: who exercises authority in the Imam's absence. This section addresses its theological and spiritual dimensions: why occultation is not abandonment, what the Imam's hidden presence means for the believer, and how the tradition sustains the longing for return across what is now over eleven centuries. <strong>The Occultation is not a problem the tradition has failed to solve — it is a condition the tradition has learned to inhabit.</strong></p>
 
-    <div class="doc-card doc-card-full">
-      <div class="doc-card-label">ʿĀshūrāʾ — The Tenth of Muharram</div>
-      <h3>The Central Ritual: Grief, Renewal, and the Annual Choice</h3>
-      <p class="card-lede">The annual commemoration of Karbala is simultaneously the tradition's deepest grief and its most powerful act of communal renewal — not a memorial for the past but a re-commitment made every year.</p>
-      <div class="card-split">
-        <div>
-          <p class="card-split-label">The Practice</p>
-          <p>On the 10th of Muharram, communities worldwide gather through the <em>majlis</em> (gathering of lamentation), processions, <em>matam</em> (ritual mourning), <em>marsiya</em> recitation, and in South Asia and Iran the staging of <em>taziya</em> (passion plays). The ten days of Muharram structure the Shia ritual calendar — its emotional peak, its communal center, its annual return to the founding event.</p>
-        </div>
-        <div>
-          <p class="card-split-label">The Debate Within</p>
-          <p>Ali Shariati's question shadows every gathering: is this grief that ends in itself, or grief that demands something? His <em>Red Shi'ism / Black Shi'ism</em> set passive lamentation against <em>"every day is Ashura, every land is Karbala"</em> as an active summons. But the tradition at its deepest refuses the dichotomy — the lamentation <em>is</em> the moral act. To weep for Husayn is to acknowledge that what was lost mattered, that the world's injustice is not acceptable. Grief and resistance are the same recognition in different registers.</p>
-        </div>
-      </div>
+    <div class="doc-card">
+      <div class="doc-card-label">Why the Occultation? — The Tradition's Own Account</div>
+      <h3>Divine Wisdom in Concealment</h3>
+      <p class="card-lede">The tradition does not fully explain the occultation — it holds that the full wisdom of it is known only to God, and that this unknowing is itself part of what the believer is called to endure.</p>
+      <p>Several reasons are offered. The Imam is hidden because his enemies would kill him if he appeared — the same logic that explains why the 12th Imam was concealed as an infant. He remains hidden because the conditions for his just governance do not yet exist — a community that abandoned his father at Karbala and his grandfather at Ghadir is not yet prepared to receive him. The occultation is also understood as a test of faith: the believer who maintains loyalty to an absent Imam, with no direct access and no visible authority, demonstrates a purer form of commitment than one who follows out of proximity or convenience. <a href="shia-timeline.html#imam-10" class="cross-link">Imam Ali al-Hadi</a> said: <em>"Those who hold firm during the occultation are like those who fought with the Prophet at Badr."</em></p>
     </div>
 
     <div class="doc-card">
-      <div class="doc-card-label">Ziyara — Pilgrimage as Conversation</div>
-      <h3>The Theology of the Shrine</h3>
-      <p class="card-lede">Shia pilgrimage is not veneration of the dead — it is conversation with the living. The shrine is a gate, not a grave.</p>
-      <p>The formal ziyara texts are addressed directly to the Imam in the second person, as if to someone present — presupposing that the Imam remains spiritually present and capable of intercession (<em>shafāʿa</em>). The shrine is a <em>bāb</em> between the visible world and the divine reality the Imam embodies. <strong>Arbaeen</strong> — the fortieth-day pilgrimage to Karbala — draws over 20 million people annually, the largest regular human gathering on earth. That scale is the embodied assertion that fourteen centuries have not dimmed the Imam's presence.</p>
+      <div class="doc-card-label">The Imam's Continued Presence</div>
+      <h3>Hidden but Not Absent — Spiritual Proximity in Occultation</h3>
+      <p class="card-lede">The Hidden Imam is not gone — he is present to those who seek him, aware of the community's condition, and accessible through the medium of sincere supplication and righteous conduct.</p>
+      <p>The tradition holds that the Imam sees the deeds of his followers and grieves over their suffering. Du'a al-Nudba — the lamentation supplication recited on Fridays by many Shia Muslims — addresses the Imam directly: <em>"Where are you, O son of Ahmad al-Mustafa? Where are you, O support of the orphaned and the poor?"</em> This is not poetry — it is a theological claim that the Imam hears, that the address reaches him, that the relationship between believer and Imam is not severed by occultation. The shrine as <em>bāb</em> (gate) and the du'a as direct address are the embodied expressions of this theology. The Imam's presence is veiled to the ordinary senses but not absent from the world.</p>
     </div>
 
     <div class="doc-card">
-      <div class="doc-card-label">Du'a — The Liturgy of Intimacy</div>
-      <h3>Supplication as Theological Act</h3>
-      <p class="card-lede">The Shia supplication literature is doctrine felt from the inside — every claim about God's justice and the soul's nature made not as proposition but as direct address.</p>
-      <p>Du'a Kumayl (Imam Ali), Du'a Nudba (lamentation for the Hidden Imam), Du'a Arafah (Imam Husayn), Du'a Abu Hamza al-Thumali (Imam al-Sajjad) — these are not merely prayers but full theological statements in the first person. The Sahifa al-Sajjadiyya — the 4th Imam's supplication collection, composed under Umayyad surveillance — encodes the entire Imamic worldview in the language of prayer. Its tone is intimate, urgent, often anguished: theology as felt experience, not observed doctrine.</p>
+      <div class="doc-card-label">The Longing for Return</div>
+      <h3>Intizār — Waiting as a Spiritual Discipline</h3>
+      <p class="card-lede">The wait for the Imam's return is not passive — it is a spiritual discipline that shapes how the believer inhabits the present, understood as a form of active moral preparation.</p>
+      <p><em>Intizār</em> (awaiting) is counted among the highest acts of worship in Imamic hadith. It is not the passive resignation of those who expect nothing but the active expectation of those who know that what was promised will come. The tradition asks: are you living in a way that prepares for his return? The Imam will emerge into a world that must be capable of receiving just governance — and the believer's conduct in the occultation period is understood as part of the preparation of that world. This gives the doctrine of the Occultation an ethical urgency that prevents it from collapsing into mere consolation.</p>
     </div>
 
     <div class="doc-card">
-      <div class="doc-card-label">The Hussainiyya</div>
-      <h3>The Social Architecture of Shia Community Life</h3>
-      <p class="card-lede">The hussainiyya is the institutional backbone of Shia community life — and it has been sustained largely by women, a fact invisible in most intellectual histories of the tradition.</p>
-      <p>Neither mosque nor school, the hussainiyya is where the community gathers for ʿĀshūrāʾ majalis, lamentation poetry, religious lectures, and the social bonds that make a community. In diaspora — Dearborn, London, Karachi, Lagos — it often becomes the primary institution of communal identity. The logistics of ʿĀshūrāʾ across ten days — food, hospitality, coordination — fall primarily on women's networks. The tradition's living transmission has been carried by women across generations even as the tradition's intellectual histories focus almost exclusively on male scholars.</p>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-label">Marsiya — The Poetry of Holy Grief</div>
-      <h3>Lamentation as Literature and Theology</h3>
-      <p class="card-lede">The marsiya is moral instruction encoded in beauty — to learn this tradition is to learn Shia theology in its most emotionally direct form.</p>
-      <p>Running from Arabic <em>rithāʾ</em> through Persian <em>marthiya</em> to Urdu marsiya, the tradition reached its classical height in 18th–19th century Lucknow under Mir Anees and Mirza Dabir — metrically complex compositions narrating Karbala's events in exhaustive emotional detail. Allama Iqbal's poetry stands in direct continuity with this tradition. Zaynab bint Ali — who survived Karbala and addressed Yazid's court — is its original voice: the one who turned catastrophe into testimony, and without whom the event would have had no witness.</p>
+      <div class="doc-card-label">The Sun Behind the Cloud</div>
+      <h3>Classical Metaphors for What Cannot Be Explained</h3>
+      <p class="card-lede">The tradition reaches for metaphor where argument runs out — and the metaphors it chooses reveal what it believes: the Imam's concealment is not privation but deferred illumination.</p>
+      <p>The most famous is attributed to Imam al-Sadiq: the Hidden Imam is like the sun behind clouds — its light still reaches the world, its warmth is still felt, its existence is not in doubt. The cloud is not permanent; the sun has not moved. The metaphor does something precise: it holds together the Imam's real presence with his practical inaccessibility, without dissolving either. The Occultation is not death, not defeat, not divine abandonment. It is a veil — and the tradition's entire spiritual life during this period is organized around the conviction that the veil will lift.</p>
     </div>
 
     <div class="figures-list">
-      <div class="figure-chip"><span class="figure-name">Imam Ali ibn Husayn</span><span class="figure-role">Sahifa al-Sajjadiyya — du'a as theological literature</span></div>
-      <div class="figure-chip"><span class="figure-name">Zaynab bint Ali</span><span class="figure-role">Survivor of Karbala; first transmitter of its meaning</span></div>
-      <div class="figure-chip"><span class="figure-name">Mir Anees</span><span class="figure-role">1803–1874 · pinnacle of Urdu marsiya tradition</span></div>
-      <div class="figure-chip"><span class="figure-name">Ali Shariati</span><span class="figure-role">Red/Black Shi'ism — the ʿĀshūrāʾ question</span></div>
-      <div class="figure-chip"><span class="figure-name">Allama Iqbal</span><span class="figure-role">Karbala as philosophical paradigm in Urdu-Persian poetry</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-mufid" class="cross-link"><span class="figure-name">Sheikh al-Mufid</span></a><span class="figure-role"><em>Kitab al-Ghayba</em> — earliest systematic theology of occultation</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-tusi-sheikh" class="cross-link"><span class="figure-name">Sheikh al-Ṭūsī</span></a><span class="figure-role"><em>Kitab al-Ghayba</em> — rational defense of occultation doctrine</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-saduq" class="cross-link"><span class="figure-name">al-Ṣadūq</span></a><span class="figure-role"><em>Kamal al-Din</em> — historical and theological account of occultation</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-khomeini" class="cross-link"><span class="figure-name">Ayatullah Khomeini</span></a><span class="figure-role">Intizār as active preparation in mystical writings</span></div>
     </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════ V · THE JUST ORDER ══ -->
-<section class="doc-section" id="doc-just-order">
-  <div class="doc-header reveal">
-    <div class="doc-number">Section V</div>
-    <h2 class="doc-title">The <em>Just Order</em></h2>
-    <div class="doc-subtitle">Society, Wealth & Governance · The Social Vision of the Tradition</div>
-    <p class="doc-question">"Islam came as a doctrine not only for individuals but for society as a whole. What does the Shia tradition claim about how human community should be ordered?"</p>
-  </div>
-  <div class="doc-body reveal">
-
-    <div class="voice-block">
-      <div class="voice-arabic">«اعْلَمْ أَنَّ الرَّعِيَّةَ طَبَقَاتٌ لَا يَصْلُحُ بَعْضُهَا إِلَّا بِبَعْضٍ، وَلَا غِنَى بِبَعْضِهَا عَنْ بَعْضٍ»</div>
-      <div class="voice-trans">"Know that the people are of different classes, none of which can function without the others, and none of which can do without the others."</div>
-      <div class="voice-source">— Imam Ali ibn Abi Talib ع, <em>Letter to Malik al-Ashtar</em> (Governor of Egypt), Nahj al-Balagha · Letter 53, c. 657 CE</div>
-    </div>
-
-    <p class="doc-intro">The Letter to Malik al-Ashtar is a complete theory of just governance written by the first Imam to his appointed governor of Egypt. It covers the obligations of rulers to the ruled, the treatment of enemies, the protection of the poor, the accountability of administrators, the danger of flattery, and the moral psychology of power. It is not a medieval curiosity — it is a living document, cited in legal proceedings and governance debates across the Muslim world. <strong>It establishes that in the Shia tradition, concern for the social order is not an addition to theology but its direct expression.</strong></p>
-
-    <div class="doc-card">
-      <div class="doc-card-label">The Social Compact in Shia Theology</div>
-      <h3>Justice (ʿAdl) as a Social Obligation</h3>
-      <p class="card-lede">The Imam's authority always encompassed the social order — not just doctrine, but governance, distribution, and the protection of the vulnerable.</p>
-      <p>The Quranic injunction to <em>amr bil-maʿrūf wa-nahy ʿan al-munkar</em> (commanding right, forbidding wrong) requires social institutions and the willingness to bear cost. This is why the political representation sought by the Imams — and by Shia communities after them — was never merely about power. It was about the conditions under which justice could be realized. The absence of the Imam during the Occultation does not dissolve this obligation; it transfers it to the community and its scholars.</p>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-label">From the Letter to Malik al-Ashtar</div>
-      <h3>On the Rights of the Poor</h3>
-      <p class="card-lede">The measure of just governance is what happens to those with no institutional voice — and the ruler's first obligation is to seek them out, not wait for them to arrive.</p>
-      <div class="inline-quote">"Let the largest part of your attention be devoted to those whose condition is invisible to you — the poor whose affairs no one advocates, the weak who can neither sue nor complain."</div>
-      <div class="inline-quote">"Appoint a trusted person to report to you about them... for they are the ones who need your justice most, and their gratitude will be the truest you receive — because the wealthy have advocates, and the poor have only you."</div>
-      <p>This is a structural claim, not a platitude about charity. The ruler's obligations to the invisible are not optional acts of generosity but the core accountability of governance.</p>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-label">Khums & the Economy of the Sacred</div>
-      <h3>Wealth as Trusteeship, Not Ownership</h3>
-      <p class="card-lede">Khums is not a tax — it is a theological claim that humans hold wealth in trust, not ownership, and that trust carries social obligations structurally embedded in it.</p>
-      <p>One-fifth of annual surplus income flows through the marja' as representative of the Hidden Imam — half supporting descendants of the Prophet, half funding the hawza and Shia institutions globally. Muhammad Baqir al-Sadr developed this premise into a systematic framework in <em>Iqtiṣādunā</em> (Our Economics, 1960): neither capitalism's private ownership as ultimate right nor Marxism's state control, but stewardship (<em>istikhlāf</em>) — all property held in trust, with social obligations woven into its use from the start.</p>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-label">The Marja' as Social Institution</div>
-      <h3>A Transnational Infrastructure Without a State</h3>
-      <p class="card-lede">Through taqlid and khums, the marja' sustains a global network of schools, hospitals, and community institutions — entirely through voluntary religious obligation, with no state and no single geographic center.</p>
-      <p>Every Shia Muslim following a marja' pays khums to his institution and receives his <em>risāla ʿamaliyya</em> (manual of practical rulings) for everyday decisions. Through millions of such relationships, the marja' funds hawzas in Najaf, Qum, Karbala, and Mashhad; community centers from Dearborn to Lagos to Karachi. This infrastructure explains how Shia communities have survived — and often flourished — as minorities across fourteen centuries of political marginality.</p>
-    </div>
-
-    <div class="figures-list">
-      <div class="figure-chip"><span class="figure-name">Imam Ali</span><span class="figure-role">Letter to Malik al-Ashtar — the tradition's political philosophy</span></div>
-      <div class="figure-chip"><span class="figure-name">Muhammad Baqir al-Sadr</span><span class="figure-role"><em>Iqtiṣādunā</em> — Islamic economics as a third way</span></div>
-      <div class="figure-chip"><span class="figure-name">Sheikh al-Ansari</span><span class="figure-role">Formalized the marja' as global institution</span></div>
-      <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role">Argued social justice requires political authority</span></div>
-      <div class="figure-chip"><span class="figure-name">Grand Ayatullah Sistani</span><span class="figure-role">Quietist social authority; humanitarian engagement</span></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════ VI · AUTHORITY IN OCCULTATION ══ -->
+<!-- ═══════════════════ XII · ESCHATOLOGY ══ -->
 <section class="doc-section" id="doc-authority">
   <div class="doc-header reveal">
-    <div class="doc-number">Section VI</div>
+    <div class="doc-number">Section V</div>
     <h2 class="doc-title">Authority <em>in Occultation</em></h2>
     <div class="doc-subtitle">Who Leads When the Imam Is Hidden? · 941 CE – Present</div>
     <p class="doc-question">"Given that the Imam is the guarantor of the just social order — and the Imam is absent — who holds that responsibility, and how much of it?"</p>
@@ -847,7 +944,7 @@
 
     <div class="figures-list">
       <div class="figure-chip"><span class="figure-name">Sheikh al-Ansari</span><span class="figure-role">First formalization of limited juristic authority</span></div>
-      <div class="figure-chip"><span class="figure-name">Grand Ayatullah Khoei</span><span class="figure-role">Quietist marja'; authority without political claim</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-khoei" class="cross-link"><span class="figure-name">Grand Ayatullah al-Khoeī</span></a><span class="figure-role">Quietist marja'; authority without political claim</span></div>
       <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role">Wilayat al-Faqih al-Mutlaqa — absolute guardianship</span></div>
       <div class="figure-chip"><span class="figure-name">Muhammad Baqir al-Sadr</span><span class="figure-role">Constitutional model; <em>Iqtiṣādunā</em></span></div>
       <div class="figure-chip"><span class="figure-name">Grand Ayatullah Montazeri</span><span class="figure-role">Internal critic; limits of absolute guardianship</span></div>
@@ -858,9 +955,183 @@
 
 
 <!-- ═══════════════════ VII · ʿIRFĀN ══ -->
-<section class="doc-section" id="doc-irfan">
+<section class="doc-section" id="doc-karbala">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section VI</div>
+    <h2 class="doc-title">Karbala <em>as Paradigm</em></h2>
+    <div class="doc-subtitle">The Event That Defines the Tradition · 680 CE – Present</div>
+    <p class="doc-question">"What does Husayn's martyrdom mean — not as a historical fact, but as a living theological claim on every generation?"</p>
+  </div>
+  <div class="doc-body reveal">
+
+    <div class="voice-block">
+      <div class="voice-arabic" lang="ar" dir="rtl">«هَيهَاتَ مِنَّا الذِّلَّة»</div>
+      <div class="voice-trans">"Disgrace is far from us."</div>
+      <div class="voice-source">— <a href="shia-timeline.html#imam-3" class="cross-link">Imam Husayn ibn Ali ع</a>, on the morning of Ashura, 10 Muharram 61 AH</div>
+    </div>
+
+    <p class="doc-intro">Karbala is not merely a tragedy that happened in 680 CE. In Shia theology it is a <em>paradigm</em> — a structure of meaning that recurs in every age, a choice that every community must face: whether to submit to illegitimate power for the sake of survival, or to refuse at the cost of everything. The tradition holds three readings of what Karbala means. They are not alternatives — they operate at different registers, and most Shia Muslims hold all three simultaneously.</p>
+
+    <div class="readings-grid">
+      <div class="reading-card">
+        <div class="reading-num">Reading I</div>
+        <div class="reading-name">The Soteriological Reading</div>
+        <div class="reading-thinker">Popular piety · majlis · lamentation tradition</div>
+        <p class="reading-desc">Husayn's death is a redemptive sacrifice whose spiritual effects extend beyond 680 CE. The mourner's tears are an act of participation — a crossing of time that brings the mourner into the presence of the event itself. To weep for Husayn is to be seen by him; his intercession on the Day of Judgment belongs to those who wept. This reading sustains the <em>majlis</em>, the lamentation poetry, the matam — the entire devotional infrastructure of Shia practice.</p>
+      </div>
+      <div class="reading-card">
+        <div class="reading-num">Reading II</div>
+        <div class="reading-name">The Ethical-Political Reading</div>
+        <div class="reading-thinker">Ali Shariati · Red Shi'ism / Black Shi'ism</div>
+        <p class="reading-desc">Shariati's argument: <strong>Black Shi'ism</strong> converts Karbala into ritual mourning that is politically inert — grief as an end in itself, annually renewed, leaving the social order undisturbed. <strong>Red Shi'ism</strong> reads Karbala as a permanent moral demand: Husayn did not die so that you would weep; he died so that each generation would choose whether to stand with the Imam or with Yazid. <em>"Every day is Ashura, every land is Karbala"</em> — not as consolation, but as summons.</p>
+      </div>
+      <div class="reading-card">
+        <div class="reading-num">Reading III</div>
+        <div class="reading-name">The Mystical-Philosophical Reading</div>
+        <div class="reading-thinker">ʿIrfāni tradition · Imam Khomeini's mystical writings</div>
+        <p class="reading-desc">Husayn is the <em>mazhar</em> (manifestation) of divine attributes in their most concentrated form — the one whose death reveals the nature of reality as a place where the highest truth is always opposed by the forces of mere power. His martyrdom is not a failure of the divine plan but its most perfect expression: the willingness to be annihilated for what is real is the supreme act of <em>fana'</em> (self-extinction) — the mystic's goal made historical and political.</p>
+      </div>
+    </div>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">The Three Readings Held Together</div>
+      <h3>Why the Tension Is Generative, Not a Problem to Resolve</h3>
+      <p>The three readings of Karbala are sometimes set against each other — Shariati's political reading against the devotional tradition, or the mystical reading against the historical. But the tradition at its deepest holds them simultaneously. The lamentation that seems passive to Shariati is also, for those who practice it, an act of moral solidarity with the suffering of truth — it is not indifference but grief that knows what it is grieving for. The political reading without the devotional one risks reducing Husayn to a symbol; the devotional reading without the political one risks making grief a substitute for action. The mystical reading without either risks abstraction.</p>
+      <p>What unites all three: <strong>Husayn's refusal was free.</strong> He was not surprised; he knew what would happen. He chose it, explicitly, with full knowledge — sending his family members away and accepting each companion's choice to stay or leave. That freedom is the theological core of Karbala: it was not fate but <em>decision</em>, which is why it constitutes an example rather than merely a tragedy.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ IV · THE EMBODIED TRADITION ══ -->
+<section class="doc-section" id="doc-embodied">
   <div class="doc-header reveal">
     <div class="doc-number">Section VII</div>
+    <h2 class="doc-title">The <em>Embodied Tradition</em></h2>
+    <div class="doc-subtitle">ʿĀshūrāʾ · Ziyara · Du'a · The Hussainiyya · The Poetry of Grief</div>
+    <p class="doc-question">"Theology becomes a tradition when it moves from the mind into the body, the calendar, the communal gathering, the tear. What does it feel like to be Shia?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">Every doctrine in the Shia tradition has an embodied counterpart — a practice that enacts what theology argues. The Imamate's claim that the Imam remains present finds expression in Ziyara, the pilgrimage-as-conversation. Karbala's demand that each generation choose finds expression in ʿĀshūrāʾ, the annual re-enactment of grief and commitment. The tradition's insistence on the soul's direct relationship with God finds expression in du'a, the vast literature of personal supplication. <strong>These practices are not decorations on the theology — they are the theology made felt.</strong> Women have been the primary transmitters and organizers of this embodied culture across centuries, a fact the tradition's intellectual histories chronically underreport.</p>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">ʿĀshūrāʾ — The Tenth of Muharram</div>
+      <h3>The Central Ritual: Grief, Renewal, and the Annual Choice</h3>
+      <p class="card-lede">The annual commemoration of Karbala is simultaneously the tradition's deepest grief and its most powerful act of communal renewal — not a memorial for the past but a re-commitment made every year.</p>
+      <div class="card-split">
+        <div>
+          <p class="card-split-label">The Practice</p>
+          <p>On the 10th of Muharram, communities worldwide gather through the <em>majlis</em> (gathering of lamentation), processions, <em>matam</em> (ritual mourning), <em>marsiya</em> recitation, and in South Asia and Iran the staging of <em>taziya</em> (passion plays). The ten days of Muharram structure the Shia ritual calendar — its emotional peak, its communal center, its annual return to the founding event.</p>
+        </div>
+        <div>
+          <p class="card-split-label">The Debate Within</p>
+          <p>Ali Shariati's question shadows every gathering: is this grief that ends in itself, or grief that demands something? His <em>Red Shi'ism / Black Shi'ism</em> set passive lamentation against <em>"every day is Ashura, every land is Karbala"</em> as an active summons. But the tradition at its deepest refuses the dichotomy — the lamentation <em>is</em> the moral act. To weep for Husayn is to acknowledge that what was lost mattered, that the world's injustice is not acceptable. Grief and resistance are the same recognition in different registers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Ziyara — Pilgrimage as Conversation</div>
+      <h3>The Theology of the Shrine</h3>
+      <p class="card-lede">Shia pilgrimage is not veneration of the dead — it is conversation with the living. The shrine is a gate, not a grave.</p>
+      <p>The formal ziyara texts are addressed directly to the Imam in the second person, as if to someone present — presupposing that the Imam remains spiritually present and capable of intercession (<em>shafāʿa</em>). The shrine is a <em>bāb</em> between the visible world and the divine reality the Imam embodies. <strong>Arbaeen</strong> — the fortieth-day pilgrimage to Karbala — draws over 20 million people annually, the largest regular human gathering on earth. That scale is the embodied assertion that fourteen centuries have not dimmed the Imam's presence.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Du'a — The Liturgy of Intimacy</div>
+      <h3>Supplication as Theological Act</h3>
+      <p class="card-lede">The Shia supplication literature is doctrine felt from the inside — every claim about God's justice and the soul's nature made not as proposition but as direct address.</p>
+      <p>Du'a Kumayl (Imam Ali), Du'a Nudba (lamentation for the Hidden Imam), Du'a Arafah (Imam Husayn), Du'a Abu Hamza al-Thumali (<a href="shia-timeline.html#imam-4" class="cross-link">Imam al-Sajjad</a>) — these are not merely prayers but full theological statements in the first person. The Sahifa al-Sajjadiyya — the 4th Imam's supplication collection, composed under Umayyad surveillance — encodes the entire Imamic worldview in the language of prayer. Its tone is intimate, urgent, often anguished: theology as felt experience, not observed doctrine.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Hussainiyya</div>
+      <h3>The Social Architecture of Shia Community Life</h3>
+      <p class="card-lede">The hussainiyya is the institutional backbone of Shia community life — and it has been sustained largely by women, a fact invisible in most intellectual histories of the tradition.</p>
+      <p>Neither mosque nor school, the hussainiyya is where the community gathers for ʿĀshūrāʾ majalis, lamentation poetry, religious lectures, and the social bonds that make a community. In diaspora — Dearborn, London, Karachi, Lagos — it often becomes the primary institution of communal identity. The logistics of ʿĀshūrāʾ across ten days — food, hospitality, coordination — fall primarily on women's networks. The tradition's living transmission has been carried by women across generations even as the tradition's intellectual histories focus almost exclusively on male scholars.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Marsiya — The Poetry of Holy Grief</div>
+      <h3>Lamentation as Literature and Theology</h3>
+      <p class="card-lede">The marsiya is moral instruction encoded in beauty — to learn this tradition is to learn Shia theology in its most emotionally direct form.</p>
+      <p>Running from Arabic <em>rithāʾ</em> through Persian <em>marthiya</em> to Urdu marsiya, the tradition reached its classical height in 18th–19th century Lucknow under Mir Anees and Mirza Dabir — metrically complex compositions narrating Karbala's events in exhaustive emotional detail. Allama Iqbal's poetry stands in direct continuity with this tradition. Zaynab bint Ali — who survived Karbala and addressed Yazid's court — is its original voice: the one who turned catastrophe into testimony, and without whom the event would have had no witness.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><a href="shia-timeline.html#imam-4" class="cross-link"><span class="figure-name">Imam Ali ibn Husayn</span></a><span class="figure-role">Sahifa al-Sajjadiyya — du'a as theological literature</span></div>
+      <div class="figure-chip"><span class="figure-name">Zaynab bint Ali</span><span class="figure-role">Survivor of Karbala; first transmitter of its meaning</span></div>
+      <div class="figure-chip"><span class="figure-name">Mir Anees</span><span class="figure-role">1803–1874 · pinnacle of Urdu marsiya tradition</span></div>
+      <div class="figure-chip"><span class="figure-name">Ali Shariati</span><span class="figure-role">Red/Black Shi'ism — the ʿĀshūrāʾ question</span></div>
+      <div class="figure-chip"><span class="figure-name">Allama Iqbal</span><span class="figure-role">Karbala as philosophical paradigm in Urdu-Persian poetry</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ V · THE JUST ORDER ══ -->
+<section class="doc-section" id="doc-just-order">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section VIII</div>
+    <h2 class="doc-title">The <em>Just Order</em></h2>
+    <div class="doc-subtitle">Society, Wealth & Governance · The Social Vision of the Tradition</div>
+    <p class="doc-question">"Islam came as a doctrine not only for individuals but for society as a whole. What does the Shia tradition claim about how human community should be ordered?"</p>
+  </div>
+  <div class="doc-body reveal">
+
+    <div class="voice-block">
+      <div class="voice-arabic" lang="ar" dir="rtl">«اعْلَمْ أَنَّ الرَّعِيَّةَ طَبَقَاتٌ لَا يَصْلُحُ بَعْضُهَا إِلَّا بِبَعْضٍ، وَلَا غِنَى بِبَعْضِهَا عَنْ بَعْضٍ»</div>
+      <div class="voice-trans">"Know that the people are of different classes, none of which can function without the others, and none of which can do without the others."</div>
+      <div class="voice-source">— Imam Ali ibn Abi Talib ع, <em>Letter to Malik al-Ashtar</em> (Governor of Egypt), Nahj al-Balagha · Letter 53, c. 657 CE</div>
+    </div>
+
+    <p class="doc-intro">The Letter to Malik al-Ashtar is a complete theory of just governance written by the first Imam to his appointed governor of Egypt. It covers the obligations of rulers to the ruled, the treatment of enemies, the protection of the poor, the accountability of administrators, the danger of flattery, and the moral psychology of power. It is not a medieval curiosity — it is a living document, cited in legal proceedings and governance debates across the Muslim world. <strong>It establishes that in the Shia tradition, concern for the social order is not an addition to theology but its direct expression.</strong></p>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Social Compact in Shia Theology</div>
+      <h3>Justice (ʿAdl) as a Social Obligation</h3>
+      <p class="card-lede">The Imam's authority always encompassed the social order — not just doctrine, but governance, distribution, and the protection of the vulnerable.</p>
+      <p>The Quranic injunction to <em>amr bil-maʿrūf wa-nahy ʿan al-munkar</em> (commanding right, forbidding wrong) requires social institutions and the willingness to bear cost. This is why the political representation sought by the Imams — and by Shia communities after them — was never merely about power. It was about the conditions under which justice could be realized. The absence of the Imam during the Occultation does not dissolve this obligation; it transfers it to the community and its scholars.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">From the Letter to Malik al-Ashtar</div>
+      <h3>On the Rights of the Poor</h3>
+      <p class="card-lede">The measure of just governance is what happens to those with no institutional voice — and the ruler's first obligation is to seek them out, not wait for them to arrive.</p>
+      <div class="inline-quote">"Let the largest part of your attention be devoted to those whose condition is invisible to you — the poor whose affairs no one advocates, the weak who can neither sue nor complain."</div>
+      <div class="inline-quote">"Appoint a trusted person to report to you about them... for they are the ones who need your justice most, and their gratitude will be the truest you receive — because the wealthy have advocates, and the poor have only you."</div>
+      <p>This is a structural claim, not a platitude about charity. The ruler's obligations to the invisible are not optional acts of generosity but the core accountability of governance.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Khums & the Economy of the Sacred</div>
+      <h3>Wealth as Trusteeship, Not Ownership</h3>
+      <p class="card-lede">Khums is not a tax — it is a theological claim that humans hold wealth in trust, not ownership, and that trust carries social obligations structurally embedded in it.</p>
+      <p>One-fifth of annual surplus income flows through the marja' as representative of the Hidden Imam — half supporting descendants of the Prophet, half funding the hawza and Shia institutions globally. Muhammad Baqir al-Sadr developed this premise into a systematic framework in <em>Iqtiṣādunā</em> (Our Economics, 1960): neither capitalism's private ownership as ultimate right nor Marxism's state control, but stewardship (<em>istikhlāf</em>) — all property held in trust, with social obligations woven into its use from the start.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Marja' as Social Institution</div>
+      <h3>A Transnational Infrastructure Without a State</h3>
+      <p class="card-lede">Through taqlid and khums, the marja' sustains a global network of schools, hospitals, and community institutions — entirely through voluntary religious obligation, with no state and no single geographic center.</p>
+      <p>Every Shia Muslim following a marja' pays khums to his institution and receives his <em>risāla ʿamaliyya</em> (manual of practical rulings) for everyday decisions. Through millions of such relationships, the marja' funds hawzas in Najaf, Qum, Karbala, and Mashhad; community centers from Dearborn to Lagos to Karachi. This infrastructure explains how Shia communities have survived — and often flourished — as minorities across fourteen centuries of political marginality.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Imam Ali</span><span class="figure-role">Letter to Malik al-Ashtar — the tradition's political philosophy</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-sadr" class="cross-link"><span class="figure-name">Muhammad Baqir al-Ṣadr</span></a><span class="figure-role"><em>Iqtiṣādunā</em> — Islamic economics as a third way</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-ansari" class="cross-link"><span class="figure-name">Sheikh al-Anṣārī</span></a><span class="figure-role">Formalized the marja' as global institution</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-khomeini" class="cross-link"><span class="figure-name">Imam Khomeini</span></a><span class="figure-role">Argued social justice requires political authority</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-sistani" class="cross-link"><span class="figure-name">Grand Ayatullah Sistanī</span></a><span class="figure-role">Quietist social authority; humanitarian engagement</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ VI · AUTHORITY IN OCCULTATION ══ -->
+<section class="doc-section" id="doc-irfan">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section IX</div>
     <h2 class="doc-title">ʿIrfān — <em>The Inner Dimension</em></h2>
     <div class="doc-subtitle">The Soul's Journey · Mysticism Within the Tradition</div>
     <p class="doc-question">"Beneath the law and the theology — what does the tradition say about the soul's direct encounter with God?"</p>
@@ -868,18 +1139,18 @@
   <div class="doc-body reveal">
 
     <div class="voice-block">
-      <div class="voice-arabic">«مَنْ عَرَفَ نَفْسَهُ فَقَدْ عَرَفَ رَبَّهُ»</div>
+      <div class="voice-arabic" lang="ar" dir="rtl">«مَنْ عَرَفَ نَفْسَهُ فَقَدْ عَرَفَ رَبَّهُ»</div>
       <div class="voice-trans">"Whoever knows himself has known his Lord."</div>
       <div class="voice-source">— Attributed to Imam Ali ibn Abi Talib ع · the axiom of the entire ʿirfāni tradition</div>
     </div>
 
-    <p class="doc-intro">ʿIrfān is the Shia term for the inner life of religion — the path of the soul's purification, its journey through stations and states, and ultimately its encounter with the divine reality that underlies all of existence. It is not a marginal practice but a living tradition within the hawza, inseparable from jurisprudence and theology for those who practice it. <strong>Shia ʿirfān is distinguished from Sufism institutionally</strong> — it has no separate orders, no independent chains of authority — but shares its vocabulary and its goals, grounding them in the Imams as the authentic masters of the esoteric dimension.</p>
+    <p class="doc-intro">ʿIrfān is the Shia term for the inner life of religion — the path of the soul's purification, its journey through stations and states, and ultimately its encounter with the divine reality that underlies all of existence. It is not a marginal practice but a living tradition within the hawza, inseparable from jurisprudence and theology for those who practice it. <strong>Shia ʿirfān is distinguished from <a href="shia-encounters.html#enc-sufism" class="cross-link">Sufism</a> institutionally</strong> — it has no separate orders, no independent chains of authority — but shares its vocabulary and its goals, grounding them in the Imams as the authentic masters of the esoteric dimension.</p>
 
     <div class="doc-card">
       <div class="doc-card-label">ʿIrfān Naẓarī & ʿIrfān ʿAmalī</div>
       <h3>Theory and Practice of the Inner Life</h3>
       <p class="card-lede">ʿIrfān has two dimensions: a systematic metaphysics of the soul's relationship to God, and an actual path the soul walks — with stations, states, and a destination.</p>
-      <p><em>ʿIrfān naẓarī</em> (theoretical gnosis) draws on Ibn ʿArabi's <em>waḥdat al-wujūd</em>, Mulla Sadra's transcendent wisdom, and Imamic hadith into a philosophical account of how divine unity produces multiplicity, and how the soul traces its way back to the source. It is taught in advanced hawza curricula alongside jurisprudence and theology.</p>
+      <p><em>ʿIrfān naẓarī</em> (theoretical gnosis) draws on Ibn ʿArabi's <em>waḥdat al-wujūd</em>, <a href="shia-academia.html#scholar-mulla-sadra" class="cross-link">Mulla Ṣadrā's</a> transcendent wisdom, and Imamic hadith into a philosophical account of how divine unity produces multiplicity, and how the soul traces its way back to the source. It is taught in advanced hawza curricula alongside jurisprudence and theology.</p>
       <p><em>ʿIrfān ʿamalī</em> (practical gnosis) is the actual path — stations (<em>maqāmāt</em>) of repentance, renunciation, trust, contentment, love, annihilation (<em>fanāʾ</em>), and subsistence in God (<em>baqāʾ</em>). The ultimate teacher is the Imam himself, whose guidance reaches the sincere seeker through prayer and the inner meaning of the Ahlul Bayt's teachings.</p>
     </div>
 
@@ -887,7 +1158,7 @@
       <div class="doc-card-label">The Imam as Spiritual Master</div>
       <h3>Why Shia ʿIrfān Has No Separate Orders</h3>
       <p class="card-lede">Shia ʿirfān holds that the authentic spiritual chain runs through the Imams themselves — not through any independent Sufi order — which is why the jurist and the mystic are not opposing types but ideally the same person.</p>
-      <p>Sufi traditions authenticate the path through a <em>silsila</em> (chain of masters). Shia ʿirfān holds that chain runs through the Imams, whose teachings are preserved in the hadith corpus. This is why ʿirfān operates within the hawza rather than in separate lodges. Ayatullah Khomeini wrote extensive mystical commentaries alongside his jurisprudential works; Allama Tabataba'i's dialogues with Henry Corbin ranged across Quranic exegesis and the metaphysics of the imaginal world; Hasan-Zadeh Amoli and Jawadi Amoli continue this synthesis today.</p>
+      <p>Sufi traditions authenticate the path through a <em>silsila</em> (chain of masters). Shia ʿirfān holds that chain runs through the Imams, whose teachings are preserved in the hadith corpus. This is why ʿirfān operates within the hawza rather than in separate lodges. <a href="shia-academia.html#scholar-khomeini" class="cross-link">Ayatullah Khomeini</a> wrote extensive mystical commentaries alongside his jurisprudential works; <a href="shia-academia.html#scholar-tabatabai" class="cross-link">Allama Ṭabāṭabāʾī's</a> dialogues with Henry Corbin ranged across Quranic exegesis and the metaphysics of the imaginal world; Hasan-Zadeh Amoli and Jawadi Amoli continue this synthesis today.</p>
     </div>
 
     <div class="doc-card doc-card-full">
@@ -900,8 +1171,8 @@
 
     <div class="figures-list">
       <div class="figure-chip"><span class="figure-name">Ibn ʿArabi</span><span class="figure-role"><em>Waḥdat al-wujūd</em> — absorbed into Shia ʿirfān</span></div>
-      <div class="figure-chip"><span class="figure-name">Mulla Sadra</span><span class="figure-role">Transcendent Wisdom — philosophy and ʿirfān unified</span></div>
-      <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role">Mystical commentaries alongside jurisprudence</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-mulla-sadra" class="cross-link"><span class="figure-name">Mulla Ṣadrā</span></a><span class="figure-role">Transcendent Wisdom — philosophy and ʿirfān unified</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-khomeini" class="cross-link"><span class="figure-name">Imam Khomeini</span></a><span class="figure-role">Mystical commentaries alongside jurisprudence</span></div>
       <div class="figure-chip"><span class="figure-name">Allama Tabataba'i</span><span class="figure-role">Dialogues with Corbin; ʿirfān and tafsīr</span></div>
       <div class="figure-chip"><span class="figure-name">Hasan-Zadeh Amoli</span><span class="figure-role">Contemporary ʿārif within the hawza</span></div>
     </div>
@@ -912,7 +1183,7 @@
 <!-- ═══════════════════ VIII · AKHLĀQ ══ -->
 <section class="doc-section" id="doc-akhlaq">
   <div class="doc-header reveal">
-    <div class="doc-number">Section VIII</div>
+    <div class="doc-number">Section X</div>
     <h2 class="doc-title">Akhlāq — <em>The Formation of Character</em></h2>
     <div class="doc-subtitle">Ethics · Virtue · The Person the Tradition Hopes to Produce</div>
     <p class="doc-question">"Theology establishes what is true. Law establishes what is permitted. What does the tradition say about who a person should become?"</p>
@@ -920,7 +1191,7 @@
   <div class="doc-body reveal">
 
     <div class="voice-block">
-      <div class="voice-arabic">«قِيمَةُ كُلِّ امرِئٍ مَا يُحسِنُه»</div>
+      <div class="voice-arabic" lang="ar" dir="rtl">«قِيمَةُ كُلِّ امرِئٍ مَا يُحسِنُه»</div>
       <div class="voice-trans">"The worth of every person is what he does well."</div>
       <div class="voice-source">— Imam Ali ibn Abi Talib ع, <em>Nahj al-Balagha</em>, Aphorism 81</div>
     </div>
@@ -931,14 +1202,14 @@
       <div class="doc-card-label">The Philosophical Inheritance</div>
       <h3>Virtue as the Mean — and Its Islamic Transformation</h3>
       <p class="card-lede">Shia ethical philosophy absorbed Aristotelian virtue theory early and transformed it: the virtues are not simply habituated dispositions but faculties oriented toward divine proximity.</p>
-      <p>Ibn Miskawayh's <em>Tahdhīb al-Akhlāq</em> (The Refinement of Character, 10th c.) is the foundational text — an Aristotelian account of the soul's three faculties (rational, irascible, appetitive) and the virtues that represent their proper development. Wisdom, courage, temperance, and justice are the four cardinal virtues; their deficiency or excess produces the corresponding vices. Nasir al-Din al-Tusi's <em>Akhlāq-i Nāṣirī</em> (13th c.) extends this framework into an explicitly Islamic register, grounding the virtues in the divine attributes the human person is called to reflect. The goal is not Aristotle's flourishing citizen but the person whose character has become transparent to the divine.</p>
+      <p>Ibn Miskawayh's <em>Tahdhīb al-Akhlāq</em> — drawing on the <a href="shia-encounters.html#enc-greek" class="cross-link">Greek philosophical inheritance</a> — (The Refinement of Character, 10th c.) is the foundational text — an Aristotelian account of the soul's three faculties (rational, irascible, appetitive) and the virtues that represent their proper development. Wisdom, courage, temperance, and justice are the four cardinal virtues; their deficiency or excess produces the corresponding vices. <a href="shia-academia.html#scholar-tusi-nasir" class="cross-link">Nasir al-Din al-Ṭūsī's</a> <em>Akhlāq-i Nāṣirī</em> (13th c.) extends this framework into an explicitly Islamic register, grounding the virtues in the divine attributes the human person is called to reflect. The goal is not Aristotle's flourishing citizen but the person whose character has become transparent to the divine.</p>
     </div>
 
     <div class="doc-card">
       <div class="doc-card-label">The Imamic Foundation</div>
       <h3>Character in the Hadith of the Ahlul Bayt</h3>
       <p class="card-lede">The Imams did not only transmit legal rulings — they transmitted an account of what good character looks like, grounded in their own practice under conditions of sustained oppression.</p>
-      <p>The Imamic hadith corpus is saturated with ethical teaching: on patience (<em>ṣabr</em>) as active endurance rather than passive resignation; on generosity (<em>karam</em>) as a disposition rather than occasional action; on truthfulness (<em>ṣidq</em>) as the foundation of all other virtues. Imam Ali's <em>Risālat al-Ḥuqūq</em> (Treatise on Rights) — the earliest systematic Shia ethical text — lists the obligations a person bears toward God, themselves, their body, their family, their enemies, and their community. It is comprehensive and exacting: every relationship is an ethical field, every encounter a test of character.</p>
+      <p>The Imamic hadith corpus is saturated with ethical teaching: on patience (<em>ṣabr</em>) as active endurance rather than passive resignation; on generosity (<em>karam</em>) as a disposition rather than occasional action; on truthfulness (<em>ṣidq</em>) as the foundation of all other virtues. <a href="shia-timeline.html#imam-1" class="cross-link">Imam Ali's</a> <em>Risālat al-Ḥuqūq</em> (Treatise on Rights) — the earliest systematic Shia ethical text — lists the obligations a person bears toward God, themselves, their body, their family, their enemies, and their community. It is comprehensive and exacting: every relationship is an ethical field, every encounter a test of character.</p>
     </div>
 
     <div class="doc-card">
@@ -957,8 +1228,8 @@
 
     <div class="figures-list">
       <div class="figure-chip"><span class="figure-name">Ibn Miskawayh</span><span class="figure-role"><em>Tahdhīb al-Akhlāq</em> — the foundational Aristotelian synthesis</span></div>
-      <div class="figure-chip"><span class="figure-name">Nasir al-Din al-Tusi</span><span class="figure-role"><em>Akhlāq-i Nāṣirī</em> — virtue ethics in Islamic register</span></div>
-      <div class="figure-chip"><span class="figure-name">Imam Ali ibn Husayn</span><span class="figure-role"><em>Risālat al-Ḥuqūq</em> — the earliest systematic Shia ethical text</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-tusi-nasir" class="cross-link"><span class="figure-name">Nasir al-Din al-Ṭūsī</span></a><span class="figure-role"><em>Akhlāq-i Nāṣirī</em> — virtue ethics in Islamic register</span></div>
+      <div class="figure-chip"><a href="shia-timeline.html#imam-4" class="cross-link"><span class="figure-name">Imam Ali ibn Husayn</span></a><span class="figure-role"><em>Risālat al-Ḥuqūq</em> — the earliest systematic Shia ethical text</span></div>
       <div class="figure-chip"><span class="figure-name">Murtadha Mutahharī</span><span class="figure-role">Modern synthesis; character over compliance</span></div>
       <div class="figure-chip"><span class="figure-name">Imam Khomeini</span><span class="figure-role"><em>Forty Hadith</em> — akhlāq as preparation for ʿirfān</span></div>
     </div>
@@ -966,7 +1237,125 @@
 </section>
 
 
-<div class="doc-closing reveal" style="max-width:780px; margin:0 auto; padding:64px 28px 80px; text-align:center;">
+<!-- ═══════════════════ IX · INFALLIBILITY ══ -->
+<section class="doc-section" id="doc-contested">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section XI</div>
+    <h2 class="doc-title">Contested <em>Doctrines</em></h2>
+    <div class="doc-subtitle">Tawassul · Shirk · Taqiyya — The Tradition Under Challenge</div>
+    <p class="doc-question">"Three Shia doctrines have been systematically misrepresented by critics, sometimes with lethal consequences. What does the tradition actually teach — and why has it been so difficult to hear?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">These three doctrines share a common fate: each has been extracted from its theological context, stripped of its internal logic, and weaponized as evidence of Shia deviance from Islam. The misrepresentations are not always in good faith — they have been used to justify the destruction of shrines, the killing of pilgrims, and the exclusion of Shia communities from Muslim public life. Presenting what the tradition actually teaches requires first clearing the ground of what it has been falsely accused of teaching. <strong>None of these doctrines says what its critics claim it says.</strong></p>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">Tawassul — Intercession Through the Beloved of God</div>
+      <h3>Seeking God Through an Intermediary: The Doctrine and the Accusation</h3>
+      <p class="card-lede">Tawassul is not worship of the Prophet or Imams — it is asking those closest to God to carry one's supplication to Him, precisely as one might ask a righteous living person to pray on one's behalf.</p>
+      <div class="card-split">
+        <div>
+          <p class="card-split-label">What the Tradition Teaches</p>
+          <p>The Quran commands believers to seek a <em>wasīla</em> (means of approach) to God: <em>"O you who believe, fear God and seek a means of approach to Him"</em> (5:35). Tawassul is the practice of making the Prophet ﷺ, the Imams, or righteous figures this <em>wasīla</em> — addressing God while invoking their spiritual proximity. The one being addressed is always God; the intercessor is asked to carry the supplication, not to act independently. This is categorically different from worship (<em>ʿibāda</em>), which requires directing one's devotion to the intercessor as an independent divine power. The Imam is a gate (<em>bāb</em>), not a deity.</p>
+        </div>
+        <div>
+          <p class="card-split-label">The Accusation and the Response</p>
+          <p>The Wahhabi critique, formalized by Ibn Abd al-Wahhab in the 18th century, holds that any supplication addressed to the dead — regardless of its theological framing — constitutes <em>shirk</em>. The Shia response: this conflates the act of asking with the act of worshipping. One may ask a living scholar to pray for one's recovery; the same act directed at a martyred Imam who is, in Shia theology, spiritually present and alive before God, is structurally identical. The accusation only holds if one first denies the Imam's continued spiritual existence — which is itself a theological position, not a neutral premise.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Shirk — What the Tradition Actually Prohibits</div>
+      <h3>The Shia Understanding of Divine Unity and Its Violation</h3>
+      <p class="card-lede">Shia theology holds tawhid with absolute rigor — the tradition's own most serious charge against opponents is shirk, not the reverse.</p>
+      <p>For Shia theology, shirk is the attribution of independent divine power to any being other than God — treating a created being as a source of existence, sustenance, or ultimate authority in its own right. The veneration of the Imams, shrine pilgrimage, and tawassul are all explicitly framed within a theology that denies any independent power to the Imam. The Imam acts only through God's permission; his intercession is effective only because God honors it. This is not a fine distinction invented to deflect the accusation — it is structurally embedded in the Imamate doctrine itself, which grounds the Imam's authority entirely in divine designation rather than inherent power.</p>
+      <p>The tradition's theologians have written extensively on where the line falls. Ayatullah Sistani, Allama Tabataba'i, and virtually every major Shia jurist hold that calling on the Imam as an intercessor is permissible and theologically coherent; directing worship to the Imam as an independent divine power would be shirk. The line is the same one that separates prayer to God from asking a friend to pray.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Taqiyya — Precautionary Dissimulation</div>
+      <h3>A Doctrine of Survival, Not Deception</h3>
+      <p class="card-lede">Taqiyya is the permission to conceal one's faith under conditions of genuine threat to life — a doctrine of survival under persecution, not a license for habitual deception.</p>
+      <p>The Quranic basis: <em>"Whoever disbelieves in God after his belief — except one who is compelled while his heart is at rest in faith — but whoever opens his breast to disbelief, upon them is wrath from God"</em> (16:106). The verse explicitly permits the appearance of disbelief under compulsion while one's inner faith remains intact. For a community that spent centuries under Umayyad, Abbasid, and Sunni imperial rule — where the public profession of Shia belief could mean death — taqiyya was not a theological luxury but a condition of physical survival. The Imams themselves practiced it and taught it explicitly.</p>
+      <p>Its conditions are strict: genuine threat to life or limb, no alternative, and no harm to other Muslims as a consequence of the dissimulation. It is not a general permission to lie whenever convenient; it is a specific dispensation under duress. The tradition's own ethic of truthfulness (<em>ṣidq</em>) — itself a cardinal virtue in the akhlāq literature — makes habitual deception incompatible with the spiritual life. Taqiyya and ṣidq are not in tension; they operate in entirely different domains.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">The Stakes of Misrepresentation</div>
+      <h3>Why These Distortions Have Consequences</h3>
+      <p class="card-lede">The misrepresentation of these doctrines is not an academic matter — it has been used to justify destruction, exclusion, and killing.</p>
+      <p>The Wahhabi-Saudi state's destruction of the cemetery of Baqi' in Medina in 1925 — demolishing the graves of the Prophet's family and Companions — was justified on the grounds that shrine veneration constitutes shirk. The bombing of the Askari shrine in Samarra in 2006 by Salafi extremists triggered a sectarian civil war. Accusations of taqiyya have been used to dismiss Shia testimony and exclude Shia voices from Muslim public discourse on the premise that nothing they say can be trusted. Understanding what these doctrines actually mean is not only a matter of theological accuracy — it is a matter of basic fairness to 300 million people.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Imam Ja'far al-Sadiq</span><span class="figure-role">Primary source for taqiyya doctrine in Imamic hadith</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-hilli" class="cross-link"><span class="figure-name">Allama al-Ḥillī</span></a><span class="figure-role">Classical defense of tawassul against Sunni critique</span></div>
+      <div class="figure-chip"><span class="figure-name">Ibn Abd al-Wahhab</span><span class="figure-role">18th-c. formulator of the anti-tawassul position</span></div>
+      <div class="figure-chip"><a href="shia-academia.html#scholar-sistani" class="cross-link"><span class="figure-name">Ayatullah Sistanī</span></a><span class="figure-role">Contemporary jurisprudential clarification of tawassul's limits</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ XI · THE OCCULTATION AS THEOLOGY ══ -->
+<section class="doc-section" id="doc-eschatology">
+  <div class="doc-header reveal">
+    <div class="doc-number">Section XII</div>
+    <h2 class="doc-title">Eschatology — <em>The Return</em></h2>
+    <div class="doc-subtitle">The Mahdi · The End of History · Divine Justice Completed</div>
+    <p class="doc-question">"The tradition begins with Tawhid — the absolute unity of God. It ends with Maʿād — the return of all things to God. What does Shia theology say about how history ends, and what the end means?"</p>
+  </div>
+  <div class="doc-body reveal">
+    <p class="doc-intro">Shia eschatology is not a marginal footnote to the tradition's theology — it is the completion of its architecture. The five roots begin with Tawhid and end with Maʿād; the Imamate points toward a just order that the Hidden Imam will finally establish; the longing of intizār is a longing for the end of injustice. <strong>Eschatology is where every other doctrine in the tradition arrives.</strong> For many Shia Muslims it is the most emotionally live dimension of faith — not abstract theology but an imminent horizon that gives the present moment its moral urgency.</p>
+
+    <div class="doc-card doc-card-full">
+      <div class="doc-card-label">The Return of the Mahdi — al-Qāʾim</div>
+      <h3>The Emergence: What the Tradition Expects</h3>
+      <p class="card-lede">The Mahdi's return is not merely predicted — it is the event toward which all of Shia history is understood to be moving, the fulfillment of everything the Imamate promised.</p>
+      <div class="card-split">
+        <div>
+          <p class="card-split-label">The Event</p>
+          <p>The 12th Imam — Muhammad ibn Hasan al-Mahdi, al-Qāʾim (the one who rises), Sahib al-Zaman (the master of the age) — will emerge from occultation at a moment known only to God. He will establish a just global order, filling the earth with equity after it has been filled with oppression. His emergence is preceded by specific signs: the rise of a figure from Yemen (the Yamani), a caller who announces his emergence from the sky, a great earthquake, and the rise of the Sufyani — a tyrant whose advent signals the imminence of the Mahdi's appearance. The tradition holds that his return will be recognized by all, that he will be accompanied by Jesus ibn Maryam, and that his governance will be the last human political order before the Day of Judgment.</p>
+        </div>
+        <div>
+          <p class="card-split-label">The Theological Stakes</p>
+          <p>The Mahdi's return is not a political fantasy — it is the tradition's answer to the problem of unresolved injustice. Every Imam who was martyred, every Shia community that was persecuted, every covenant that was broken — the tradition holds that none of this is the final word. Divine justice is not only eschatological (reserved for the afterlife) but historical: it will be enacted in this world, in time, through the Imam's governance. This is what distinguishes Shia eschatology from resignation: the expectation is not only of heaven but of justice in history, before the end of history.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Rajʿa — The Return Before the Return</div>
+      <h3>The Resurrection of the Righteous Before the Final Hour</h3>
+      <p class="card-lede">A distinctive Shia eschatological doctrine holds that certain souls — the most purely faithful and the most deeply unjust — will be returned to life before the final resurrection to witness and participate in the Mahdi's just order.</p>
+      <p>Rajʿa is among the more debated Shia doctrinal positions, held by most traditional scholars and questioned by some modernist ones. Its Quranic basis is 27:83: <em>"On the day We shall muster from every nation a group of those who denied Our signs."</em> The most prominently expected returnees are the Imams themselves — particularly <a href="shia-timeline.html#imam-3" class="cross-link">Imam Husayn</a> — and the Prophets. The tradition sees rajʿa not as supernatural interruption but as divine consistency: those who suffered most for truth deserve to see its vindication in history, not only in the hereafter.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Maʿād — Resurrection and the Day of Judgment</div>
+      <h3>The Fifth Root Completed</h3>
+      <p class="card-lede">The resurrection in Shia theology is bodily and complete — every act has consequence, every injustice will be addressed, and the divine justice that ʿAdl establishes as a divine attribute will be fully enacted.</p>
+      <p>Shia theology is clear that the resurrection is physical — the same body and soul that lived in this world are raised for judgment. This distinguishes the tradition from purely spiritual accounts of the afterlife. The scales of deeds, the bridge of Sirat, paradise and hell — these are affirmed as real, not merely metaphorical. The Imam's intercession (<em>shafāʿa</em>) on behalf of his followers is among the tradition's most cherished consolations: those who maintained loyalty to the Ahlul Bayt through the difficulties of the Occultation will find the Imam's advocacy on the day when advocacy matters most. This completes the arc from Tawhid — God is one — through ʿAdl — God is just — to Maʿād: God's justice is final.</p>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-card-label">Living in Eschatological Time</div>
+      <h3>How the End Shapes the Present</h3>
+      <p class="card-lede">Shia eschatology is not other-worldly escapism — the expectation of the Mahdi's return shapes how believers understand their obligations in the present, making every act of justice an anticipation of the just order to come.</p>
+      <p>The tradition's consistent teaching: the appropriate response to the belief in the Mahdi's return is not passivity but preparation — moral, spiritual, and communal. A community that lives in intizār (active awaiting) asks constantly whether its conduct is worthy of the order it expects. Muhammad Baqir al-Sadr's last writings — composed while under sentence of death — returned repeatedly to this theme: the Mahdi's return is not an excuse to defer justice but a summons to enact it now, in whatever measure is possible. Eschatology, rightly understood, is the most urgent of the tradition's political commitments.</p>
+    </div>
+
+    <div class="figures-list">
+      <div class="figure-chip"><span class="figure-name">Sheikh al-Saduq</span><span class="figure-role"><em>Kamal al-Din</em> — systematic eschatology of the return</span></div>
+      <div class="figure-chip"><span class="figure-name">Allama Tabataba'i</span><span class="figure-role">Eschatological themes in <em>al-Mizan</em> tafsir</span></div>
+      <div class="figure-chip"><span class="figure-name">Muhammad Baqir al-Sadr</span><span class="figure-role">Eschatology as political urgency</span></div>
+      <div class="figure-chip"><span class="figure-name">Imam al-Mahdi ع</span><span class="figure-role">The living eschatological reality — al-Qāʾim, Sahib al-Zaman</span></div>
+    </div>
+  </div>
+</section>
+
+
+ style="max-width:780px; margin:0 auto; padding:64px 28px 80px; text-align:center;">
   <div style="width:40px; height:1px; background:rgba(201,168,76,0.25); margin:0 auto 40px;"></div>
   <div style="font-family:'Noto Naskh Arabic',serif; font-size:22px; color:var(--gold-light); line-height:2; direction:rtl; margin-bottom:16px;">
     «مَنْ عَرَفَ نَفْسَهُ جَاهَدَهَا، وَمَنْ جَهِلَ نَفْسَهُ أَهْمَلَهَا»
@@ -983,6 +1372,7 @@
   <div style="width:40px; height:1px; background:rgba(201,168,76,0.25); margin:40px auto 0;"></div>
 </div>
 
+
 <div class="page-footer">
   <p style="margin-bottom:14px;">
     <a href="shia-timeline.html">I · Timeline</a>
@@ -992,6 +1382,8 @@
     <a href="shia-encounters.html">III · Encounters</a>
     &nbsp;·&nbsp;
     IV · Doctrine &amp; Debate
+    &nbsp;·&nbsp;
+    <a href="about.html">About</a>
   </p>
   <p>The Imamate &amp; Its Legacy</p>
   <p style="margin-top:12px; font-size:12px; opacity:0.4; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">This project presents Shia Islamic history from within the tradition's own framework while situating it in broader historical context. Theological claims are presented as the tradition understands them; historical claims aim for scholarly accuracy.</p>
@@ -1022,10 +1414,24 @@ function scrollToDoc(id) {
   const offset = (topbar ? topbar.offsetHeight : 52) + (nav ? nav.offsetHeight : 44) + 8;
   const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
   window.scrollTo({ top, behavior: 'smooth' });
+  history.pushState(null, null, '#' + id);
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash;
+  if (hash) {
+    const el = document.getElementById(hash.slice(1));
+    if (el) setTimeout(() => {
+      const nav = document.getElementById('doc-nav');
+      const topbar = document.querySelector('.topbar');
+      const offset = (topbar ? topbar.offsetHeight : 52) + (nav ? nav.offsetHeight : 44) + 8;
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+    }, 80);
+  }
+});
+
 // ── ACTIVE SECTION TRACKING ──────────────────────────────
-const sections = ['doc-architecture','doc-imamate','doc-karbala','doc-embodied','doc-just-order','doc-authority','doc-irfan','doc-akhlaq'];
+const sections = ['doc-architecture','doc-imamate','doc-karbala','doc-embodied','doc-just-order','doc-authority','doc-irfan','doc-akhlaq','doc-isma','doc-contested','doc-ghayba','doc-eschatology'];
 
 function updateActiveBtn() {
   const nav = document.getElementById('doc-nav');
@@ -1050,9 +1456,20 @@ function updateActiveBtn() {
 
 // ── SCROLL REVEAL ─────────────────────────────────────────
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.06 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Staggered reveal for cards and topic tiles
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); cardObserver.unobserve(e.target); }
+  });
+}, { rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.doc-card, .figure-chip, .root-card, .reading-card, .spectrum-card').forEach(el => {
+  el.classList.add('reveal');
+  cardObserver.observe(el);
+});
 
 // ── INIT ──────────────────────────────────────────────────
 const navScroll = document.getElementById('doc-nav-scroll');
@@ -1061,6 +1478,19 @@ window.addEventListener('scroll', () => { updateActiveBtn(); });
 window.addEventListener('resize', updateDocNavArrows);
 updateDocNavArrows();
 updateActiveBtn();
+
+// ── KEYBOARD ACCESSIBILITY ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+});
 </script>
+<script src="scholar-popup.js"></script>
 </body>
 </html>
