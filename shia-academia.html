@@ -2244,26 +2244,37 @@ function hexToRgb(hex) {
 
 // ── INBOUND HASH HANDLER ───────────────────────────────────────────────────
 // shia-academia.html#scholar-[id] → switches to By Scholar, opens modal
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash;
   if (hash && hash.startsWith('#scholar-')) {
     const scholarId = hash.replace('#scholar-', '');
+    // Switch to By Scholar view
     document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('visible'));
     document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('view-scholar').classList.add('visible');
+    const panel = document.getElementById('view-scholar');
+    if (panel) panel.classList.add('visible');
     document.querySelectorAll('.view-btn').forEach(b => {
       if (b.textContent.trim() === 'By Scholar') b.classList.add('active');
     });
-    const _dlh = document.getElementById('domain-legend'); if (_dlh) _dlh.style.display = 'none';
+    const _dlh = document.getElementById('domain-legend');
+    if (_dlh) _dlh.style.display = 'none';
+    // Build cards synchronously
     buildScholarCards();
-    setTimeout(() => {
+    // Poll for the card rather than using a fixed timeout —
+    // handles variable rendering speed across environments
+    let attempts = 0;
+    const tryOpen = () => {
       const target = document.getElementById('scholar-' + scholarId);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
         target.style.outline = '1px solid rgba(201,168,76,0.5)';
-        setTimeout(() => { target.style.outline = ''; openModal(scholarId); }, 500);
+        setTimeout(() => { target.style.outline = ''; openModal(scholarId); }, 400);
+      } else if (attempts < 20) {
+        attempts++;
+        setTimeout(tryOpen, 100);
       }
-    }, 80);
+    };
+    setTimeout(tryOpen, 80);
   }
 });
 
