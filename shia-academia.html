@@ -2254,7 +2254,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.view-btn').forEach(b => {
       if (b.textContent.trim() === 'By Scholar') b.classList.add('active');
     });
-    document.getElementById('domain-legend').style.display = 'none';
+    const _dlh = document.getElementById('domain-legend'); if (_dlh) _dlh.style.display = 'none';
     buildScholarCards();
     setTimeout(() => {
       const target = document.getElementById('scholar-' + scholarId);
