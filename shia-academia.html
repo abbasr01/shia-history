@@ -507,7 +507,6 @@ body {
   <button class="view-btn" onclick="setView('scholar', this)">By Scholar</button>
 </div>
 
-</div>
 
 <!-- ══════════════════════════════════════ VIEW: BY DOMAIN ══ -->
 <div id="view-domain" class="view-panel visible">
@@ -736,7 +735,7 @@ body {
         <div class="sn-left"><span class="sn-era">Post-Mongol Hilla</span><span class="sn-dates">1205–1277</span></div>
         <div class="sn-dot" style="border-color:var(--fiqh)"></div>
         <div class="sn-right">
-          <div class="sn-name">Muhaqqiq al-Hilli <span class="arabic" lang="ar" dir="rtl">المحقق الحلي</span></div>
+          <div class="sn-name" onclick="showScholarPopup('muhaqqiq-hilli')" style="cursor:pointer" title="View scholar profile">Muhaqqiq al-Hilli <span class="arabic" lang="ar" dir="rtl">المحقق الحلي</span></div>
           <div class="sn-epithet">Najm al-Din — Greatest Shia jurist of the Mongol era</div>
           <div class="works-list">
             <div class="work-item" role="button" tabindex="0" aria-expanded="false" style="border-left-color:var(--fiqh)" onclick="toggleWork(this)">
@@ -828,6 +827,7 @@ body {
           </div>
           <div class="sn-influence">Influenced → <span>Sistani (student), Iraqi Da'wa party, Islamic economic thought globally</span></div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Qajar / Constitutional Revolution</span><span class="sn-dates">1839–1911</span></div>
         <div class="sn-dot" style="border-color:var(--fiqh)"></div>
@@ -886,8 +886,6 @@ body {
           </div>
           <div class="sn-influence">Influenced → <span>Safavid state jurisprudence; the Wilāyat al-Faqīh tradition through Khomeini</span></div>
         </div>
-      </div>
-
       </div>
 
     </div>
@@ -984,6 +982,7 @@ body {
           </div>
           <div class="sn-influence">Influenced → <span>Mutahhari, Jawadi Amoli, Misbah Yazdi, Nasr (via Henry Corbin connection)</span></div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Contemporary Iran</span><span class="sn-dates">1933–</span></div>
         <div class="sn-dot" style="border-color:var(--falsafa)"></div>
@@ -1044,7 +1043,6 @@ body {
         </div>
       </div>
 
-      </div>
     </div>
     </div><!-- /domain-body -->
   </section>
@@ -1130,6 +1128,7 @@ body {
             </div>
           </div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Late Qajar / Early Pahlavi</span><span class="sn-dates">1872–1940</span></div>
         <div class="sn-dot" style="border-color:var(--hadith)"></div>
@@ -1170,7 +1169,6 @@ body {
         </div>
       </div>
 
-      </div>
     </div>
     </div><!-- /domain-body -->
   </section>
@@ -1274,6 +1272,7 @@ body {
             </div>
           </div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Contemporary Iran</span><span class="sn-dates">1933–</span></div>
         <div class="sn-dot" style="border-color:var(--irfan)"></div>
@@ -1314,7 +1313,6 @@ body {
         </div>
       </div>
 
-      </div>
     </div>
     </div><!-- /domain-body -->
   </section>
@@ -1385,7 +1383,7 @@ body {
         <div class="sn-left"><span class="sn-era">Contemporary Lebanon</span><span class="sn-dates">1935–2010</span></div>
         <div class="sn-dot" style="border-color:var(--tafsir)"></div>
         <div class="sn-right">
-          <div class="sn-name">Sayyid Muhammad Husayn Fadlallah <span class="arabic" lang="ar" dir="rtl">السيد فضل الله</span></div>
+          <div class="sn-name" onclick="showScholarPopup('fadlallah')" style="cursor:pointer" title="View scholar profile">Sayyid Muhammad Husayn Fadlallah <span class="arabic" lang="ar" dir="rtl">السيد فضل الله</span></div>
           <div class="sn-epithet">Most widely read Arab Shia tafsir scholar of the modern era</div>
           <div class="works-list">
             <div class="work-item" role="button" tabindex="0" aria-expanded="false" style="border-left-color:var(--tafsir)" onclick="toggleWork(this)">
@@ -1412,6 +1410,7 @@ body {
           </div>
           <div class="sn-influence">A solitary peak — the tradition's failure to produce many like her is an institutional question, not a natural limit.</div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Seljuk Era</span><span class="sn-dates">1073–1153</span></div>
         <div class="sn-dot" style="border-color:var(--tafsir)"></div>
@@ -1432,7 +1431,6 @@ body {
         </div>
       </div>
 
-      </div>
     </div>
     </div><!-- /domain-body -->
   </section>
@@ -1471,7 +1469,7 @@ body {
         <div class="sn-left"><span class="sn-era">Modern Iran</span><span class="sn-dates">1919–1979</span></div>
         <div class="sn-dot" style="border-color:var(--akhlaq)"></div>
         <div class="sn-right">
-          <div class="sn-name">Shahid Murtadha Mutahhari <span class="arabic" lang="ar" dir="rtl">الشهيد المطهري</span></div>
+          <div class="sn-name" onclick="showScholarPopup('mutahhari')" style="cursor:pointer" title="View scholar profile">Shahid Murtadha Mutahhari <span class="arabic" lang="ar" dir="rtl">الشهيد المطهري</span></div>
           <div class="sn-epithet">Martyr of the Revolution — bridge between hawza and modern society</div>
           <div class="works-list">
             <div class="work-item" role="button" tabindex="0" aria-expanded="false" style="border-left-color:var(--akhlaq)" onclick="toggleWork(this)">
@@ -1487,6 +1485,7 @@ body {
           </div>
           <div class="sn-influence">Influenced → <span>Broad Iranian religious public; student of Tabataba'i and Khomeini</span></div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Late Ilkhanid / Timurid</span><span class="sn-dates">1356–1437</span></div>
         <div class="sn-dot" style="border-color:var(--akhlaq)"></div>
@@ -1507,7 +1506,6 @@ body {
         </div>
       </div>
 
-      </div>
     </div>
     </div><!-- /domain-body -->
   </section>
@@ -1572,6 +1570,7 @@ body {
             </div>
           </div>
         </div>
+      </div>
       <div class="scholar-node">
         <div class="sn-left"><span class="sn-era">Late Qajar / Early Pahlavi</span><span class="sn-dates">1872–1940</span></div>
         <div class="sn-dot" style="border-color:var(--tarikh)"></div>
@@ -1592,7 +1591,6 @@ body {
         </div>
       </div>
 
-      </div>
     </div>
     </div><!-- /domain-body -->
   </section>
@@ -2134,6 +2132,97 @@ const SCHOLARS = [
     ],
     influencedBy: 'Misbāḥ\'s intellectual formation was shaped most decisively by his years of study under Allama <a href="#" onclick="event.stopPropagation();showScholarPopup(\'tabatabai\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Ṭabāṭabāʾī</a> — the precise philosophical training, the Sadraean metaphysical framework, and the model of engaging Western thought seriously rather than dismissively all derive from this relationship. Ṭabāṭabāʾī reportedly considered Misbāḥ among his most rigorous philosophical students. His political theology was formed through <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khomeini\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khomeini</a>\'s influence and his own analysis of the theological requirements of governance during Occultation — a position he defended with philosophical arguments rather than merely asserting on political grounds.',
     legacyDetail: 'Misbāḥ\'s most enduring contribution is pedagogical — the Āmūzish texts that have shaped the theological formation of tens of thousands of Shia scholars globally, giving them a framework for engaging contemporary intellectual challenges grounded in the classical tradition. His Imam <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khomeini\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khomeini</a> Educational and Research Institute (Muʾassasa-ye Āmūzishī wa Pazhūhishī-ye Imām Khumaynī) in Qum became a major center for developing Islamically grounded human and social sciences — a project of constructing a comprehensive Islamic academic culture that continues as an institutional legacy independent of his specific political positions.'
+  },
+  {
+    id: 'muhaqqiq-hilli', name: 'Muhaqqiq al-Hilli', arabic: 'المحقق الحلي',
+    dates: '1205–1277 CE', era: 'Post-Mongol Hilla',
+    location: 'Hilla, Iraq', domains: ['fiqh'],
+    desc: 'Najm al-Dīn Abū al-Qāsim Jaʿfar ibn al-Ḥasan al-Ḥillī — universally known as al-Muḥaqqiq (the Verifier) — is the most consequential Shia jurist of the Mongol era and the author of the most widely taught fiqh text in the history of the tradition. Operating from Hilla in southern Iraq, which emerged as the premier center of Shia learning after the Mongol destruction of Baghdad in 1258, he produced works of exceptional systematic clarity that gave Shia jurisprudence an institutional curriculum it could transmit across generations without dependence on a single living teacher. He was the uncle and primary teacher of <a href="#" onclick="event.stopPropagation();showScholarPopup(\'hilli\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Allama al-Ḥillī</a>, the even more influential theologian-jurist who followed.',
+    works: [
+      { title: 'Shara\'i al-Islam', arabic: 'شرائع الإسلام', desc: 'The most widely taught Shia fiqh text in history — a comprehensive four-volume legal manual covering worship (ʿibādāt), transactions (muʿāmalāt), unilateral declarations (īqāʿāt), and judicial procedure (aḥkām). Its exceptional clarity of organization and precision of expression made it the standard teaching text for nearly 800 years. Shahid al-Awwal, Shahid al-Thani, and generations of commentators built their own works around its structure.' },
+      { title: 'al-Mu\'tabar fi Sharh al-Mukhtasar', arabic: 'المعتبر في شرح المختصر', desc: 'A commentary on his own al-Mukhtaṣar al-Nāfiʿ demonstrating independent juristic reasoning (ijtihād) at a level that distinguished the Hilla school from more conservative hadith-based approaches. This text helped establish the methodological independence of the jurist as a living source of legal authority during the Occultation.' }
+    ],
+    minorWorks: [
+      { title: 'al-Mukhtaṣar al-Nāfiʿ', domain: 'fiqh', desc: 'A concise abridgment of Sharāʾiʿ al-Islām designed for practical reference and student memorization — widely used as an introductory fiqh text in the hawza.' }
+    ],
+    influencedBy: 'Muḥaqqiq al-Ḥillī inherited the jurisprudential tradition of <a href="#" onclick="event.stopPropagation();showScholarPopup(\'tusi-sheikh\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Sheikh al-Ṭūsī</a> as mediated through the crucial figure of Ibn Idrīs al-Ḥillī (d. 1202), who had broken with the near-canonical authority of al-Ṭūsī\'s rulings and reasserted the primacy of independent juristic reasoning. This revivification of ijtihād in the Hilla school gave al-Muḥaqqiq the methodological confidence to produce a systematic legal code rather than a commentary on transmitted opinions.',
+    legacyDetail: '<em>Sharāʾiʿ al-Islām</em> became the structural template on which virtually all subsequent Shia jurisprudence was organized. <a href="#" onclick="event.stopPropagation();showScholarPopup(\'shahid1\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Shahid al-Awwal</a>\'s <em>al-Lumʿa</em> and <a href="#" onclick="event.stopPropagation();showScholarPopup(\'shahid2\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Shahid al-Thānī</a>\'s <em>al-Rawḍa al-Bahiyya</em> are commentaries on it. His nephew <a href="#" onclick="event.stopPropagation();showScholarPopup(\'hilli\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Allama al-Ḥillī</a> extended and systematized his jurisprudential method into theology and uṣūl. The Hilla school that he and his nephew represent is the direct institutional ancestor of the Najaf and Qum ḥawzas.'
+  },
+  {
+    id: 'borujerdi', name: 'Grand Ayatullah Borujerdi', arabic: 'البروجردي',
+    dates: '1875–1961 CE', era: 'Late Qajar / Pahlavi Iran',
+    location: 'Borujerd → Najaf → Qum', domains: ['fiqh', 'hadith'],
+    desc: 'Sayyid Ḥusayn Ṭabāṭabāʾī Burūjirdī was the last scholar to be widely recognized as the sole marjaʿ al-taqlīd — the single supreme religious authority — for the global Shia community. His three decades at the head of the Qum ḥawza (1930s–1961) transformed it from a provincial seminary into a major international institution rivaling Najaf. His scholarly contributions, while significant, were transmitted primarily through his lectures; his legacy is above all institutional and diplomatic. His studied political quietism — maintaining the ḥawza\'s independence from the Pahlavi state without open confrontation — represented a model of religious authority that his student Khomeini would later reject entirely.',
+    works: [
+      { title: 'Jāmiʿ Aḥādīth al-Shīʿa', arabic: 'جامع أحاديث الشيعة', desc: 'A monumental hadith compilation project — reorganizing the entire corpus of Shia traditions by jurisprudential topic. Borujerdi directed teams of scholars in this work over decades; it was completed after his death. The project reflects his conviction that the scattered state of hadith literature was an obstacle to systematic jurisprudence.' },
+      { title: 'Taqrīrāt (Compiled Lectures)', arabic: 'تقريرات', desc: 'Borujerdi\'s jurisprudential and uṣūlī thought survives primarily in the lecture notes compiled by his students — including his comparative methodology that situated Shia fiqh in dialogue with Sunni legal schools. His approach emphasized rigorous source criticism and the historical development of legal opinions across traditions.' }
+    ],
+    minorWorks: [
+      { title: 'Ḥāshiya on al-ʿUrwa al-Wuthqā', domain: 'fiqh', desc: 'Marginal annotations on Sayyid Kāẓim al-Yazdī\'s standard fiqh manual — the conventional form through which a marjaʿ registers his legal positions on specific questions.' }
+    ],
+    influencedBy: 'Burūjirdī\'s scholarly formation was shaped by his extended period of study in Najaf under leading mujtahids of the early 20th century, including Akhund <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khorasani\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khorasānī</a> and Sayyid Kāẓim al-Yazdī. His return to Iran and eventual assumption of leadership in Qum followed the groundwork laid by ʿAbd al-Karīm Ḥāʾirī Yazdī, who had founded the modern Qum ḥawza in 1922. Burūjirdī\'s comparative methodology — situating Shia positions within the broader landscape of Islamic legal schools — reflected his deep familiarity with Sunni jurisprudence acquired during his Najaf years.',
+    legacyDetail: 'Burūjirdī\'s institutional legacy is immense: under his leadership the Qum ḥawza developed the organizational infrastructure — student stipends, formal curricula, international recruitment — that made it a global center. His collaboration with al-Azhar\'s Sheikh Maḥmūd Shaltūt, which produced the landmark 1959 fatwā recognizing the Jaʿfarī school as a legitimate fifth madhhab, remains the high-water mark of Sunni-Shia institutional rapprochement. His death without a consensus successor fractured the marjaʿiyya into the plural landscape — <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khomeini\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khomeini</a>, <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khoei\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">al-Khoei</a>, Golpāyigānī, Marʿashī Najafī — that persists to this day.'
+  },
+  {
+    id: 'fadlallah', name: 'Sayyid Muhammad Husayn Fadlallah', arabic: 'السيد فضل الله',
+    dates: '1935–2010 CE', era: 'Contemporary',
+    location: 'Najaf (born) → Beirut', domains: ['tafsir', 'fiqh'],
+    desc: 'Born in Najaf to a family of Lebanese Shia scholars, Fadlallah trained under the leading mujtahids of the mid-20th-century ḥawza before relocating to Beirut in 1966, where he became the most significant Arab Shia scholar-activist of the modern period. His intellectual project was to demonstrate that Islamic jurisprudence and Quranic scholarship could engage modernity — feminism, human rights, political philosophy, interfaith dialogue — on their own terms rather than defensively. This made him simultaneously one of the most widely followed and most controversial Shia marājiʿ of his era. His jurisprudential positions on women\'s self-defense against domestic violence, his critical reassessment of certain traditions attributed to Fāṭima al-Zahrāʾ, and his insistence on maintaining scholarly independence from political movements all provoked sharp debate within the tradition.',
+    works: [
+      { title: 'Min Waḥy al-Qurʾān', arabic: 'من وحي القرآن', desc: 'A 25-volume Arabic tafsīr combining traditional scholarship with sustained engagement with contemporary social, political, and ethical questions. Widely read across the Arab Shia world — in Lebanon, Iraq, Bahrain, and the Gulf — it represents a model of Quranic commentary that treats the text as a living resource for navigating modernity rather than an artifact of historical study.' },
+      { title: 'al-Masāʾil al-Fiqhiyya', arabic: 'المسائل الفقهية', desc: 'His practical jurisprudential manual (risāla ʿamaliyya), notable for positions that diverged from consensus in the direction of greater flexibility — particularly on questions affecting women, interfaith relations, and the permissibility of engaging with Western legal frameworks.' }
+    ],
+    minorWorks: [
+      { title: 'al-Islām wa Manṭiq al-Quwwa', domain: 'kalam', desc: 'Islam and the Logic of Force — a theological engagement with the ethics of violence and resistance. Addresses the conditions under which armed struggle is theologically justified and when it becomes impermissible.' },
+      { title: 'Dunyā al-Marʾa', domain: 'fiqh', desc: 'The World of Woman — a jurisprudential treatment of women\'s status in Islamic law. One of the most progressive treatments by a recognized marjaʿ.' }
+    ],
+    influencedBy: 'Fadlallah\'s formation in the Najaf ḥawza of the 1950s–60s placed him alongside <a href="#" onclick="event.stopPropagation();showScholarPopup(\'sadr\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Muḥammad Bāqir al-Ṣadr</a> — a peer and intellectual companion whose systematic engagement with Western thought (Marxism, capitalism, modern philosophy) influenced Fadlallah\'s own conviction that Islamic scholarship must engage modernity at the level of its foundational premises. His principal teachers in Najaf included <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khoei\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Sayyid al-Khoei</a> and Sayyid Muḥsin al-Ḥakīm.',
+    legacyDetail: 'Fadlallah\'s legacy is inseparable from the question of what Shia scholarship looks like when it operates in a modern, pluralistic, urban context rather than within the institutional walls of the ḥawza. His willingness to issue rulings that diverged from traditional consensus — while remaining within the methodological framework of uṣūlī jurisprudence — demonstrated the system\'s capacity for internal reform. His relationship with Ḥizbullāh was complex: initially regarded as a spiritual reference for the movement, he consistently denied formal organizational ties and maintained the independence of his marjaʿiyya from partisan politics. He survived multiple assassination attempts, including a devastating 1985 car bombing that killed 80 people. His followers, concentrated in Lebanon, Iraq, and the Gulf, continue to follow his rulings posthumously.'
+  },
+  {
+    id: 'mutahhari', name: 'Shahid Murtadha Mutahhari', arabic: 'الشهيد المطهري',
+    dates: '1919–1979 CE', era: 'Pahlavi Iran',
+    location: 'Fariman (Khorasan) → Qum → Tehran', domains: ['falsafa', 'kalam', 'akhlaq'],
+    desc: 'Murtaḍā Muṭahharī was the most publicly influential Shia intellectual of 20th-century Iran — a scholar whose mastery of the classical philosophical tradition was matched by an extraordinary ability to communicate its insights to a modern, educated public. Trained under <a href="#" onclick="event.stopPropagation();showScholarPopup(\'tabatabai\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Allama Ṭabāṭabāʾī</a> in Ṣadraean philosophy and under <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khomeini\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khomeini</a> in fiqh and ethics, he became the indispensable bridge between the ḥawza and Iran\'s modern universities, producing accessible yet rigorous works on theodicy, women\'s rights, Western philosophy, and Islamic social thought. His assassination by the Furqān group on 1 May 1979 — two months after the Revolution — cut short what would have been a defining intellectual career. Khomeini described his death as the loss of "a dear son."',
+    works: [
+      { title: 'ʿAdl-e Ilāhī (Divine Justice)', arabic: 'عدل إلهي', desc: 'A rigorous engagement with the problem of theodicy — arguing that evil is privation rather than substance, that suffering has spiritual dimensions beyond immediate experience, and that divine justice operates on a cosmic scale. One of the clearest treatments of this central theological problem in Islamic thought, written for an educated general readership.' },
+      { title: 'Pāvāraqī-hā bar Uṣūl-e Falsafa (Commentary on Principles of Philosophy)', arabic: 'پاورقی‌ها بر اصول فلسفه', desc: 'Muṭahharī\'s extensive annotations on Ṭabāṭabāʾī\'s Uṣūl-e Falsafa va Ravish-e Riʾālīsm — the collaborative work that constituted the most important Shia philosophical response to Marxist dialectical materialism. Muṭahharī\'s commentary made Ṭabāṭabāʾī\'s dense philosophical arguments accessible to a broader audience.' },
+      { title: 'Mas\'ala-ye Ḥijāb (The Question of the Veil)', arabic: 'مسئله حجاب', desc: 'A systematic treatment of women\'s dress and status in Islamic law — engaging feminist critiques directly while defending a framework of complementary gender roles. Controversial but widely read, it exemplifies Muṭahharī\'s method of engaging modernity\'s questions rather than dismissing them.' }
+    ],
+    minorWorks: [
+      { title: 'Dāstān-e Rāstān', domain: 'akhlaq', desc: 'Stories of the Righteous — popular ethical narratives drawn from Islamic history, designed to make moral philosophy accessible to young readers. Among his most widely distributed works.' },
+      { title: 'Āshnāʾī bā Qurʾān', domain: 'tafsir', desc: 'Introduction to the Quran — a series of accessible lectures on Quranic themes for a general audience.' },
+      { title: 'Insān dar Qurʾān', domain: 'kalam', desc: 'Man in the Quran — a philosophical-theological anthropology drawing on both the Ṣadraean tradition and Quranic hermeneutics.' }
+    ],
+    influencedBy: 'Muṭahharī\'s intellectual formation was shaped decisively by two towering figures in Qum. <a href="#" onclick="event.stopPropagation();showScholarPopup(\'tabatabai\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Allama Ṭabāṭabāʾī</a> gave him the philosophical framework — Ṣadraean metaphysics, the discipline of engaging Western thought at the level of its foundational assumptions rather than its surface conclusions. <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khomeini\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khomeini</a> gave him the ethical-political orientation — the conviction that Islamic scholarship must engage with society rather than remaining cloistered in the seminary. The synthesis was Muṭahharī\'s own: a model of the scholar-public intellectual unprecedented in Shia history.',
+    legacyDetail: 'Muṭahharī\'s works remain standard reading for educated Iranian Shia and have been translated into dozens of languages. His model of intellectual engagement — taking Western philosophical challenges seriously, responding with arguments drawn from the classical tradition, and communicating the results in accessible modern Persian — has been emulated by a generation of Iranian religious intellectuals, though none have matched his combination of philosophical depth and popular reach. He was the first chairman of the Revolutionary Council, and his intellectual legacy is invoked by both reformist and conservative currents in Iranian religious thought — a testament to the breadth of his engagement.'
+  },
+  {
+    id: 'mirza-shirazi', name: 'Mīrzā-ye Shīrāzī', arabic: 'الميرزا الشيرازي',
+    dates: '1814–1895 CE', era: 'Late Qajar',
+    location: 'Isfahan → Najaf → Samarra', domains: ['fiqh'],
+    desc: 'Grand Ayatullah Mīrzā Muḥammad Ḥasan al-Shīrāzī — known simply as al-Mīrzā al-Kabīr (the Great Mīrzā) — was the preeminent marjaʿ al-taqlīd of the late 19th century and the author of the most consequential single fatwā in modern Shia history. His one-sentence ruling against tobacco use in 1891 — "the use of tobacco is tantamount to war against the Imam of the Age" — was obeyed across Iran with striking unanimity, forcing Nāṣir al-Dīn Shāh to cancel a sweeping British concession. The episode constituted the first modern demonstration that the marjaʿiyya could mobilize an entire nation across state borders, establishing the transnational political reach of Shia religious authority as a practical reality. His scholarly output was transmitted primarily through his lectures and the annotations of his students rather than through published treatises.',
+    works: [
+      { title: 'Fatwā on the Tobacco Concession (1891)', arabic: 'حكم تنباكو', desc: 'A single-sentence ruling that transformed Shia political history. By framing the use of tobacco under a foreign monopoly as an act against the Hidden Imam, Mīrzā Shīrāzī collapsed the boundary between religious obligation and political resistance — establishing a template that would be invoked by every subsequent mobilization of clerical authority against state power, from the Constitutional Revolution through the 1979 Revolution.' }
+    ],
+    minorWorks: [
+      { title: 'Taqrīrāt (Lecture transcriptions)', domain: 'fiqh', desc: 'His jurisprudential teachings survive primarily in the notes compiled by his students, who included many of the leading scholars of the next generation. His move from Najaf to Samarra — establishing a major scholarly presence at the shrine of the Hidden Imam — was itself an institutional act.' }
+    ],
+    influencedBy: 'Mīrzā Shīrāzī was the foremost student of <a href="#" onclick="event.stopPropagation();showScholarPopup(\'ansari\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Sheikh al-Anṣārī</a>, inheriting both his jurisprudential methodology and his position as the leading marjaʿ. The Anṣārī school\'s emphasis on the rational derivation of legal rulings — rather than strict reliance on transmitted hadith — gave Mīrzā Shīrāzī the methodological framework to issue a ruling on an entirely novel question (foreign trade concessions) for which no direct textual precedent existed.',
+    legacyDetail: 'The Tobacco Protest established a template that defined Shia political engagement for the next century: religious authority exercised from across a national border, obeyed voluntarily by millions, capable of forcing a sovereign state to reverse policy. Every subsequent exercise of clerical political authority — <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khorasani\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khorasānī</a>\'s Constitutional Revolution, Khomeini\'s 1979 Revolution, <a href="#" onclick="event.stopPropagation();showScholarPopup(\'sistani\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Sistanī</a>\'s 2014 mobilization fatwa — operates in the political space that Mīrzā Shīrāzī\'s tobacco ruling first opened. His students, including Muḥammad Taqī Shīrāzī (who issued the fatwa supporting the 1920 Iraqi revolt) and Mīrzā Muḥammad Ḥusayn Nāʾīnī, carried his legacy into the constitutional era.'
+  },
+  {
+    id: 'naini', name: 'Mīrzā Muḥammad Ḥusayn Nāʾīnī', arabic: 'الميرزا النائيني',
+    dates: '1860–1936 CE', era: 'Late Qajar / Constitutional Revolution',
+    location: 'Nāʾīn (Isfahan) → Najaf', domains: ['fiqh', 'kalam'],
+    desc: 'Nāʾīnī was both a major uṣūlī jurist and the most important Shia political theorist of the constitutional era. His <em>Tanbīh al-Umma wa Tanzīh al-Milla</em> (1909) — written in support of the Iranian Constitutional Revolution — remains the foundational Shia argument for constitutional governance: that in the absence of the infallible Imam, a constitutional system that constrains tyranny is theologically preferable to absolute monarchy, since no human ruler possesses the Imam\'s inherent right to unqualified rule. This argument was creatively Shia in its foundations rather than a wholesale adoption of Western liberalism, grounding constitutionalism in the theology of the Occultation itself.',
+    works: [
+      { title: 'Tanbīh al-Umma wa Tanzīh al-Milla', arabic: 'تنبيه الامة وتنزيه الملة', desc: 'Admonishment of the Community and Purification of the Creed — the foundational text of Shia constitutional theory. Nāʾīnī argues that constitutional governance, by limiting arbitrary executive power, is the closest available approximation to the justice that would obtain under the Imam\'s direct rule. A constitution is not a replacement for the Imam but a restraint on the tyranny that his absence makes possible.' },
+      { title: 'Taqrīrāt in Uṣūl al-Fiqh', arabic: 'تقريرات في أصول الفقه', desc: 'His lectures on jurisprudential methodology — compiled by students including Sayyid Muḥsin al-Ḥakīm and others — constitute a major contribution to uṣūlī thought. His analytical rigor in legal theory earned him recognition as one of the leading jurists of Najaf.' }
+    ],
+    minorWorks: [],
+    influencedBy: 'Nāʾīnī was a student of both Mīrzā Shīrāzī (whose Tobacco Protest demonstrated the political capacity of religious authority) and <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khorasani\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Akhund Khorasānī</a>, who was the senior clerical supporter of the Constitutional Revolution. The Tanbīh was written in the context of Khorasānī\'s active pro-constitutional stance and represents the theoretical elaboration of a position that Khorasānī endorsed practically.',
+    legacyDetail: 'Nāʾīnī\'s constitutional theory established one pole of the modern Shia debate on governance — the position that clerical authority is best exercised through influence and constraint rather than direct rule. This pole stands in permanent tension with the opposing position, later articulated by <a href="#" onclick="event.stopPropagation();showScholarPopup(\'khomeini\');return false;" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Khomeini</a>\'s Wilāyat al-Faqīh, that the jurist should exercise governance directly. The debate between these two models — constitutional restraint versus clerical sovereignty — is the central question of contemporary <a href="shia-doctrine.html#doc-authority" class="cross-link" style="color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25)">Shia political theology</a>. Nāʾīnī\'s students included many of the next generation\'s leading scholars, and his uṣūlī contributions shaped the Najaf curriculum.'
   }
 ];
 

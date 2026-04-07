@@ -1101,6 +1101,102 @@ const SCHOLAR_BIOS = {
         "domain": "tafsir"
       }
     ]
+  },
+  "muhaqqiq-hilli": {
+    "name": "Muhaqqiq al-Hilli",
+    "arabic": "المحقق الحلي",
+    "dates": "1205–1277 CE",
+    "era": "Post-Mongol Hilla",
+    "location": "Hilla, Iraq",
+    "domains": ["fiqh"],
+    "desc": "Najm al-Dīn Abū al-Qāsim Jaʿfar ibn al-Ḥasan al-Ḥillī — universally known as al-Muḥaqqiq (the Verifier) — is the most consequential Shia jurist of the Mongol era and the author of the most widely taught fiqh text in the history of the tradition. Operating from Hilla in southern Iraq, which emerged as the premier center of Shia learning after the Mongol destruction of Baghdad in 1258, he produced works of exceptional systematic clarity…",
+    "works": [
+      { "title": "Shara'i al-Islam", "desc": "The most widely taught Shia fiqh text in history — a comprehensive four-volume legal manual covering worship, transactions, unilateral declarations, and judicial procedure. Its exceptional clarity made it the standard teaching text for nearly 800 years." },
+      { "title": "al-Mu'tabar fi Sharh al-Mukhtasar", "desc": "A commentary on his own al-Mukhtaṣar al-Nāfiʿ demonstrating independent juristic reasoning at a level that distinguished the Hilla school from more conservative hadith-based approaches." }
+    ],
+    "minorWorks": [
+      { "title": "al-Mukhtaṣar al-Nāfiʿ", "desc": "A concise abridgment of Sharāʾiʿ al-Islām designed for practical reference and student memorization.", "domain": "fiqh" }
+    ]
+  },
+  "borujerdi": {
+    "name": "Grand Ayatullah Borujerdi",
+    "arabic": "البروجردي",
+    "dates": "1875–1961 CE",
+    "era": "Late Qajar / Pahlavi Iran",
+    "location": "Borujerd → Najaf → Qum",
+    "domains": ["fiqh", "hadith"],
+    "desc": "Sayyid Ḥusayn Ṭabāṭabāʾī Burūjirdī was the last scholar to be widely recognized as the sole marjaʿ al-taqlīd for the global Shia community. His three decades at the head of the Qum ḥawza transformed it from a provincial seminary into a major international institution rivaling Najaf. His scholarly contributions were transmitted primarily through his lectures; his legacy is above all institutional and diplomatic…",
+    "works": [
+      { "title": "Jāmiʿ Aḥādīth al-Shīʿa", "desc": "A monumental hadith compilation project reorganizing the entire corpus of Shia traditions by jurisprudential topic. Directed by Borujerdi over decades; completed after his death." },
+      { "title": "Taqrīrāt (Compiled Lectures)", "desc": "His jurisprudential thought survives primarily in lecture notes compiled by students — including his comparative methodology situating Shia fiqh in dialogue with Sunni legal schools." }
+    ],
+    "minorWorks": [
+      { "title": "Ḥāshiya on al-ʿUrwa al-Wuthqā", "desc": "Marginal annotations on the standard fiqh manual — the conventional form through which a marjaʿ registers his legal positions.", "domain": "fiqh" }
+    ]
+  },
+  "fadlallah": {
+    "name": "Sayyid Muhammad Husayn Fadlallah",
+    "arabic": "السيد فضل الله",
+    "dates": "1935–2010 CE",
+    "era": "Contemporary",
+    "location": "Najaf (born) → Beirut",
+    "domains": ["tafsir", "fiqh"],
+    "desc": "Born in Najaf to a family of Lebanese Shia scholars, Fadlallah trained under the leading mujtahids of the mid-20th-century ḥawza before relocating to Beirut in 1966, where he became the most significant Arab Shia scholar-activist of the modern period. His intellectual project was to demonstrate that Islamic jurisprudence and Quranic scholarship could engage modernity on their own terms rather than defensively…",
+    "works": [
+      { "title": "Min Waḥy al-Qurʾān", "desc": "A 25-volume Arabic tafsīr combining traditional scholarship with sustained engagement with contemporary social, political, and ethical questions. Widely read across the Arab Shia world." },
+      { "title": "al-Masāʾil al-Fiqhiyya", "desc": "His practical jurisprudential manual, notable for positions that diverged from consensus in the direction of greater flexibility — particularly on questions affecting women and interfaith relations." }
+    ],
+    "minorWorks": [
+      { "title": "al-Islām wa Manṭiq al-Quwwa", "desc": "Islam and the Logic of Force — a theological engagement with the ethics of violence and resistance.", "domain": "kalam" },
+      { "title": "Dunyā al-Marʾa", "desc": "The World of Woman — a jurisprudential treatment of women's status in Islamic law.", "domain": "fiqh" }
+    ]
+  },
+  "mutahhari": {
+    "name": "Shahid Murtadha Mutahhari",
+    "arabic": "الشهيد المطهري",
+    "dates": "1919–1979 CE",
+    "era": "Pahlavi Iran",
+    "location": "Fariman (Khorasan) → Qum → Tehran",
+    "domains": ["falsafa", "kalam", "akhlaq"],
+    "desc": "Murtaḍā Muṭahharī was the most publicly influential Shia intellectual of 20th-century Iran — a scholar whose mastery of the classical philosophical tradition was matched by an extraordinary ability to communicate its insights to a modern, educated public. Trained under Allama Ṭabāṭabāʾī in Ṣadraean philosophy and under Khomeini in fiqh and ethics, he became the indispensable bridge between the ḥawza and Iran's modern universities…",
+    "works": [
+      { "title": "ʿAdl-e Ilāhī (Divine Justice)", "desc": "A rigorous engagement with the problem of theodicy — arguing that evil is privation rather than substance and that divine justice operates on a cosmic scale. One of the clearest treatments of this problem in Islamic thought." },
+      { "title": "Commentary on Principles of Philosophy", "desc": "Extensive annotations on Ṭabāṭabāʾī's Uṣūl-e Falsafa — the collaborative work constituting the most important Shia philosophical response to Marxist dialectical materialism." },
+      { "title": "Mas'ala-ye Ḥijāb", "desc": "The Question of the Veil — a systematic treatment of women's dress and status in Islamic law, engaging feminist critiques directly." }
+    ],
+    "minorWorks": [
+      { "title": "Dāstān-e Rāstān", "desc": "Stories of the Righteous — popular ethical narratives from Islamic history for young readers.", "domain": "akhlaq" },
+      { "title": "Insān dar Qurʾān", "desc": "Man in the Quran — a philosophical-theological anthropology drawing on the Ṣadraean tradition.", "domain": "kalam" }
+    ]
+  },
+  "mirza-shirazi": {
+    "name": "Mīrzā-ye Shīrāzī",
+    "arabic": "الميرزا الشيرازي",
+    "dates": "1814–1895 CE",
+    "era": "Late Qajar",
+    "location": "Isfahan → Najaf → Samarra",
+    "domains": ["fiqh"],
+    "desc": "Grand Ayatullah Mīrzā Muḥammad Ḥasan al-Shīrāzī — known as al-Mīrzā al-Kabīr — was the preeminent marjaʿ of the late 19th century and the author of the most consequential single fatwā in modern Shia history. His one-sentence ruling against tobacco use in 1891 forced the Shah to cancel a British concession, constituting the first modern demonstration that the marjaʿiyya could mobilize an entire nation across borders…",
+    "works": [
+      { "title": "Fatwā on the Tobacco Concession (1891)", "desc": "A single-sentence ruling that transformed Shia political history — framing the use of tobacco under a foreign monopoly as an act against the Hidden Imam. It established a template invoked by every subsequent mobilization of clerical authority." }
+    ],
+    "minorWorks": [
+      { "title": "Taqrīrāt (Lecture transcriptions)", "desc": "His jurisprudential teachings survive primarily in student notes. His scholarly output was transmitted through teaching rather than published treatises.", "domain": "fiqh" }
+    ]
+  },
+  "naini": {
+    "name": "Mīrzā Muḥammad Ḥusayn Nāʾīnī",
+    "arabic": "الميرزا النائيني",
+    "dates": "1860–1936 CE",
+    "era": "Late Qajar / Constitutional Revolution",
+    "location": "Nāʾīn (Isfahan) → Najaf",
+    "domains": ["fiqh", "kalam"],
+    "desc": "Nāʾīnī was both a major uṣūlī jurist and the most important Shia political theorist of the constitutional era. His Tanbīh al-Umma (1909) remains the foundational Shia argument for constitutional governance: that in the absence of the infallible Imam, a constitutional system constraining tyranny is theologically preferable to absolute monarchy…",
+    "works": [
+      { "title": "Tanbīh al-Umma wa Tanzīh al-Milla", "desc": "Admonishment of the Community — the foundational text of Shia constitutional theory. Argues that constitutional governance is the closest available approximation to justice in the Imam's absence." },
+      { "title": "Taqrīrāt in Uṣūl al-Fiqh", "desc": "Lectures on jurisprudential methodology compiled by students — a major contribution to uṣūlī thought." }
+    ],
+    "minorWorks": []
   }
 };
 
